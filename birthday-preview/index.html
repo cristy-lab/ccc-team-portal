@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1B175A">
+<title>Birthday preview | CCC Team Portal</title>
+<link rel="icon" href="../icons/favicon-48.png">
+<style>
+:root{--navy:#1B175A;--navy2:#2A2378;--blue:#6BA9F8;--sky:#82CAFB;--peach:#F6A078;--off:#FFFCFC;--gold:#FFC857;--pink:#FF8FB1;--ink:#1B175A;--muted:#5B587E}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:#F4F1EE;color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.serif{font-family:Georgia,"Times New Roman",serif}
+
+/* Mock app behind the celebration */
+.app{max-width:480px;margin:0 auto;min-height:100%;padding-bottom:40px}
+.bar{background:var(--navy);padding:calc(env(safe-area-inset-top) + 12px) 16px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:4px solid;border-image:linear-gradient(90deg,var(--peach),var(--blue)) 1}
+.bar img{width:40px;height:40px;border-radius:10px;background:#fff;padding:3px}
+.lang{display:flex;background:rgba(255,255,255,.12);border-radius:999px;padding:3px}
+.lang button{border:0;background:transparent;color:#fff;font:600 15px system-ui;padding:8px 14px;border-radius:999px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:#fff;color:var(--navy)}
+.wrap{padding:18px 16px}
+.hello{font-size:30px;margin:6px 0 2px}
+.region{color:var(--muted);margin:0 0 16px}
+.bday-card{position:relative;overflow:hidden;border-radius:20px;padding:18px 18px 18px 96px;background:linear-gradient(135deg,#FFF3E8,#EAF4FF);border:2px solid #F9C9A9;box-shadow:0 10px 30px rgba(27,23,90,.10);margin-bottom:16px;cursor:pointer;min-height:96px}
+.bday-card .cake-mini{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:68px;height:68px}
+.bday-card h3{margin:0 0 4px;font-size:21px}
+.bday-card p{margin:0;color:var(--muted);font-size:15px}
+.bday-card .tap{display:inline-block;margin-top:8px;font-weight:700;color:var(--navy);font-size:15px}
+.pay{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border-radius:22px;padding:20px;margin-bottom:14px}
+.pay small{color:var(--sky);letter-spacing:.08em;font-weight:700}
+.pay h2{margin:6px 0 10px;font-size:28px}
+.chip{display:inline-block;background:var(--peach);color:var(--navy);font-weight:700;border-radius:999px;padding:6px 14px}
+.tile{background:#fff;border-radius:18px;padding:16px;margin-bottom:10px;box-shadow:0 2px 10px rgba(27,23,90,.06);font-weight:700;font-size:18px}
+.tile span{display:block;font-weight:400;color:var(--muted);font-size:15px;margin-top:2px}
+.note{font-size:13px;color:var(--muted);text-align:center;margin-top:14px}
+
+/* Celebration overlay */
+.party{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;overflow:hidden;
+  background:radial-gradient(120% 90% at 50% 20%,#3A2F9E 0%,#1B175A 55%,#0E0B36 100%);opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s}
+.party.on{opacity:1;visibility:visible}
+.party canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:3}
+.sparkles{position:absolute;inset:0;background-image:radial-gradient(2px 2px at 20% 30%,#fff8,transparent),radial-gradient(2px 2px at 70% 20%,#fff9,transparent),radial-gradient(1.5px 1.5px at 40% 70%,#fff7,transparent),radial-gradient(2px 2px at 85% 60%,#fff8,transparent),radial-gradient(1.5px 1.5px at 10% 80%,#fff6,transparent),radial-gradient(1.5px 1.5px at 55% 45%,#fff6,transparent);animation:twinkle 3s ease-in-out infinite alternate;z-index:0}
+@keyframes twinkle{from{opacity:.5}to{opacity:1}}
+.balloons{position:absolute;inset:0;z-index:1;pointer-events:none}
+.balloon{position:absolute;bottom:-190px;width:78px;height:170px;animation:rise linear forwards}
+@keyframes rise{0%{transform:translate(0,0) rotate(-4deg)}25%{transform:translate(14px,-30vh) rotate(4deg)}50%{transform:translate(-12px,-60vh) rotate(-4deg)}75%{transform:translate(10px,-90vh) rotate(3deg)}100%{transform:translate(-6px,-125vh) rotate(-2deg)}}
+.card{position:relative;z-index:2;width:min(92vw,420px);text-align:center;color:#fff;padding:26px 20px calc(24px + env(safe-area-inset-bottom));transform:scale(.6);opacity:0}
+.party.on .card{animation:pop .7s cubic-bezier(.2,1.6,.4,1) .15s forwards}
+@keyframes pop{to{transform:scale(1);opacity:1}}
+.cake{width:170px;height:170px;margin:0 auto -4px;filter:drop-shadow(0 12px 24px rgba(0,0,0,.35))}
+.flame{transform-origin:50% 100%;animation:flick .18s ease-in-out infinite alternate}
+@keyframes flick{from{transform:scale(1,1) rotate(-3deg)}to{transform:scale(.9,1.12) rotate(3deg)}}
+.hb{font-family:Georgia,"Times New Roman",serif;font-weight:700;font-size:clamp(44px,13vw,64px);line-height:1;margin:6px 0 8px;letter-spacing:.5px;
+  background:linear-gradient(90deg,#FFD27A,#FFFFFF 35%,#F6A078 65%,#82CAFB);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 30px rgba(255,210,122,.25)}
+.name{font-family:Georgia,"Times New Roman",serif;font-size:clamp(34px,10vw,48px);font-weight:700;margin:0 0 14px;color:#fff}
+.from{font-size:19px;line-height:1.35;margin:0 auto 22px;max-width:320px;color:#EDEBFF}
+.from b{color:#FFD27A}
+.btns{display:grid;gap:10px}
+.btn{border:0;border-radius:16px;min-height:56px;font:700 18px system-ui;cursor:pointer}
+.btn.primary{background:#fff;color:var(--navy)}
+.btn.ghost{background:rgba(255,255,255,.14);color:#fff;border:1.5px solid rgba(255,255,255,.35)}
+.preview-tag{position:absolute;top:calc(env(safe-area-inset-top) + 10px);left:50%;transform:translateX(-50%);z-index:4;background:rgba(255,255,255,.14);color:#fff;font-size:13px;padding:6px 12px;border-radius:999px;white-space:nowrap}
+.party .lang{position:absolute;top:calc(env(safe-area-inset-top) + 44px);right:12px;z-index:4}
+@media (prefers-reduced-motion: reduce){.party.on .card{animation:none;transform:none;opacity:1}.balloon{display:none}.flame{animation:none}.sparkles{animation:none}}
+</style>
+</head>
+<body>
+<div class="app" aria-hidden="false">
+  <header class="bar">
+    <img src="../icons/icon-192.png" alt="Cristal Clear Cleaning">
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">English</button>
+      <button type="button" data-lang="es" aria-pressed="false">Español</button>
+    </div>
+  </header>
+  <main class="wrap">
+    <h1 class="hello serif" data-t="hello">Good morning, Cristy</h1>
+    <p class="region">Office</p>
+
+    <div class="bday-card" role="button" tabindex="0" id="reopen">
+      <svg class="cake-mini" viewBox="0 0 120 120" aria-hidden="true"><use href="#cake"/></svg>
+      <h3 class="serif" data-t="cardTitle">Today is Valentina R.'s birthday!</h3>
+      <p data-t="cardText">Send a birthday wish from all of us.</p>
+      <span class="tap" data-t="cardTap">Tap to celebrate 🎉</span>
+    </div>
+
+    <div class="pay">
+      <small data-t="payLabel">NEXT PAYDAY</small>
+      <h2 class="serif" data-t="payDay">Friday, September 18</h2>
+      <span class="chip" data-t="payChip">Tomorrow</span>
+    </div>
+    <div class="tile"><span style="display:inline;font-weight:700;color:inherit;font-size:18px" data-t="t1">Request a day off</span></div>
+    <div class="tile"><span style="display:inline;font-weight:700;color:inherit;font-size:18px" data-t="t2">Supervisor survey</span></div>
+    <div class="tile"><span style="display:inline;font-weight:700;color:inherit;font-size:18px" data-t="t3">Pay calendar</span></div>
+    <p class="note" data-t="note">This is a preview with a sample name. Real birthdays will show the team member's name.</p>
+  </main>
+</div>
+
+<section class="party" id="party" role="dialog" aria-modal="true" aria-labelledby="hbTitle">
+  <div class="sparkles"></div>
+  <div class="balloons" id="balloons" aria-hidden="true"></div>
+  <canvas id="confetti" aria-hidden="true"></canvas>
+  <div class="preview-tag" data-t="tag">Preview with a sample name</div>
+  <div class="lang" role="group" aria-label="Language">
+    <button type="button" data-lang="en" aria-pressed="true">English</button>
+    <button type="button" data-lang="es" aria-pressed="false">Español</button>
+  </div>
+  <div class="card">
+    <svg class="cake" viewBox="0 0 120 120" aria-hidden="true"><use href="#cake"/></svg>
+    <h2 class="hb" id="hbTitle" data-t="hb">Happy Birthday</h2>
+    <p class="name">Valentina R.</p>
+    <p class="from" data-t="from">Happy birthday from <b>Cristal Clear Cleaning</b></p>
+    <div class="btns">
+      <button type="button" class="btn primary" id="again" data-t="again">Celebrate again 🎉</button>
+      <button type="button" class="btn ghost" id="close" data-t="close">Continue to the app</button>
+    </div>
+  </div>
+</section>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="frost" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#FDEBDD"/></linearGradient>
+    <linearGradient id="sponge1" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#F6A078"/><stop offset="1" stop-color="#E9835A"/></linearGradient>
+    <linearGradient id="sponge2" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#82CAFB"/><stop offset="1" stop-color="#5FA9E6"/></linearGradient>
+    <g id="cake">
+      <ellipse cx="60" cy="108" rx="48" ry="7" fill="#000" opacity=".18"/>
+      <rect x="10" y="98" width="100" height="8" rx="4" fill="#E6E2F5"/>
+      <rect x="16" y="66" width="88" height="34" rx="8" fill="url(#sponge2)"/>
+      <path d="M16 72c6 8 12 8 18 0s12-8 18 0 12 8 18 0 12-8 18 0 10 7 16 0v-6H16z" fill="url(#frost)"/>
+      <circle cx="30" cy="88" r="3" fill="#fff"/><circle cx="52" cy="92" r="3" fill="#FFD27A"/><circle cx="74" cy="88" r="3" fill="#fff"/><circle cx="92" cy="92" r="3" fill="#FFD27A"/>
+      <rect x="28" y="40" width="64" height="28" rx="7" fill="url(#sponge1)"/>
+      <path d="M28 46c5 7 11 7 16 0s11-7 16 0 11 7 16 0 11-7 16 0v-6H28z" fill="url(#frost)"/>
+      <rect x="44" y="22" width="5" height="19" rx="2" fill="#6BA9F8"/><rect x="58" y="18" width="5" height="23" rx="2" fill="#FFC857"/><rect x="72" y="22" width="5" height="19" rx="2" fill="#FF8FB1"/>
+      <g class="flame"><path d="M46.5 12c3 4 4 6 0 9-4-3-3-5 0-9z" fill="#FFB020"/><path d="M46.5 15c1.5 2 2 3 0 5-2-2-1.5-3 0-5z" fill="#FFF3B0"/></g>
+      <g class="flame"><path d="M60.5 8c3 4 4 6 0 9-4-3-3-5 0-9z" fill="#FFB020"/><path d="M60.5 11c1.5 2 2 3 0 5-2-2-1.5-3 0-5z" fill="#FFF3B0"/></g>
+      <g class="flame"><path d="M74.5 12c3 4 4 6 0 9-4-3-3-5 0-9z" fill="#FFB020"/><path d="M74.5 15c1.5 2 2 3 0 5-2-2-1.5-3 0-5z" fill="#FFF3B0"/></g>
+    </g>
+  </defs>
+</svg>
+
+<script>
+(function () {
+  var T = {
+    en: {hello:"Good morning, Cristy", cardTitle:"Today is Valentina R.'s birthday!", cardText:"Send a birthday wish from all of us.", cardTap:"Tap to celebrate 🎉",
+      payLabel:"NEXT PAYDAY", payDay:"Friday, September 18", payChip:"Tomorrow", t1:"Request a day off", t2:"Supervisor survey", t3:"Pay calendar",
+      note:"This is a preview with a sample name. Real birthdays will show the team member's name.", tag:"Preview with a sample name",
+      hb:"Happy Birthday", from:"Happy birthday from <b>Cristal Clear Cleaning</b>", again:"Celebrate again 🎉", close:"Continue to the app"},
+    es: {hello:"Buenos días, Cristy", cardTitle:"¡Hoy es el cumpleaños de Valentina R.!", cardText:"Deséele un feliz cumpleaños de parte de todos.", cardTap:"Toque para celebrar 🎉",
+      payLabel:"PRÓXIMO DÍA DE PAGO", payDay:"Viernes, 18 de septiembre", payChip:"Mañana", t1:"Pedir un día libre", t2:"Encuesta de supervisores", t3:"Calendario de pagos",
+      note:"Esta es una vista previa con un nombre de ejemplo. Los cumpleaños reales mostrarán el nombre de la persona.", tag:"Vista previa con un nombre de ejemplo",
+      hb:"¡Feliz Cumpleaños!", from:"¡Feliz cumpleaños de parte de <b>Cristal Clear Cleaning</b>!", again:"Celebrar otra vez 🎉", close:"Continuar a la app"}
+  };
+  var lang = (navigator.language || "en").toLowerCase().indexOf("es") === 0 ? "es" : "en";
+  function setLang(l) {
+    lang = l; document.documentElement.lang = l;
+    document.querySelectorAll("[data-t]").forEach(function (el) {
+      var v = T[l][el.getAttribute("data-t")]; if (v == null) return;
+      if (v.indexOf("<b>") >= 0) { el.innerHTML = v; } else { el.textContent = v; }
+    });
+    document.querySelectorAll("[data-lang]").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-lang") === l)); });
+  }
+  document.querySelectorAll("[data-lang]").forEach(function (b) { b.addEventListener("click", function (e) { e.stopPropagation(); setLang(b.getAttribute("data-lang")); }); });
+  setLang(lang);
+
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var party = document.getElementById("party");
+  var canvas = document.getElementById("confetti");
+  var ctx = canvas.getContext("2d");
+  var W = 0, H = 0, DPR = Math.min(window.devicePixelRatio || 1, 2);
+  function resize() { W = window.innerWidth; H = window.innerHeight; canvas.width = W * DPR; canvas.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0); }
+  window.addEventListener("resize", resize); resize();
+
+  var COLORS = ["#F6A078", "#6BA9F8", "#82CAFB", "#FFC857", "#FF8FB1", "#FFFFFF", "#B7A6FF"];
+  var parts = [], running = false, rainUntil = 0;
+  function rand(a, b) { return a + Math.random() * (b - a); }
+  function piece(x, y, angle, speed) {
+    var shape = Math.random();
+    return { x: x, y: y, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed, g: rand(0.18, 0.32), drag: rand(0.965, 0.985),
+      w: rand(6, 12), h: rand(10, 18), r: rand(0, Math.PI * 2), vr: rand(-0.3, 0.3), tilt: rand(0, Math.PI * 2), vt: rand(0.05, 0.2),
+      color: COLORS[(Math.random() * COLORS.length) | 0], kind: shape < 0.55 ? "rect" : shape < 0.8 ? "circle" : "ribbon", life: 0, max: rand(160, 260) };
+  }
+  function burst(x, y, n, spreadFrom, spreadTo, sMin, sMax) {
+    for (var i = 0; i < n; i++) parts.push(piece(x, y, rand(spreadFrom, spreadTo), rand(sMin, sMax)));
+  }
+  function explode() {
+    var cx = W / 2, cy = H * 0.42;
+    burst(cx, cy, reduce ? 60 : 260, 0, Math.PI * 2, 6, reduce ? 10 : 22);
+    if (!reduce) {
+      setTimeout(function () { burst(0, H, 140, -Math.PI / 2.2, -Math.PI / 6, 14, 26); burst(W, H, 140, -Math.PI + Math.PI / 6, -Math.PI + Math.PI / 2.2, 14, 26); }, 220);
+      setTimeout(function () { burst(cx, cy - 40, 180, 0, Math.PI * 2, 8, 20); }, 700);
+      rainUntil = performance.now() + 4500;
+      try { if (navigator.vibrate) navigator.vibrate([40, 60, 40, 60, 120]); } catch (e) {}
+    }
+    if (!running) { running = true; requestAnimationFrame(tick); }
+  }
+  function tick(now) {
+    ctx.clearRect(0, 0, W, H);
+    if (now < rainUntil && parts.length < 500) for (var k = 0; k < 4; k++) parts.push(piece(rand(0, W), -20, Math.PI / 2 + rand(-0.4, 0.4), rand(1, 4)));
+    for (var i = parts.length - 1; i >= 0; i--) {
+      var p = parts[i];
+      p.vx *= p.drag; p.vy = p.vy * p.drag + p.g; p.x += p.vx + Math.sin(p.tilt) * 0.6; p.y += p.vy; p.r += p.vr; p.tilt += p.vt; p.life++;
+      if (p.y > H + 40 || p.life > p.max + 200) { parts.splice(i, 1); continue; }
+      var fade = p.life > p.max ? Math.max(0, 1 - (p.life - p.max) / 60) : 1;
+      ctx.save(); ctx.globalAlpha = fade; ctx.translate(p.x, p.y); ctx.rotate(p.r); ctx.fillStyle = p.color;
+      var sy = Math.abs(Math.cos(p.tilt));
+      if (p.kind === "rect") ctx.fillRect(-p.w / 2, -p.h / 2 * sy, p.w, p.h * sy);
+      else if (p.kind === "circle") { ctx.beginPath(); ctx.ellipse(0, 0, p.w / 2, (p.w / 2) * sy + 0.5, 0, 0, Math.PI * 2); ctx.fill(); }
+      else { ctx.fillRect(-1.5, -p.h, 3, p.h * 2 * sy + 2); }
+      ctx.restore();
+    }
+    if (parts.length || now < rainUntil) requestAnimationFrame(tick); else { running = false; ctx.clearRect(0, 0, W, H); }
+  }
+
+  var BCOL = [["#F6A078", "#FFC4A6"], ["#6BA9F8", "#A9CDFB"], ["#FFC857", "#FFE3A1"], ["#FF8FB1", "#FFC2D4"], ["#82CAFB", "#C2E6FD"], ["#B7A6FF", "#DCD3FF"]];
+  function balloons() {
+    if (reduce) return;
+    var box = document.getElementById("balloons"); box.innerHTML = "";
+    for (var i = 0; i < 9; i++) {
+      var c = BCOL[i % BCOL.length], left = 4 + i * (92 / 9) + rand(-3, 3), dur = rand(7, 10.5), delay = rand(0, 1.6), scale = rand(0.75, 1.15);
+      var d = document.createElement("div"); d.className = "balloon";
+      d.style.left = left + "%"; d.style.animationDuration = dur + "s"; d.style.animationDelay = delay + "s"; d.style.width = (78 * scale) + "px"; d.style.height = (170 * scale) + "px";
+      d.innerHTML = '<svg viewBox="0 0 78 170" width="100%" height="100%"><defs><radialGradient id="bg' + i + '" cx="35%" cy="30%" r="70%"><stop offset="0" stop-color="' + c[1] + '"/><stop offset="1" stop-color="' + c[0] + '"/></radialGradient></defs>' +
+        '<ellipse cx="39" cy="42" rx="33" ry="40" fill="url(#bg' + i + ')"/><ellipse cx="27" cy="26" rx="7" ry="11" fill="#fff" opacity=".45"/>' +
+        '<path d="M35 82l4 7 4-7z" fill="' + c[0] + '"/><path d="M39 89c-6 18 8 30 0 48s8 24 2 33" stroke="#ffffffaa" stroke-width="1.6" fill="none"/></svg>';
+      box.appendChild(d);
+    }
+  }
+  function open() {
+    party.classList.add("on");
+    var card = party.querySelector(".card"); card.style.animation = "none"; void card.offsetWidth; card.style.animation = "";
+    balloons(); explode();
+    setTimeout(function () { document.getElementById("again").focus({ preventScroll: true }); }, 400);
+  }
+  function close() { party.classList.remove("on"); document.getElementById("reopen").focus({ preventScroll: true }); }
+  document.getElementById("again").addEventListener("click", function () { balloons(); explode(); });
+  document.getElementById("close").addEventListener("click", close);
+  document.getElementById("reopen").addEventListener("click", open);
+  document.getElementById("reopen").addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && party.classList.contains("on")) close(); });
+  setTimeout(open, 250);
+})();
+</script>
+</body>
+</html>
