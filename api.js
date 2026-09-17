@@ -6,7 +6,7 @@
  * {ok:false, error:{code:"NETWORK"}} so the UI has one thing to check.
  *
  * Apps Script sometimes answers with an error page (no JSON, no CORS header) even
- * after the script ran, so ping, dashboard and request try once more after a
+ * after the script ran, so ping, dashboard, request and wish try once more after a
  * NETWORK failure. A request sends the same client_request_id both times, and the
  * backend returns the saved request instead of adding a second one. Login is never
  * retried: a second try could count as one more failed sign in.
@@ -19,7 +19,8 @@
      the sheet and posts to Slack, so it gets longer before the app gives up. */
   var REQUEST_TIMEOUT_MS = 45000;
   var RETRY_DELAY_MS = 1500;
-  var RETRY_ACTIONS = { ping: 1, dashboard: 1, request: 1 };
+  // A wish is safe to send twice too: the same emoji to the same person on the same day is saved once.
+  var RETRY_ACTIONS = { ping: 1, dashboard: 1, request: 1, wish: 1 };
 
   function netError(message) {
     return { ok: false, error: { code: "NETWORK", message: message || "network error" } };

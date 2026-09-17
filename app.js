@@ -259,8 +259,98 @@
     return typeof obj[other] === "string" ? obj[other].trim() : "";
   }
 
+  /* ---- Birthdays ---- */
+
+  /* The only wishes the backend accepts: party popper, cake, balloon, partying face, heart, present. */
+  var WISH_EMOJIS = ["\uD83C\uDF89", "\uD83C\uDF82", "\uD83C\uDF88", "\uD83E\uDD73", "\u2764\uFE0F", "\uD83C\uDF81"];
+
+  /* The dashboard's celebrations, cleaned, and only while that dashboard is from today in New York. */
+  function todaysCelebrations(dash, now) {
+    if (!dash || !Array.isArray(dash.celebrations) || !dash.pay || !I.parseYMD(dash.pay.server_today)) return [];
+    if (todayFor(dash, now || new Date()) !== dash.pay.server_today) return [];
+    return dash.celebrations.filter(function (c) {
+      return c && typeof c.person_id === "string" && c.person_id && typeof c.display_name === "string";
+    }).map(function (c) {
+      return {
+        person_id: c.person_id,
+        first_name: typeof c.first_name === "string" && c.first_name.trim() ? c.first_name.trim() : c.display_name,
+        display_name: c.display_name,
+        is_you: c.is_you === true,
+        demo: c.demo === true,
+        wish_count: Math.max(0, Math.floor(Number(c.wish_count)) || 0),
+        my_wishes: WISH_EMOJIS.filter(function (e) { return Array.isArray(c.my_wishes) && c.my_wishes.indexOf(e) >= 0; })
+      };
+    });
+  }
+
+  /* What a card shows: the saved wishes plus the ones still on their way (optimistic). */
+  function wishView(c, pending) {
+    var mine = c.my_wishes.slice();
+    var count = c.wish_count;
+    WISH_EMOJIS.forEach(function (e) {
+      if (pending && pending[e] && mine.indexOf(e) < 0) {
+        mine.push(e);
+        count++;
+      }
+    });
+    return { my_wishes: WISH_EMOJIS.filter(function (e) { return mine.indexOf(e) >= 0; }), wish_count: count };
+  }
+
+  function wishCountText(n, lang, you) {
+    var base = you ? "bday_you_count" : "bday_count";
+    return I.t(lang, n === 0 ? base + "_zero" : n === 1 ? base + "_one" : base, { n: n });
+  }
+
+  /* The celebration shows once a day per phone for each set of people: the key names the day and the ids. */
+  function partyKey(serverToday, list) {
+    return "ccc.party:" + serverToday + ":" + list.map(function (c) { return c.person_id; }).sort().join(",");
+  }
+
+  /* How the celebration moves. Reduced motion: confetti drawn once, balloons that stand still, no buzz. */
+  function partyPlan(reduced) {
+    return reduced
+      ? { motion: "reduced", bursts: [], field: 90, rain_ms: 0, balloons: "still", vibrate: null }
+      : { motion: "full", bursts: [[0, "center", 260], [220, "corners", 140], [700, "center", 180]], field: 0, rain_ms: 4500,
+        balloons: "rise", vibrate: [40, 60, 40, 60, 120] };
+  }
+
+  function joinNames(names, lang) {
+    if (names.length < 2) return names.join("");
+    var last = names[names.length - 1];
+    // Spanish writes "e" for "y" before the sound i (Isabel, Hilda), but not before hie or hia (Hierro).
+    var and = lang === "es" && /^h?[i\u00ed](?![aeiou\u00e1\u00e9\u00ed\u00f3\u00fa])/i.test(last) ? "party_and_i" : "party_and";
+    return names.slice(0, -1).join(", ") + " " + I.t(lang, and) + " " + last;
+  }
+
+  /* Merges a wish answer into a celebration. A person's wishes of the day only ever grow, so an
+     answer that arrives late can never take back a wish or lower the count. */
+  function mergeWish(c, res) {
+    var mine = (Array.isArray(c.my_wishes) ? c.my_wishes : []).concat(Array.isArray(res.my_wishes) ? res.my_wishes : []);
+    return {
+      wish_count: Math.max(Math.floor(Number(c.wish_count)) || 0, Math.floor(Number(res.wish_count)) || 0),
+      my_wishes: WISH_EMOJIS.filter(function (e) { return mine.indexOf(e) >= 0; })
+    };
+  }
+
+  /* wishes_received, cleaned: allowed emojis and names only, at most 100. */
+  function receivedWishes(dash) {
+    var list = dash && Array.isArray(dash.wishes_received) ? dash.wishes_received : [];
+    return list.filter(function (w) {
+      return w && typeof w.from_display === "string" && WISH_EMOJIS.indexOf(w.emoji) >= 0;
+    }).slice(0, 100);
+  }
+
   var Helpers = {
     CATEGORIES: CATEGORIES,
+    WISH_EMOJIS: WISH_EMOJIS,
+    todaysCelebrations: todaysCelebrations,
+    wishView: wishView,
+    wishCountText: wishCountText,
+    partyKey: partyKey,
+    partyPlan: partyPlan,
+    joinNames: joinNames,
+    mergeWish: mergeWish,
+    receivedWishes: receivedWishes,
     CONTACTS: CONTACTS,
     ymdToday: ymdToday,
     nyYmd: nyYmd,
@@ -304,7 +394,8 @@
     lang: "ccc.lang",
     a2hs: "ccc.a2hs_dismissed",
     lock: "ccc.lock_until",
-    draft: "ccc.draft"
+    draft: "ccc.draft",
+    party: "ccc.party:"
   };
 
   var memStore = {};
@@ -407,22 +498,51 @@
     cap: [["path", { d: "M22 10L12 5 2 10l10 5 10-5z" }], ["path", { d: "M6 12v5c3 2.7 9 2.7 12 0v-5M22 10v6" }]]
   };
 
+  function svgEl(tag, attrs, children) {
+    var el = doc.createElementNS(SVGNS, tag);
+    Object.keys(attrs || {}).forEach(function (a) { el.setAttribute(a, String(attrs[a])); });
+    (children || []).forEach(function (c) { el.appendChild(c); });
+    return el;
+  }
+
   function icon(name) {
-    var svg = doc.createElementNS(SVGNS, "svg");
-    svg.setAttribute("viewBox", "0 0 24 24");
-    svg.setAttribute("fill", "none");
-    svg.setAttribute("stroke", "currentColor");
-    svg.setAttribute("stroke-width", "2");
-    svg.setAttribute("stroke-linecap", "round");
-    svg.setAttribute("stroke-linejoin", "round");
-    svg.setAttribute("aria-hidden", "true");
-    svg.setAttribute("focusable", "false");
-    (ICONS[name] || []).forEach(function (spec) {
-      var el = doc.createElementNS(SVGNS, spec[0]);
-      Object.keys(spec[1]).forEach(function (a) { el.setAttribute(a, String(spec[1][a])); });
-      svg.appendChild(el);
+    return svgEl("svg", { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", "stroke-width": 2, "stroke-linecap": "round",
+      "stroke-linejoin": "round", "aria-hidden": "true", focusable: "false" },
+    (ICONS[name] || []).map(function (spec) { return svgEl(spec[0], spec[1]); }));
+  }
+
+  /* The birthday cake of the approved preview, with candles that flicker. */
+  var CAKE = [
+    ["ellipse", { cx: 60, cy: 108, rx: 48, ry: 7, fill: "#000", opacity: 0.18 }],
+    ["rect", { x: 10, y: 98, width: 100, height: 8, rx: 4, fill: "#E6E2F5" }],
+    ["rect", { x: 16, y: 66, width: 88, height: 34, rx: 8, fill: "url(#ccc-sponge2)" }],
+    ["path", { d: "M16 72c6 8 12 8 18 0s12-8 18 0 12 8 18 0 12-8 18 0 10 7 16 0v-6H16z", fill: "url(#ccc-frost)" }],
+    ["circle", { cx: 30, cy: 88, r: 3, fill: "#fff" }], ["circle", { cx: 52, cy: 92, r: 3, fill: "#FFD27A" }],
+    ["circle", { cx: 74, cy: 88, r: 3, fill: "#fff" }], ["circle", { cx: 92, cy: 92, r: 3, fill: "#FFD27A" }],
+    ["rect", { x: 28, y: 40, width: 64, height: 28, rx: 7, fill: "url(#ccc-sponge1)" }],
+    ["path", { d: "M28 46c5 7 11 7 16 0s11-7 16 0 11 7 16 0 11-7 16 0v-6H28z", fill: "url(#ccc-frost)" }],
+    ["rect", { x: 44, y: 22, width: 5, height: 19, rx: 2, fill: "#6BA9F8" }], ["rect", { x: 58, y: 18, width: 5, height: 23, rx: 2, fill: "#FFC857" }],
+    ["rect", { x: 72, y: 22, width: 5, height: 19, rx: 2, fill: "#FF8FB1" }]
+  ];
+
+  function cakeSvg(cls) {
+    if (!doc.getElementById("ccc-cake-defs")) {
+      // The gradients live once in the page, so every cake can point at them.
+      doc.body.appendChild(svgEl("svg", { id: "ccc-cake-defs", class: "svg-defs", "aria-hidden": "true", focusable: "false" }, [
+        svgEl("defs", null, [["ccc-frost", "#FFFFFF", "#FDEBDD"], ["ccc-sponge1", "#F6A078", "#E9835A"], ["ccc-sponge2", "#82CAFB", "#5FA9E6"]].map(function (g) {
+          return svgEl("linearGradient", { id: g[0], x1: 0, x2: 0, y1: 0, y2: 1 }, [
+            svgEl("stop", { offset: 0, "stop-color": g[1] }), svgEl("stop", { offset: 1, "stop-color": g[2] })]);
+        }))
+      ]));
+    }
+    var kids = CAKE.map(function (spec) { return svgEl(spec[0], spec[1]); });
+    [[46.5, 12], [60.5, 8], [74.5, 12]].forEach(function (f) {
+      kids.push(svgEl("g", { class: "flame" }, [
+        svgEl("path", { d: "M" + f[0] + " " + f[1] + "c3 4 4 6 0 9c-4-3-3-5 0-9z", fill: "#FFB020" }),
+        svgEl("path", { d: "M" + f[0] + " " + (f[1] + 3) + "c1.5 2 2 3 0 5c-2-2-1.5-3 0-5z", fill: "#FFF3B0" })
+      ]));
     });
-    return svg;
+    return svgEl("svg", { viewBox: "0 0 120 120", class: cls || "cake", "aria-hidden": "true", focusable: "false" }, kids);
   }
 
   /* Image that swaps to a text fallback if the file is missing. */
@@ -441,7 +561,7 @@
   /* ---- 3. State, router, shared UI ---- */
 
   var CFG = root.CCC_CONFIG || {};
-  var APP_VERSION = CFG.APP_VERSION || "0.2.1";
+  var APP_VERSION = CFG.APP_VERSION || "0.3.0";
 
   var state = {
     lang: "en",
@@ -466,7 +586,8 @@
     netDown: false,
     loadError: null,
     installPrompt: null,
-    flash: null
+    flash: null,
+    wishPending: {} // person id -> {emoji: true} while a wish is on its way
   };
 
   var ROUTES = ["login", "choose", "home", "calendar", "request", "requests", "done", "training"];
@@ -508,6 +629,10 @@
 
   /* Navigate. replace=true keeps the back button from returning to this step. */
   function go(route, replace) {
+    if (partyPop) {
+      partyPop.next = function () { go(route, replace); };
+      return;
+    }
     var hash = "#/" + route;
     if (replace || root.location.hash === hash) {
       replaceHash(route);
@@ -524,12 +649,17 @@
 
   /* Use real history when the previous entry is ours, so Android back and this button agree. */
   function goBack(target) {
-    if (histIdx() > 0) root.history.back();
+    if (partyPop) partyPop.next = function () { goBack(target); };
+    else if (histIdx() > 0) root.history.back();
     else go(target, true);
   }
 
   function onHistoryChange() {
+    var popped = partyPop;
+    // Android back while the celebration is open leaves its history entry: close it and stay put.
+    if (party && !popped && !(root.history.state && root.history.state.party)) closeParty();
     if (routeFromHash() !== currentRoute) render();
+    if (popped) finishPartyPop();
   }
 
   function render() {
@@ -554,6 +684,8 @@
     while (app.firstChild) app.removeChild(app.firstChild);
     app.appendChild(screen);
     updateChrome();
+    fillParty();
+    if (route === "home") autoParty();
 
     if (changed && DATA_ROUTES[route] && booted && Date.now() - state.lastRefresh > 60000) {
       root.setTimeout(refreshDashboard, 0);
@@ -672,10 +804,14 @@
     // Forget a dashboard call still running for the old token.
     state.refreshing = false;
     state.lastRefresh = 0;
+    state.wishPending = {};
+    closeParty();
     store.remove(K.token);
     store.remove(K.person);
     store.remove(K.dash);
     store.remove(K.draft);
+    // Which people celebrated on which day stays on a shared phone no longer than the session.
+    forgetParties(null);
   }
 
   function signOut(flashKey) {
@@ -1285,6 +1421,510 @@
     ]);
   }
 
+  /* ---- Birthdays: confetti, the celebration and the home cards ---- */
+
+  var FX_COLORS = ["#F6A078", "#6BA9F8", "#82CAFB", "#FFC857", "#FF8FB1", "#FFFFFF", "#B7A6FF"];
+
+  function rand(a, b) {
+    return a + Math.random() * (b - a);
+  }
+
+  /* Canvas confetti, the engine of the approved preview. */
+  function makeFx(canvas) {
+    var ctx = null;
+    try { ctx = canvas.getContext("2d"); } catch (e) { ctx = null; }
+    var W = 0, H = 0, parts = [], raf = 0, rainUntil = 0;
+    function piece(x, y, angle, speed) {
+      var shape = Math.random();
+      return { x: x, y: y, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed, g: rand(0.18, 0.32), drag: rand(0.965, 0.985),
+        w: rand(6, 12), h: rand(10, 18), r: rand(0, 6.3), vr: rand(-0.3, 0.3), tilt: rand(0, 6.3), vt: rand(0.05, 0.2),
+        color: FX_COLORS[(Math.random() * FX_COLORS.length) | 0], kind: shape < 0.55 ? 0 : shape < 0.8 ? 1 : 2, life: 0, max: rand(160, 260) };
+    }
+    function draw(p, alpha) {
+      var sy = Math.abs(Math.cos(p.tilt));
+      ctx.save();
+      ctx.globalAlpha = alpha;
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.r);
+      ctx.fillStyle = p.color;
+      if (p.kind === 1 && ctx.ellipse) {
+        ctx.beginPath();
+        ctx.ellipse(0, 0, p.w / 2, p.w / 2 * sy + 0.5, 0, 0, 6.2832);
+        ctx.fill();
+      } else if (p.kind === 2) ctx.fillRect(-1.5, -p.h, 3, p.h * 2 * sy + 2);
+      else ctx.fillRect(-p.w / 2, -p.h / 2 * sy, p.w, p.h * sy);
+      ctx.restore();
+    }
+    function tick(now) {
+      raf = 0;
+      ctx.clearRect(0, 0, W, H);
+      if (now < rainUntil && parts.length < 500) {
+        for (var k = 0; k < 4; k++) parts.push(piece(rand(0, W), -20, Math.PI / 2 + rand(-0.4, 0.4), rand(1, 4)));
+      }
+      for (var i = parts.length - 1; i >= 0; i--) {
+        var p = parts[i];
+        p.vx *= p.drag;
+        p.vy = p.vy * p.drag + p.g;
+        p.x += p.vx + Math.sin(p.tilt) * 0.6;
+        p.y += p.vy;
+        p.r += p.vr;
+        p.tilt += p.vt;
+        p.life++;
+        if (p.y > H + 40 || p.life > p.max + 60) parts.splice(i, 1);
+        else draw(p, p.life > p.max ? Math.max(0, 1 - (p.life - p.max) / 60) : 1);
+      }
+      if (parts.length || now < rainUntil) raf = root.requestAnimationFrame(tick);
+    }
+    function run() {
+      if (ctx && !raf) raf = root.requestAnimationFrame(tick);
+    }
+    return {
+      /* True when the size changed, which also clears the canvas. */
+      resize: function () {
+        var w = root.innerWidth || 390, hh = root.innerHeight || 844, dpr = Math.min(root.devicePixelRatio || 1, 2);
+        if (w === W && hh === H) return false;
+        W = w;
+        H = hh;
+        canvas.width = Math.round(W * dpr);
+        canvas.height = Math.round(H * dpr);
+        if (ctx) ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        return true;
+      },
+      burst: function (x, y, n, from, to, sMin, sMax) {
+        for (var i = 0; i < n; i++) parts.push(piece(x, y, rand(from, to), rand(sMin, sMax)));
+        run();
+      },
+      rain: function (ms) {
+        rainUntil = (root.performance && root.performance.now ? root.performance.now() : Date.now()) + ms;
+        run();
+      },
+      /* Reduced motion: confetti drawn once where it landed, nothing moves. */
+      field: function (n) {
+        if (!ctx) return;
+        for (var i = 0; i < n; i++) {
+          // Around the edges and above and below the words, so every line stays easy to read.
+          var p = piece(rand(0, W), rand(0, H), 0, 0);
+          if (p.x > W * 0.14 && p.x < W * 0.86) p.y = Math.random() < 0.6 ? rand(0, H * (H < 700 ? 0.05 : 0.12)) : rand(H * 0.96, H);
+          draw(p, 0.95);
+        }
+      },
+      stop: function () {
+        if (raf) root.cancelAnimationFrame(raf);
+        raf = 0;
+        parts = [];
+        rainUntil = 0;
+        if (ctx) ctx.clearRect(0, 0, W, H);
+      },
+      width: function () { return W; },
+      height: function () { return H; }
+    };
+  }
+
+  var BALLOON_COLORS = [["#F6A078", "#FFC4A6"], ["#6BA9F8", "#A9CDFB"], ["#FFC857", "#FFE3A1"], ["#FF8FB1", "#FFC2D4"], ["#82CAFB", "#C2E6FD"], ["#B7A6FF", "#DCD3FF"]];
+  /* Still balloons (reduced motion) wait at the edges: [left %, top %, size]. */
+  var STILL_BALLOONS = [[-3, 6, 0.7], [84, 3, 0.8], [-6, 52, 0.75], [88, 58, 0.7], [6, 78, 0.85], [76, 82, 0.8]];
+
+  function fillBalloons(box, still) {
+    while (box.firstChild) box.removeChild(box.firstChild);
+    var count = still ? STILL_BALLOONS.length : 9;
+    for (var i = 0; i < count; i++) {
+      var c = BALLOON_COLORS[i % BALLOON_COLORS.length];
+      var scale = still ? STILL_BALLOONS[i][2] : rand(0.75, 1.15);
+      var svg = svgEl("svg", { viewBox: "0 0 78 170", class: "balloon" + (still ? " is-still" : "") }, [
+        svgEl("defs", null, [svgEl("radialGradient", { id: "ccc-balloon" + i, cx: "35%", cy: "30%", r: "70%" }, [
+          svgEl("stop", { offset: 0, "stop-color": c[1] }), svgEl("stop", { offset: 1, "stop-color": c[0] })])]),
+        svgEl("ellipse", { cx: 39, cy: 42, rx: 33, ry: 40, fill: "url(#ccc-balloon" + i + ")" }),
+        svgEl("ellipse", { cx: 27, cy: 26, rx: 7, ry: 11, fill: "#fff", opacity: 0.45 }),
+        svgEl("path", { d: "M35 82l4 7 4-7z", fill: c[0] }),
+        svgEl("path", { d: "M39 89c-6 18 8 30 0 48s8 24 2 33", stroke: "#ffffffaa", "stroke-width": 1.6, fill: "none" })
+      ]);
+      // Styles set through the DOM are allowed by the page's security policy (style-src 'self').
+      svg.style.width = 78 * scale + "px";
+      svg.style.height = 170 * scale + "px";
+      if (still) {
+        svg.style.left = STILL_BALLOONS[i][0] + "%";
+        svg.style.top = STILL_BALLOONS[i][1] + "%";
+      } else {
+        svg.style.left = 4 + i * (92 / 9) + rand(-3, 3) + "%";
+        svg.style.animationDuration = rand(7, 10.5) + "s";
+        svg.style.animationDelay = rand(0, 1.6) + "s";
+      }
+      box.appendChild(svg);
+    }
+  }
+
+  var party = null; // the open celebration: {el, fx, timers, opener, list, sig}
+  var partyTimer = null;
+  var partyPop = null; // while Continue takes the celebration's history entry back: {next, timer}
+  var wishFx = null;
+  var wishQueue = null;
+
+  /* The history entry is gone: run the navigation that waited for it (so it is not undone). */
+  function finishPartyPop() {
+    var p = partyPop;
+    partyPop = null;
+    if (!p) return;
+    root.clearTimeout(p.timer);
+    if (p.next) p.next();
+  }
+
+  function onPartyResize() {
+    if (!party) return;
+    // Resizing clears the canvas. Confetti that stands still is drawn again, moving confetti redraws itself.
+    if (party.fx.resize() && party.el.getAttribute("data-motion") === "reduced") party.fx.field(partyPlan(true).field);
+    markMoreWishes();
+  }
+
+  /* Fades the bottom of the wishes list while more wishes are below. */
+  function markMoreWishes() {
+    var list = party && party.el.querySelector(".party-wish-list");
+    if (list) list.classList.toggle("is-more", list.scrollTop + list.clientHeight < list.scrollHeight - 2);
+  }
+
+  function findCelebration(personId) {
+    var list = state.dash && Array.isArray(state.dash.celebrations) ? state.dash.celebrations : [];
+    for (var i = 0; i < list.length; i++) if (list[i] && list[i].person_id === personId) return list[i];
+    return null;
+  }
+
+  function setInert(on) {
+    [$("app"), $("offline-banner"), doc.querySelector(".topbar")].forEach(function (el) {
+      if (!el) return;
+      if (on) el.setAttribute("inert", "");
+      else el.removeAttribute("inert");
+    });
+  }
+
+  function partyButtons(root2) {
+    return Array.prototype.slice.call(root2.querySelectorAll("button, [tabindex='0']"));
+  }
+
+  /* Opens the full screen celebration for these people (or refreshes it when it is open). */
+  function openParty(list, opener) {
+    if (!list || !list.length) return;
+    if (partyPop) {
+      partyPop.next = function () { openParty(list, opener); };
+      return;
+    }
+    if (party) {
+      party.list = list;
+      fillParty();
+      celebrate();
+      return;
+    }
+    var canvas = h("canvas", { class: "party-canvas", "aria-hidden": "true" });
+    var el = h("div", { class: "party", id: "party", role: "dialog", "aria-modal": "true", "aria-labelledby": "party-title",
+      "aria-describedby": "party-from", tabindex: "-1" }, [
+      h("div", { class: "party-sparkles", "aria-hidden": "true" }),
+      h("div", { class: "party-balloons", "aria-hidden": "true" }),
+      canvas,
+      h("div", { class: "party-card" })
+    ]);
+    party = { el: el, fx: makeFx(canvas), timers: [], opener: opener || null, list: list, sig: "" };
+    // A history entry of its own, so the Android back button closes the celebration instead of the app.
+    try {
+      var st = root.history.state;
+      if (!(st && st.party)) root.history.pushState({ cccIdx: histIdx() + 1, party: true }, "", root.location.pathname + root.location.search + root.location.hash);
+    } catch (e) { /* no history here: back works as before */ }
+    doc.body.appendChild(el);
+    doc.documentElement.classList.add("party-open");
+    setInert(true);
+    root.addEventListener("resize", onPartyResize);
+    party.fx.resize();
+    fillParty();
+    void el.offsetWidth; // let the fade in start from transparent
+    el.classList.add("on");
+    celebrate();
+    // Focus the dialog itself: a screen reader reads its title, and Tab goes to the buttons.
+    try { el.focus({ preventScroll: true }); } catch (e) { el.focus(); }
+  }
+
+  function celebrate() {
+    if (!party) return;
+    var plan = partyPlan(reducedMotion());
+    var fx = party.fx;
+    party.el.setAttribute("data-motion", plan.motion);
+    party.timers.forEach(root.clearTimeout);
+    party.timers = [];
+    fx.stop();
+    fx.resize();
+    fillBalloons(party.el.querySelector(".party-balloons"), plan.balloons === "still");
+    var card = party.el.querySelector(".party-card");
+    card.classList.remove("pop");
+    void card.offsetWidth;
+    card.classList.add("pop");
+    var W = fx.width(), H = fx.height(), cy = H * 0.42;
+    plan.bursts.forEach(function (b) {
+      party.timers.push(root.setTimeout(function () {
+        if (b[1] === "corners") {
+          fx.burst(0, H, b[2], -Math.PI / 2.2, -Math.PI / 6, 14, 26);
+          fx.burst(W, H, b[2], -Math.PI + Math.PI / 6, -Math.PI + Math.PI / 2.2, 14, 26);
+        } else if (b[0]) fx.burst(W / 2, cy - 40, b[2], 0, Math.PI * 2, 8, 20);
+        else fx.burst(W / 2, cy, b[2], 0, Math.PI * 2, 6, 22);
+      }, b[0]));
+    });
+    if (plan.rain_ms) fx.rain(plan.rain_ms);
+    if (plan.field) fx.field(plan.field);
+    if (plan.vibrate) {
+      try { if (root.navigator.vibrate) root.navigator.vibrate(plan.vibrate); } catch (e) { /* not allowed */ }
+    }
+  }
+
+  function fillParty() {
+    if (!party) return;
+    var list = party.list;
+    var you = list.filter(function (c) { return c.is_you; })[0];
+    var others = list.filter(function (c) { return !c.is_you; });
+    var received = you ? receivedWishes(state.dash) : [];
+    var sig = [state.lang, JSON.stringify(list), JSON.stringify(received)].join("|");
+    if (sig === party.sig) return;
+    party.sig = sig;
+    var card = party.el.querySelector(".party-card");
+    var active = doc.activeElement && card.contains(doc.activeElement) ? doc.activeElement.getAttribute("data-act") : null;
+    while (card.firstChild) card.removeChild(card.firstChild);
+    var from = t("party_from", { company: "{company}" }).split("{company}");
+    var parts = [
+      you && you.demo ? h("p", { class: "party-tag", text: t("demo_note") }) : null,
+      cakeSvg("party-cake"),
+      h("h2", { id: "party-title", class: "party-hb" + (you ? " is-you" : ""), text: you ? t("party_title_you", { name: you.first_name }) : t("party_title") })
+    ];
+    // The dialog's name says whose birthday it is: the title, then the names (or the title with the first name).
+    party.el.setAttribute("aria-labelledby", you ? "party-title" : "party-title party-names");
+    if (!you) {
+      parts.push(h("ul", { class: "party-names" + (others.length > 2 ? " is-many" : ""), id: "party-names",
+        "aria-label": joinNames(others.map(function (c) { return c.display_name; }), state.lang) }, others.map(function (c) {
+        return h("li", { text: c.display_name });
+      })));
+    }
+    parts.push(h("p", { class: "party-from", id: "party-from" }, [from[0], h("b", { text: "Cristal Clear Cleaning" }), from[1] || ""]));
+    if (you) {
+      // The total in the title, so a short list that scrolls never looks complete.
+      var total = received.length < 100 ? received.length : Math.max(received.length, you.wish_count);
+      var box = h("section", { class: "party-wishes", "aria-labelledby": "party-wishes-title" },
+        h("h3", { id: "party-wishes-title", text: received.length ? t("party_wishes_title_n", { n: total }) : t("party_wishes_title") }));
+      if (received.length) {
+        append(box, h("ul", { class: "party-wish-list", tabindex: "0", "data-act": "wishes", "aria-labelledby": "party-wishes-title", on: { scroll: markMoreWishes } }, received.map(function (w) {
+          return h("li", null, [h("span", { class: "party-wish-emoji", text: w.emoji }), h("span", { text: w.from_display })]);
+        })));
+      } else {
+        append(box, h("p", { class: "party-empty", text: t("party_wishes_empty") }));
+      }
+      parts.push(box);
+      if (others.length) {
+        parts.push(h("p", { class: "party-also", text: t("party_also", { names: joinNames(others.map(function (c) { return c.display_name; }), state.lang) }) }));
+      }
+    }
+    parts.push(h("div", { class: "party-btns" }, [
+      h("button", { type: "button", class: "party-btn party-again", "data-act": "again", on: { click: celebrate } }, [
+        t("party_again"), h("span", { "aria-hidden": "true", text: " \uD83C\uDF89" })]),
+      h("button", { type: "button", class: "party-btn party-go", "data-act": "close", on: { click: function () { closeParty(true); } } }, t("party_continue"))
+    ]));
+    append(card, parts);
+    markMoreWishes();
+    var again = active && card.querySelector('[data-act="' + active + '"]');
+    if (again) again.focus();
+  }
+
+  /* byPerson: Continue or Escape, which also take back the celebration's history entry. */
+  function closeParty(byPerson) {
+    if (partyTimer) root.clearTimeout(partyTimer);
+    partyTimer = null;
+    if (!party) return;
+    var p = party;
+    party = null;
+    p.timers.forEach(root.clearTimeout);
+    p.fx.stop();
+    root.removeEventListener("resize", onPartyResize);
+    if (p.el.parentNode) p.el.parentNode.removeChild(p.el);
+    doc.documentElement.classList.remove("party-open");
+    setInert(false);
+    if (byPerson && root.history.state && root.history.state.party) {
+      // Navigation waits for the entry to go (finishPartyPop), so a quick tap is not undone by it.
+      partyPop = { next: null, timer: root.setTimeout(finishPartyPop, 600) };
+      try { root.history.back(); } catch (e) { finishPartyPop(); }
+    }
+    // Back where the person was: the button that opened it, else the birthday card, else the page title.
+    var target = p.opener && doc.body.contains(p.opener) ? p.opener : doc.querySelector(".bday-cake") || doc.querySelector("#app h1");
+    if (target) {
+      if (target.tagName === "H1") target.setAttribute("tabindex", "-1");
+      try { target.focus({ preventScroll: true }); } catch (e) { target.focus(); }
+    }
+  }
+
+  /* Keyboard inside the celebration: Escape closes it, Tab stays inside it. */
+  function partyKeyDown(e) {
+    if (e.key === "Escape") {
+      e.preventDefault();
+      closeParty(true);
+    } else if (e.key === "Tab") {
+      var items = partyButtons(party.el);
+      if (!items.length) return;
+      var first = items[0], last = items[items.length - 1];
+      var inside = party.el.contains(doc.activeElement) && doc.activeElement !== party.el;
+      if (e.shiftKey && (doc.activeElement === first || !inside)) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && (doc.activeElement === last || !inside)) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  }
+
+  /* Forgets which celebrations were shown: every one (keepDay null), or those of other days than keepDay. */
+  function forgetParties(keepDay) {
+    var old = function (k) { return k && k.indexOf(K.party) === 0 && !(keepDay && k.indexOf(K.party + keepDay + ":") === 0); };
+    Object.keys(memStore).forEach(function (k) { if (old(k)) delete memStore[k]; });
+    try {
+      var ls = root.localStorage;
+      for (var i = ls.length - 1; i >= 0; i--) if (old(ls.key(i))) ls.removeItem(ls.key(i));
+    } catch (e) { /* storage blocked */ }
+  }
+
+  /* Remembers that this set of celebrations was shown today. Other sets of today stay remembered. */
+  function rememberParty(key, today) {
+    forgetParties(today);
+    store.set(key, "1");
+  }
+
+  /* Shows the celebration by itself once a day on this phone, when home has birthdays. */
+  function autoParty() {
+    if (party || partyTimer || currentRoute !== "home" || !state.token) return;
+    var list = todaysCelebrations(state.dash, new Date());
+    if (!list.length || store.get(partyKey(state.dash.pay.server_today, list)) === "1") return;
+    partyTimer = root.setTimeout(function () {
+      partyTimer = null;
+      var now = todaysCelebrations(state.dash, new Date());
+      if (party || currentRoute !== "home" || !state.token || !now.length) return;
+      var key = partyKey(state.dash.pay.server_today, now);
+      if (store.get(key) === "1") return;
+      rememberParty(key, state.dash.pay.server_today);
+      openParty(now, null);
+    }, 350);
+  }
+
+  /* A small burst of confetti from a wish button. */
+  function miniBurst(btn) {
+    if (reducedMotion() || !btn) return;
+    var canvas = doc.querySelector(".fx-canvas");
+    if (!canvas) {
+      canvas = h("canvas", { class: "fx-canvas", "aria-hidden": "true" });
+      doc.body.appendChild(canvas);
+      wishFx = makeFx(canvas);
+    }
+    canvas.setAttribute("data-bursts", String(Number(canvas.getAttribute("data-bursts") || 0) + 1));
+    wishFx.resize();
+    var r = btn.getBoundingClientRect();
+    wishFx.burst(r.left + r.width / 2, r.top + r.height / 2, 36, -Math.PI * 0.95, -Math.PI * 0.05, 3, 9);
+  }
+
+  function cardFor(personId) {
+    var cards = doc.querySelectorAll(".bday");
+    for (var i = 0; i < cards.length; i++) if (cards[i].getAttribute("data-person") === personId) return cards[i];
+    return null;
+  }
+
+  /* Updates one card in place, so the focus stays on the emoji that was tapped. */
+  function updateCard(personId, msgKey) {
+    var card = cardFor(personId);
+    var raw = findCelebration(personId);
+    if (!card || !raw) return;
+    var c = todaysCelebrations({ celebrations: [raw], pay: state.dash.pay, saved_ny_day: state.dash.saved_ny_day })[0];
+    if (!c) return;
+    var view = wishView(c, state.wishPending[personId]);
+    var btns = card.querySelectorAll(".wish-btn");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].setAttribute("aria-pressed", view.my_wishes.indexOf(btns[i].getAttribute("data-emoji")) >= 0 ? "true" : "false");
+    }
+    var count = card.querySelector(".bday-count");
+    var text = wishCountText(view.wish_count, state.lang, false);
+    if (count && count.textContent !== text) count.textContent = text;
+    var msg = card.querySelector(".bday-msg");
+    if (msg && msgKey !== undefined) msg.textContent = msgKey ? t(msgKey) : "";
+  }
+
+  function sendWish(personId, emoji, btn) {
+    var raw = findCelebration(personId);
+    if (!raw || !state.token) return;
+    var pending = state.wishPending[personId] || (state.wishPending[personId] = {});
+    miniBurst(btn);
+    if (pending[emoji] || (Array.isArray(raw.my_wishes) && raw.my_wishes.indexOf(emoji) >= 0)) return;
+    pending[emoji] = true;
+    updateCard(personId, "");
+    var token = state.token;
+    var send = function () {
+      if (token !== state.token) return null; // signed out while it waited
+      return api("wish", { token: token, to_person_id: personId, emoji: emoji }).then(function (res) {
+        delete pending[emoji];
+        if (token !== state.token) return;
+        if (res && res.ok) {
+          var cur = findCelebration(personId);
+          if (cur) {
+            var merged = mergeWish(cur, res);
+            cur.wish_count = merged.wish_count;
+            cur.my_wishes = merged.my_wishes;
+            store.setJSON(K.dash, state.dash);
+          }
+          updateCard(personId);
+          return;
+        }
+        if (isAuthError(res)) {
+          signOut("signin_again");
+          return;
+        }
+        var code = errCode(res);
+        var key = code === "NETWORK" ? "wish_err_network" : code === "RATE_LIMITED" ? "wish_err_rate"
+          : res && res.error && res.error.reason === "NOT_BIRTHDAY" ? "wish_err_over" : "wish_err_server";
+        updateCard(personId, key);
+        if (key === "wish_err_over") refreshDashboard();
+      });
+    };
+    // One wish at a time from this phone, in the order tapped: answers come back in order, and a
+    // burst of taps never asks the backend for its script lock (which sign in also uses) all at once.
+    wishQueue = (wishQueue || Promise.resolve()).then(send, send);
+  }
+
+  function birthdayCard(c, all) {
+    var id = "bday-" + c.person_id.replace(/[^A-Za-z0-9_]/g, "_");
+    var view = wishView(c, state.wishPending[c.person_id]);
+    var cake = h("button", {
+      type: "button",
+      class: "bday-cake",
+      "aria-label": t("bday_cake", { name: c.display_name }),
+      on: { click: function () { openParty(c.is_you ? all : [c], cake); } }
+    }, cakeSvg());
+    var kids = [cake, h("div", { class: "bday-text" }, [
+      c.demo ? h("span", { class: "badge bday-demo", text: t("demo_label") }) : null,
+      h("h2", { id: id, class: "bday-title", text: c.is_you ? t("bday_title_you", { name: c.first_name }) : t("bday_title", { name: c.display_name.replace(/ /g, "\u00a0") }) }),
+      h("p", { class: "bday-sub", text: c.is_you ? wishCountText(c.wish_count, state.lang, true) : t("bday_sub") })
+    ])];
+    if (c.is_you) {
+      var see = h("button", { type: "button", class: "btn btn-primary bday-see", on: { click: function () { openParty(all, see); } } }, t("bday_see"));
+      kids.push(h("div", { class: "bday-foot" }, [c.demo ? h("p", { class: "bday-note", text: t("demo_note") }) : null, see]));
+    } else {
+      kids.push(h("div", { class: "wish-row", role: "group", "aria-labelledby": id }, WISH_EMOJIS.map(function (e) {
+        var btn = h("button", {
+          type: "button",
+          class: "wish-btn",
+          "data-emoji": e,
+          "aria-pressed": view.my_wishes.indexOf(e) >= 0 ? "true" : "false",
+          "aria-label": t("wish_send", { emoji: e }),
+          on: { click: function () { sendWish(c.person_id, e, btn); } }
+        }, [h("span", { class: "wish-emoji", "aria-hidden": "true", text: e }), h("span", { class: "wish-check", "aria-hidden": "true" }, icon("check"))]);
+        return btn;
+      })));
+      kids.push(h("p", { class: "bday-count", text: wishCountText(view.wish_count, state.lang, false) }));
+      kids.push(h("p", { class: "bday-msg", role: "status", "aria-live": "polite" }));
+    }
+    return h("section", { class: "bday" + (c.is_you ? " is-you" : ""), "data-person": c.person_id, "aria-labelledby": id }, kids);
+  }
+
+  function birthdayCards(dash) {
+    var list = todaysCelebrations(dash, new Date());
+    if (!list.length) return null;
+    return h("div", { class: "bdays" }, list.map(function (c) { return birthdayCard(c, list); }));
+  }
+
   SCREENS.home = function () {
     var person = state.person || {};
     var first = typeof person.first_name === "string" ? person.first_name.trim() : "";
@@ -1302,6 +1942,7 @@
       parts.push(footer());
       return h("div", { class: "home" }, parts);
     }
+    parts.push(birthdayCards(dash));
     parts.push(heroCard(dash));
     var notice = pickText(dash.notice, state.lang);
     if (notice) {
@@ -1690,6 +2331,10 @@
   var REFRESH_AFTER_MS = 5 * 60 * 1000;
 
   function onKeyDown(e) {
+    if (party) {
+      partyKeyDown(e);
+      return;
+    }
     if (currentRoute !== "login" || e.ctrlKey || e.metaKey || e.altKey) return;
     var tag = e.target && e.target.tagName ? e.target.tagName : "";
     if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
@@ -1790,6 +2435,9 @@
   function boot() {
     loadSaved();
     wireChrome();
+    // Wake the Apps Script backend while the person types their PIN: the first call after a new
+    // deployment can take 25 seconds or answer with an error page. The answer is not used.
+    api("ping");
 
     root.addEventListener("popstate", onHistoryChange);
     root.addEventListener("hashchange", onHistoryChange);
