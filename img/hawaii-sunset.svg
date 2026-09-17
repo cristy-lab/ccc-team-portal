@@ -29,10 +29,8 @@
 </defs>
 <rect width="400" height="222" fill="url(#sky)"/>
 <g fill="#FFFCFC">
-<circle cx="214" cy="14" r="1" opacity=".55"/><circle cx="286" cy="30" r="1.2" opacity=".6"/><circle cx="352" cy="12" r=".9" opacity=".5"/>
-<circle cx="150" cy="40" r=".8" opacity=".45"/><circle cx="330" cy="54" r=".8" opacity=".45"/><circle cx="386" cy="84" r="1" opacity=".5"/>
-<circle cx="30" cy="72" r=".9" opacity=".7"/><circle cx="118" cy="64" r="1.1" opacity=".6"/><circle cx="196" cy="80" r=".8" opacity=".6"/>
-<circle cx="252" cy="62" r="1" opacity=".5"/><circle cx="160" cy="98" r=".7" opacity=".45"/>
+<circle cx="214" cy="14" r="1" opacity=".55"/><circle cx="352" cy="12" r=".9" opacity=".5"/>
+<circle cx="386" cy="84" r="1" opacity=".5"/>
 </g>
 <g transform="translate(0 50)">
 <circle cx="212" cy="168" r="96" fill="url(#glow)"/>

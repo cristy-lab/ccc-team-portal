@@ -129,6 +129,23 @@
     return /hawai|oahu|maui|kauai|honolulu/.test(r.replace(/[^a-z]/g, ""));
   }
 
+  /* The drawn scene behind the home greeting: "hawaii", "california", "tennessee", "georgia", "florida", or "" for none.
+     Same reading as isHawaii, and a two letter code (CA, TN, GA, FL) counts only as a whole word, so never "Canada". */
+  var SCENES = {
+    california: /california|santa ?barbara| ca /,
+    tennessee: /tennessee|memphis| tn /,
+    georgia: /georgia|athens| ga /,
+    florida: /florida|jacksonville|(st|saint) ?augustine|miami|fort ?lauderdale| fl /
+  };
+  function stateScene(region) {
+    if (isHawaii(region)) return "hawaii";
+    var r = String(region == null ? "" : region).toLowerCase();
+    if (r.normalize) r = r.normalize("NFD");
+    r = " " + r.replace(/[̀-ͯ]/g, "").replace(/[^a-z]+/g, " ") + " ";
+    for (var k in SCENES) if (SCENES[k].test(r)) return k;
+    return "";
+  }
+
   function langFromSearch(search) {
     var m = /[?&]lang=(en|es)(?:&|#|$)/i.exec(search || "");
     return m ? m[1].toLowerCase() : null;
@@ -389,6 +406,7 @@
     groupByYear: groupByYear,
     greetingKey: greetingKey,
     isHawaii: isHawaii,
+    stateScene: stateScene,
     langFromSearch: langFromSearch,
     resolveLang: resolveLang,
     cleanDetails: cleanDetails,
@@ -595,7 +613,7 @@
   /* ---- 3. State, router, shared UI ---- */
 
   var CFG = root.CCC_CONFIG || {};
-  var APP_VERSION = CFG.APP_VERSION || "0.3.1";
+  var APP_VERSION = CFG.APP_VERSION || "0.3.2";
 
   var state = {
     lang: "en",
@@ -1977,14 +1995,18 @@
   SCREENS.home = function () {
     var person = state.person || {};
     var first = typeof person.first_name === "string" ? person.first_name.trim() : "";
-    var hawaii = isHawaii(person.region);
-    var greet = t(hawaii ? "greet_aloha" : greetingKey(new Date().getHours()), { name: first });
+    var scene = stateScene(person.region), hawaii = scene === "hawaii";
+    var key = hawaii ? "greet_aloha" : greetingKey(new Date().getHours());
+    var greet = t(key, { name: first });
     if (!first) greet = greet.replace(/,\s*$/, "");
+    var bits = t(key).split("{name}");
     var parts = [
-      h("div", { class: "greeting" + (hawaii ? " is-hawaii" : "") }, [
-        // Hawaii: "Aloha," in gold, then the name (the drawn sunset behind it is only decoration, in app.css).
+      h("div", { class: "greeting" + (scene ? " is-scene is-" + scene : "") }, [
+        // Hawaii: "Aloha," in gold, then the name. Other states: the usual greeting, with the name in gold.
+        // The drawn scene behind it is only decoration, in app.css.
         hawaii ? h("h1", null, first ? [h("span", { class: "aloha", text: t("greet_aloha", { name: "" }).trim() }), " ", h("span", { class: "hi-name", text: first })]
-          : [h("span", { class: "aloha", text: greet })]) : h("h1", { text: greet }),
+          : [h("span", { class: "aloha", text: greet })])
+          : h("h1", null, scene && first && bits.length === 2 ? [bits[0], h("span", { class: "scene-name", text: first }), bits[1]] : greet),
         person.region ? h("p", { class: "region" }, [icon("pin"), h("span", { text: String(person.region) })]) : null
       ])
     ];

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+<!-- Morning in Athens, Georgia, for the CCC Team Portal. -->
+<defs>
+<linearGradient id="ga_sky" x1="0" y1="0" x2="0" y2="234" gradientUnits="userSpaceOnUse">
+<stop offset="0" stop-color="#1B175A"/><stop offset=".28" stop-color="#1E1A63"/><stop offset=".55" stop-color="#2A2172"/><stop offset=".74" stop-color="#5A3482"/><stop offset=".85" stop-color="#B0648A"/><stop offset=".93" stop-color="#F4A583"/><stop offset="1" stop-color="#FFCB8E"/>
+</linearGradient>
+<radialGradient id="ga_glow"><stop offset="0" stop-color="#FFE2A8" stop-opacity=".9"/><stop offset=".3" stop-color="#FFC48C" stop-opacity=".5"/><stop offset=".65" stop-color="#F6A078" stop-opacity=".14"/><stop offset="1" stop-color="#F6A078" stop-opacity="0"/></radialGradient>
+<radialGradient id="ga_sun"><stop offset="0" stop-color="#FFF6D8"/><stop offset=".7" stop-color="#FFE0A0"/><stop offset="1" stop-color="#FFC883"/></radialGradient>
+<linearGradient id="ga_hill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4A5A6E"/><stop offset="1" stop-color="#1F2448"/></linearGradient>
+<path id="ga_h" d="M-10 230C40 216 100 212 160 220C200 225 236 226 276 223C322 219 360 210 410 214V302H-10Z"/>
+<path id="ga_lf" d="M0 0C10-7 32-8 46 0C32 8 10 7 0 0Z"/>
+<path id="ga_tl" d="M0 0C3-3 9-3 13 0C9 3 3 3 0 0Z"/>
+<g id="ga_pc"><circle r="5.5" fill="#F6A078"/><path d="M0-5.5A5.5 5.5 0 0 1 0 5.5A2 5.5 0 0 1 0-5.5Z" fill="#E0685E"/><path d="M0-5.2Q-2.6 0 0 5" fill="none" stroke="#B94C4A" stroke-width=".6"/><circle cx="-2.4" cy="-2" r="1.2" fill="#FFCB8E"/><path d="M0-5.5C1-8.5 4-9 6-8C5-6 2-5 0-5.5Z" fill="#4E7A52"/></g>
+<g id="ga_mag">
+<path d="M0 8C-12 6-19-4-16-13C-14-17-9-16-6-11C-3-6-1 0 0 8ZM0 8C1 0 3-6 6-11C9-16 14-17 16-13C19-4 12 6 0 8ZM0 6C-8 0-9-14-4-20C-2-22 2-22 4-20C9-14 8 0 0 6Z" fill="#E3C9C0"/>
+<ellipse cy="-3" rx="3.2" ry="5" fill="#C29A48"/>
+<path d="M0 12C-10 12-16 4-14-5C-13-9-9-9-6-6C-3-2-1 4 0 12ZM0 12C1 4 3-2 6-6C9-9 13-9 14-5C16 4 10 12 0 12ZM0 13C-8 12-10 2-7-5C-5-8-2-6 0-4C2-6 5-8 7-5C10 2 8 12 0 13Z" fill="#F1DCD2"/>
+</g>
+</defs>
+<rect width="400" height="236" fill="url(#ga_sky)"/>
+<ellipse cx="272" cy="196" rx="112" ry="52" fill="url(#ga_glow)"/>
+<path d="M110 181.5h80M301.5 145.5h77M139 189h48M321 153h46" stroke="#F6A078" stroke-opacity=".5" stroke-linecap="round" stroke-width="2.6"/>
+<path d="M286 150q4-3 7 0q3-3 7 0M302 141q3-2.4 5.5 0q2.5-2.4 5.5 0" fill="none" stroke="#1A1550" stroke-width="1.4" stroke-linecap="round"/>
+<circle cx="270" cy="177" r="23" fill="url(#ga_sun)"/>
+<path d="M-10 206C30 196 80 192 128 199C170 205 196 198 240 200C300 203 340 193 410 196V240H-10Z" fill="#5B4F84"/>
+<path d="M-10 214C20 202 70 195 118 202C142 206 162 212 182 222V240H-10Z" fill="#3E4A66"/>
+<path d="M54 199a4 4 0 0 1 8-1a5 5 0 0 1 10 0a3.5 3.5 0 0 1 7 1Z" fill="#463F72"/>
+<g transform="translate(8 4)">
+<path d="M186 224V200h-1v-2h24v2h-1v24ZM294 224V198h-1v-2h22v2h-1v26Z" fill="#3B2A63"/>
+<path d="M208 224V194h4v-3h14v3h4v30Z" fill="#45306A"/>
+<path d="M230 224v-28h64v28ZM228 196.5v-3h68v3ZM254 181v-16h16v16ZM251 167C251 152 273 152 273 167ZM259 156v-8h6v8ZM258 149C258.5 144 265.5 144 266 149ZM261.4 146v-8h1.2v8ZM247 192v-4h30v4ZM245 188.5L262 179L279 188.5Z" fill="#2A1E5A"/>
+<path d="M249 224v-32h26v32Z" fill="#5A3A6C"/>
+<path d="M251 192h3.2v32h-3.2ZM257.4 192h3.2v32h-3.2ZM263.4 192h3.2v32h-3.2ZM269.8 192h3.2v32h-3.2Z" fill="#2A1E5A"/>
+<path d="M190 205h3v4.5h-3ZM198 205h3v4.5h-3ZM213 199h3v4.5h-3ZM222 199h3v4.5h-3ZM298 203h3v4.5h-3ZM306 203h3v4.5h-3ZM235 201h3v7h-3ZM241.5 201h3v7h-3ZM279.5 201h3v7h-3ZM286 201h3v7h-3ZM260.8 170h2.4v7h-2.4Z" fill="#FFCB8E" opacity=".75"/>
+<path d="M187 212h20v3h-20ZM295 211h18v3h-18Z" fill="#F6A078" opacity=".85"/><path d="M210 214h18v3h-18Z" fill="#82CAFB" opacity=".8"/>
+</g>
+<use href="#ga_h" fill="url(#ga_hill)" stroke="#FFCB8E" stroke-opacity=".45" stroke-width="1.2"/>
+<g fill="#2A3350"><circle cx="132" cy="217" r="6"/><circle cx="143" cy="215" r="4.5"/><circle cx="250" cy="224" r="6"/><circle cx="260" cy="226" r="4"/></g>
+<path d="M366 300C368 266 362 244 352 214L358 211C368 236 374 250 376 256C380 242 386 230 394 218L400 222C390 238 384 256 384 300Z" fill="#1C1848"/>
+<g fill="#1C2F3A">
+<path d="M324 214A13 13 0 0 1 320 190A15 15 0 0 1 332 166A16 16 0 0 1 350 142A17 17 0 0 1 378 134A17 17 0 0 1 404 146L412 150V216Q396 226 380 218Q364 228 348 218Q334 224 324 214Z"/>
+<use href="#ga_tl" transform="translate(320 196) rotate(190)"/><use href="#ga_tl" transform="translate(326 172) rotate(215)"/><use href="#ga_tl" transform="translate(342 148) rotate(235)"/><use href="#ga_tl" transform="translate(364 136) rotate(260)"/><use href="#ga_tl" transform="translate(392 136) rotate(290)"/><use href="#ga_tl" transform="translate(334 220) rotate(150)"/>
+</g>
+<path d="M330 198A10 10 0 0 1 336 178A12 12 0 0 1 352 160A12 12 0 0 1 374 152Q366 168 356 182Q344 198 330 198Z" fill="#243C44"/>
+<use href="#ga_pc" x="338" y="199"/><use href="#ga_pc" x="357" y="176"/><use href="#ga_pc" x="373" y="204"/><use href="#ga_pc" x="385" y="160"/><use href="#ga_pc" x="396" y="187"/>
+<path d="M-8 238C20 230 50 222 80 218C100 216 116 214 128 208L129 211C118 218 102 221 82 223C54 227 24 236-6 244Z" fill="#1A1550"/>
+<g fill="#16302E"><use href="#ga_lf" transform="translate(40 214) rotate(160)"/><use href="#ga_lf" transform="translate(40 202) rotate(-150) scale(.8)"/><use href="#ga_lf" transform="translate(62 214) rotate(-18) scale(.9)"/><use href="#ga_lf" transform="translate(58 220) rotate(32)"/><use href="#ga_lf" transform="translate(120 214) rotate(-62) scale(.7)"/><use href="#ga_lf" transform="translate(126 214) rotate(14) scale(.7)"/></g>
+<use href="#ga_mag" transform="translate(50 206) scale(.85)"/>
+<use href="#ga_mag" transform="translate(122 212) scale(.55)"/>
+</svg>

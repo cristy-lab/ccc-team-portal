@@ -7,10 +7,10 @@
  *   * App shell files (css, js, manifest, icons, logo, the design art and the CEO photo): served from the versioned cache.
  *   * PDF files: network first, cached copy only as an offline fallback.
  */
-var CACHE_VERSION = "0.3.1-1";
+var CACHE_VERSION = "0.3.2-1";
 var SHELL_CACHE = "ccc-shell-" + CACHE_VERSION;
 var RUNTIME_CACHE = "ccc-runtime-" + CACHE_VERSION;
-var ASSET_VERSION = "0.3.1";
+var ASSET_VERSION = "0.3.2";
 
 var SHELL = [
   "./",
@@ -34,6 +34,10 @@ var SHELL = [
   "img/keypad-gem-dark.svg",
   "img/hero-gem.svg",
   "img/hawaii-sunset.svg",
+  "img/california.svg",
+  "img/tennessee.svg",
+  "img/georgia.svg",
+  "img/florida.svg",
   "img/hibiscus.svg",
   "img/ceo-cristy.jpg",
   "img/paper-grain.svg",

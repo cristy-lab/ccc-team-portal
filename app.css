@@ -401,20 +401,35 @@ html[data-screen="login"] body {
 .region { display: flex; align-items: center; gap: 6px; color: var(--muted); margin-top: 6px; font-size: 16px; }
 .region svg { width: 18px; height: 18px; }
 
-/* Hawaii: Aloha in warm gold over a sunset at Diamond Head, full width, with the next card overlapping it. */
-.greeting.is-hawaii {
+/* A drawn scene for each state, full width, with the next card overlapping it. Hawaii says Aloha in warm gold over a
+   sunset at Diamond Head. The other states keep the usual greeting, with the name in the same gold. The bottom padding
+   grows with the width, so a long greeting never reaches the bright horizon of the drawing (WCAG AA). */
+.greeting.is-scene {
   position: relative; overflow: hidden; isolation: isolate; display: flex; flex-direction: column; align-items: flex-start;
-  min-height: clamp(250px, 74vw, 300px); margin: -20px -16px 0; padding: 24px 16px 80px; color: #FFFCFC;
-  background: url(img/hawaii-sunset.svg) right bottom / cover no-repeat, #34277A;
+  min-height: clamp(250px, 74vw, 300px); margin: -20px -16px 0; padding: 24px 16px clamp(80px, 43vw - 44px, 162px); color: #FFFCFC;
+  background: #17134F right bottom / 100% auto no-repeat;
 }
-.is-hawaii::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(rgba(18, 14, 56, 0.45), rgba(18, 14, 56, 0.12) 45%, rgba(18, 14, 56, 0) 62%); }
-.is-hawaii h1 { font-size: clamp(30px, 9.4vw, 38px); text-shadow: 0 2px 10px rgba(18, 14, 56, 0.55); }
-.aloha { color: #FFCB8E; }
-.hi-name { overflow-wrap: anywhere; }
+.greeting.is-hawaii { background: url(img/hawaii-sunset.svg) right bottom / cover no-repeat, #34277A; }
+.greeting.is-california { background-image: url(img/california.svg); }
+.greeting.is-tennessee { background-image: url(img/tennessee.svg); }
+.greeting.is-georgia { background-image: url(img/georgia.svg); background-color: #1B175A; }
+.greeting.is-florida { background-image: url(img/florida.svg); }
+.is-scene::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(rgba(18, 14, 56, 0.45), rgba(18, 14, 56, 0.12) 45%, rgba(18, 14, 56, 0) 62%); }
+.is-scene h1 { font-size: clamp(30px, 9.4vw, 38px); text-shadow: 0 2px 10px rgba(18, 14, 56, 0.55); }
+.aloha, .scene-name { color: #FFCB8E; }
+.hi-name, .scene-name { overflow-wrap: anywhere; }
 .hi-name::after { content: ""; display: inline-block; width: 30px; height: 30px; margin-left: 6px; vertical-align: -3px; background: url(img/hibiscus.svg) center / contain no-repeat; }
-.is-hawaii .region { margin-top: 10px; padding: 5px 13px 5px 9px; border-radius: 999px; color: #FFFCFC; font-weight: 600; background: rgba(18, 14, 56, 0.6); box-shadow: 0 0 0 1px rgba(255, 252, 252, 0.18) inset; }
-.greeting.is-hawaii + * { position: relative; margin-top: -56px; }
-@media (min-width: 481px) { .greeting.is-hawaii { margin: 0; border-radius: 24px; } }
+.is-scene .region { margin-top: 10px; padding: 5px 13px 5px 9px; border-radius: 999px; color: #FFFCFC; font-weight: 600; background: rgba(18, 14, 56, 0.6); box-shadow: 0 0 0 1px rgba(255, 252, 252, 0.18) inset; }
+.greeting.is-scene + * { position: relative; margin-top: -56px; }
+@media (min-width: 481px) { .greeting.is-scene { margin: 0; border-radius: 24px; } }
+/* Zoomed in past 320px wide, the Florida drawing is short enough that the greeting reaches the three stars in its sky,
+   so a veil the size of the drawing (4 by 3, bottom aligned like it) hides that top band and the words keep WCAG AA. */
+@media (max-width: 319px) {
+  .greeting.is-florida::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; z-index: -1; aspect-ratio: 4 / 3;
+    background: linear-gradient(rgba(18, 14, 56, 0.72) 12%, rgba(18, 14, 56, 0) 22%);
+  }
+}
 
 /* The payday card: a lattice glow in the top corner and a see through peach and blue diamond. */
 .hero {
@@ -506,9 +521,9 @@ html[data-screen="login"] body {
   /* Short phone screens: fit more of the five buttons on the first screen. */
   .greeting h1 { font-size: clamp(23px, 6.6vw, 27px); }
   .region { margin-top: 2px; }
-  .greeting.is-hawaii { min-height: 232px; padding-top: 18px; padding-bottom: 72px; }
-  .is-hawaii h1 { font-size: clamp(27px, 8.4vw, 32px); }
-  .is-hawaii .region { margin-top: 8px; }
+  .greeting.is-scene { min-height: 232px; padding-top: 18px; }
+  .is-scene h1 { font-size: clamp(27px, 8.4vw, 32px); }
+  .is-scene .region { margin-top: 8px; }
   .hero { margin-top: 12px; padding: 14px 16px 16px; }
   .hero-date { font-size: clamp(22px, 6.4vw, 26px); margin: 4px 0 8px; }
   .hero-count { padding: 4px 12px; font-size: 16px; }
@@ -892,7 +907,7 @@ html[data-screen="welcome"] body {
 @media (prefers-color-scheme: dark) {
   .login::before, .home::before { background-image: url(img/lattice-glow.svg); opacity: 0.5; }
   .keypad::before { background-image: url(img/keypad-gem-dark.svg); }
-  .is-hawaii::before { background: linear-gradient(rgba(10, 8, 34, 0.55), rgba(10, 8, 34, 0.2) 50%, rgba(10, 8, 34, 0.3)); }
+  .is-scene::before { background: linear-gradient(rgba(10, 8, 34, 0.55), rgba(10, 8, 34, 0.2) 50%, rgba(10, 8, 34, 0.3)); }
   .tile-icon { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06) inset; }
   .letter { box-shadow: 0 0 0 1px rgba(231, 205, 140, 0.14) inset, 0 24px 50px rgba(0, 0, 0, 0.55); }
   .letter-go { color: #1B175A; background: linear-gradient(140deg, #9AD5FC, #82CAFB); box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35); }

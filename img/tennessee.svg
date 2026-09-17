@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+<!-- Dusk over the Mississippi at Memphis, for team members in Tennessee. Drawn for the CCC Team Portal. -->
+<defs>
+<linearGradient id="tn_sky" x1="0" y1="0" x2="0" y2="202" gradientUnits="userSpaceOnUse">
+<stop offset="0" stop-color="#17134F"/>
+<stop offset=".3" stop-color="#1B175A"/>
+<stop offset=".55" stop-color="#2A2172"/>
+<stop offset=".72" stop-color="#5A3482"/>
+<stop offset=".83" stop-color="#A0507F"/>
+<stop offset=".92" stop-color="#E57C70"/>
+<stop offset="1" stop-color="#FFC98E"/>
+</linearGradient>
+<linearGradient id="tn_sea" x1="0" y1="200" x2="0" y2="300" gradientUnits="userSpaceOnUse">
+<stop offset="0" stop-color="#EE9A7D"/>
+<stop offset=".2" stop-color="#B25F82"/>
+<stop offset=".5" stop-color="#4B2E7C"/>
+<stop offset="1" stop-color="#211B63"/>
+</linearGradient>
+<radialGradient id="tn_glow">
+<stop offset="0" stop-color="#FFE2A8" stop-opacity=".85"/>
+<stop offset=".45" stop-color="#F6A078" stop-opacity=".35"/>
+<stop offset="1" stop-color="#F6A078" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="tn_lamp">
+<stop offset="0" stop-color="#FFD9A0" stop-opacity=".8"/>
+<stop offset=".4" stop-color="#FFB27A" stop-opacity=".3"/>
+<stop offset="1" stop-color="#FFB27A" stop-opacity="0"/>
+</radialGradient>
+<pattern id="tn_hg" width="6" height="60" patternUnits="userSpaceOnUse"><rect x="2" width="1.1" height="60" fill="#2A1E5A"/></pattern>
+<pattern id="tn_win" width="7" height="6" patternUnits="userSpaceOnUse"><rect x="1.5" y="1.5" width="1.4" height="1.8" fill="#FFCB8E"/><rect x="4.5" y="4" width="1.4" height="1.8" fill="#FFB27A" opacity=".5"/></pattern>
+<path id="tn_m" d="M200 190Q242.5 106 285 190Q327.5 106 370 190"/>
+<path id="tn_city" d="M4 197V193H13V188H21V181H34V189H39V178H42V174H53V178H56V185H63V191H70V183H73V174H74.5V183H83V188H92V185L108 181V192H116V187H126V195H134V197Z"/>
+</defs>
+<rect width="400" height="202" fill="url(#tn_sky)"/>
+<g fill="#FFFCFC" opacity=".2">
+<circle cx="214" cy="14" r="1"/><circle cx="292" cy="30" r="1.2"/><circle cx="356" cy="12" r=".9"/><circle cx="150" cy="40" r=".8"/><circle cx="330" cy="58" r=".8"/>
+<circle cx="386" cy="86" r="1"/><circle cx="30" cy="70" r=".9"/><circle cx="112" cy="64" r="1.1"/><circle cx="246" cy="76" r=".8"/><circle cx="182" cy="100" r=".7"/>
+</g>
+<g opacity=".5"><rect x="18" y="176" width="112" height="3" rx="1.5" fill="#F6A078"/><rect x="46" y="183" width="70" height="2.2" rx="1.1" fill="#F6A078"/><rect x="226" y="164" width="120" height="2.6" rx="1.3" fill="#C5648C"/><rect x="262" y="172" width="84" height="2" rx="1" fill="#C5648C"/></g>
+<rect y="200" width="400" height="100" fill="url(#tn_sea)"/>
+<ellipse cx="170" cy="202" rx="215" ry="50" fill="url(#tn_glow)"/>
+<path d="M-5 202V198C30 196 60 199 90 197S150 198 200 196S300 199 340 197S390 198 405 197V202Z" fill="#4E2F6F"/>
+<g fill="#FFE2A8"><rect x="140" y="206" width="50" height="2.2" rx="1.1" opacity=".8"/><rect x="148" y="213" width="36" height="2" rx="1" opacity=".6"/><rect x="154" y="221" width="24" height="1.8" rx=".9" opacity=".45"/><rect x="159" y="229" width="14" height="1.6" rx=".8" opacity=".3"/></g>
+<path d="M230 207h25M235 213.5h15M239 220h7M315 207h25M320 213.5h15M324 220h7" stroke="#FFCB8E" stroke-width="1.8" stroke-linecap="round" opacity=".34"/>
+<path d="M212 205v7M358 206v6M112 205v6M122 206v4M16 205v5" stroke="#FFD9A0" stroke-width="1.3" stroke-linecap="round" opacity=".45"/>
+<g fill="none" stroke="#F6A078" stroke-width="1.1" stroke-linecap="round" opacity=".35"><path d="M112 222q14-3 28 0"/><path d="M196 236q16-3 32 0"/><path d="M300 228q12-3 24 0"/></g>
+<rect x="162" y="188.5" width="243" height="3" fill="#2A1E5A"/>
+<path d="M162 188.6H405" stroke="#FFD9A0" stroke-dasharray="1.2 4.5"/>
+<g transform="translate(0 5)"><use href="#tn_city" fill="#34205F"/>
+<circle cx="47.5" cy="174" r="4" fill="#34205F"/><circle cx="73.7" cy="174" r=".9" fill="#FF7A66"/>
+<use href="#tn_city" fill="url(#tn_win)" opacity=".22"/></g>
+<path d="M140 202L166 175L192 202Z" fill="#3A2468"/><path d="M166 175L176 202H140Z" fill="#6B3A79" opacity=".75"/><path d="M166 175L176 202" stroke="#F6A078" stroke-width=".8" opacity=".6"/>
+<path d="M200 190Q242.5 122 285 190Q327.5 122 370 190Z" fill="url(#tn_hg)"/>
+<path d="M200 190Q242.5 106 285 190Q327.5 106 370 190Q327.5 122 285 190Q242.5 122 200 190Z" fill="#2A1E5A"/>
+<use href="#tn_m" fill="none" stroke="#FFCB8E" stroke-width="4" opacity=".22"/>
+<use href="#tn_m" fill="none" stroke="#FFE9BE" stroke-width="1.2"/>
+<path d="M198 190h4v12h-4zM283 190h4v12h-4zM368 190h4v12h-4z" fill="#211A55"/>
+<g transform="translate(34 225)">
+<path d="M4 4H58" stroke="#FFCB8E" stroke-dasharray="2 3" opacity=".3"/>
+<g fill="#120E38"><path d="M-4-6H64L72-10L67 0H1Z"/><rect x="1" y="-13" width="58" height="7"/><rect x="7" y="-19" width="44" height="6"/><rect x="28" y="-24" width="12" height="5"/><path d="M43-19V-35h2.6V-19zM49-19V-35h2.6V-19zM42-37h4.6v2H42zM48-37h4.6v2H48z"/><circle cx="-4" cy="-9" r="7"/></g>
+<path d="M-10-9H2M-4-15V-3M-8.2-13.2l8.4 8.4M-8.2-4.8l8.4-8.4" stroke="#3A2A6E" stroke-width=".9"/>
+<path d="M4-9.5H56M10-15.5H48" stroke="#FFCB8E" stroke-width="1.6" stroke-dasharray="2 2"/>
+<path d="M1-13.5H59" stroke="#F6A078" stroke-width=".6" opacity=".6"/>
+</g>
+<path d="M230 300C280 276 330 262 410 256V300Z" fill="#120E38"/>
+<circle cx="386.5" cy="187" r="22" fill="url(#tn_lamp)"/>
+<g fill="#120E38"><path d="M385 262V196h3v66zM380 196h13l-2-3h-9zM380 183l6.5-6 6.5 6z"/><rect x="381.5" y="182" width="10" height="11" rx="2"/></g>
+<rect x="383.5" y="184" width="6" height="7.5" rx="1.5" fill="#FFE2A8"/>
+</svg>
