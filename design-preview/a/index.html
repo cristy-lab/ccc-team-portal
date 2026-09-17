@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#1B175A">
+<title>Crystal Elegance Preview</title>
+<link rel="icon" type="image/png" href="../../icons/favicon-48.png">
+<style>
+/* Variant A, Crystal Elegance. Preview only: the real build moves this into app.css. */
+:root {
+  --navy: #1B175A;
+  --navy-2: #2A2583;
+  --navy-deep: #120E38;
+  --blue: #6BA9F8;
+  --lblue: #82CAFB;
+  --peach: #F6A078;
+  --off: #FFFCFC;
+
+  --bg: #F6F3F0;
+  --surface: #FFFCFC;
+  --text: #1B175A;
+  --muted: #4B4870;
+  --line: rgba(27, 23, 90, 0.10);
+  --line-strong: rgba(27, 23, 90, 0.55);
+  --peach-tint: #FDE6DA;
+  --blue-tint: #E3F0FE;
+  --lblue-tint: #DCF0FD;
+  --focus: #2F66C6;
+
+  --gold: #C29A48;
+  --gold-hi: #E7CD8C;
+  --gold-lo: #9C7630;
+  --paper: #FFFBF4;
+  --ink: #221E5C;
+
+  --shadow-sm: 0 1px 2px rgba(27, 23, 90, 0.06), 0 2px 8px rgba(27, 23, 90, 0.05);
+  --shadow: 0 1px 2px rgba(27, 23, 90, 0.06), 0 8px 24px rgba(27, 23, 90, 0.08);
+  --shadow-lg: 0 2px 4px rgba(27, 23, 90, 0.10), 0 16px 40px rgba(27, 23, 90, 0.20);
+  --serif: "Georgia Pro", Georgia, "Times New Roman", serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+
+  /* Faceted diamond lattice. Light lines for navy surfaces. */
+  --facet-on-navy: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='30' viewBox='0 0 52 30'%3E%3Cpath d='M0 15L26 0L52 15Z M0 15L26 30H0Z M52 15L26 30H52Z' fill='%23FFFFFF' fill-opacity='.045'/%3E%3Cpath d='M0 15L26 0L52 15L26 30Z M0 15H52' fill='none' stroke='%2382CAFB' stroke-opacity='.22' stroke-width='.8'/%3E%3C/svg%3E");
+  /* Same lattice, navy lines, for light surfaces. */
+  --facet-on-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='30' viewBox='0 0 52 30'%3E%3Cpath d='M0 15L26 0L52 15Z M0 15L26 30H0Z M52 15L26 30H52Z' fill='%231B175A' fill-opacity='.018'/%3E%3Cpath d='M0 15L26 0L52 15L26 30Z M0 15H52' fill='none' stroke='%231B175A' stroke-opacity='.07' stroke-width='.8'/%3E%3C/svg%3E");
+  /* Paper grain for the CEO letter. */
+  --paper-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .36 0 0 0 0 .22 0 0 0 .075 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+  margin: 0; background: #E6E0D8; color: var(--text);
+  font-family: var(--sans); font-size: 17px; line-height: 1.5;
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+h1, h2, h3 { font-family: var(--serif); font-weight: 700; line-height: 1.2; margin: 0; letter-spacing: -0.005em; }
+p { margin: 0; }
+button { font: inherit; color: inherit; cursor: pointer; }
+svg { flex: none; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+.sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* ---------- Preview chrome (not part of the app) ---------- */
+.pv-intro { max-width: 430px; margin: 0 auto; padding: 26px 16px 8px; }
+.pv-kicker { font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #5A5470; }
+.pv-title { font-size: 30px; margin-top: 4px; color: var(--navy); }
+.pv-note { margin-top: 6px; font-size: 15px; color: #4A4563; }
+.pv-label { max-width: 430px; margin: 0 auto; padding: 26px 16px 12px; display: flex; gap: 12px; align-items: flex-start; }
+.pv-num {
+  flex: none; width: 30px; height: 30px; display: grid; place-items: center; margin-top: 1px;
+  background: var(--navy); color: var(--off); font: 700 15px/1 var(--sans);
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+}
+.pv-label h2 { font-size: 20px; color: var(--navy); }
+.pv-label p { font-size: 15px; color: #4A4563; line-height: 1.4; margin-top: 2px; }
+.pv-end { max-width: 430px; margin: 0 auto; padding: 22px 16px 40px; font-size: 14px; color: #4A4563; text-align: center; }
+
+.phone { position: relative; overflow: hidden; isolation: isolate; background: var(--bg); }
+@media (min-width: 470px) {
+  .phone { max-width: 430px; margin: 0 auto; border-radius: 36px; box-shadow: 0 0 0 8px #15123A, 0 30px 60px rgba(27, 23, 90, .30); }
+  .pv-label, .pv-intro, .pv-end { padding-left: 4px; padding-right: 4px; }
+  .pv-label { padding-top: 40px; }
+}
+
+/* ---------- Sparkle glints ---------- */
+.glint { position: absolute; width: 14px; height: 14px; pointer-events: none; opacity: .9; animation: glint 5.5s ease-in-out infinite; }
+.glint svg { width: 100%; height: 100%; display: block; }
+.glint.g-sm { width: 9px; height: 9px; }
+.glint.g-md { width: 18px; height: 18px; }
+.glint.g-lg { width: 22px; height: 22px; }
+.glint.d1 { animation-delay: -1.2s; }
+.glint.d2 { animation-delay: -2.6s; }
+.glint.d3 { animation-delay: -3.9s; }
+.glint.d4 { animation-delay: -4.7s; }
+@keyframes glint {
+  0%, 100% { opacity: .25; transform: scale(.55) rotate(0deg); }
+  45% { opacity: 1; transform: scale(1) rotate(45deg); }
+  60% { opacity: .85; transform: scale(.9) rotate(60deg); }
+}
+
+/* ---------- Header ---------- */
+.topbar { position: relative; z-index: 2; color: var(--off); background: var(--navy); overflow: hidden; isolation: isolate; }
+.topbar::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background:
+    radial-gradient(140% 120% at 88% -10%, rgba(107, 169, 248, .30) 0%, rgba(107, 169, 248, 0) 60%),
+    var(--facet-on-navy);
+  -webkit-mask-image: linear-gradient(100deg, rgba(0, 0, 0, .35) 0%, #000 55%);
+  mask-image: linear-gradient(100deg, rgba(0, 0, 0, .35) 0%, #000 55%);
+}
+.topbar::after { content: ""; display: block; height: 4px; background: linear-gradient(90deg, var(--peach) 0%, var(--peach) 34%, var(--lblue) 66%, var(--blue) 100%); }
+.topbar-inner { position: relative; min-height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 16px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; color: var(--off); text-decoration: none; min-width: 0; }
+.brand-mark { flex: none; width: 40px; height: 40px; border-radius: 12px; background: var(--off); display: grid; place-items: center; overflow: hidden; box-shadow: 0 0 0 1px rgba(130, 202, 251, .35), 0 4px 14px rgba(0, 0, 0, .25); }
+.brand-mark img { width: 34px; height: 34px; object-fit: contain; display: block; }
+.brand-text { font-family: var(--serif); font-size: 18px; font-weight: 700; white-space: nowrap; }
+/* In the app the name shows from 440px; inside these preview frames it stays hidden. */
+.brand-text { display: none; }
+/* Glints sit in the empty space between the logo and the language buttons. */
+.gl-h1 { left: 24%; top: 17px; }
+.gl-h2 { left: 34%; top: 33px; }
+.lang-toggle { display: inline-flex; border-radius: 999px; background: rgba(18, 14, 56, .55); border: 1px solid rgba(255, 252, 252, .28); }
+.lang-btn { min-height: 48px; padding: 0 14px; border: 0; border-radius: 999px; background: transparent; color: var(--off); font-size: 16px; font-weight: 600; }
+.lang-btn[aria-pressed="true"] { background: var(--off); color: var(--navy); }
+.topbar :focus-visible { outline-color: var(--lblue); }
+
+.app { position: relative; padding: 20px 16px 34px; }
+
+/* ---------- Sign in ---------- */
+.signin { background: radial-gradient(120% 60% at 100% 0%, #E6F2FD 0%, rgba(230, 242, 253, 0) 60%), radial-gradient(90% 50% at 0% 100%, #FCE9DF 0%, rgba(252, 233, 223, 0) 65%), var(--bg); }
+.signin .app::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 300px; background: var(--facet-on-light);
+  -webkit-mask-image: radial-gradient(90% 100% at 50% 0%, #000 0%, rgba(0, 0, 0, 0) 75%); mask-image: radial-gradient(90% 100% at 50% 0%, #000 0%, rgba(0, 0, 0, 0) 75%);
+}
+.login { position: relative; isolation: isolate; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.keypad-wrap { position: relative; isolation: isolate; width: 100%; max-width: 340px; margin: 6px auto 0; }
+.login-wm { position: absolute; z-index: -1; left: 50%; top: 50%; width: 128%; max-width: 440px; transform: translate(-50%, -53%); pointer-events: none; }
+.login-wm svg { display: block; width: 100%; height: auto; -webkit-mask-image: linear-gradient(180deg, #000 45%, rgba(0, 0, 0, .35) 100%); mask-image: linear-gradient(180deg, #000 45%, rgba(0, 0, 0, .35) 100%); }
+.login-wm::before {
+  content: ""; position: absolute; left: 50%; top: 45%; width: 125%; aspect-ratio: 1; transform: translate(-50%, -50%); z-index: -1;
+  background: radial-gradient(closest-side, rgba(130, 202, 251, .30), rgba(130, 202, 251, 0) 75%);
+}
+/* Two glints sit where the key gaps cross, like light catching a facet. */
+.gl-k1 { left: 67.2%; top: 24%; margin: -9px 0 0 -9px; }
+.gl-k2 { left: 32.8%; top: 76%; margin: -4.5px 0 0 -4.5px; }
+.logo-plate {
+  background: var(--off); border-radius: 22px; padding: 12px 22px; display: grid; place-items: center; min-height: 72px;
+  box-shadow: 0 0 0 1px rgba(27, 23, 90, .06), 0 10px 30px rgba(27, 23, 90, .10);
+}
+.logo-plate img { display: block; max-width: 220px; max-height: 58px; width: auto; height: auto; }
+.login-title { font-size: 26px; margin: 18px 0 6px; text-wrap: balance; }
+.login-instruction { font-size: 18px; color: var(--muted); max-width: 22em; }
+.pin-dots { display: flex; gap: 22px; justify-content: center; margin: 24px 0 18px; }
+.dot { width: 18px; height: 18px; border: 2.5px solid var(--text); border-radius: 3px; transform: rotate(45deg); transition: background-color .12s ease; }
+.dot.filled { background: var(--text); box-shadow: 0 0 0 3px rgba(107, 169, 248, .28); }
+.keypad { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; width: 100%; }
+.key {
+  min-height: 70px; border-radius: 18px; border: 1.5px solid var(--line-strong);
+  /* Frosted glass keys: the diamond glows softly through them. */
+  background: linear-gradient(180deg, rgba(255, 252, 252, .80), rgba(255, 252, 252, .62));
+  -webkit-backdrop-filter: blur(3px) saturate(1.15); backdrop-filter: blur(3px) saturate(1.15);
+  color: var(--text); box-shadow: 0 1px 0 rgba(255, 255, 255, .9) inset, var(--shadow-sm);
+  font-size: 30px; font-weight: 600; font-variant-numeric: tabular-nums;
+  display: grid; place-items: center; touch-action: manipulation; user-select: none; -webkit-user-select: none;
+  transition: transform .08s ease, background-color .12s ease;
+}
+.key:active { transform: scale(.95); background: #E3F1FD; }
+.key-blank { visibility: hidden; }
+.key-del { background: transparent; box-shadow: none; border-color: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; }
+.key-del svg { width: 32px; height: 32px; }
+.login-help { margin-top: 20px; color: var(--muted); font-size: 16px; }
+.login-tag { margin-top: 18px; display: inline-flex; align-items: center; gap: 10px; font-family: var(--serif); font-style: italic; font-size: 15px; color: var(--muted); letter-spacing: .02em; }
+.mini-gem { width: 8px; height: 8px; background: var(--peach); transform: rotate(45deg); border-radius: 1px; display: inline-block; }
+.mini-gem.b { background: var(--blue); }
+
+/* ---------- Home ---------- */
+.home { position: relative; isolation: isolate; }
+.home::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 420px; z-index: -1; background: var(--facet-on-light);
+  -webkit-mask-image: radial-gradient(120% 100% at 100% 0%, #000 0%, rgba(0, 0, 0, 0) 70%);
+  mask-image: radial-gradient(120% 100% at 100% 0%, #000 0%, rgba(0, 0, 0, 0) 70%);
+}
+.greeting { position: relative; }
+.greeting h1 { font-size: clamp(25px, 7.2vw, 30px); text-wrap: balance; }
+.region { display: flex; align-items: center; gap: 6px; color: var(--muted); margin-top: 6px; font-size: 16px; }
+.region svg { width: 18px; height: 18px; }
+
+.hero {
+  position: relative; overflow: hidden; isolation: isolate; margin: 18px 0 0; padding: 22px 20px 20px; border-radius: 24px;
+  background: radial-gradient(60% 70% at 100% 100%, rgba(107, 169, 248, .30) 0%, rgba(107, 169, 248, 0) 100%), linear-gradient(140deg, #1B175A 0%, #231E72 55%, #2C2690 100%); color: var(--off);
+  box-shadow: 0 0 0 1px rgba(130, 202, 251, .20) inset, var(--shadow-lg);
+}
+.hero::before {
+  content: ""; position: absolute; inset: 0; z-index: -2; background: var(--facet-on-navy);
+  -webkit-mask-image: linear-gradient(215deg, #000 0%, rgba(0, 0, 0, .15) 55%, rgba(0, 0, 0, 0) 80%);
+  mask-image: linear-gradient(215deg, #000 0%, rgba(0, 0, 0, .15) 55%, rgba(0, 0, 0, 0) 80%);
+}
+.hero::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: linear-gradient(90deg, rgba(246, 160, 120, 0), rgba(246, 160, 120, .7) 40%, rgba(130, 202, 251, .8) 70%, rgba(130, 202, 251, 0)); }
+.hero-gem { position: absolute; z-index: -1; right: -26px; bottom: -34px; width: 168px; opacity: .9; pointer-events: none; }
+.hero-gem svg { display: block; width: 100%; height: auto; }
+.hero .glint { z-index: -1; }
+.gl-p1 { right: 22px; top: 20px; }
+.gl-p2 { right: 16px; bottom: 34px; }
+.hero-label { color: var(--lblue); font-size: 15px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.hero-date { font-family: var(--serif); font-size: clamp(25px, 7.4vw, 31px); font-weight: 700; line-height: 1.15; margin: 8px 0 12px; text-wrap: balance; }
+.hero-count { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px; background: var(--lblue); color: var(--navy); font-size: 17px; font-weight: 700; box-shadow: 0 4px 14px rgba(0, 0, 0, .18); }
+.hero-count svg { width: 18px; height: 18px; }
+.hero-work { margin-top: 14px; color: rgba(255, 252, 252, .92); font-size: 16px; text-shadow: 0 1px 2px rgba(18, 14, 56, .6); }
+
+.tiles { display: grid; gap: 12px; margin: 18px 0 0; }
+.tile {
+  position: relative; overflow: hidden; display: flex; align-items: center; gap: 14px; min-height: 84px; padding: 14px 14px 14px 16px;
+  border-radius: 18px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow-sm);
+  color: var(--text); text-decoration: none; transition: transform .12s ease, box-shadow .15s ease;
+}
+.tile:active { transform: scale(.985); box-shadow: none; }
+.tile-icon {
+  position: relative; overflow: hidden; width: 54px; height: 54px; border-radius: 16px; display: grid; place-items: center; flex: none; color: var(--text);
+  box-shadow: 0 0 0 1px rgba(27, 23, 90, .06) inset;
+}
+.tile-icon::after { content: ""; position: absolute; left: -30%; top: -30%; width: 70%; height: 70%; background: linear-gradient(135deg, rgba(255, 255, 255, .85), rgba(255, 255, 255, 0) 70%); transform: rotate(0deg); }
+.tile-icon svg { position: relative; z-index: 1; width: 30px; height: 30px; }
+.ti-peach { background: linear-gradient(145deg, #FEF1EA 0%, #FBD6C3 100%); }
+.ti-lblue { background: linear-gradient(145deg, #EDF8FE 0%, #C9E8FC 100%); }
+.ti-blue { background: linear-gradient(145deg, #EEF5FF 0%, #CFE2FD 100%); }
+.ti-navy { background: linear-gradient(145deg, #2C2690 0%, #1B175A 100%); color: var(--lblue); }
+.ti-navy::after { background: linear-gradient(135deg, rgba(130, 202, 251, .35), rgba(130, 202, 251, 0) 70%); }
+.tile-body { flex: 1; min-width: 0; }
+.tile-title { display: block; font-size: 18px; font-weight: 700; line-height: 1.3; }
+.tile-sub { display: block; font-size: 15px; color: var(--muted); line-height: 1.35; margin-top: 2px; }
+.tile-end { color: var(--muted); display: grid; place-items: center; }
+.tile-end svg { width: 22px; height: 22px; }
+.badge { display: inline-block; padding: 1px 9px; border-radius: 999px; background: var(--peach); color: var(--navy); font-size: 14px; font-weight: 700; line-height: 1.5; vertical-align: 2px; white-space: nowrap; }
+
+.footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--line); text-align: center; color: var(--muted); }
+.footer-support { font-size: 17px; }
+.footer-signout { margin-top: 6px; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 0 4px; }
+.link-btn { display: inline-flex; align-items: center; min-height: 48px; padding: 0 8px; border: 0; background: transparent; color: var(--text); font-size: 17px; font-weight: 700; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; border-radius: 10px; }
+.tagline { font-family: var(--serif); font-style: italic; font-size: 15px; margin-top: 12px; letter-spacing: .02em; display: inline-flex; align-items: center; gap: 10px; }
+
+/* ---------- Hawaii greeting ---------- */
+.hi-card {
+  position: relative; overflow: hidden; isolation: isolate; min-height: 232px; padding: 22px 20px 20px; border-radius: 24px;
+  color: var(--off); background: #34277A; box-shadow: var(--shadow-lg);
+}
+.hi-scene { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -2; display: block; }
+.hi-card::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(18, 14, 56, .42) 0%, rgba(18, 14, 56, .12) 42%, rgba(18, 14, 56, 0) 60%); pointer-events: none; }
+.hi-card h1 { font-size: clamp(27px, 8vw, 33px); text-shadow: 0 2px 10px rgba(18, 14, 56, .55); max-width: 16ch; }
+.hi-name { white-space: nowrap; }
+.hibiscus { display: inline-block; width: 30px; height: 30px; margin-left: 4px; vertical-align: -3px; filter: drop-shadow(0 2px 4px rgba(18, 14, 56, .45)); }
+/* The place name sits on a dark frosted pill so it stays readable over any part of the sky or a photo. */
+.hi-card .region { display: inline-flex; margin-top: 10px; padding: 5px 13px 5px 9px; border-radius: 999px; color: var(--off); font-weight: 600; background: rgba(18, 14, 56, .55); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); box-shadow: 0 0 0 1px rgba(255, 252, 252, .18) inset; }
+.hi-card .glint { z-index: -1; }
+.gl-s1 { right: 40%; top: 16px; }
+
+/* ---------- CEO welcome ---------- */
+.ceo {
+  position: relative; isolation: isolate; min-height: 100%; padding: 0 0 30px; color: var(--off);
+  background: radial-gradient(130% 70% at 50% 0%, #332C95 0%, #1B175A 52%, #0F0C38 100%);
+}
+.ceo::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; background: var(--facet-on-navy);
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, .4) 30%, rgba(0, 0, 0, .1) 60%, rgba(0, 0, 0, .5) 100%);
+  mask-image: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, .4) 30%, rgba(0, 0, 0, .1) 60%, rgba(0, 0, 0, .5) 100%);
+}
+.ceo::after { content: ""; position: absolute; left: -30%; bottom: -10%; width: 90%; aspect-ratio: 1; z-index: -1; background: radial-gradient(closest-side, rgba(246, 160, 120, .22), rgba(246, 160, 120, 0)); }
+.ceo-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 16px 10px; }
+.ceo-brand { display: inline-flex; align-items: center; gap: 10px; }
+.ceo-brand .brand-mark { width: 38px; height: 38px; }
+.ceo-brand-text { font-family: var(--serif); font-size: 17px; font-weight: 700; white-space: nowrap; }
+@media (max-width: 439px) { .ceo-brand-text { display: none; } }
+.gl-c1 { left: 24%; top: 20px; }
+.gl-c2 { left: 35%; top: 42px; }
+
+.letter {
+  position: relative; margin: 8px 10px 0; padding: 40px 26px 30px; border-radius: 6px; color: var(--ink);
+  background: var(--paper-grain), radial-gradient(120% 80% at 50% 0%, #FFFDF8 0%, #FFF9EF 60%, #F9F0E1 100%);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .6) inset, 0 24px 50px rgba(5, 3, 30, .45), 0 4px 10px rgba(5, 3, 30, .25);
+  animation: letter-in .7s cubic-bezier(.2, .8, .2, 1) both;
+}
+@keyframes letter-in { from { opacity: 0; transform: translateY(18px) scale(.985); } to { opacity: 1; transform: none; } }
+.letter::before, .letter::after { content: ""; position: absolute; pointer-events: none; }
+.letter::before { inset: 9px; border: 1px solid var(--gold); border-image: linear-gradient(135deg, var(--gold-hi), var(--gold-lo) 30%, var(--gold-hi) 55%, var(--gold-lo) 80%, var(--gold-hi)) 1; }
+.letter::after { inset: 13px; border: 1px solid rgba(194, 154, 72, .38); }
+.corner { position: absolute; width: 10px; height: 10px; transform: rotate(45deg); background: linear-gradient(135deg, var(--gold-hi), var(--gold-lo)); box-shadow: 0 0 0 3px #FFFAF1; z-index: 1; }
+.c-tl { left: 5px; top: 5px; } .c-tr { right: 5px; top: 5px; } .c-bl { left: 5px; bottom: 5px; } .c-br { right: 5px; bottom: 5px; }
+.crest { position: absolute; left: 50%; top: 2px; transform: translateX(-50%); display: flex; align-items: center; gap: 6px; padding: 0 10px; background: #FFFCF6; z-index: 1; height: 16px; }
+.crest i { display: block; width: 7px; height: 7px; transform: rotate(45deg); background: linear-gradient(135deg, var(--gold-hi), var(--gold-lo)); }
+.crest i.big { width: 12px; height: 12px; }
+.crest-b { top: auto; bottom: 2px; background: #FAF2E4; }
+
+.ceo-photo { margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+.ceo-avatar {
+  position: relative; width: 112px; height: 112px; border-radius: 50%; display: grid; place-items: center; overflow: hidden;
+  background: var(--facet-on-navy), radial-gradient(90% 90% at 30% 20%, #3A33A6 0%, #1B175A 70%);
+  box-shadow: 0 0 0 3px #FFFAF1, 0 0 0 5px var(--gold), 0 0 0 6px rgba(156, 118, 48, .5), 0 12px 26px rgba(27, 23, 90, .28);
+}
+.ceo-avatar span { font-family: var(--serif); font-size: 54px; font-weight: 700; color: var(--off); line-height: 1; margin-top: -2px; }
+/* When the photo is ready, replace the span with: <img src="cristy.jpg" alt="Cristy, Founder and CEO"> */
+.ceo-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ceo-photo figcaption { margin-top: 12px; font-size: 14px; font-style: italic; color: #5A5670; }
+.ceo-title { margin-top: 16px; text-align: center; font-size: clamp(25px, 7.4vw, 29px); color: var(--navy); text-wrap: balance; }
+.flourish { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 14px auto 18px; }
+.flourish b { display: block; width: 54px; height: 1px; background: linear-gradient(90deg, rgba(194, 154, 72, 0), var(--gold)); }
+.flourish b:last-child { background: linear-gradient(90deg, var(--gold), rgba(194, 154, 72, 0)); }
+.flourish i { display: block; width: 9px; height: 9px; transform: rotate(45deg); background: linear-gradient(135deg, var(--gold-hi), var(--gold-lo)); }
+.letter-body { font-family: var(--serif); font-size: 17.5px; line-height: 1.62; color: var(--ink); }
+.letter-body p + p { margin-top: 14px; }
+.letter-lead { font-size: 21px; font-style: italic; line-height: 1.35; color: var(--navy); }
+.letter-body strong { font-style: italic; color: var(--navy); }
+.signoff { margin-top: 22px; font-family: var(--serif); }
+.signoff-with { font-style: italic; font-size: 17px; color: #4B4870; }
+.signoff-name { position: relative; display: inline-block; margin-top: 2px; font-size: 32px; font-style: italic; font-weight: 400; color: var(--navy); line-height: 1.1; padding-bottom: 8px; }
+.signoff-name svg { position: absolute; left: -2px; bottom: -2px; width: 130px; height: 14px; }
+.signoff-role { margin-top: 8px; font-family: var(--sans); font-size: 14px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #4B4870; }
+.btn {
+  position: relative; overflow: hidden; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%; min-height: 56px; margin-top: 26px; padding: 0 22px; border: 0; border-radius: 16px;
+  font-size: 18px; font-weight: 700; background: linear-gradient(140deg, #2A2583, #1B175A); color: var(--off);
+  box-shadow: 0 0 0 1px rgba(130, 202, 251, .25) inset, 0 10px 22px rgba(27, 23, 90, .30);
+  transition: transform .12s ease;
+}
+.btn::before { content: ""; position: absolute; inset: 0; background: var(--facet-on-navy); opacity: .7; -webkit-mask-image: linear-gradient(90deg, rgba(0,0,0,0) 30%, #000); mask-image: linear-gradient(90deg, rgba(0,0,0,0) 30%, #000); }
+.btn span, .btn svg { position: relative; }
+.btn svg { width: 22px; height: 22px; }
+.btn:active { transform: scale(.98); }
+
+@media (max-width: 359px) {
+  .app { padding-left: 12px; padding-right: 12px; }
+  .letter { margin-left: 8px; margin-right: 8px; padding: 38px 20px 28px; }
+  .letter-body { font-size: 17px; }
+  .keypad { gap: 10px; }
+  .key { min-height: 64px; }
+  .lang-btn { padding: 0 11px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition-duration: .001ms !important; }
+  .glint { opacity: .75; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- Shared vector parts, drawn once -->
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <defs>
+    <path id="spark" d="M12 0C12.9 7 17 11.1 24 12C17 12.9 12.9 17 12 24C11.1 17 7 12.9 0 12C7 11.1 11.1 7 12 0Z"/>
+    <linearGradient id="wmBlue" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#D6ECFD"/><stop offset="1" stop-color="#A9D3FB"/></linearGradient>
+    <linearGradient id="wmPeach" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FDE7DC"/><stop offset="1" stop-color="#F9C6AD"/></linearGradient>
+    <linearGradient id="gemEdge" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#82CAFB" stop-opacity=".55"/><stop offset="1" stop-color="#82CAFB" stop-opacity=".12"/></linearGradient>
+    <linearGradient id="goldLine" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#E7CD8C"/><stop offset=".5" stop-color="#B08638"/><stop offset="1" stop-color="#E7CD8C" stop-opacity="0"/></linearGradient>
+    <linearGradient id="petal" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#E4506A"/><stop offset=".55" stop-color="#F47C74"/><stop offset="1" stop-color="#F6A078"/></linearGradient>
+    <g id="icon-pin" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></g>
+    <g id="icon-clock" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></g>
+    <g id="icon-chev" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></g>
+    <g id="icon-dayoff" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M10 14l4 4M14 14l-4 4"/></g>
+    <g id="icon-survey" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M9 14l2 2 4-4"/></g>
+    <g id="icon-cal" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></g>
+    <g id="icon-msg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 8h8M8 12h5"/></g>
+    <g id="icon-cap" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2.7 9 2.7 12 0v-5M22 10v6"/></g>
+    <g id="icon-arrow" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></g>
+    <!-- Payday card gem: brilliant cut outline -->
+    <g id="gem-outline" stroke-linejoin="round">
+      <g stroke="none">
+        <path d="M5 55L40 10L60 55Z M60 55L80 10L100 55Z M100 55L120 10L140 55Z M140 55L160 10L195 55Z" fill="#F6A078" fill-opacity=".16"/>
+        <path d="M40 10H80L60 55Z M80 10H120L100 55Z M120 10H160L140 55Z" fill="#82CAFB" fill-opacity=".20"/>
+        <path d="M5 55H60L100 165Z M100 55H140L100 165Z" fill="#82CAFB" fill-opacity=".14"/>
+        <path d="M60 55H100V165Z M140 55H195L100 165Z" fill="#F6A078" fill-opacity=".10"/>
+      </g>
+      <g fill="none" stroke="url(#gemEdge)" stroke-width="1.4">
+      <path d="M40 10H160L195 55L100 165L5 55Z"/>
+      <path d="M5 55H195M40 10L60 55L80 10L100 55L120 10L140 55L160 10M60 55L100 165L140 55M100 55V165"/>
+      </g>
+    </g>
+    <!-- Hibiscus -->
+    <g id="hibiscus">
+      <g fill="url(#petal)" stroke="#C93F5C" stroke-width=".6">
+        <path d="M16 16C9 13 7 5 12 2c3-2 7 0 7 4 1 4-1 8-3 10z"/>
+        <path d="M16 16C9 13 7 5 12 2c3-2 7 0 7 4 1 4-1 8-3 10z" transform="rotate(72 16 16)"/>
+        <path d="M16 16C9 13 7 5 12 2c3-2 7 0 7 4 1 4-1 8-3 10z" transform="rotate(144 16 16)"/>
+        <path d="M16 16C9 13 7 5 12 2c3-2 7 0 7 4 1 4-1 8-3 10z" transform="rotate(216 16 16)"/>
+        <path d="M16 16C9 13 7 5 12 2c3-2 7 0 7 4 1 4-1 8-3 10z" transform="rotate(288 16 16)"/>
+      </g>
+      <circle cx="16" cy="16" r="3.2" fill="#A8264A"/>
+      <path d="M16 16L23.5 8.5" stroke="#FFE39A" stroke-width="1.4" stroke-linecap="round"/>
+      <circle cx="23.8" cy="8.2" r="1.6" fill="#FFD166"/><circle cx="21.6" cy="7.4" r="1" fill="#FFD166"/><circle cx="24.6" cy="10.4" r="1" fill="#FFD166"/>
+    </g>
+  </defs>
+</svg>
+
+<header class="pv-intro">
+  <p class="pv-kicker">Design preview A</p>
+  <h1 class="pv-title">Crystal Elegance</h1>
+  <p class="pv-note">Five screens of the CCC Team Portal. Sample names only. Scroll down to see them all.</p>
+</header>
+
+<!-- ========== 1. SIGN IN ========== -->
+<div class="pv-label">
+  <span class="pv-num" aria-hidden="true">1</span>
+  <div><h2>Sign in</h2><p>Faceted diamond pattern in the header, a soft diamond behind the keypad, and slow sparkles.</p></div>
+</div>
+<section class="phone signin" aria-label="Screen 1, Sign in">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#s1"><span class="brand-mark"><img src="../../icons/icon-192.png" alt="Cristal Clear Cleaning"></span><span class="brand-text">CCC Team Portal</span></a>
+      <span class="glint g-sm d1 gl-h1" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#spark" fill="#FFFCFC"/></svg></span>
+      <span class="glint d3 gl-h2" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#spark" fill="#82CAFB"/></svg></span>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" class="lang-btn" lang="en" aria-pressed="true">English</button>
+        <button type="button" class="lang-btn" lang="es" aria-pressed="false">Español</button>
+      </div>
+    </div>
+  </header>
+  <main class="app" id="s1">
+    <div class="login">
+      <div class="logo-plate"><img src="../../img/logo.png" alt="Cristal Clear Cleaning"></div>
+      <h2 class="login-title">Welcome to the CCC Team Portal</h2>
+      <p class="login-instruction">Enter the last 4 digits of your phone number</p>
+      <div class="pin-dots" id="pin-dots" role="img" aria-label="2 of 4 digits entered">
+        <span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span>
+      </div>
+      <div class="keypad-wrap">
+        <div class="login-wm" aria-hidden="true">
+          <svg viewBox="0 0 200 170">
+          <g stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="round" opacity=".55">
+            <path d="M5 55L40 10L60 55Z" fill="url(#wmPeach)"/>
+            <path d="M40 10H80L60 55Z" fill="url(#wmBlue)"/>
+            <path d="M60 55L80 10L100 55Z" fill="url(#wmPeach)"/>
+            <path d="M80 10H120L100 55Z" fill="url(#wmBlue)"/>
+            <path d="M100 55L120 10L140 55Z" fill="url(#wmPeach)"/>
+            <path d="M120 10H160L140 55Z" fill="url(#wmBlue)"/>
+            <path d="M140 55L160 10L195 55Z" fill="url(#wmPeach)"/>
+            <path d="M5 55H60L100 165Z" fill="url(#wmBlue)"/>
+            <path d="M60 55H100V165Z" fill="url(#wmPeach)"/>
+            <path d="M100 55H140L100 165Z" fill="url(#wmBlue)"/>
+            <path d="M140 55H195L100 165Z" fill="url(#wmPeach)"/>
+          </g>
+          <path d="M40 10H160L195 55L100 165L5 55Z" fill="none" stroke="#6BA9F8" stroke-opacity=".28" stroke-width="1.1" stroke-linejoin="round"/>
+        </svg>
+        </div>
+        <div class="keypad" id="keypad">
+          <span class="glint g-md d2 gl-k1" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#spark" fill="#6BA9F8"/></svg></span>
+          <span class="glint g-sm d4 gl-k2" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#spark" fill="#F6A078"/></svg></span>
+          <button type="button" class="key">1</button><button type="button" class="key">2</button><button type="button" class="key">3</button>
+          <button type="button" class="key">4</button><button type="button" class="key">5</button><button type="button" class="key">6</button>
+          <button type="button" class="key">7</button><button type="button" class="key">8</button><button type="button" class="key">9</button>
+          <span class="key key-blank" aria-hidden="true"></span>
+          <button type="button" class="key">0</button>
+          <button type="button" class="key key-del" aria-label="Delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/><path d="M18 9l-6 6M12 9l6 6"/></svg></button>
+        </div>
+      </div>
+      <p class="login-help">Need help? Ask your supervisor.</p>
+      <p class="login-tag"><span class="mini-gem" aria-hidden="true"></span>Harder Than Diamonds<span class="mini-gem b" aria-hidden="true"></span></p>
+    </div>
+  </main>
+</section>
+
+<!-- ========== 2. HOME, JACKSONVILLE ========== -->
+<div class="pv-label">
+  <span class="pv-num" aria-hidden="true">2</span>
+  <div><h2>Home, Jacksonville</h2><p>A regular home screen with the new payday card and buttons.</p></div>
+</div>
+<section class="phone" aria-label="Screen 2, Home for a cleaner in Jacksonville">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#s2"><span class="brand-mark"><img src="../../icons/icon-192.png" alt="Cristal Clear Cleaning"></span><span class="brand-text">CCC Team Portal</span></a>
+      <span class="glint g-sm d2 gl-h1" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#spark" fill="#FFFCFC"/></svg></span>
+      <span class="glint d4 gl-h2" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#spark" fill="#82CAFB"/></svg></span>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" class="lang-btn" lang="en" aria-pressed="true">English</button>
+        <button type="button" class="lang-btn" lang="es" aria-pressed="false">Español</button>
+      </div>
+    </div>
+  </header>
+  <main class="app home" id="s2">
+    <div class="greeting">
+      <h1>Good morning, Rosa</h1>
+      <p class="region"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-pin"/></svg><span>Jacksonville, Florida</span></p>
+    </div>
+
+    <section class="hero" aria-label="Next payday">
+      <span class="hero-gem" aria-hidden="true"><svg viewBox="0 0 200 170"><use href="#gem-outline"/></svg></span>
+      <span class="glint g-lg d1 gl-p1" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#spark" fill="#FFFCFC"/></svg></span>
+      <span class="glint g-sm d3 gl-p2" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#spark" fill="#82CAFB"/></svg></span>
+      <p class="hero-label">Next payday</p>
+      <p class="hero-date">Friday, September 18</p>
+      <p class="hero-count"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-clock"/></svg>Tomorrow</p>
+      <p class="hero-work">For work from Sep 1 to Sep 14</p>
+    </section>
+
+    <nav class="tiles" aria-label="Menu">
+      <a class="tile" href="#s2"><span class="tile-icon ti-peach"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-dayoff"/></svg></span><span class="tile-body"><span class="tile-title">Request a day off</span><span class="tile-sub">Please ask at least 2 weeks ahead</span></span><span class="tile-end"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-chev"/></svg></span></a>
+      <a class="tile" href="#s2"><span class="tile-icon ti-lblue"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-survey"/></svg></span><span class="tile-body"><span class="tile-title">Supervisor survey</span><span class="tile-sub">Once a month, tell us how it is going</span></span><span class="tile-end"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-chev"/></svg></span></a>
+      <a class="tile" href="#s2"><span class="tile-icon ti-blue"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-cal"/></svg></span><span class="tile-body"><span class="tile-title">Pay calendar</span><span class="tile-sub">See all your paydays</span></span><span class="tile-end"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-chev"/></svg></span></a>
+      <a class="tile" href="#s2"><span class="tile-icon ti-navy"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-msg"/></svg></span><span class="tile-body"><span class="tile-title">Request a change</span><span class="tile-sub">Schedule, pay, your info, anything</span></span><span class="tile-end"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-chev"/></svg></span></a>
+      <a class="tile" href="#s2"><span class="tile-icon ti-peach"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-cap"/></svg></span><span class="tile-body"><span class="tile-title">Trainings <span class="badge">Coming soon</span></span><span class="tile-sub">Courses and quizzes for the team</span></span><span class="tile-end"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-chev"/></svg></span></a>
+    </nav>
+
+    <footer class="footer">
+      <p class="footer-support">Questions? Talk to your supervisor.</p>
+      <p class="footer-signout"><span>Not you?</span><button type="button" class="link-btn">Sign out</button></p>
+      <p class="tagline"><span class="mini-gem" aria-hidden="true"></span>Harder Than Diamonds<span class="mini-gem b" aria-hidden="true"></span></p>
+    </footer>
+  </main>
+</section>
+
+<!-- ========== 3. HOME, HAWAII ========== -->
+<div class="pv-label">
+  <span class="pv-num" aria-hidden="true">3</span>
+  <div><h2>Home, Hawaii</h2><p>Team members in Hawaii see Aloha and a sunset over Diamond Head. A real photo can replace the drawing later.</p></div>
+</div>
+<section class="phone" aria-label="Screen 3, Home for a cleaner in Hawaii">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#s3"><span class="brand-mark"><img src="../../icons/icon-192.png" alt="Cristal Clear Cleaning"></span><span class="brand-text">CCC Team Portal</span></a>
+      <span class="glint g-sm d4 gl-h1" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#spark" fill="#FFFCFC"/></svg></span>
+      <span class="glint d2 gl-h2" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#spark" fill="#82CAFB"/></svg></span>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" class="lang-btn" lang="en" aria-pressed="true">English</button>
+        <button type="button" class="lang-btn" lang="es" aria-pressed="false">Español</button>
+      </div>
+    </div>
+  </header>
+  <main class="app home" id="s3">
+    <div class="hi-card">
+      <!-- Illustration: sunset over Diamond Head. To use a photo later, swap this svg for an img with object-fit: cover. -->
+      <svg class="hi-scene" viewBox="0 0 400 250" preserveAspectRatio="xMaxYMid slice" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="hiSky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1B175A"/>
+            <stop offset=".34" stop-color="#352878"/>
+            <stop offset=".58" stop-color="#7C3F86"/>
+            <stop offset=".76" stop-color="#D5687A"/>
+            <stop offset=".9" stop-color="#F6A078"/>
+            <stop offset="1" stop-color="#FFD59C"/>
+          </linearGradient>
+          <linearGradient id="hiSea" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#EE9A7D"/>
+            <stop offset=".22" stop-color="#B25F82"/>
+            <stop offset=".6" stop-color="#4B2E7C"/>
+            <stop offset="1" stop-color="#211B63"/>
+          </linearGradient>
+          <radialGradient id="hiSun" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stop-color="#FFF4CC"/>
+            <stop offset=".65" stop-color="#FFD48E"/>
+            <stop offset="1" stop-color="#FFB072"/>
+          </radialGradient>
+          <radialGradient id="hiGlow" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stop-color="#FFD9A0" stop-opacity=".75"/>
+            <stop offset="1" stop-color="#FFB27A" stop-opacity="0"/>
+          </radialGradient>
+          <path id="frond" d="M0 0C16-15 48-21 84 4C74-3 69-2 63-3L66 4C56-2 50-1 44-2L47 5C38 0 31 1 24 0L27 6C18 3 9 3 0 0Z"/>
+        </defs>
+        <rect width="400" height="170" fill="url(#hiSky)"/>
+        <g fill="#FFFCFC"><circle cx="30" cy="22" r=".9" opacity=".7"/><circle cx="118" cy="14" r="1.1" opacity=".6"/><circle cx="196" cy="30" r=".8" opacity=".6"/><circle cx="252" cy="12" r="1" opacity=".5"/><circle cx="160" cy="48" r=".7" opacity=".45"/></g>
+        <circle cx="212" cy="168" r="96" fill="url(#hiGlow)"/>
+        <g opacity=".55"><rect x="146" y="118" width="150" height="3.5" rx="1.75" fill="#F6A078"/><rect x="196" y="127" width="96" height="2.5" rx="1.25" fill="#F6A078"/><rect x="30" y="106" width="92" height="3" rx="1.5" fill="#C5648C"/><rect x="60" y="114" width="60" height="2" rx="1" fill="#C5648C"/></g>
+        <circle cx="212" cy="168" r="27" fill="url(#hiSun)"/>
+        <path d="M-10 170V151C14 148 36 141 58 132C74 125 86 120 100 119C111 118 119 117 125 113C129 110 132 110 135 113C143 123 153 139 169 151C185 162 207 168 234 170Z" fill="#4E2F6F"/>
+        <path d="M100 119C111 118 119 117 125 113C129 110 132 110 135 113C143 123 153 139 169 151" fill="none" stroke="#F6A078" stroke-opacity=".5" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M296 170C320 163 350 159 410 161V170Z" fill="#6B3A79" opacity=".8"/>
+        <rect y="168" width="400" height="82" fill="url(#hiSea)"/>
+        <g fill="#FFE2A8"><rect x="184" y="173" width="56" height="2.4" rx="1.2" opacity=".95"/><rect x="190" y="181" width="44" height="2.2" rx="1.1" opacity=".8"/><rect x="195" y="190" width="34" height="2" rx="1" opacity=".65"/><rect x="199" y="200" width="26" height="2" rx="1" opacity=".5"/><rect x="203" y="211" width="18" height="1.8" rx=".9" opacity=".38"/><rect x="206" y="223" width="12" height="1.6" rx=".8" opacity=".26"/></g>
+        <g fill="none" stroke="#F6A078" stroke-width="1.1" stroke-linecap="round" opacity=".35"><path d="M40 186q14-3 28 0"/><path d="M110 198q16-3 32 0"/><path d="M270 190q12-3 24 0"/><path d="M60 216q18-4 36 0"/></g>
+        <path d="M262 166l0-14 9 13z" fill="#2A1E5A"/><path d="M256 166h18l-3 3h-12z" fill="#2A1E5A"/>
+        <g fill="none" stroke="#2A1E5A" stroke-width="1.4" stroke-linecap="round"><path d="M236 118q4-3 7 0q3-3 7 0"/><path d="M252 108q3-2.4 5.5 0q2.5-2.4 5.5 0"/></g>
+        <path d="M150 250C214 236 290 226 410 224V250Z" fill="#120E38"/>
+        <g fill="#120E38">
+          <path d="M318 250C322 200 330 140 344 78L350 80C338 140 332 200 330 250Z"/>
+          <g transform="translate(347 78)">
+            <use href="#frond" transform="rotate(-30)"/><use href="#frond" transform="rotate(4)"/><use href="#frond" transform="rotate(36) scale(.9)"/><use href="#frond" transform="rotate(-70) scale(.8)"/>
+            <use href="#frond" transform="scale(-1 1) rotate(-30)"/><use href="#frond" transform="scale(-1 1) rotate(4)"/><use href="#frond" transform="scale(-1 1) rotate(36) scale(.9)"/><use href="#frond" transform="scale(-1 1) rotate(-70) scale(.8)"/>
+            <circle cx="-4" cy="6" r="4"/><circle cx="4" cy="7" r="4"/>
+          </g>
+          <path d="M392 250C394 210 392 170 382 128L387 127C398 170 400 210 404 250Z"/>
+          <g transform="translate(384 127) scale(.68)">
+            <use href="#frond" transform="rotate(-28)"/><use href="#frond" transform="rotate(8)"/><use href="#frond" transform="rotate(-72) scale(.8)"/>
+            <use href="#frond" transform="scale(-1 1) rotate(-28)"/><use href="#frond" transform="scale(-1 1) rotate(8)"/><use href="#frond" transform="scale(-1 1) rotate(40) scale(.9)"/><use href="#frond" transform="scale(-1 1) rotate(-72) scale(.8)"/>
+          </g>
+        </g>
+      </svg>
+      <span class="glint g-sm d2 gl-s1" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#spark" fill="#FFFCFC"/></svg></span>
+      <h1>Aloha, <span class="hi-name">Leilani<svg class="hibiscus" viewBox="0 0 32 32" aria-hidden="true"><use href="#hibiscus"/></svg></span></h1>
+      <p class="region"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-pin"/></svg><span>Honolulu, Hawaii</span></p>
+    </div>
+
+    <section class="hero" aria-label="Next payday">
+      <span class="hero-gem" aria-hidden="true"><svg viewBox="0 0 200 170"><use href="#gem-outline"/></svg></span>
+      <span class="glint g-lg d3 gl-p1" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#spark" fill="#FFFCFC"/></svg></span>
+      <span class="glint g-sm d1 gl-p2" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#spark" fill="#82CAFB"/></svg></span>
+      <p class="hero-label">Next payday</p>
+      <p class="hero-date">Friday, September 18</p>
+      <p class="hero-count"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-clock"/></svg>Tomorrow</p>
+      <p class="hero-work">For work from Sep 1 to Sep 14</p>
+    </section>
+
+    <nav class="tiles" aria-label="Menu">
+      <a class="tile" href="#s3"><span class="tile-icon ti-peach"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-dayoff"/></svg></span><span class="tile-body"><span class="tile-title">Request a day off</span><span class="tile-sub">Please ask at least 2 weeks ahead</span></span><span class="tile-end"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-chev"/></svg></span></a>
+      <a class="tile" href="#s3"><span class="tile-icon ti-lblue"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-survey"/></svg></span><span class="tile-body"><span class="tile-title">Supervisor survey</span><span class="tile-sub">Once a month, tell us how it is going</span></span><span class="tile-end"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-chev"/></svg></span></a>
+      <a class="tile" href="#s3"><span class="tile-icon ti-blue"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-cal"/></svg></span><span class="tile-body"><span class="tile-title">Pay calendar</span><span class="tile-sub">See all your paydays</span></span><span class="tile-end"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-chev"/></svg></span></a>
+      <a class="tile" href="#s3"><span class="tile-icon ti-navy"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-msg"/></svg></span><span class="tile-body"><span class="tile-title">Request a change</span><span class="tile-sub">Schedule, pay, your info, anything</span></span><span class="tile-end"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-chev"/></svg></span></a>
+    </nav>
+
+    <footer class="footer">
+      <p class="footer-support">Questions? Talk to your supervisor.</p>
+      <p class="tagline"><span class="mini-gem" aria-hidden="true"></span>Harder Than Diamonds<span class="mini-gem b" aria-hidden="true"></span></p>
+    </footer>
+  </main>
+</section>
+
+<!-- ========== 4. CEO WELCOME, ENGLISH ========== -->
+<div class="pv-label">
+  <span class="pv-num" aria-hidden="true">4</span>
+  <div><h2>Message from the CEO, English</h2><p>The first thing a new team member sees after signing in the first time. The C becomes Cristy’s photo when it is ready.</p></div>
+</div>
+<section class="phone" aria-label="Screen 4, Message from the CEO in English">
+  <div class="ceo" lang="en">
+    <div class="ceo-top">
+      <span class="ceo-brand"><span class="brand-mark"><img src="../../icons/icon-192.png" alt="Cristal Clear Cleaning"></span><span class="ceo-brand-text">Cristal Clear Cleaning</span></span>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" class="lang-btn" lang="en" aria-pressed="true">English</button>
+        <button type="button" class="lang-btn" lang="es" aria-pressed="false">Español</button>
+      </div>
+    </div>
+    <span class="glint g-lg d1 gl-c1" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#spark" fill="#FFFCFC"/></svg></span>
+    <span class="glint g-sm d3 gl-c2" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#spark" fill="#82CAFB"/></svg></span>
+    <article class="letter" aria-labelledby="ceo-title-en">
+      <span class="corner c-tl" aria-hidden="true"></span><span class="corner c-tr" aria-hidden="true"></span><span class="corner c-bl" aria-hidden="true"></span><span class="corner c-br" aria-hidden="true"></span>
+      <span class="crest" aria-hidden="true"><i></i><i class="big"></i><i></i></span>
+      <figure class="ceo-photo">
+        <div class="ceo-avatar"><img src="../cristy.jpg" alt="Cristy Bartley, Founder and CEO" width="240" height="240"></div>
+      </figure>
+      <h2 class="ceo-title" id="ceo-title-en">A message from our CEO</h2>
+      <div class="flourish" aria-hidden="true"><b></b><i></i><b></b></div>
+      <div class="letter-body">
+        <p class="letter-lead">Welcome to Cristal Clear Cleaning!</p>
+        <p>I am so grateful you chose to join our team. Every home you clean, every guest who walks into a spotless space, and every owner who trusts us starts with you. You are the heart of this company.</p>
+        <p>Here you will always be treated with respect, and you will always have people behind you. If you ever need anything, talk to your supervisor or reach out to our office. Your voice matters to me.</p>
+        <p>Thank you for bringing your best every day. Together, we are <strong>Harder Than Diamonds</strong>.</p>
+      </div>
+      <div class="signoff">
+        <p class="signoff-with">With gratitude,</p>
+        <p class="signoff-name">Cristy Bartley<svg viewBox="0 0 130 14" aria-hidden="true"><path d="M2 9C30 3 70 2 124 6" fill="none" stroke="url(#goldLine)" stroke-width="1.6" stroke-linecap="round"/><path d="M118 2l4 4-4 4-4-4z" fill="#C29A48"/></svg></p>
+        <p class="signoff-role">Founder and CEO</p>
+      </div>
+      <button type="button" class="btn"><span>Let’s get started</span><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"/></svg></button>
+      <span class="crest crest-b" aria-hidden="true"><i></i><i class="big"></i><i></i></span>
+    </article>
+  </div>
+</section>
+
+<!-- ========== 5. CEO WELCOME, SPANISH ========== -->
+<div class="pv-label">
+  <span class="pv-num" aria-hidden="true">5</span>
+  <div><h2>Message from the CEO, Spanish</h2><p>The same welcome for a team member who chose Español.</p></div>
+</div>
+<section class="phone" aria-label="Screen 5, Message from the CEO in Spanish">
+  <div class="ceo" lang="es">
+    <div class="ceo-top">
+      <span class="ceo-brand"><span class="brand-mark"><img src="../../icons/icon-192.png" alt="Cristal Clear Cleaning"></span><span class="ceo-brand-text">Cristal Clear Cleaning</span></span>
+      <div class="lang-toggle" role="group" aria-label="Idioma">
+        <button type="button" class="lang-btn" lang="en" aria-pressed="false">English</button>
+        <button type="button" class="lang-btn" lang="es" aria-pressed="true">Español</button>
+      </div>
+    </div>
+    <span class="glint g-lg d2 gl-c1" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#spark" fill="#FFFCFC"/></svg></span>
+    <span class="glint g-sm d4 gl-c2" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#spark" fill="#82CAFB"/></svg></span>
+    <article class="letter" aria-labelledby="ceo-title-es">
+      <span class="corner c-tl" aria-hidden="true"></span><span class="corner c-tr" aria-hidden="true"></span><span class="corner c-bl" aria-hidden="true"></span><span class="corner c-br" aria-hidden="true"></span>
+      <span class="crest" aria-hidden="true"><i></i><i class="big"></i><i></i></span>
+      <figure class="ceo-photo">
+        <div class="ceo-avatar"><img src="../cristy.jpg" alt="Cristy Bartley, Fundadora y CEO" width="240" height="240"></div>
+      </figure>
+      <h2 class="ceo-title" id="ceo-title-es">Un mensaje de nuestra CEO</h2>
+      <div class="flourish" aria-hidden="true"><b></b><i></i><b></b></div>
+      <div class="letter-body">
+        <p class="letter-lead">¡Le damos la bienvenida a Cristal Clear Cleaning!</p>
+        <p>Estoy muy agradecida de que haya decidido unirse a nuestro equipo. Cada casa que usted limpia, cada huésped que llega a un espacio impecable y cada cliente que confía en nosotros comienza con usted. Usted es el corazón de esta compañía.</p>
+        <p>Aquí siempre recibirá respeto y siempre tendrá personas que le apoyan. Si alguna vez necesita algo, hable con su supervisor o comuníquese con nuestra oficina. Su voz es importante para mí.</p>
+        <p>Gracias por dar lo mejor de usted cada día. En equipo somos <strong lang="en">Harder Than Diamonds</strong>.</p>
+      </div>
+      <div class="signoff">
+        <p class="signoff-with">Con gratitud,</p>
+        <p class="signoff-name">Cristy Bartley<svg viewBox="0 0 130 14" aria-hidden="true"><path d="M2 9C30 3 70 2 124 6" fill="none" stroke="url(#goldLine)" stroke-width="1.6" stroke-linecap="round"/><path d="M118 2l4 4-4 4-4-4z" fill="#C29A48"/></svg></p>
+        <p class="signoff-role">Fundadora y CEO</p>
+      </div>
+      <button type="button" class="btn"><span>Comencemos</span><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"/></svg></button>
+      <span class="crest crest-b" aria-hidden="true"><i></i><i class="big"></i><i></i></span>
+    </article>
+  </div>
+</section>
+
+<p class="pv-end">End of preview A. Drawings are placeholders you can swap for your own photos.</p>
+
+<script>
+(function () {
+  "use strict";
+  // Preview only: the keypad fills the diamond dots, and language buttons toggle their pressed state.
+  var dots = document.querySelectorAll("#pin-dots .dot");
+  var box = document.getElementById("pin-dots");
+  var count = 2;
+  function paint() {
+    for (var i = 0; i < dots.length; i++) dots[i].classList.toggle("filled", i < count);
+    box.setAttribute("aria-label", count + " of 4 digits entered");
+  }
+  document.getElementById("keypad").addEventListener("click", function (e) {
+    var key = e.target.closest("button.key");
+    if (!key) return;
+    if (key.classList.contains("key-del")) count = Math.max(0, count - 1);
+    else count = count >= 4 ? 1 : count + 1;
+    paint();
+  });
+  Array.prototype.forEach.call(document.querySelectorAll(".lang-toggle"), function (group) {
+    group.addEventListener("click", function (e) {
+      var b = e.target.closest(".lang-btn");
+      if (!b) return;
+      Array.prototype.forEach.call(group.querySelectorAll(".lang-btn"), function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+    });
+  });
+})();
+</script>
+</body>
+</html>
