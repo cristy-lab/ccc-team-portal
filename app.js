@@ -121,6 +121,14 @@
     return "greet_evening";
   }
 
+  /* The team in Hawaii gets "Aloha": the region names Hawaii, an island or Honolulu, in any case,
+     with or without accents and okinas (Hawái, Oʻahu). */
+  function isHawaii(region) {
+    var r = String(region == null ? "" : region).toLowerCase();
+    if (r.normalize) r = r.normalize("NFD");
+    return /hawai|oahu|maui|kauai|honolulu/.test(r.replace(/[^a-z]/g, ""));
+  }
+
   function langFromSearch(search) {
     var m = /[?&]lang=(en|es)(?:&|#|$)/i.exec(search || "");
     return m ? m[1].toLowerCase() : null;
@@ -340,8 +348,24 @@
     }).slice(0, 100);
   }
 
+  /* ---- The message from the CEO ---- */
+
+  /* It opens by itself only for a new hire: the dashboard's own person says show_welcome is exactly true
+     (a dashboard saved by an older version has no show_welcome, so it never opens by itself). */
+  function wantsWelcome(dash) {
+    var p = dash && dash.person;
+    return !!p && p.show_welcome === true && typeof p.id === "string" && p.id !== "";
+  }
+
+  /* Once per person on this phone. The key stays after sign out, so it never opens again for that person. */
+  function welcomeKey(personId) {
+    return "ccc.welcome:" + personId;
+  }
+
   var Helpers = {
     CATEGORIES: CATEGORIES,
+    wantsWelcome: wantsWelcome,
+    welcomeKey: welcomeKey,
     WISH_EMOJIS: WISH_EMOJIS,
     todaysCelebrations: todaysCelebrations,
     wishView: wishView,
@@ -364,6 +388,7 @@
     periodFlags: periodFlags,
     groupByYear: groupByYear,
     greetingKey: greetingKey,
+    isHawaii: isHawaii,
     langFromSearch: langFromSearch,
     resolveLang: resolveLang,
     cleanDetails: cleanDetails,
@@ -495,6 +520,7 @@
     briefcase: [["rect", { x: 2, y: 7, width: 20, height: 14, rx: 2 }], ["path", { d: "M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" }]],
     refresh: [["path", { d: "M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5M21 12a9 9 0 0 1-15 6.7L3 16M3 21v-5h5" }]],
     wallet: [["rect", { x: 2, y: 6, width: 20, height: 12, rx: 2 }], ["circle", { cx: 12, cy: 12, r: 2 }], ["path", { d: "M6 12h.01M18 12h.01" }]],
+    arrowRight: [["path", { d: "M5 12h14M13 6l6 6-6 6" }]],
     cap: [["path", { d: "M22 10L12 5 2 10l10 5 10-5z" }], ["path", { d: "M6 12v5c3 2.7 9 2.7 12 0v-5M22 10v6" }]]
   };
 
@@ -509,6 +535,14 @@
     return svgEl("svg", { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", "stroke-width": 2, "stroke-linecap": "round",
       "stroke-linejoin": "round", "aria-hidden": "true", focusable: "false" },
     (ICONS[name] || []).map(function (spec) { return svgEl(spec[0], spec[1]); }));
+  }
+
+  /* A small gem: its outline, the table on top and the facet lines (the PIN dots and the CEO welcome burst). */
+  function gemSvg() {
+    return svgEl("svg", { viewBox: "0 0 30 26", "aria-hidden": "true" },
+      [["pg", "M8 2h14l6.5 8L15 24 1.5 10z"], ["pc", "M8 2l3.5 8h7L22 2z"], ["pf", "M1.5 10h27M8 2l3.5 8L15 24l3.5-14L22 2"]].map(function (p) {
+        return svgEl("path", { class: p[0], d: p[1] });
+      }));
   }
 
   /* The birthday cake of the approved preview, with candles that flicker. */
@@ -561,7 +595,7 @@
   /* ---- 3. State, router, shared UI ---- */
 
   var CFG = root.CCC_CONFIG || {};
-  var APP_VERSION = CFG.APP_VERSION || "0.3.0";
+  var APP_VERSION = CFG.APP_VERSION || "0.3.1";
 
   var state = {
     lang: "en",
@@ -590,8 +624,8 @@
     wishPending: {} // person id -> {emoji: true} while a wish is on its way
   };
 
-  var ROUTES = ["login", "choose", "home", "calendar", "request", "requests", "done", "training"];
-  var AUTH_ROUTES = { home: 1, calendar: 1, request: 1, requests: 1, done: 1, training: 1 };
+  var ROUTES = ["login", "choose", "home", "calendar", "request", "requests", "done", "training", "welcome"];
+  var AUTH_ROUTES = { home: 1, calendar: 1, request: 1, requests: 1, done: 1, training: 1, welcome: 1 };
   var DATA_ROUTES = { home: 1, calendar: 1, requests: 1 };
   var currentRoute = null;
   var lockTimer = null;
@@ -659,6 +693,7 @@
     // Android back while the celebration is open leaves its history entry: close it and stay put.
     if (party && !popped && !(root.history.state && root.history.state.party)) closeParty();
     if (routeFromHash() !== currentRoute) render();
+    else welcomeNow();
     if (popped) finishPartyPop();
   }
 
@@ -670,11 +705,19 @@
     if (signedIn && (route === "login" || route === "choose")) route = "home";
     if (route === "choose" && !state.choices) route = "login";
     if (route === "done" && !state.lastRequest) route = "home";
+    // A new hire's first visit: the message from the CEO comes before home and before any birthday celebration.
+    if (route === "home" && signedIn && welcomeDue()) {
+      route = "welcome";
+      welcomeAuto = true;
+    } else if (route !== "welcome") {
+      welcomeAuto = false;
+    }
     if (root.location.hash !== "#/" + route) replaceHash(route);
 
     var changed = route !== currentRoute;
     if (changed && currentRoute === "login") stopLockTimer();
     currentRoute = route;
+    doc.documentElement.setAttribute("data-screen", route);
 
     var app = $("app");
     if (!app) return;
@@ -686,6 +729,7 @@
     updateChrome();
     fillParty();
     if (route === "home") autoParty();
+    if (changed && route === "welcome") welcomeOpened(screen);
 
     if (changed && DATA_ROUTES[route] && booted && Date.now() - state.lastRefresh > 60000) {
       root.setTimeout(refreshDashboard, 0);
@@ -693,7 +737,8 @@
     if (changed) {
       try { root.scrollTo(0, 0); } catch (e) { /* ignore */ }
       var h1 = screen.querySelector("h1");
-      if (h1 && booted) {
+      // The letter's heading takes the focus even when the app opens on it.
+      if (h1 && (booted || route === "welcome")) {
         h1.setAttribute("tabindex", "-1");
         try { h1.focus({ preventScroll: true }); } catch (e) { h1.focus(); }
       }
@@ -1102,7 +1147,9 @@
     var plate = h("div", { class: "logo-plate" }, imgWithFallback("img/logo.png", t("logo_alt"), null, fallback));
 
     var dots = h("div", { class: "pin-dots", id: "pin-dots", "aria-hidden": "true" });
-    for (var i = 0; i < 4; i++) dots.appendChild(h("span", { class: "dot" + (i < state.pin.length ? " filled" : "") }));
+    for (var i = 0; i < 4; i++) {
+      dots.appendChild(h("span", { class: "dot" + (i < state.pin.length ? " filled" : "") }, gemSvg()));
+    }
 
     var box = h("div", { class: "login-msg", id: "login-msg", role: "status", "aria-live": "polite" });
     fillLoginMsg(box);
@@ -1566,6 +1613,7 @@
     if (!p) return;
     root.clearTimeout(p.timer);
     if (p.next) p.next();
+    else welcomeNow();
   }
 
   function onPartyResize() {
@@ -1749,6 +1797,7 @@
       if (target.tagName === "H1") target.setAttribute("tabindex", "-1");
       try { target.focus({ preventScroll: true }); } catch (e) { target.focus(); }
     }
+    if (byPerson && !partyPop) welcomeNow();
   }
 
   /* Keyboard inside the celebration: Escape closes it, Tab stays inside it. */
@@ -1928,11 +1977,14 @@
   SCREENS.home = function () {
     var person = state.person || {};
     var first = typeof person.first_name === "string" ? person.first_name.trim() : "";
-    var greet = t(greetingKey(new Date().getHours()), { name: first });
+    var hawaii = isHawaii(person.region);
+    var greet = t(hawaii ? "greet_aloha" : greetingKey(new Date().getHours()), { name: first });
     if (!first) greet = greet.replace(/,\s*$/, "");
     var parts = [
-      h("div", { class: "greeting" }, [
-        h("h1", { text: greet }),
+      h("div", { class: "greeting" + (hawaii ? " is-hawaii" : "") }, [
+        // Hawaii: "Aloha," in gold, then the name (the drawn sunset behind it is only decoration, in app.css).
+        hawaii ? h("h1", null, first ? [h("span", { class: "aloha", text: t("greet_aloha", { name: "" }).trim() }), " ", h("span", { class: "hi-name", text: first })]
+          : [h("span", { class: "aloha", text: greet })]) : h("h1", { text: greet }),
         person.region ? h("p", { class: "region" }, [icon("pin"), h("span", { text: String(person.region) })]) : null
       ])
     ];
@@ -1952,10 +2004,79 @@
       ]));
     }
     parts.push(tiles(dash));
+    // A quiet link, not a sixth button: everyone can read the message from the CEO again.
+    parts.push(h("a", { class: "ceo-link", href: "#/welcome", on: { click: navClick("welcome") } }, [
+      h("span", { class: "ceo-thumb", "aria-hidden": "true" }, imgWithFallback(CEO_PHOTO, "", null, h("span", { text: "C" }))),
+      h("span", { class: "ceo-link-text", text: t("ceo_link") }),
+      icon("chevronRight")
+    ]));
     parts.push(requestsSection());
     parts.push(a2hsCard());
     parts.push(footer());
     return h("div", { class: "home" }, parts);
+  };
+
+  /* ---- The message from the CEO ---- */
+
+  var CEO_PHOTO = "img/ceo-cristy.jpg";
+  var CEO_NAME = "Cristy Bartley";
+  var welcomeSeen = {}; // person id -> true once the letter opened in this app session (storage may be blocked)
+  var welcomeAuto = false; // the letter on screen opened by itself
+
+  function welcomeDue() {
+    if (party || partyPop || !wantsWelcome(state.dash)) return false;
+    var id = state.dash.person.id;
+    return !welcomeSeen[id] && store.get(welcomeKey(id)) !== "1";
+  }
+
+  /* A letter that came due while a celebration was open opens as soon as the celebration closes. */
+  function welcomeNow() {
+    if (currentRoute === "home" && state.token && welcomeDue()) render();
+  }
+
+  /* Remembered as soon as it opens, so a reload never shows it again. Then a burst of gems plays once around the photo. */
+  function welcomeOpened(screen) {
+    if (wantsWelcome(state.dash)) {
+      welcomeSeen[state.dash.person.id] = true;
+      store.set(welcomeKey(state.dash.person.id), "1");
+    }
+    if (reducedMotion()) return;
+    var burst = h("span", { class: "burst", "aria-hidden": "true" });
+    for (var i = 0; i < 10; i++) burst.appendChild(i % 3 === 2 ? h("i") : gemSvg());
+    var photo = screen.querySelector(".ceo-photo");
+    photo.insertBefore(burst, photo.firstChild);
+  }
+
+  /* Let's get started: home (where the birthday celebration may open), or back to where the link was. */
+  function closeWelcome() {
+    if (welcomeAuto) go("home", true);
+    else goBack("home");
+  }
+
+  SCREENS.welcome = function () {
+    var gem = function (cls) { return h("span", { class: cls, "aria-hidden": "true" }); };
+    var alt = CEO_NAME + ", " + t("ceo_role");
+    var motto = t("ceo_p3").split("{motto}");
+    return h("div", { class: "ceo" }, h("article", { class: "letter", "aria-labelledby": "ceo-title" }, [
+      gem("corner c-tl"), gem("corner c-tr"), gem("corner c-bl"), gem("corner c-br"), gem("crest"),
+      h("div", { class: "ceo-photo" }, h("div", { class: "ceo-avatar" },
+        imgWithFallback(CEO_PHOTO, alt, null, h("span", { class: "ceo-initial", role: "img", "aria-label": alt, text: "C" })))),
+      h("h1", { id: "ceo-title", class: "ceo-title", text: t("ceo_title") }),
+      h("div", { class: "flourish", "aria-hidden": "true" }, [h("b"), h("i"), h("b")]),
+      h("div", { class: "letter-body" }, [
+        h("p", { class: "letter-lead", text: t("ceo_lead") }),
+        h("p", { text: t("ceo_p1") }),
+        h("p", { text: t("ceo_p2") }),
+        h("p", null, [motto[0], h("strong", { lang: state.lang === "es" ? "en" : null, text: t("tagline") }), motto[1] || ""])
+      ]),
+      h("div", { class: "signoff" }, [
+        h("p", { class: "signoff-with", text: t("ceo_with") }),
+        h("p", { class: "signoff-name", text: CEO_NAME }),
+        h("p", { class: "signoff-role", text: t("ceo_role") })
+      ]),
+      h("button", { type: "button", class: "btn letter-go", on: { click: closeWelcome } }, [h("span", { text: t("ceo_go") }), icon("arrowRight")]),
+      gem("crest crest-b")
+    ]));
   };
 
   /* ---- Pay calendar ---- */

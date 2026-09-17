@@ -4,13 +4,13 @@
  * Rules:
  *   * Only same origin GET requests are handled. API calls are POST and are never cached.
  *   * Page navigations: network first, cached index.html when offline.
- *   * App shell files (css, js, manifest, icons, logo): served from the versioned cache.
+ *   * App shell files (css, js, manifest, icons, logo, the design art and the CEO photo): served from the versioned cache.
  *   * PDF files: network first, cached copy only as an offline fallback.
  */
-var CACHE_VERSION = "0.3.0-1";
+var CACHE_VERSION = "0.3.1-1";
 var SHELL_CACHE = "ccc-shell-" + CACHE_VERSION;
 var RUNTIME_CACHE = "ccc-runtime-" + CACHE_VERSION;
-var ASSET_VERSION = "0.3.0";
+var ASSET_VERSION = "0.3.1";
 
 var SHELL = [
   "./",
@@ -27,7 +27,18 @@ var SHELL = [
   "icons/apple-touch-icon.png",
   "icons/favicon-48.png",
   "img/logo.png",
-  "img/mark.png"
+  "img/mark.png",
+  "img/lattice-ink.svg",
+  "img/lattice-glow.svg",
+  "img/keypad-gem.svg",
+  "img/keypad-gem-dark.svg",
+  "img/hero-gem.svg",
+  "img/hawaii-sunset.svg",
+  "img/hibiscus.svg",
+  "img/ceo-cristy.jpg",
+  "img/paper-grain.svg",
+  "img/letter-crest.svg",
+  "img/signature-line.svg"
 ];
 
 self.addEventListener("install", function (event) {

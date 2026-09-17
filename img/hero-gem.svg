@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="170" viewBox="0 0 200 170">
+<defs><linearGradient id="e" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#82CAFB" stop-opacity=".55"/><stop offset="1" stop-color="#82CAFB" stop-opacity=".12"/></linearGradient></defs>
+<path d="M5 55L40 10L60 55Z M60 55L80 10L100 55Z M100 55L120 10L140 55Z M140 55L160 10L195 55Z" fill="#F6A078" fill-opacity=".16"/>
+<path d="M40 10H80L60 55Z M80 10H120L100 55Z M120 10H160L140 55Z" fill="#82CAFB" fill-opacity=".2"/>
+<path d="M5 55H60L100 165Z M100 55H140L100 165Z" fill="#82CAFB" fill-opacity=".14"/>
+<path d="M60 55H100V165Z M140 55H195L100 165Z" fill="#F6A078" fill-opacity=".1"/>
+<g fill="none" stroke="url(#e)" stroke-width="1.4" stroke-linejoin="round"><path d="M40 10H160L195 55L100 165L5 55Z"/><path d="M5 55H195M40 10L60 55L80 10L100 55L120 10L140 55L160 10M60 55L100 165L140 55M100 55V165"/></g>
+</svg>

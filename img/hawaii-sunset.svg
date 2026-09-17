@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+<!-- Sunset over Diamond Head, for team members in Hawaii. Drawn for the CCC Team Portal. -->
+<defs>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="220" gradientUnits="userSpaceOnUse">
+<stop offset="0" stop-color="#17134F"/>
+<stop offset=".23" stop-color="#1D185E"/>
+<stop offset=".49" stop-color="#352878"/>
+<stop offset=".675" stop-color="#7C3F86"/>
+<stop offset=".814" stop-color="#D5687A"/>
+<stop offset=".923" stop-color="#F6A078"/>
+<stop offset="1" stop-color="#FFD59C"/>
+</linearGradient>
+<linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#EE9A7D"/>
+<stop offset=".22" stop-color="#B25F82"/>
+<stop offset=".6" stop-color="#4B2E7C"/>
+<stop offset="1" stop-color="#211B63"/>
+</linearGradient>
+<radialGradient id="sun" cx=".5" cy=".5" r=".5">
+<stop offset="0" stop-color="#FFF4CC"/>
+<stop offset=".65" stop-color="#FFD48E"/>
+<stop offset="1" stop-color="#FFB072"/>
+</radialGradient>
+<radialGradient id="glow" cx=".5" cy=".5" r=".5">
+<stop offset="0" stop-color="#FFD9A0" stop-opacity=".75"/>
+<stop offset="1" stop-color="#FFB27A" stop-opacity="0"/>
+</radialGradient>
+<path id="frond" d="M0 0C16-15 48-21 84 4C74-3 69-2 63-3L66 4C56-2 50-1 44-2L47 5C38 0 31 1 24 0L27 6C18 3 9 3 0 0Z"/>
+</defs>
+<rect width="400" height="222" fill="url(#sky)"/>
+<g fill="#FFFCFC">
+<circle cx="214" cy="14" r="1" opacity=".55"/><circle cx="286" cy="30" r="1.2" opacity=".6"/><circle cx="352" cy="12" r=".9" opacity=".5"/>
+<circle cx="150" cy="40" r=".8" opacity=".45"/><circle cx="330" cy="54" r=".8" opacity=".45"/><circle cx="386" cy="84" r="1" opacity=".5"/>
+<circle cx="30" cy="72" r=".9" opacity=".7"/><circle cx="118" cy="64" r="1.1" opacity=".6"/><circle cx="196" cy="80" r=".8" opacity=".6"/>
+<circle cx="252" cy="62" r="1" opacity=".5"/><circle cx="160" cy="98" r=".7" opacity=".45"/>
+</g>
+<g transform="translate(0 50)">
+<circle cx="212" cy="168" r="96" fill="url(#glow)"/>
+<g opacity=".55"><rect x="146" y="118" width="150" height="3.5" rx="1.75" fill="#F6A078"/><rect x="196" y="127" width="96" height="2.5" rx="1.25" fill="#F6A078"/><rect x="30" y="106" width="92" height="3" rx="1.5" fill="#C5648C"/><rect x="60" y="114" width="60" height="2" rx="1" fill="#C5648C"/></g>
+<circle cx="212" cy="168" r="27" fill="url(#sun)"/>
+<path d="M-10 170V151C14 148 36 141 58 132C74 125 86 120 100 119C111 118 119 117 125 113C129 110 132 110 135 113C143 123 153 139 169 151C185 162 207 168 234 170Z" fill="#4E2F6F"/>
+<path d="M100 119C111 118 119 117 125 113C129 110 132 110 135 113C143 123 153 139 169 151" fill="none" stroke="#F6A078" stroke-opacity=".5" stroke-width="1.2" stroke-linecap="round"/>
+<path d="M296 170C320 163 350 159 410 161V170Z" fill="#6B3A79" opacity=".8"/>
+<rect y="168" width="400" height="82" fill="url(#sea)"/>
+<g fill="#FFE2A8"><rect x="184" y="173" width="56" height="2.4" rx="1.2" opacity=".95"/><rect x="190" y="181" width="44" height="2.2" rx="1.1" opacity=".8"/><rect x="195" y="190" width="34" height="2" rx="1" opacity=".65"/><rect x="199" y="200" width="26" height="2" rx="1" opacity=".5"/><rect x="203" y="211" width="18" height="1.8" rx=".9" opacity=".38"/><rect x="206" y="223" width="12" height="1.6" rx=".8" opacity=".26"/></g>
+<g fill="none" stroke="#F6A078" stroke-width="1.1" stroke-linecap="round" opacity=".35"><path d="M40 186q14-3 28 0"/><path d="M110 198q16-3 32 0"/><path d="M270 190q12-3 24 0"/><path d="M60 216q18-4 36 0"/></g>
+<path d="M262 166l0-14 9 13z" fill="#2A1E5A"/><path d="M256 166h18l-3 3h-12z" fill="#2A1E5A"/>
+<g fill="none" stroke="#2A1E5A" stroke-width="1.4" stroke-linecap="round"><path d="M236 118q4-3 7 0q3-3 7 0"/><path d="M252 108q3-2.4 5.5 0q2.5-2.4 5.5 0"/></g>
+<path d="M150 250C214 236 290 226 410 224V250Z" fill="#120E38"/>
+<g fill="#120E38">
+<path d="M318 250C322 200 330 140 344 78L350 80C338 140 332 200 330 250Z"/>
+<g transform="translate(347 78)">
+<use href="#frond" transform="rotate(-30)"/><use href="#frond" transform="rotate(4)"/><use href="#frond" transform="rotate(36) scale(.9)"/><use href="#frond" transform="rotate(-70) scale(.8)"/>
+<use href="#frond" transform="scale(-1 1) rotate(-30)"/><use href="#frond" transform="scale(-1 1) rotate(4)"/><use href="#frond" transform="scale(-1 1) rotate(36) scale(.9)"/><use href="#frond" transform="scale(-1 1) rotate(-70) scale(.8)"/>
+<circle cx="-4" cy="6" r="4"/><circle cx="4" cy="7" r="4"/>
+</g>
+<path d="M392 250C394 210 392 170 382 128L387 127C398 170 400 210 404 250Z"/>
+<g transform="translate(384 127) scale(.68)">
+<use href="#frond" transform="rotate(-28)"/><use href="#frond" transform="rotate(8)"/><use href="#frond" transform="rotate(-72) scale(.8)"/>
+<use href="#frond" transform="scale(-1 1) rotate(-28)"/><use href="#frond" transform="scale(-1 1) rotate(8)"/><use href="#frond" transform="scale(-1 1) rotate(40) scale(.9)"/><use href="#frond" transform="scale(-1 1) rotate(-72) scale(.8)"/>
+</g>
+</g>
+</g>
+</svg>

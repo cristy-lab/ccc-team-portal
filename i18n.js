@@ -46,6 +46,7 @@
       greet_morning: "Good morning, {name}",
       greet_afternoon: "Good afternoon, {name}",
       greet_evening: "Good evening, {name}",
+      greet_aloha: "Aloha, {name}",
       home_loading: "Getting your info…",
       next_payday: "Next payday",
       today_excl: "Today!",
@@ -68,6 +69,17 @@
       tile_training_sub: "Courses and quizzes for the team",
       coming_soon: "Coming soon",
       training_body: "Trainings are coming soon. You will take them right here, in English or Spanish.",
+
+      // The message from the CEO. {motto} is "Harder Than Diamonds" (the tagline), in bold.
+      ceo_link: "Message from the CEO",
+      ceo_title: "A message from our CEO",
+      ceo_lead: "Welcome to Cristal Clear Cleaning!",
+      ceo_p1: "I am so grateful you chose to join our team. Every home you clean, every guest who walks into a spotless space, and every owner who trusts us starts with you. You are the heart of this company.",
+      ceo_p2: "Here you will always be treated with respect, and you will always have people behind you. If you ever need anything, talk to your supervisor or reach out to our office. Your voice matters to me.",
+      ceo_p3: "Thank you for bringing your best every day. Together, we are {motto}.",
+      ceo_with: "With gratitude,",
+      ceo_role: "Founder and CEO",
+      ceo_go: "Let’s get started",
 
       my_requests: "My requests",
       see_all: "See all",
@@ -204,6 +216,7 @@
       greet_morning: "Buenos días, {name}",
       greet_afternoon: "Buenas tardes, {name}",
       greet_evening: "Buenas noches, {name}",
+      greet_aloha: "Aloha, {name}",
       home_loading: "Buscando su información…",
       next_payday: "Próximo día de pago",
       today_excl: "¡Hoy!",
@@ -226,6 +239,17 @@
       tile_training_sub: "Cursos y exámenes para el equipo",
       coming_soon: "Próximamente",
       training_body: "Las capacitaciones llegan pronto. Las podrá tomar aquí mismo, en inglés o en español.",
+
+      ceo_link: "Mensaje de la CEO",
+      ceo_title: "Un mensaje de nuestra CEO",
+      ceo_lead: "¡Le damos la bienvenida a Cristal Clear Cleaning!",
+      ceo_p1: "Estoy muy agradecida de que haya decidido unirse a nuestro equipo. Cada casa que usted limpia, cada huésped que llega a un espacio impecable y cada cliente que confía en nosotros comienza con usted. Usted es el corazón de esta compañía.",
+      ceo_p2: "Aquí siempre recibirá respeto y siempre tendrá personas que le apoyan. Si alguna vez necesita algo, hable con su supervisor o comuníquese con nuestra oficina. Su voz es importante para mí.",
+      // {motto} stays in English, marked lang="en" by the app.
+      ceo_p3: "Gracias por dar lo mejor de usted cada día. En equipo somos {motto}.",
+      ceo_with: "Con gratitud,",
+      ceo_role: "Fundadora y CEO",
+      ceo_go: "Comencemos",
 
       my_requests: "Mis solicitudes",
       see_all: "Ver todas",
