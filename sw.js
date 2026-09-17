@@ -7,10 +7,10 @@
  *   * App shell files (css, js, manifest, icons, logo): served from the versioned cache.
  *   * PDF files: network first, cached copy only as an offline fallback.
  */
-var CACHE_VERSION = "0.2.0-1";
+var CACHE_VERSION = "0.2.1-1";
 var SHELL_CACHE = "ccc-shell-" + CACHE_VERSION;
 var RUNTIME_CACHE = "ccc-runtime-" + CACHE_VERSION;
-var ASSET_VERSION = "0.2.0";
+var ASSET_VERSION = "0.2.1";
 
 var SHELL = [
   "./",

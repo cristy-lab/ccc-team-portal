@@ -1,6 +1,6 @@
 /* CCC Team Portal strings and date formatting.
  *
- * NOTE: the Spanish copy below is pending proofread by Lianet or Cristy.
+ * NOTE: Spanish copy is pending proofread by the office.
  *
  * Copy rules: no em dash, no en dash, and no spaced hyphen used as a dash between words or numbers.
  * English stays short and plain. Spanish uses "usted" everywhere.
@@ -64,6 +64,10 @@
       tile_calendar_sub: "See all your paydays",
       tile_change_title: "Request a change",
       tile_change_sub: "Schedule, pay, your info, anything",
+      tile_training_title: "Trainings",
+      tile_training_sub: "Courses and quizzes for the team",
+      coming_soon: "Coming soon",
+      training_body: "Trainings are coming soon. You will take them right here, in English or Spanish.",
 
       my_requests: "My requests",
       see_all: "See all",
@@ -188,6 +192,10 @@
       tile_calendar_sub: "Vea todos sus días de pago",
       tile_change_title: "Pedir un cambio",
       tile_change_sub: "Horario, pago, sus datos u otra cosa",
+      tile_training_title: "Capacitaciones",
+      tile_training_sub: "Cursos y exámenes para el equipo",
+      coming_soon: "Próximamente",
+      training_body: "Las capacitaciones llegan pronto. Las podrá tomar aquí mismo, en inglés o en español.",
 
       my_requests: "Mis solicitudes",
       see_all: "Ver todas",

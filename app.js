@@ -21,6 +21,7 @@
   var CONTACTS = ["whatsapp", "call", "text", "none"];
   var DETAILS_MIN = 10;
   var DETAILS_MAX = 1000;
+  var KEY_RE = /^[A-Za-z0-9_-]{16,64}$/; // client_request_id
 
   function ymdToday(now) {
     return I.toYMD(now || new Date());
@@ -402,7 +403,8 @@
     reply: [["path", { d: "M9 17l-5-5 5-5M20 18v-2a4 4 0 0 0-4-4H4" }]],
     briefcase: [["rect", { x: 2, y: 7, width: 20, height: 14, rx: 2 }], ["path", { d: "M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" }]],
     refresh: [["path", { d: "M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5M21 12a9 9 0 0 1-15 6.7L3 16M3 21v-5h5" }]],
-    wallet: [["rect", { x: 2, y: 6, width: 20, height: 12, rx: 2 }], ["circle", { cx: 12, cy: 12, r: 2 }], ["path", { d: "M6 12h.01M18 12h.01" }]]
+    wallet: [["rect", { x: 2, y: 6, width: 20, height: 12, rx: 2 }], ["circle", { cx: 12, cy: 12, r: 2 }], ["path", { d: "M6 12h.01M18 12h.01" }]],
+    cap: [["path", { d: "M22 10L12 5 2 10l10 5 10-5z" }], ["path", { d: "M6 12v5c3 2.7 9 2.7 12 0v-5M22 10v6" }]]
   };
 
   function icon(name) {
@@ -439,7 +441,7 @@
   /* ---- 3. State, router, shared UI ---- */
 
   var CFG = root.CCC_CONFIG || {};
-  var APP_VERSION = CFG.APP_VERSION || "0.2.0";
+  var APP_VERSION = CFG.APP_VERSION || "0.2.1";
 
   var state = {
     lang: "en",
@@ -467,8 +469,8 @@
     flash: null
   };
 
-  var ROUTES = ["login", "choose", "home", "calendar", "request", "requests", "done"];
-  var AUTH_ROUTES = { home: 1, calendar: 1, request: 1, requests: 1, done: 1 };
+  var ROUTES = ["login", "choose", "home", "calendar", "request", "requests", "done", "training"];
+  var AUTH_ROUTES = { home: 1, calendar: 1, request: 1, requests: 1, done: 1, training: 1 };
   var DATA_ROUTES = { home: 1, calendar: 1, requests: 1 };
   var currentRoute = null;
   var lockTimer = null;
@@ -1092,6 +1094,7 @@
         h("div", { class: "skeleton skeleton-tile", "aria-hidden": "true" }),
         h("div", { class: "skeleton skeleton-tile", "aria-hidden": "true" }),
         h("div", { class: "skeleton skeleton-tile", "aria-hidden": "true" }),
+        h("div", { class: "skeleton skeleton-tile", "aria-hidden": "true" }),
         h("div", { class: "skeleton skeleton-tile", "aria-hidden": "true" })
       ]);
     }
@@ -1133,6 +1136,7 @@
   function tile(o) {
     var titleKids = [o.title];
     if (o.external) titleKids.push(h("span", { class: "sr-only", text: " " + t("opens_new_tab") }));
+    if (o.badge) titleKids.push(" ", h("span", { class: "badge", text: o.badge }));
     var kids = [
       h("span", { class: "tile-icon " + o.tone }, icon(o.icon)),
       h("span", { class: "tile-body" }, [
@@ -1153,7 +1157,9 @@
       dayOff ? tile({ external: true, href: dayOff, icon: "dayOff", tone: "ti-peach", title: t("tile_dayoff_title"), sub: t("tile_dayoff_sub") }) : null,
       survey ? tile({ external: true, href: survey, icon: "survey", tone: "ti-lblue", title: t("tile_survey_title"), sub: t("tile_survey_sub") }) : null,
       tile({ route: "calendar", icon: "calendar", tone: "ti-navy", title: t("tile_calendar_title"), sub: t("tile_calendar_sub") }),
-      tile({ route: "request", icon: "message", tone: "ti-blue", title: t("tile_change_title"), sub: t("tile_change_sub") })
+      tile({ route: "request", icon: "message", tone: "ti-blue", title: t("tile_change_title"), sub: t("tile_change_sub") }),
+      // Education department, built later. The tile works and opens a coming soon screen.
+      tile({ route: "training", icon: "cap", tone: "ti-peach", title: t("tile_training_title"), sub: t("tile_training_sub"), badge: t("coming_soon") })
     ]);
   }
 
@@ -1452,6 +1458,10 @@
       render();
       return;
     }
+    // One id per draft: an automatic retry or a second tap on Send for the same text and topic
+    // reuses it, so the office gets the request once. Editing the text or topic makes a new one.
+    if (!KEY_RE.test(d.client_request_id || "")) d.client_request_id = randomId();
+    saveDraft();
     state.sending = true;
     state.reqErrors = {};
     state.reqStatus = null;
@@ -1461,7 +1471,8 @@
       token: token,
       category: v.value.category,
       details: v.value.details,
-      contact_pref: v.value.contact_pref
+      contact_pref: v.value.contact_pref,
+      client_request_id: d.client_request_id
     }).then(function (res) {
       state.sending = false;
       if (token !== state.token) return;
@@ -1471,7 +1482,8 @@
         state.draft = { category: "", details: "", contact_pref: "whatsapp" };
         store.remove(K.draft);
         if (state.dash) {
-          var list = dashRequests().slice();
+          // A resend of a saved draft gets the saved request back, which may already be in the list.
+          var list = dashRequests().filter(function (r) { return !r || r.request_id !== state.lastRequest.request_id; });
           list.unshift(state.lastRequest);
           state.dash.requests = list.slice(0, 10);
           store.setJSON(K.dash, state.dash);
@@ -1515,6 +1527,7 @@
     CATEGORIES.forEach(function (c, i) {
       catGrid.appendChild(choiceInput("category", c, t("cat_" + c), d.category === c, i === CATEGORIES.length - 1 ? "span2" : "", function () {
         d.category = c;
+        d.client_request_id = "";
         saveDraft();
         clearErr("category");
       }));
@@ -1534,6 +1547,7 @@
     ta.value = d.details;
     ta.addEventListener("input", function () {
       d.details = ta.value;
+      d.client_request_id = "";
       saveDraft();
       updateCounter();
       if (state.reqErrors.details && !requestErrors({ category: "schedule", details: ta.value }).details) clearErr("details");
@@ -1656,6 +1670,20 @@
     return h("div", { class: "requests" }, parts);
   };
 
+  /* ---- Trainings (coming soon) ---- */
+
+  SCREENS.training = function () {
+    return h("div", { class: "training" }, [
+      h("div", { class: "page-head" }, [backButton("home"), h("h1", { text: t("tile_training_title") })]),
+      h("section", { class: "soon" }, [
+        h("span", { class: "soon-icon" }, icon("cap")),
+        h("p", null, h("span", { class: "badge", text: t("coming_soon") })),
+        h("p", { class: "soon-text", text: t("training_body") }),
+        h("div", { class: "btn-row" }, h("button", { type: "button", class: "btn btn-primary", on: { click: function () { goBack("home"); } } }, t("back_home")))
+      ])
+    ]);
+  };
+
   /* ---- 4. Boot ---- */
 
   var booted = false;
@@ -1719,7 +1747,8 @@
         state.draft = {
           category: CATEGORIES.indexOf(draft.category) >= 0 ? draft.category : "",
           details: typeof draft.details === "string" && draft.category !== "my_info" ? draft.details.slice(0, DETAILS_MAX) : "",
-          contact_pref: CONTACTS.indexOf(draft.contact_pref) >= 0 ? draft.contact_pref : "whatsapp"
+          contact_pref: CONTACTS.indexOf(draft.contact_pref) >= 0 ? draft.contact_pref : "whatsapp",
+          client_request_id: KEY_RE.test(draft.client_request_id || "") ? draft.client_request_id : ""
         };
         saveDraft();
       }

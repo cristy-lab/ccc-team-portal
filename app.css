@@ -394,8 +394,16 @@ h1:focus, main:focus { outline: none; }
 .tile-sub { display: block; font-size: 15px; color: var(--muted); line-height: 1.35; margin-top: 2px; }
 .tile-end { color: var(--muted); display: grid; place-items: center; }
 .tile-end svg { width: 22px; height: 22px; }
+.badge {
+  display: inline-block; padding: 1px 9px; border-radius: 999px; background: var(--peach); color: #1B175A;
+  font-size: 14px; font-weight: 700; line-height: 1.5; vertical-align: 2px; white-space: nowrap;
+}
+.soon { text-align: center; padding: 24px 18px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow-sm); }
+.soon-icon { width: 88px; height: 88px; margin: 0 auto 14px; border-radius: 26px; display: grid; place-items: center; background: var(--peach-tint); }
+.soon-icon svg { width: 50px; height: 50px; }
+.soon-text { margin-top: 14px; font-size: 18px; }
 @media (max-height: 740px) {
-  /* Short phone screens: fit more of the four buttons on the first screen. */
+  /* Short phone screens: fit more of the five buttons on the first screen. */
   .greeting h1 { font-size: clamp(23px, 6.6vw, 27px); }
   .region { margin-top: 2px; }
   .hero { margin-top: 12px; padding: 14px 16px 16px; }
