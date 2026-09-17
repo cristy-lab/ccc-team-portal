@@ -1,0 +1,20 @@
+{
+  "id": "./",
+  "name": "CCC Team Portal",
+  "short_name": "CCC Team",
+  "description": "Paydays, day off requests, and messages to the office for the Cristal Clear Cleaning team.",
+  "lang": "en",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFFCFC",
+  "theme_color": "#1B175A",
+  "categories": ["business", "productivity"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
