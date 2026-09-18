@@ -1,0 +1,849 @@
+{
+ "kind": "course",
+ "schema": "ccc-edu-pack/1",
+ "summary": {
+  "en": "One product at a time, gloves at every property, and what to do when a product gets into the air, onto your skin or into your eyes.",
+  "es": "Un producto a la vez, guantes en cada propiedad, y qué hacer cuando un producto llega al aire, a la piel o a los ojos."
+ },
+ "title": {
+  "en": "Cleaning Products and Gloves: Using Them Safely",
+  "es": "Productos de limpieza y guantes: cómo usarlos con seguridad"
+ },
+ "training_id": "cleaning-products-and-gloves",
+ "variants": {
+  "full": {
+   "quiz": {
+    "questions": [
+     {
+      "choices": [
+       {
+        "en": "Rinse the bowl well with water first, then use one product by itself.",
+        "es": "Primero enjuaga bien la taza con agua, y después usa un solo producto.",
+        "id": "q1_a"
+       },
+       {
+        "en": "Pour the bleach in on top so the two work together.",
+        "es": "Echa el cloro encima para que los dos trabajen juntos.",
+        "id": "q1_b"
+       },
+       {
+        "en": "Wait five minutes and then add the bleach.",
+        "es": "Espera cinco minutos y después agrega el cloro.",
+        "id": "q1_c"
+       }
+      ],
+      "id": "q1",
+      "prompt": {
+       "en": "You sprayed a toilet bowl cleaner and the ring did not come out. The bleach is right there in your kit. What do you do?",
+       "es": "Roció limpiador de inodoros y la mancha no salió. El cloro está ahí mismo en su kit. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Hold your breath and finish the toilet.",
+        "es": "Aguanta la respiración y termina el inodoro.",
+        "id": "q2_a"
+       },
+       {
+        "en": "Spray air freshener and keep the door closed.",
+        "es": "Rocía aromatizante y deja la puerta cerrada.",
+        "id": "q2_b"
+       },
+       {
+        "en": "Walk out of the property and get fresh air.",
+        "es": "Sale de la propiedad y toma aire fresco.",
+        "id": "q2_c"
+       }
+      ],
+      "id": "q2",
+      "prompt": {
+       "en": "You are cleaning a small bathroom with no window. Your eyes start to burn and your throat hurts. What do you do first?",
+       "es": "Está limpiando un baño pequeño sin ventana. Le empiezan a arder los ojos y le duele la garganta. ¿Qué hace primero?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Use it on the shower, since it smells like a cleaner.",
+        "es": "Lo usa en la ducha, ya que huele a limpiador.",
+        "id": "q3_a"
+       },
+       {
+        "en": "Leave it where it is, do not use it, and tell the office.",
+        "es": "Lo deja donde está, no lo usa, y avisa a la oficina.",
+        "id": "q3_b"
+       },
+       {
+        "en": "Pour it out in the sink and keep the bottle for your own mix.",
+        "es": "Lo vacía en el lavabo y se queda con el envase para su propia mezcla.",
+        "id": "q3_c"
+       }
+      ],
+      "id": "q3",
+      "prompt": {
+       "en": "You find a spray bottle at a property with no label. It smells strong. What do you do?",
+       "es": "Encuentra en una propiedad un atomizador sin etiqueta. Huele fuerte. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Keep going, since it is a small tear.",
+        "es": "Sigue, ya que la rotura es pequeña.",
+        "id": "q4_a"
+       },
+       {
+        "en": "Turn the glove inside out so the tear is on the outside.",
+        "es": "Voltea el guante al revés para que la rotura quede por fuera.",
+        "id": "q4_b"
+       },
+       {
+        "en": "Stop, take both gloves off, wash your hands, and put on the new pair.",
+        "es": "Se detiene, se quita los dos guantes, se lava las manos, y se pone el par nuevo.",
+        "id": "q4_c"
+       }
+      ],
+      "id": "q4",
+      "prompt": {
+       "en": "Your glove tears while you are cleaning a shower. You have another pair in the car. What do you do?",
+       "es": "Se le rompe un guante mientras limpia una ducha. Tiene otro par en el carro. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Use one product at a time and tell the office about the smell.",
+        "es": "Usa un producto a la vez y avisa a la oficina del olor.",
+        "id": "q5_a"
+       },
+       {
+        "en": "Do it her way, since she has been here longer.",
+        "es": "Lo hace como ella, ya que lleva más tiempo aquí.",
+        "id": "q5_b"
+       },
+       {
+        "en": "Mix them, but open a window first.",
+        "es": "Los mezcla, pero primero abre una ventana.",
+        "id": "q5_c"
+       }
+      ],
+      "id": "q5",
+      "prompt": {
+       "en": "A property has a bad smell. Another cleaner tells you she mixes two products in one bucket because it works faster. What do you do?",
+       "es": "Una propiedad tiene mal olor. Otra limpiadora le dice que ella mezcla dos productos en una cubeta porque funciona más rápido. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Rub the eye with a clean cloth and finish the property.",
+        "es": "Se frota el ojo con un paño limpio y termina de limpiar la propiedad.",
+        "id": "q6_a"
+       },
+       {
+        "en": "Rinse the eye with lukewarm water for 10 to 15 minutes, take out a contact lens, then call the office, which tells you where to go for care.",
+        "es": "Se enjuaga el ojo con agua tibia de 10 a 15 minutos, se saca el lente de contacto, y después llama a la oficina, que le dice adónde ir para que lo atiendan.",
+        "id": "q6_b"
+       },
+       {
+        "en": "Rinse for a few seconds and put in eye drops.",
+        "es": "Se enjuaga unos segundos y se pone gotas para los ojos.",
+        "id": "q6_c"
+       }
+      ],
+      "id": "q6",
+      "prompt": {
+       "en": "A product splashes into your eye. What do you do?",
+       "es": "Un producto le salpica un ojo. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Go in quickly, turn the machine off, and open the windows.",
+        "es": "Entra rápido, apaga la máquina, y abre las ventanas.",
+        "id": "q7_a"
+       },
+       {
+        "en": "Stay outside and call the office.",
+        "es": "Se queda afuera y llama a la oficina.",
+        "id": "q7_b"
+       },
+       {
+        "en": "Wait 20 minutes outside and then start.",
+        "es": "Espera 20 minutos afuera y después empieza.",
+        "id": "q7_c"
+       }
+      ],
+      "id": "q7",
+      "prompt": {
+       "en": "You arrive at a property and a machine is running inside with a sign on it that says ozone. What do you do?",
+       "es": "Llega a una propiedad y adentro hay una máquina prendida con un letrero que dice ozono. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Read the label, and ask the office for the safety data sheet if you need more.",
+        "es": "Lee la etiqueta, y le pide a la oficina la hoja de datos de seguridad si necesita más.",
+        "id": "q8_a"
+       },
+       {
+        "en": "Use it the same way as the product it replaced.",
+        "es": "Lo usa igual que el producto al que reemplazó.",
+        "id": "q8_b"
+       },
+       {
+        "en": "Try a little on a hidden spot and see what happens.",
+        "es": "Prueba un poco en un lugar escondido y ve qué pasa.",
+        "id": "q8_c"
+       }
+      ],
+      "id": "q8",
+      "prompt": {
+       "en": "A product you have never used before is in your kit. What do you do before the first spray?",
+       "es": "En su kit hay un producto que nunca ha usado. ¿Qué hace antes del primer rociado?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Because moving air stops two products from reacting with each other.",
+        "es": "Porque el aire en movimiento evita que dos productos reaccionen entre sí.",
+        "id": "q9_a"
+       },
+       {
+        "en": "So the property smells fresh for the guest.",
+        "es": "Para que la propiedad huela a fresco para el huésped.",
+        "id": "q9_b"
+       },
+       {
+        "en": "So the air keeps moving and the fumes do not build up around you.",
+        "es": "Para que el aire siga moviéndose y los vapores no se acumulen a su alrededor.",
+        "id": "q9_c"
+       }
+      ],
+      "id": "q9",
+      "prompt": {
+       "en": "Why do you open a window and a door while you use cleaning products?",
+       "es": "¿Por qué abre una ventana y una puerta mientras usa productos de limpieza?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Keep every product in the container it came in, with its label.",
+        "es": "Deja cada producto en el envase en que vino, con su etiqueta.",
+        "id": "q10_a"
+       },
+       {
+        "en": "Pour it in and write on the bottle with a marker.",
+        "es": "Lo pasa y escribe en la botella con un marcador.",
+        "id": "q10_b"
+       },
+       {
+        "en": "Pour it in and remember which bottle it is.",
+        "es": "Lo pasa y se acuerda de cuál botella es.",
+        "id": "q10_c"
+       }
+      ],
+      "id": "q10",
+      "prompt": {
+       "en": "You want to carry less weight, so you think about pouring some cleaner into an empty water bottle. What do you do?",
+       "es": "Quiere cargar menos peso, así que piensa en pasar un poco de limpiador a una botella de agua vacía. ¿Qué hace?"
+      }
+     }
+    ],
+    "seconds": 260
+   },
+   "screens": [
+    {
+     "blocks": [
+      {
+       "en": "This training is about the products you use every shift and the gloves you use to protect yourself. It takes about 17 minutes. It is paid work time.",
+       "es": "Esta capacitación es sobre los productos que usted usa en cada turno y sobre los guantes que usa para protegerse. Dura unos 17 minutos. Es tiempo de trabajo pagado.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Read every screen.",
+        "Answer the questions at the end.",
+        "Ask the office about anything that is not clear."
+       ],
+       "es": [
+        "Lea cada pantalla.",
+        "Conteste las preguntas al final.",
+        "Pregunte a la oficina lo que no le quede claro."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "Nothing here asks you to work faster. It asks you to finish the day without getting hurt.",
+       "es": "Nada de esto le pide trabajar más rápido. Le pide terminar el día sin lastimarse.",
+       "type": "callout"
+      }
+     ],
+     "id": "before_you_start",
+     "seconds": 30,
+     "title": {
+      "en": "Before you start",
+      "es": "Antes de empezar"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "Cleaning products are the part of this job most likely to hurt you. Not once in a while. Every shift.",
+       "es": "Los productos de limpieza son la parte de este trabajo que más le puede hacer daño. No de vez en cuando. En cada turno.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Two products that are safe on their own can make a gas when they meet.",
+        "That gas burns your eyes, your nose and your lungs.",
+        "It can leave you coughing, short of breath, or in an emergency room."
+       ],
+       "es": [
+        "Dos productos que son seguros por separado pueden formar un gas cuando se juntan.",
+        "Ese gas quema los ojos, la nariz y los pulmones.",
+        "Le puede dar tos y falta de aire, y puede terminar en una sala de emergencias."
+       ],
+       "type": "text"
+      },
+      {
+       "en": "This happens to careful people. It happens by accident, in a small bathroom, in about a minute.",
+       "es": "Esto le pasa a gente cuidadosa. Pasa por accidente, en un baño pequeño, en cosa de un minuto.",
+       "type": "callout"
+      }
+     ],
+     "id": "why_this_matters",
+     "seconds": 40,
+     "title": {
+      "en": "Why this one matters",
+      "es": "Por qué esto es importante"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "One product at a time. That is the whole rule.",
+       "es": "Un producto a la vez. Esa es toda la regla.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Use one product.",
+        "Rinse the surface with water.",
+        "Dry it.",
+        "Only then use the next product, if you need one."
+       ],
+       "es": [
+        "Use un producto.",
+        "Enjuague la superficie con agua.",
+        "Séquela.",
+        "Solo después use el siguiente producto, si hace falta."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "Never put two products into the same bottle, the same bucket or the same cloth.",
+       "es": "Nunca ponga dos productos en el mismo envase, en la misma cubeta ni en el mismo paño.",
+       "type": "callout"
+      }
+     ],
+     "id": "one_product_at_a_time",
+     "seconds": 45,
+     "title": {
+      "en": "The one big rule",
+      "es": "La regla más importante"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "Bleach is in most of these. Bleach is the one to watch.",
+       "es": "El cloro está en casi todas. El cloro es el que hay que cuidar.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Bleach and ammonia. Ammonia is in many glass cleaners, in some paints, and in urine. Together they make chloramine gas.",
+        "Bleach and an acid. Vinegar, toilet bowl cleaner, drain cleaner, rust remover and many glass cleaners are acids. Together they make chlorine gas.",
+        "Bleach and rubbing alcohol.",
+        "Bleach and oven spray.",
+        "Hydrogen peroxide and vinegar."
+       ],
+       "es": [
+        "Cloro y amoníaco. El amoníaco está en muchos limpiavidrios, en algunas pinturas y en la orina. Juntos forman gas cloramina.",
+        "Cloro y un ácido. El vinagre, el limpiador de inodoros, el limpiador de desagües, el quitasarro y el quitaóxido y muchos limpiavidrios son ácidos. Juntos forman gas cloro.",
+        "Cloro y alcohol isopropílico.",
+        "Cloro y limpiador de hornos.",
+        "Peróxido de hidrógeno y vinagre."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "If you do not know what is inside a product, treat it as something that must never meet bleach.",
+       "es": "Si no sabe qué lleva un producto por dentro, trátelo como algo que nunca debe juntarse con el cloro.",
+       "type": "callout"
+      }
+     ],
+     "id": "never_mix",
+     "seconds": 70,
+     "title": {
+      "en": "The mixes that send people to the hospital",
+      "es": "Las mezclas que mandan a la gente al hospital"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "Almost nobody mixes products on purpose. Here is how it happens instead.",
+       "es": "Casi nadie mezcla productos a propósito. Así es como pasa de verdad.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "A toilet bowl cleaner is still in the bowl and bleach goes in on top of it.",
+        "The same cloth carries one product onto the next surface.",
+        "Two products go into one bucket to save a trip.",
+        "A spray bottle gets topped up with a different product."
+       ],
+       "es": [
+        "El limpiador de inodoros sigue en la taza y encima se echa cloro.",
+        "El mismo paño lleva un producto a la siguiente superficie.",
+        "Dos productos van a una sola cubeta para ahorrar un viaje.",
+        "Se rellena un atomizador con un producto distinto."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "The surface keeps what you put on it. Rinse it.",
+       "es": "La superficie se queda con lo que usted le puso. Enjuáguela.",
+       "type": "callout"
+      }
+     ],
+     "id": "how_it_happens",
+     "seconds": 45,
+     "title": {
+      "en": "How it really happens",
+      "es": "Cómo pasa en la vida real"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": [
+        "Rinse the surface well after each product.",
+        "Use a different cloth for each product.",
+        "Rinse used cloths before you wash them.",
+        "Keep every product closed and apart from the others.",
+        "Open a window and a door. Turn on the fan."
+       ],
+       "es": [
+        "Enjuague bien la superficie después de cada producto.",
+        "Use un paño distinto para cada producto.",
+        "Enjuague los paños usados antes de lavarlos.",
+        "Mantenga cada producto cerrado y separado de los demás.",
+        "Abra una ventana y una puerta. Prenda el ventilador."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "Air does not stop a reaction. Moving air only means you breathe less of what is already in the room.",
+       "es": "El aire no detiene una reacción. El aire en movimiento solo hace que usted respire menos de lo que ya está en el cuarto.",
+       "type": "callout"
+      }
+     ],
+     "id": "how_to_avoid_it",
+     "seconds": 50,
+     "title": {
+      "en": "How to keep them apart",
+      "es": "Cómo mantenerlos separados"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "Read the label before the first spray. It is short and it tells you four things.",
+       "es": "Lea la etiqueta antes del primer rociado. Es corta y le dice cuatro cosas.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Which surfaces the product is for.",
+        "How much water to add, when water is added at all.",
+        "Whether you need gloves, eye protection or air.",
+        "What to do if it touches your skin or your eyes."
+       ],
+       "es": [
+        "Para qué superficies es el producto.",
+        "Cuánta agua agregar, si es que hay que agregarle agua.",
+        "Si necesita guantes, protección para los ojos o buena ventilación.",
+        "Qué hacer si le toca la piel o los ojos."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "Follow the amount on the label. Stronger is not cleaner. It is only harder on your lungs and on the surface.",
+       "es": "Siga la cantidad de la etiqueta. Más fuerte no limpia más. Solo es más duro para sus pulmones y para la superficie.",
+       "type": "callout"
+      }
+     ],
+     "id": "read_the_label",
+     "seconds": 45,
+     "title": {
+      "en": "The label is the instruction",
+      "es": "La etiqueta es la instrucción"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "Every product has a safety data sheet. It is the long page that says what is inside and what to do when something goes wrong.",
+       "es": "Cada producto tiene una hoja de datos de seguridad. Es la hoja larga que dice qué lleva por dentro y qué hacer cuando algo sale mal.",
+       "type": "text"
+      },
+      {
+       "en": "The law says your employer keeps these sheets where you can read them during your shift.",
+       "es": "La ley dice que su empleador guarda esas hojas donde usted las pueda leer durante su turno.",
+       "type": "text"
+      },
+      {
+       "en": "Ask the office where to find the sheet for any product in your kit. You may ask for it. You never have to say why.",
+       "es": "Pregunte a la oficina dónde encontrar la hoja de cualquier producto de su kit. Usted la puede pedir. Nunca tiene que explicar para qué.",
+       "type": "callout"
+      }
+     ],
+     "id": "safety_data_sheets",
+     "seconds": 40,
+     "title": {
+      "en": "The safety data sheet",
+      "es": "La hoja de datos de seguridad"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "Gloves go on for every cleaning task.",
+       "es": "Los guantes se ponen para cada tarea de limpieza.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "A fresh pair at each property.",
+        "Change them the moment one tears or a product gets inside.",
+        "Never reuse a pair that a chemical soaked through.",
+        "Wash your hands with soap after you take them off."
+       ],
+       "es": [
+        "Un par nuevo en cada propiedad.",
+        "Cámbielos en cuanto uno se rompa o le entre producto.",
+        "Nunca vuelva a usar un par que un químico atravesó.",
+        "Lávese las manos con jabón después de quitárselos."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "Gloves keep chemicals and blood off your skin. They do not stop a needle. A cleaner never touches a needle, with gloves or with anything else. Keep people away, and call the office and your supervisor, who removes it. The needles training shows the rest.",
+       "es": "Los guantes evitan que los químicos y la sangre le toquen la piel. No detienen una aguja. La persona que limpia nunca toca una aguja, ni con guantes ni con nada. Que nadie se acerque, y llame a la oficina y a su supervisor, que la retira. La capacitación de agujas enseña el resto.",
+       "type": "text"
+      },
+      {
+       "en": "CCC pays for your gloves. The law says the protective equipment your employer requires is at no cost to you. Shoes are the one exception. Ask the office about shoes. To get more gloves, ask the office.",
+       "es": "CCC paga sus guantes. La ley dice que el equipo de protección que su empleador exige no le cuesta nada a usted. Los zapatos son la única excepción. Pregunte a la oficina sobre los zapatos. Para conseguir más guantes, pídaselos a la oficina.",
+       "type": "callout"
+      }
+     ],
+     "id": "gloves",
+     "seconds": 65,
+     "title": {
+      "en": "Gloves",
+      "es": "Los guantes"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": [
+        "Eye protection when you spray above your head or at eye level.",
+        "Closed shoes with a non slip sole, all shift.",
+        "Long sleeves when the label asks for them."
+       ],
+       "es": [
+        "Protección para los ojos cuando rocíe por encima de la cabeza o a la altura de los ojos.",
+        "Zapatos cerrados con suela antideslizante, todo el turno.",
+        "Mangas largas cuando la etiqueta las pida."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "A dust mask or a paper mask does not protect you from fumes. If you can smell or feel a product in the air, the answer is to leave, not to put something on your face.",
+       "es": "Una mascarilla de polvo o de papel no protege contra los vapores. Si huele o siente un producto en el aire, lo que se hace es salir, no ponerse algo en la cara.",
+       "type": "text"
+      },
+      {
+       "en": "A closed bathroom with no window is the most dangerous room in the property. Open the door before you start.",
+       "es": "Un baño cerrado y sin ventana es el cuarto más peligroso de la propiedad. Abra la puerta antes de empezar.",
+       "type": "callout"
+      }
+     ],
+     "id": "the_rest_of_your_protection",
+     "seconds": 40,
+     "title": {
+      "en": "The rest of your protection",
+      "es": "El resto de su protección"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "Burning eyes, a burning throat, a cough or a tight chest means get out. Do not finish the room.",
+       "es": "Si le arden los ojos o la garganta, si tose o siente el pecho apretado, salga. No termine el cuarto.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Stop and walk out of the property into fresh air.",
+        "Take any other person and any pet out with you.",
+        "Do not go back in to open a window.",
+        "Call 911 if breathing is hard, if the chest hurts, or if anyone is coughing up fluid.",
+        "Call Poison Help at 1 800 222 1222. It is free, it is open at every hour, and you can ask for Spanish.",
+        "Call the office at {{OFFICE_PHONE}}."
+       ],
+       "es": [
+        "Deténgase y salga de la propiedad al aire libre.",
+        "Saque con usted a cualquier otra persona y a cualquier mascota.",
+        "No vuelva a entrar para abrir una ventana.",
+        "Llame al 911 si le cuesta respirar, si le duele el pecho, o si alguien tose con flema o líquido.",
+        "Llame a Poison Help, la línea de ayuda por envenenamiento, al 1 800 222 1222. Es gratis, atiende a toda hora, y usted puede pedir español.",
+        "Llame a la oficina al {{OFFICE_PHONE}}."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "You will never get in trouble with CCC for calling 911 or the police to report danger, and nobody gets in trouble for reporting a hazard. Calling Poison Help never gets you in trouble either.",
+       "es": "Usted nunca tendrá problemas con CCC por llamar al 911 o a la policía para reportar un peligro, y nadie tiene problemas por reportar un peligro. Llamar a Poison Help tampoco le causa problemas nunca.",
+       "type": "callout"
+      }
+     ],
+     "id": "if_you_breathe_fumes",
+     "seconds": 65,
+     "title": {
+      "en": "If you breathe fumes",
+      "es": "Si respira vapores"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": [
+        "Skin: wash the area right away with lots of lukewarm water and mild soap, for several minutes.",
+        "Keep washing while it still stings.",
+        "Take off any clothing the product soaked through.",
+        "Eyes: rinse with lukewarm water for 10 to 15 minutes.",
+        "Take a contact lens out and do not put it back in.",
+        "A burn, or a splash in the eye: call the office, which tells you where to go for care. For staff on payroll, the visit costs you nothing. In an emergency, call 911 first."
+       ],
+       "es": [
+        "Piel: lave la zona enseguida con bastante agua tibia y jabón suave, por varios minutos.",
+        "Siga lavando mientras le siga ardiendo.",
+        "Quítese la ropa que el producto haya mojado.",
+        "Ojos: enjuague con agua tibia de 10 a 15 minutos.",
+        "Sáquese el lente de contacto y no se lo vuelva a poner.",
+        "Si hay quemadura o le salpicó un ojo: llame a la oficina, que le dice adónde ir para que lo atiendan. Para el personal en la nómina, la visita no le cuesta nada a usted. Si es una emergencia, llame primero al 911."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "Do not wait to see whether it gets better on its own.",
+       "es": "No espere a ver si se compone solo.",
+       "type": "callout"
+      }
+     ],
+     "id": "skin_and_eyes",
+     "seconds": 50,
+     "title": {
+      "en": "On your skin, in your eyes",
+      "es": "En la piel, en los ojos"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "Some properties get an ozone treatment for a smell. Ozone is a gas that damages lungs. No federal agency has approved these machines for use in a space with people in it.",
+       "es": "Algunas propiedades reciben un tratamiento de ozono por un olor. El ozono es un gas que daña los pulmones. Ninguna agencia federal ha aprobado estas máquinas para usarse en un espacio con personas adentro.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "No person and no pet goes in while the machine is running.",
+        "The property stays empty for the whole treatment.",
+        "At least 24 hours pass, with ventilation, before anyone goes back in.",
+        "If you arrive and a machine is running, stay outside and call the office."
+       ],
+       "es": [
+        "Ninguna persona y ninguna mascota entra mientras la máquina está prendida.",
+        "La propiedad se queda vacía todo el tratamiento.",
+        "Pasan por lo menos 24 horas, con ventilación, antes de que alguien vuelva a entrar.",
+        "Si usted llega y la máquina está prendida, quédese afuera y llame a la oficina."
+       ],
+       "type": "steps"
+      }
+     ],
+     "id": "ozone_machines",
+     "seconds": 55,
+     "title": {
+      "en": "Ozone machines",
+      "es": "Máquinas de ozono"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "You can stop. These are the moments to stop.",
+       "es": "Usted se puede detener. Estos son los momentos para detenerse.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "A bottle with no label.",
+        "A smell that burns your nose or your eyes.",
+        "A product you have not been trained on.",
+        "Someone already mixed something in that room.",
+        "You have no gloves."
+       ],
+       "es": [
+        "Un envase sin etiqueta.",
+        "Un olor que le quema la nariz o los ojos.",
+        "Un producto para el que no le han dado capacitación.",
+        "Alguien ya mezcló algo en ese cuarto.",
+        "Usted no tiene guantes."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "Step out, call the office, and wait for an answer.",
+       "es": "Salga, llame a la oficina, y espere una respuesta.",
+       "type": "callout"
+      }
+     ],
+     "id": "when_to_stop",
+     "seconds": 40,
+     "title": {
+      "en": "When to stop",
+      "es": "Cuándo detenerse"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": [
+        "One product at a time. Rinse and dry in between.",
+        "Gloves at every property. A fresh pair each time.",
+        "Read the label. Never an unlabeled bottle.",
+        "Fumes: get out, fresh air, 911 if breathing is hard, Poison Help 1 800 222 1222, then the office.",
+        "Skin: wash for several minutes. Eyes: rinse 10 to 15 minutes.",
+        "Ozone running: do not go in.",
+        "Office, day or night: {{OFFICE_PHONE}}."
+       ],
+       "es": [
+        "Un producto a la vez. Enjuague y seque entre uno y otro.",
+        "Guantes en cada propiedad. Un par nuevo cada vez.",
+        "Lea la etiqueta. Nunca un envase sin etiqueta.",
+        "Vapores: salga, aire fresco, 911 si le cuesta respirar, Poison Help, envenenamientos, 1 800 222 1222, y luego la oficina.",
+        "Piel: lave por varios minutos. Ojos: enjuague de 10 a 15 minutos.",
+        "Ozono prendido: no entre.",
+        "Oficina, de día o de noche: {{OFFICE_PHONE}}."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "If you remember one line, remember this one. One product at a time.",
+       "es": "Si se acuerda de una sola línea, acuérdese de esta. Un producto a la vez.",
+       "type": "callout"
+      }
+     ],
+     "id": "what_to_do_card",
+     "seconds": 35,
+     "title": {
+      "en": "What to do: keep this screen",
+      "es": "Qué hacer: guarde esta pantalla"
+     }
+    }
+   ]
+  },
+  "notice": {
+   "ack": {
+    "text": {
+     "en": "I have read this notice.",
+     "es": "He leído este aviso."
+    }
+   },
+   "screens": [
+    {
+     "blocks": [
+      {
+       "en": "This notice tells you the chemical safety rules that apply at these properties. It is information about the properties. It is not instruction about how you do your own work.",
+       "es": "Este aviso le dice las reglas de seguridad química que rigen en estas propiedades. Es información sobre las propiedades. No es una instrucción sobre cómo hace usted su trabajo.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Cleaning products are never mixed at these properties.",
+        "No product is used at these properties out of a container that has no label.",
+        "No work is done at these properties in a space with fumes in the air.",
+        "Nobody and no pet enters a property while an ozone machine is running, and not for at least 24 hours after."
+       ],
+       "es": [
+        "En estas propiedades nunca se mezclan los productos de limpieza.",
+        "En estas propiedades no se usa ningún producto que venga en un envase sin etiqueta.",
+        "En estas propiedades no se trabaja en un espacio con vapores en el aire.",
+        "Ninguna persona y ninguna mascota entra a una propiedad mientras una máquina de ozono está prendida, ni por lo menos hasta 24 horas después."
+       ],
+       "type": "steps"
+      }
+     ],
+     "id": "notice_rules",
+     "seconds": 150,
+     "title": {
+      "en": "Chemical safety notice for the properties we service",
+      "es": "Aviso de seguridad química en las propiedades que atendemos"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": [
+        "Leave the space and go out into fresh air.",
+        "Call 911 if anyone has trouble breathing.",
+        "Poison Help answers at 1 800 222 1222, free, at every hour.",
+        "Let the office know at {{OFFICE_PHONE}} so the property is not sent to anyone else."
+       ],
+       "es": [
+        "Salga del espacio y vaya al aire libre.",
+        "Llame al 911 si a alguien le cuesta respirar.",
+        "Poison Help, la línea de envenenamientos, contesta al 1 800 222 1222, gratis, a toda hora.",
+        "Avise a la oficina al {{OFFICE_PHONE}} para que la propiedad no se le mande a nadie más."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "There is no score on this notice and nothing is timed. Questions about it go to the office at any time.",
+       "es": "Este aviso no tiene calificación y no se cronometra. Las preguntas sobre el aviso puede hacerlas a la oficina en cualquier momento.",
+       "type": "callout"
+      }
+     ],
+     "id": "notice_what_to_do",
+     "seconds": 120,
+     "title": {
+      "en": "If something goes wrong at a property",
+      "es": "Si algo sale mal en una propiedad"
+     }
+    }
+   ]
+  }
+ },
+ "version": "2026-09-17"
+}

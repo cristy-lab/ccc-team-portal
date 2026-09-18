@@ -1,0 +1,1178 @@
+{
+ "kind": "course",
+ "schema": "ccc-edu-pack/1",
+ "summary": {
+  "en": "What to do when you find a needle, a sharp object, blood or a body fluid at work, and what to do if one touches you.",
+  "es": "Qué hacer cuando encuentra una aguja, un objeto filoso, sangre o un fluido del cuerpo en el trabajo, y qué hacer si tiene contacto con algo de eso."
+ },
+ "title": {
+  "en": "Needles, Sharp Objects and Body Fluids",
+  "es": "Agujas, objetos filosos y fluidos del cuerpo"
+ },
+ "training_id": "needles-and-body-fluids",
+ "variants": {
+  "full": {
+   "quiz": {
+    "questions": [
+     {
+      "choices": [
+       {
+        "en": "Wrap it in paper towels, put it in the trash bag, and tell the office later.",
+        "es": "La envuelve en toallas de papel, la mete en la bolsa de basura y le avisa a la oficina más tarde.",
+        "id": "q1_a"
+       },
+       {
+        "en": "It is only one, so put gloves on and lift it with tongs into a sharps container.",
+        "es": "Es solo una, así que se pone guantes, la levanta con pinzas y la mete en un bote para agujas.",
+        "id": "q1_b"
+       },
+       {
+        "en": "Leave it. Keep people out, take a photo from where you are, and call the office and your supervisor.",
+        "es": "La deja ahí. No deja que nadie entre, toma una foto desde donde está, y llama a la oficina y a su supervisor.",
+        "id": "q1_c"
+       },
+       {
+        "en": "Finish the room first so the job is not late, then call the office.",
+        "es": "Primero termina el cuarto para no atrasarse, y después llama a la oficina.",
+        "id": "q1_d"
+       }
+      ],
+      "id": "q1",
+      "prompt": {
+       "en": "You lift the liner out of a bathroom trash can and see one needle in the bottom of the can. What do you do?",
+       "es": "Usted saca la bolsa del bote de basura del baño y ve una aguja en el fondo del bote. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Take your gloves off and wash the spot with soap and water, then call the office, which sends you for care right away.",
+        "es": "Se quita los guantes y se lava con agua y jabón, y después llama a la oficina, que lo manda a que lo atiendan enseguida.",
+        "id": "q2_a"
+       },
+       {
+        "en": "Put a bandage on it, finish the job, and tell the office at the end of the day.",
+        "es": "Se pone una curita, termina el trabajo y le avisa a la oficina al final del día.",
+        "id": "q2_b"
+       },
+       {
+        "en": "Squeeze the blood out and pour bleach or alcohol on it.",
+        "es": "Se aprieta el dedo para sacar la sangre y se echa cloro o alcohol.",
+        "id": "q2_c"
+       },
+       {
+        "en": "Wait a few days. If you feel sick, then call the office.",
+        "es": "Espera unos días. Si se siente mal, entonces llama a la oficina.",
+        "id": "q2_d"
+       }
+      ],
+      "id": "q2",
+      "prompt": {
+       "en": "While you pull the sheets off a bed, something pricks your finger. You see a needle in the sheet and a drop of blood on your glove. What do you do first?",
+       "es": "Mientras quita las sábanas de una cama, algo le pincha el dedo. Ve una aguja en la sábana y una gota de sangre en su guante. ¿Qué hace primero?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Grab it and throw it away. He asked, and it is his needle.",
+        "es": "La agarra y la tira a la basura. Él se lo pidió, y la aguja es de él.",
+        "id": "q3_a"
+       },
+       {
+        "en": "Say kindly that you are not allowed to touch it. Keep people away, take a photo from where you are, and call the office and your supervisor.",
+        "es": "Le dice con amabilidad que usted no tiene permiso para tocarla. No deja que nadie se acerque, toma una foto desde donde está, y llama a la oficina y a su supervisor.",
+        "id": "q3_b"
+       },
+       {
+        "en": "Put it in a plastic bag and leave it on the kitchen table for him.",
+        "es": "La mete en una bolsa de plástico y la deja sobre la mesa de la cocina.",
+        "id": "q3_c"
+       },
+       {
+        "en": "Put on two pairs of gloves and pick it up with your fingers.",
+        "es": "Se pone dos pares de guantes y la levanta con los dedos.",
+        "id": "q3_d"
+       }
+      ],
+      "id": "q3",
+      "prompt": {
+       "en": "A guest is still staying at the property. He points at a needle on the nightstand and asks you to just grab it and throw it in the trash. What do you do?",
+       "es": "Un huésped todavía está hospedado en la propiedad. Le señala una aguja en la mesita de noche y le pide que la agarre y la tire a la basura. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Yes, if the gloves are thick and you are careful.",
+        "es": "Sí, si los guantes son gruesos y tiene cuidado.",
+        "id": "q4_a"
+       },
+       {
+        "en": "Yes, with tongs, if it is only one needle.",
+        "es": "Sí, con pinzas, si es una sola aguja.",
+        "id": "q4_b"
+       },
+       {
+        "en": "No. A cleaner never moves a needle, with gloves or with tongs. Your supervisor removes it.",
+        "es": "No. La persona que limpia nunca mueve una aguja, ni con guantes ni con pinzas. Su supervisor la retira.",
+        "id": "q4_c"
+       },
+       {
+        "en": "Yes, if you do it fast so the needle does not touch you for long.",
+        "es": "Sí, si lo hace rápido para que la aguja no le toque la piel mucho tiempo.",
+        "id": "q4_d"
+       }
+      ],
+      "id": "q4",
+      "prompt": {
+       "en": "You have thick cleaning gloves on. Can you move a needle yourself?",
+       "es": "Usted trae puestos guantes gruesos de limpieza. ¿Puede mover usted una aguja?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Clean it with bleach and finish the bathroom.",
+        "es": "La limpia con cloro y termina el baño.",
+        "id": "q5_a"
+       },
+       {
+        "en": "Do not clean it. Take a photo, close the door, and call the office.",
+        "es": "No la limpia. Toma una foto, cierra la puerta y llama a la oficina.",
+        "id": "q5_b"
+       },
+       {
+        "en": "Put on gloves, clean it up, and report the exposure.",
+        "es": "Se pone guantes, la limpia y reporta la exposición.",
+        "id": "q5_c"
+       },
+       {
+        "en": "Clean around it and leave a note for the next guest.",
+        "es": "Limpia alrededor y deja una nota para el siguiente huésped.",
+        "id": "q5_d"
+       }
+      ],
+      "id": "q5",
+      "prompt": {
+       "en": "There is dried blood on a bathroom floor, about the size of your hand. What do you do?",
+       "es": "Hay sangre seca en el piso del baño, como del tamaño de su mano. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Grab the needle with your fingers, fast, before the child reaches it.",
+        "es": "Agarra la aguja con los dedos, rápido, antes de que el niño llegue.",
+        "id": "q6_a"
+       },
+       {
+        "en": "Keep the child away from it if you can do it safely, tell the adult in charge right away, and call the office and your supervisor.",
+        "es": "Mantiene al niño lejos si puede hacerlo sin peligro, le avisa enseguida al adulto a cargo y llama a la oficina y a su supervisor.",
+        "id": "q6_b"
+       },
+       {
+        "en": "Wait for the office to call you back before you say anything.",
+        "es": "Espera a que la oficina le regrese la llamada antes de decir algo.",
+        "id": "q6_c"
+       },
+       {
+        "en": "Cover the needle with a towel so the child does not see it.",
+        "es": "Tapa la aguja con una toalla para que el niño no la vea.",
+        "id": "q6_d"
+       }
+      ],
+      "id": "q6",
+      "prompt": {
+       "en": "A family arrives early. You see a needle on the floor near the couch and a small child walking toward it. What do you do?",
+       "es": "Una familia llega temprano. Usted ve una aguja en el piso cerca del sofá y a un niño pequeño caminando hacia ella. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Rub your eye with a paper towel and keep working.",
+        "es": "Se frota el ojo con una toalla de papel y sigue trabajando.",
+        "id": "q7_a"
+       },
+       {
+        "en": "Rinse your eye with clean water right away, then call the office, which sends you for care right away.",
+        "es": "Se enjuaga el ojo con agua limpia enseguida, y después llama a la oficina, que lo manda a que lo atiendan enseguida.",
+        "id": "q7_b"
+       },
+       {
+        "en": "Rinse your eye with a cleaning product to kill anything in it.",
+        "es": "Se enjuaga el ojo con un producto de limpieza para matar lo que tenga.",
+        "id": "q7_c"
+       },
+       {
+        "en": "Finish your shift and see how your eye feels tomorrow.",
+        "es": "Termina su turno y ve cómo siente el ojo mañana.",
+        "id": "q7_d"
+       }
+      ],
+      "id": "q7",
+      "prompt": {
+       "en": "You are emptying a trash can and something wet splashes into your eye. What do you do?",
+       "es": "Usted está vaciando un bote de basura y algo mojado le salpica un ojo. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Nothing. You feel fine, so there is nothing to report.",
+        "es": "Nada. Se siente bien, así que no hay nada que reportar.",
+        "id": "q8_a"
+       },
+       {
+        "en": "Tell the office right away and get care today.",
+        "es": "Le avisa enseguida a la oficina y busca atención hoy.",
+        "id": "q8_b"
+       },
+       {
+        "en": "Wait a week. If nothing happens, forget about it.",
+        "es": "Espera una semana. Si no pasa nada, se olvida del asunto.",
+        "id": "q8_c"
+       },
+       {
+        "en": "Tell a coworker so somebody knows, but not the office.",
+        "es": "Le cuenta a otra persona del equipo para que alguien sepa, pero no a la oficina.",
+        "id": "q8_d"
+       }
+      ],
+      "id": "q8",
+      "prompt": {
+       "en": "Yesterday a needle pricked your hand at work. It was small, you felt fine, and you said nothing. Today you still feel fine. What do you do?",
+       "es": "Ayer una aguja le pinchó la mano en el trabajo. Fue un pinchazo pequeño, usted se sintió bien y no dijo nada. Hoy todavía se siente bien. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Clean the rest of the house and say nothing about that closet.",
+        "es": "Limpia el resto de la casa y no dice nada de ese clóset.",
+        "id": "q9_a"
+       },
+       {
+        "en": "Put on gloves and take the needles out one at a time with tongs.",
+        "es": "Se pone guantes y saca las agujas una a la vez con unas pinzas.",
+        "id": "q9_b"
+       },
+       {
+        "en": "Take photos from where you are, touch nothing, leave the property, and call the office.",
+        "es": "Toma fotos desde donde está, no toca nada, se va de la propiedad y llama a la oficina.",
+        "id": "q9_c"
+       },
+       {
+        "en": "Call the police non emergency line yourself and wait for them.",
+        "es": "Usted mismo llama a la línea de la policía que no es de emergencia y los espera.",
+        "id": "q9_d"
+       }
+      ],
+      "id": "q9",
+      "prompt": {
+       "en": "In a closet you see many needles, a spoon, small bags and a lot of cash. Nobody is there. What do you do?",
+       "es": "En un clóset usted ve muchas agujas, una cuchara, bolsitas y mucho dinero en efectivo. No hay nadie. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Wash both. Hot water takes care of it.",
+        "es": "Lava las dos. El agua caliente se encarga.",
+        "id": "q10_a"
+       },
+       {
+        "en": "Throw both away without telling anyone.",
+        "es": "Tira las dos sin decirle a nadie.",
+        "id": "q10_b"
+       },
+       {
+        "en": "Gloves on. The pillowcase goes in the wash. The sheet goes in a leak proof bag, with a photo, and you tell the office.",
+        "es": "Con guantes puestos. La funda va a la lavadora. La sábana va a una bolsa que no deja salir líquido, con una foto, y usted le avisa a la oficina.",
+        "id": "q10_c"
+       },
+       {
+        "en": "Scrub the sheet in the sink until the stain comes out, then wash it.",
+        "es": "Talla la sábana en el lavabo hasta que se quite la mancha, y después la lava.",
+        "id": "q10_d"
+       }
+      ],
+      "id": "q10",
+      "prompt": {
+       "en": "You strip a bed. One pillowcase has a spot of blood smaller than a quarter. The top sheet is soaked with blood. What do you do?",
+       "es": "Usted quita la ropa de una cama. Una funda de almohada tiene una manchita de sangre más chica que una moneda de 25 centavos. La sábana de arriba está empapada de sangre. ¿Qué hace?"
+      }
+     }
+    ],
+    "seconds": 300
+   },
+   "screens": [
+    {
+     "blocks": [
+      {
+       "en": "This lesson takes about 27 minutes. The quiz takes about 5 more. It is all paid work time.",
+       "es": "Esta lección dura unos 27 minutos. La prueba dura unos 5 minutos más. Todo es tiempo de trabajo pagado.",
+       "type": "text"
+      },
+      {
+       "en": "You can take the quiz again as many times as you need.",
+       "es": "Puede repetir la prueba todas las veces que necesite.",
+       "type": "text"
+      },
+      {
+       "en": "If you need help reading this or taking the quiz, tell the CCC office.",
+       "es": "Si necesita ayuda para leer esto o para hacer la prueba, dígale a la oficina de CCC.",
+       "type": "text"
+      }
+     ],
+     "id": "before-you-start",
+     "seconds": 30,
+     "title": {
+      "en": "Before you start",
+      "es": "Antes de empezar"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "People leave needles behind. In a vacation rental, in a co living room, in a bathroom cabinet, in a trash can, in a couch, even in the sheets.",
+       "es": "La gente deja agujas olvidadas. En una casa de alquiler vacacional, en un cuarto de co living, en un gabinete del baño, en un bote de basura, en un sofá y hasta entre las sábanas.",
+       "type": "text"
+      },
+      {
+       "en": "A needle can belong to a person with diabetes. It can belong to a person using drugs. You cannot tell by looking, and it does not matter. The rule is the same.",
+       "es": "Una aguja puede ser de una persona con diabetes. Puede ser de una persona que usa drogas. Usted no puede saberlo con solo mirarla, y no importa. La regla es la misma.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "A needle that has been inside another person can carry hepatitis B, hepatitis C or HIV.",
+        "Hepatitis B can stay alive on a surface for at least 7 days and still infect a person.",
+        "There is a vaccine for hepatitis B. There is no vaccine for hepatitis C.",
+        "The medicine that lowers the risk of HIV after an exposure has to start within 72 hours, and sooner is better."
+       ],
+       "es": [
+        "Una aguja que estuvo dentro del cuerpo de otra persona puede traer hepatitis B, hepatitis C o VIH.",
+        "El virus de la hepatitis B puede seguir vivo por lo menos 7 días sobre una superficie y todavía infectar a una persona.",
+        "Hay vacuna contra la hepatitis B. No hay vacuna contra la hepatitis C.",
+        "La medicina que baja el riesgo de VIH después de una exposición se tiene que empezar antes de 72 horas, y entre más pronto, mejor."
+       ],
+       "type": "text"
+      },
+      {
+       "en": "This is not about being dirty or careless. People who clean are on the list of workers who get stuck at work. That is why CCC has a rule.",
+       "es": "Esto no se trata de suciedad ni de descuido. Las personas que hacen limpieza están en la lista de trabajadores que sufren pinchazos de aguja en el trabajo. Por eso CCC tiene una regla.",
+       "type": "callout"
+      }
+     ],
+     "id": "why-this-matters",
+     "seconds": 80,
+     "title": {
+      "en": "Why this matters",
+      "es": "Por qué esto es importante"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "There is one rule, and it has 5 steps. Learn it by heart.",
+       "es": "Hay una sola regla, y tiene 5 pasos. Apréndasela de memoria.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Stop. Never touch a needle. Not with your hands, not with gloves, not with tongs, not with anything.",
+        "Keep everyone away from that spot. Close the door of that room if you can.",
+        "Take a photo from where you are. Never go closer to get a better one.",
+        "Call the office, and call your region or division supervisor. If nobody answers, leave a message and keep calling.",
+        "Go on with the rest of the job, away from that spot. That time is paid work time."
+       ],
+       "es": [
+        "Deténgase. Nunca toque una aguja. Ni con las manos, ni con guantes, ni con pinzas, ni con nada.",
+        "Que nadie se acerque a ese lugar. Cierre la puerta de ese cuarto si puede.",
+        "Tome una foto desde donde está. Nunca se acerque para sacar una mejor.",
+        "Llame a la oficina, y llame a su supervisor de región o de división. Si nadie contesta, deje un mensaje y siga llamando.",
+        "Siga con el resto del trabajo, lejos de ese lugar. Ese tiempo es tiempo de trabajo pagado."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "Your supervisor comes with a sharps kit and removes the needle. Picking up a needle is never your job, not even one.",
+       "es": "Su supervisor viene con un kit para agujas y la retira. Levantar una aguja nunca es su trabajo, ni siquiera una.",
+       "type": "callout"
+      }
+     ],
+     "id": "five-steps",
+     "seconds": 70,
+     "title": {
+      "en": "The rule when you find a needle",
+      "es": "La regla cuando encuentra una aguja"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "The needle stays exactly where it is until your supervisor gets there. Your job is to keep people away from it.",
+       "es": "La aguja se queda exactamente donde está hasta que llegue su supervisor. Su trabajo es que nadie se acerque a ella.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Do not cover it with a towel, a paper or anything else. People need to see it to stay away.",
+        "Do not sweep it, move it or push it aside, not even a little.",
+        "Close the door of that room if you can. If there is no door, keep people out of that part of the room.",
+        "If a guest or the owner is there, tell them kindly that a needle is there and your supervisor is coming to remove it.",
+        "Clean the other rooms first, and leave that room or that spot for last."
+       ],
+       "es": [
+        "No la tape con una toalla, un papel ni con nada. La gente tiene que verla para no acercarse.",
+        "No la barra, no la mueva y no la empuje a un lado, ni un poquito.",
+        "Cierre la puerta de ese cuarto si puede. Si no hay puerta, que nadie entre a esa parte del cuarto.",
+        "Si hay un huésped o el dueño, dígale con amabilidad que ahí hay una aguja y que su supervisor viene a retirarla.",
+        "Limpie primero los otros cuartos, y deje ese cuarto o ese lugar para el final."
+       ],
+       "type": "text"
+      },
+      {
+       "en": "If anyone asks you to pick it up, a guest, an owner or someone on the phone, give the same kind answer: I am not allowed to touch it, and my supervisor is coming.",
+       "es": "Si alguien le pide que la levante, un huésped, un dueño o alguien por teléfono, dé la misma respuesta amable: no tengo permiso para tocarla, y mi supervisor ya viene.",
+       "type": "callout"
+      },
+      {
+       "en": "Your supervisor carries a sharps kit made for this.",
+       "es": "Su supervisor trae un kit para agujas hecho para esto.",
+       "type": "text"
+      }
+     ],
+     "id": "while-you-wait",
+     "seconds": 80,
+     "title": {
+      "en": "While your supervisor is on the way",
+      "es": "Mientras llega su supervisor"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "Sometimes it is more than a needle or two. Then nobody from CCC touches it, not you and not your supervisor. That is when:",
+       "es": "A veces hay más que una o dos agujas. Entonces nadie de CCC lo toca, ni usted ni su supervisor. Eso pasa cuando:",
+       "type": "text"
+      },
+      {
+       "en": [
+        "There are three or more needles, or you cannot see all of them.",
+        "There are drug things in a large amount: many small bags, loose powder or pills, an open bag, a broken glass pipe, or cash.",
+        "Anything about it makes you unsure."
+       ],
+       "es": [
+        "Hay tres agujas o más, o usted no puede verlas todas.",
+        "Hay cosas de drogas en cantidad grande: muchas bolsitas, polvo o pastillas sueltas, una bolsita abierta, una pipa de vidrio rota, o dinero.",
+        "Cualquier cosa de lo que ve le hace dudar."
+       ],
+       "type": "text"
+      },
+      {
+       "en": "Then you use the same 5 steps as the gun rule, word for word:",
+       "es": "Entonces use los mismos 5 pasos de la regla de las armas, palabra por palabra:",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Don't touch it.",
+        "Get away from it.",
+        "Keep everyone out.",
+        "Call the office.",
+        "Wait for instructions."
+       ],
+       "es": [
+        "No lo toque.",
+        "Aléjese.",
+        "Que nadie entre.",
+        "Llame a la oficina.",
+        "Espere instrucciones."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "Take a photo from where you are, never closer. The office tells the property management company, and the property manager calls the police.",
+       "es": "Tome una foto desde donde está, nunca más cerca. La oficina le avisa a la compañía que administra la propiedad, y el administrador de la propiedad llama a la policía.",
+       "type": "text"
+      },
+      {
+       "en": "Unsure is an answer. You will never get in trouble with CCC for calling.",
+       "es": "Tener dudas es una respuesta. Usted nunca tendrá problemas con CCC por llamar.",
+       "type": "callout"
+      }
+     ],
+     "id": "when-there-is-more",
+     "seconds": 75,
+     "title": {
+      "en": "When it is more than a needle or two",
+      "es": "Cuando hay más que una o dos agujas"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "These are sharps. Treat each one exactly like a needle: never touch it, keep people away, take a photo, and call the office and your supervisor.",
+       "es": "Estos son objetos filosos. Trate cada uno igual que una aguja: nunca lo toque, que nadie se acerque, tome una foto, y llame a la oficina y a su supervisor.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Needles and syringes, with a cap or without a cap",
+        "Insulin pens, and the small lancets used to prick a finger",
+        "Razor blades and box cutter blades. For a used disposable razor, ask the office."
+       ],
+       "es": [
+        "Agujas y jeringas, con tapa o sin tapa",
+        "Plumas de insulina, y las lancetas pequeñas que se usan para pinchar el dedo",
+        "Navajas de afeitar y cuchillas de cúter. Si es una máquina de afeitar desechable usada, pregúntele a la oficina."
+       ],
+       "type": "text"
+      },
+      {
+       "en": "Two more things you never touch. Take a photo, close the room and call the office:",
+       "es": "Hay dos cosas más que usted nunca toca. Tome una foto, cierre el cuarto y llame a la oficina:",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Broken glass or a broken mirror with blood on it. That is blood on a surface.",
+        "A sharps container that belongs to the property, full or empty. It is never opened, moved or emptied."
+       ],
+       "es": [
+        "Vidrios rotos o un espejo roto con sangre. Eso es sangre en una superficie.",
+        "Un bote para agujas que es de la propiedad, lleno o vacío. Nunca se abre, no se mueve y no se vacía."
+       ],
+       "type": "text"
+      },
+      {
+       "en": "A cap on a needle does not make it safe.",
+       "es": "La tapa de una aguja no la hace segura.",
+       "type": "callout"
+      }
+     ],
+     "id": "what-counts-sharps",
+     "seconds": 60,
+     "title": {
+      "en": "What counts as a sharp object",
+      "es": "Qué cuenta como objeto filoso"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "Body fluid here means blood, and anything that could have blood in it: vomit or stool with blood in it, a used bandage, pad, tampon or condom that is soaked or leaking, and anything wet that you cannot name.",
+       "es": "Aquí, fluido del cuerpo quiere decir sangre, y cualquier cosa que pueda tener sangre: vómito o excremento con sangre, una venda, una toalla sanitaria, un tampón o un condón usados que estén empapados o goteando, y cualquier cosa mojada que usted no sepa qué es.",
+       "type": "text"
+      },
+      {
+       "en": "Treat all blood as if it can make you sick. You never know whose it is.",
+       "es": "Trate toda la sangre como si pudiera causar una enfermedad. Usted nunca sabe de quién es.",
+       "type": "callout"
+      },
+      {
+       "en": [
+        "A very small stain, smaller than a quarter, on a sheet, a pillowcase or a towel: gloves on. Do not shake it, rinse it or scrub it. Carry it away from your body, straight into the washer.",
+        "Before you wash it, look under it. If the stain went through to the mattress pad or the mattress, it is not very small: the linens go in the leak proof bag, and the mattress is a surface.",
+        "More than that: do not wash it. Gloves on, into a leak proof bag, tie it, take a photo and tell the office. It is thrown out, not cleaned.",
+        "Blood or a body fluid on a floor, a wall, a counter, a mattress, a couch or any other surface: you never clean it. Take a photo, close the room and call the office.",
+        "Not sure which one you are looking at? Stop and call the office."
+       ],
+       "es": [
+        "Una mancha muy pequeña, más chica que una moneda de 25 centavos, en una sábana, una funda o una toalla: póngase los guantes. No sacuda esa ropa, no la enjuague y no la talle. Llévela lejos de su cuerpo, directo a la lavadora.",
+        "Antes de lavar la ropa, mire lo que hay debajo. Si la mancha pasó al protector o al colchón, ya no es muy pequeña: la ropa va a la bolsa que no deja salir líquido, y el colchón es una superficie.",
+        "Más que eso: no lave esa ropa. Póngase los guantes, métala en una bolsa que no deja salir líquido, amárrela, tome una foto y avísele a la oficina. Esa ropa se tira, no se limpia.",
+        "Sangre o un fluido del cuerpo en el piso, en una pared, en una mesa, en un colchón, en un sofá o en cualquier otra superficie: eso usted nunca lo limpia. Tome una foto, cierre el cuarto y llame a la oficina.",
+        "¿No sabe cuál de los casos está viendo? Deténgase y llame a la oficina."
+       ],
+       "type": "text"
+      },
+      {
+       "en": "The office tells the property management company about anything that is bagged or left for them. No leak proof bag with you? Call the office and they will tell you what to do.",
+       "es": "La oficina le avisa a la compañía que administra la propiedad de todo lo que se embolsa o se deja para ellos. ¿No tiene una bolsa que no deja salir líquido? Llame a la oficina y le dirán qué hacer.",
+       "type": "text"
+      }
+     ],
+     "id": "what-counts-fluids",
+     "seconds": 120,
+     "title": {
+      "en": "Blood and body fluids: the size rule",
+      "es": "Sangre y fluidos del cuerpo: la regla del tamaño"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "Normal work is still normal work. A dirty toilet, a used towel and normal trash are the job, and you do them with gloves on, the way you always have.",
+       "es": "El trabajo normal sigue siendo trabajo normal. Un inodoro sucio, una toalla usada y la basura normal son parte del trabajo, y usted los hace con guantes, como siempre.",
+       "type": "text"
+      },
+      {
+       "en": "A used pad, tampon, bandage or condom that is in the trash, or that you can lift with gloves on without touching anything wet, is normal trash: gloves on, into the trash bag. If it is soaked or leaking, treat it as blood: photo, close the room, call the office. Vomit, urine or stool with no blood you can see, and you are not sure? Stop and call the office, and they will tell you what to do.",
+       "es": "Una toalla sanitaria, un tampón, una venda o un condón usados que están en la basura, o que usted puede levantar con guantes sin tocar nada mojado, son basura normal: con guantes, a la bolsa de basura. Si está empapado o goteando, trátelo como sangre: foto, cierre el cuarto, llame a la oficina. ¿Hay vómito, orina o excremento sin sangre que se vea, y tiene dudas? Deténgase y llame a la oficina, y le dirán qué hacer.",
+       "type": "text"
+      },
+      {
+       "en": "Small rusty or reddish spots, or dark dots the size of a pen tip, on a sheet or on the mattress seam can be bed bugs. Then the bed bug rule comes first: stop, do not move anything, step out and call the office. If you cannot tell a blood spot from a bed bug spot, it is the bed bug rule.",
+       "es": "Unas manchitas color óxido o rojizas, o puntitos oscuros del tamaño de la punta de un bolígrafo, en una sábana o en la costura del colchón pueden ser chinches. Entonces va primero la regla de las chinches: deténgase, no mueva nada, salga del cuarto y llame a la oficina. Si no sabe si es una mancha de sangre o de chinches, use la regla de las chinches.",
+       "type": "callout"
+      }
+     ],
+     "id": "what-is-still-normal-work",
+     "seconds": 75,
+     "title": {
+      "en": "What is still normal work",
+      "es": "Lo que sigue siendo trabajo normal"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": [
+        "Gloves do not stop a needle. Cleaning gloves and nitrile gloves keep blood off your skin. They are not made to stop a point.",
+        "Most sticks happen while moving it. People get stuck putting the cap back on, wrapping it, or pushing it into a bag. A needle you never move cannot stick you that way.",
+        "A needle never goes in the trash. A loose needle in a trash bag sticks the next person: another cleaner, a trash worker, a child.",
+        "Removing one safely takes a sharps kit and training. Your supervisor has the kit. You do not.",
+        "You cannot tell if a needle was used. Treat every needle as used."
+       ],
+       "es": [
+        "Los guantes no detienen una aguja. Los guantes de limpieza y los de nitrilo evitan que la sangre toque su piel. No están hechos para detener una punta.",
+        "Casi todos los pinchazos pasan al moverla. La gente se pincha al ponerle la tapa, al envolverla o al empujarla dentro de una bolsa. Una aguja que usted nunca mueve no le puede pinchar así.",
+        "Una aguja nunca va a la basura. Una aguja suelta en una bolsa de basura pincha a la siguiente persona: otra persona del equipo, un trabajador de la basura, un niño.",
+        "Retirarla sin peligro requiere un kit para agujas y capacitación. Su supervisor tiene el kit. Usted no.",
+        "Usted no puede saber si una aguja fue usada. Trate toda aguja como usada."
+       ],
+       "type": "text"
+      },
+      {
+       "en": "Never touch a needle. Not with your hands, not in gloves, not with tongs. Your supervisor removes it.",
+       "es": "Nunca toque una aguja. Ni con las manos, ni con guantes, ni con pinzas. Su supervisor la retira.",
+       "type": "callout"
+      }
+     ],
+     "id": "why-never-with-your-hands",
+     "seconds": 70,
+     "title": {
+      "en": "Why you never touch it",
+      "es": "Por qué nunca la toca"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "Most of this is about your hands. Do not put your hand where your eyes have not been.",
+       "es": "Casi todo esto se trata de sus manos. No meta la mano donde no puede ver.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Look inside the trash can before you reach in. Do not dig in the trash.",
+        "Never put your hand in the bottom of a liner bag. That is where points sit.",
+        "Do not press trash down with your hands, your arms or your feet.",
+        "Do not overfill a bag. Change it when it is about half full.",
+        "Hold the bag away from your body and away from your leg. Do not hug it.",
+        "Pull the sheets off the bed slowly and lift them. Do not bundle them against your body.",
+        "Use a light to look under cushions and under the bed. Do not sweep your hand under there.",
+        "Put broken glass in its own container, never loose in the bag.",
+        "Wear gloves for trash and for the bathroom, every time.",
+        "If something falls, step back and let it fall. Never try to catch it."
+       ],
+       "es": [
+        "Mire dentro del bote de basura antes de meter la mano. No escarbe en la basura.",
+        "Nunca meta la mano hasta el fondo de la bolsa. Ahí es donde se quedan las puntas.",
+        "No apriete la basura hacia abajo con las manos, con los brazos ni con los pies.",
+        "No llene la bolsa de más. Cámbiela cuando esté como a la mitad.",
+        "Cargue la bolsa lejos de su cuerpo y lejos de su pierna. No la abrace.",
+        "Quite las sábanas de la cama despacio y levántelas. No las apriete contra su cuerpo.",
+        "Use una luz para mirar debajo de los cojines y debajo de la cama. No pase la mano por ahí.",
+        "Ponga los vidrios rotos en su propio recipiente, nunca sueltos en la bolsa.",
+        "Use guantes para la basura y para el baño, siempre.",
+        "Si algo se cae, dé un paso atrás y déjelo caer. Nunca trate de agarrarlo."
+       ],
+       "type": "text"
+      }
+     ],
+     "id": "so-you-do-not-get-stuck",
+     "seconds": 100,
+     "title": {
+      "en": "Working so you do not get stuck",
+      "es": "Cómo trabajar para no pincharse"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "Example: you lift the liner out of the bathroom trash can. One needle is lying in the bottom of the can.",
+       "es": "Ejemplo: usted saca la bolsa del bote de basura del baño. Hay una aguja en el fondo del bote.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Stop. Put the bag down gently where you are. Do not tie it, squeeze it or push anything down.",
+        "Keep everyone out of the bathroom. Close the door if you can.",
+        "Take a photo of the can from where you are.",
+        "Call the office and your supervisor. Say the needle is in the bottom of the bathroom trash can.",
+        "Go on with the rest of the job in the other rooms. Leave the can and the bag for your supervisor."
+       ],
+       "es": [
+        "Deténgase. Deje la bolsa despacio ahí donde está. No la amarre, no la apriete y no empuje nada hacia abajo.",
+        "Que nadie entre al baño. Cierre la puerta si puede.",
+        "Tome una foto del bote desde donde está.",
+        "Llame a la oficina y a su supervisor. Diga que la aguja está en el fondo del bote de basura del baño.",
+        "Siga con el resto del trabajo en los otros cuartos. Deje el bote y la bolsa para su supervisor."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "Never reach in to get it out, not even with gloves or tongs. Three or more needles, or you cannot see the whole bottom of the can? Use the gun rule and call the office.",
+       "es": "Nunca meta la mano para sacarla, ni con guantes ni con pinzas. ¿Hay tres agujas o más, o no puede ver todo el fondo del bote? Use la regla de las armas y llame a la oficina.",
+       "type": "callout"
+      }
+     ],
+     "id": "card-needle-in-the-trash",
+     "seconds": 70,
+     "title": {
+      "en": "Card 1. A needle in the trash can",
+      "es": "Tarjeta 1. Una aguja en el bote de basura"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "Example: you are pulling the sheets off the bed and you see a needle near the pillow.",
+       "es": "Ejemplo: usted está quitando las sábanas de la cama y ve una aguja cerca de la almohada.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Stop pulling. Let go of the sheets and do not shake them.",
+        "Keep everyone out, and close the bedroom door if you can.",
+        "Take a photo from where you are.",
+        "Call the office and your supervisor. Say the needle is in the bedding.",
+        "Leave the bed exactly as it is and go on with the rest of the job. When your supervisor has taken the needle out, take the sheets off slowly, looking as you go."
+       ],
+       "es": [
+        "Deje de jalar. Suelte las sábanas y no las sacuda.",
+        "Que nadie entre, y cierre la puerta del cuarto si puede.",
+        "Tome una foto desde donde está.",
+        "Llame a la oficina y a su supervisor. Diga que la aguja está entre la ropa de cama.",
+        "Deje la cama tal como está y siga con el resto del trabajo. Cuando su supervisor ya haya retirado la aguja, quite las sábanas despacio, mirando mientras lo hace."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "Do not pull the sheet to get a better look, even if the needle is caught in the cloth.",
+       "es": "No jale la sábana para verla mejor, aunque la aguja esté enredada en la tela.",
+       "type": "text"
+      },
+      {
+       "en": "Laundry is where people get hurt. A needle inside a sheet reaches the next person's hands.",
+       "es": "La ropa sucia es donde la gente sale lastimada. Una aguja dentro de una sábana llega a las manos de la siguiente persona.",
+       "type": "callout"
+      }
+     ],
+     "id": "card-needle-in-the-bed",
+     "seconds": 65,
+     "title": {
+      "en": "Card 2. A needle in the bed",
+      "es": "Tarjeta 2. Una aguja en la cama"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "Example: there is dried blood on the bathroom floor. In the tub there is a hand towel with one spot of blood on it, smaller than a quarter, and a bath towel soaked with blood.",
+       "es": "Ejemplo: hay sangre seca en el piso del baño. En la tina hay una toalla de manos con una manchita de sangre, más chica que una moneda de 25 centavos, y una toalla de baño empapada de sangre.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "The floor is a surface. You never clean it. Leave it.",
+        "Take photos of the floor and the bath towel, and call the office.",
+        "The hand towel has a very small stain, so gloves on, and it goes in the wash.",
+        "The bath towel is not washed. Gloves on, into the leak proof bag, and leave the bag where the office tells you.",
+        "Close the bathroom door. The office tells the property management company."
+       ],
+       "es": [
+        "El piso es una superficie. Eso usted nunca lo limpia. Déjelo.",
+        "Tome fotos del piso y de la toalla de baño, y llame a la oficina.",
+        "La toalla de manos tiene una mancha muy pequeña, así que, con guantes puestos, va a la lavadora.",
+        "La toalla de baño no se lava. Con guantes puestos, a la bolsa que no deja salir líquido, y deje la bolsa donde la oficina le diga.",
+        "Cierre la puerta del baño. La oficina le avisa a la compañía que administra la propiedad."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "If you are not sure whether it is blood, treat it as blood and call the office.",
+       "es": "Si no sabe si es sangre, trátela como sangre y llame a la oficina.",
+       "type": "text"
+      }
+     ],
+     "id": "card-blood-in-the-bathroom",
+     "seconds": 65,
+     "title": {
+      "en": "Card 3. Blood in the bathroom",
+      "es": "Tarjeta 3. Sangre en el baño"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "Example: in a closet you see needles, a spoon and small bags.",
+       "es": "Ejemplo: en un clóset usted ve agujas, una cuchara y bolsitas.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Stop. Do not touch anything, not the needles and not the things around them.",
+        "Take photos from where you are, so the office can see what is there.",
+        "Call the office and your supervisor, and say what you can see.",
+        "One or two needles, you can see all of them, and nothing else is loose: keep everyone away and go on with the rest of the job, away from that spot. Your supervisor comes with the sharps kit.",
+        "Three or more needles, or you cannot see them all, or loose powder, an open bag or a broken glass pipe: touch nothing at all. Leave the property, wait somewhere near other people, and let the office handle it."
+       ],
+       "es": [
+        "Deténgase. No toque nada, ni las agujas ni las cosas que están alrededor.",
+        "Tome fotos desde donde está, para que la oficina vea lo que hay.",
+        "Llame a la oficina y a su supervisor, y diga lo que ve.",
+        "Una o dos agujas, las puede ver todas, y no hay nada más suelto: que nadie se acerque, y siga con el resto del trabajo, lejos de ese lugar. Su supervisor viene con el kit para agujas.",
+        "Tres agujas o más, o no las puede ver todas, o hay polvo suelto, una bolsita abierta o una pipa de vidrio rota: no toque nada. Váyase de la propiedad, espere cerca de otras personas, y deje que la oficina se encargue."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "Never touch your face near drug things. If your hand touched anything by accident, wash it with soap and water, not hand sanitizer.",
+       "es": "Nunca se toque la cara cerca de cosas de drogas. Si su mano tocó algo sin querer, lávesela con agua y jabón, no con gel desinfectante.",
+       "type": "text"
+      },
+      {
+       "en": "Nobody from CCC touches a large amount, and you do not call the police about it. The office tells the property management company, and the property manager calls the police. If you also see a gun, the gun rule comes first: get to a safe place and call 911, then the office.",
+       "es": "Nadie de CCC toca una cantidad grande, y usted no llama a la policía por esto. La oficina le avisa a la compañía que administra la propiedad, y el administrador de la propiedad llama a la policía. Si también ve un arma, primero va la regla de las armas: váyase a un lugar seguro y llame al 911, después a la oficina.",
+       "type": "text"
+      },
+      {
+       "en": "If someone is there and you feel in danger, call 911 first, then the office. You will never get in trouble with CCC for calling 911 or the police to report danger.",
+       "es": "Si hay alguien ahí y usted se siente en peligro, llame primero al 911 y después a la oficina. Usted nunca tendrá problemas con CCC por llamar al 911 o a la policía para reportar un peligro.",
+       "type": "callout"
+      }
+     ],
+     "id": "card-needles-and-drugs",
+     "seconds": 120,
+     "title": {
+      "en": "Card 4. Needles with drug things",
+      "es": "Tarjeta 4. Agujas con cosas de drogas"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "This screen and the next one are the most important in this training. Read them twice.",
+       "es": "Esta pantalla y la siguiente son las más importantes de esta capacitación. Léalas dos veces.",
+       "type": "callout"
+      },
+      {
+       "en": "If a needle or a sharp object goes into your skin, or blood or a body fluid touches a cut, your eye, your nose or your mouth:",
+       "es": "Si una aguja o un objeto filoso le entra en la piel, o si sangre o un fluido del cuerpo toca una cortada, un ojo, la nariz o la boca:",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Take your gloves off, then wash the spot right now with soap and water. Take your time with it. Cover it with a bandage after.",
+        "A splash in the eye: rinse your eye with clean water. Keep rinsing.",
+        "A splash in the nose or the mouth: rinse with water. Do not swallow it.",
+        "Call the office right away. Say that you were stuck or splashed. Do not wait until the end of the job."
+       ],
+       "es": [
+        "Quítese los guantes y lávese la piel ahora mismo con agua y jabón. Tómese su tiempo. Después cúbrase la herida con una curita.",
+        "Si le salpicó un ojo: enjuáguese el ojo con agua limpia. Siga enjuagando.",
+        "Si le salpicó la nariz o la boca: enjuáguese con agua. No se lo trague.",
+        "Llame a la oficina enseguida. Diga que se pinchó o que le salpicó. No espere hasta terminar el trabajo."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": [
+        "Do not squeeze the spot to push blood out. It does not help.",
+        "Do not pour bleach into the wound.",
+        "Do not wait to see if you feel sick. Feeling fine today means nothing.",
+        "Leave the needle where it is, and close the room if you can. Do not pick it up to show anyone. Your supervisor removes it later. Do not bring the needle to the doctor. The doctor does not need it."
+       ],
+       "es": [
+        "No se apriete la piel para sacar sangre. Eso no ayuda.",
+        "No se eche cloro en la herida.",
+        "No espere a ver si se siente mal. Sentirse bien hoy no quiere decir nada.",
+        "Deje la aguja donde está, y cierre el cuarto si puede. No la levante para enseñársela a nadie. Su supervisor la retira después. No le lleve la aguja al médico. El médico no la necesita."
+       ],
+       "type": "text"
+      }
+     ],
+     "id": "if-it-touches-you",
+     "seconds": 90,
+     "title": {
+      "en": "If it touches you",
+      "es": "Si tiene contacto con algo de eso"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "The office tells you where to go for care, right away. Care comes before the job. There is no one clinic. The office sends you to the right place for where you are.",
+       "es": "La oficina le dice adónde ir para que lo atiendan, enseguida. La atención va antes que el trabajo. No hay una sola clínica. La oficina lo manda al lugar correcto según donde esté.",
+       "type": "text"
+      },
+      {
+       "en": "Why the hurry: the medicine that lowers the risk of HIV has to start within 72 hours, and every hour counts. The hepatitis B shot also works best early. If nobody at the office or your supervisor has told you where to go within 1 hour, go to a hospital emergency room now, and tell the office after. Do not wait until tomorrow.",
+       "es": "Por qué la prisa: la medicina que baja el riesgo de VIH se tiene que empezar antes de 72 horas, y cada hora cuenta. La vacuna contra la hepatitis B también funciona mejor si se pone pronto. Si en 1 hora nadie de la oficina ni su supervisor le ha dicho adónde ir, vaya ahora a la sala de emergencias de un hospital, y avísele a la oficina después. No espere hasta mañana.",
+       "type": "callout"
+      },
+      {
+       "en": "You will never get in trouble with CCC for calling 911 or the police to report danger, and nobody gets in trouble for reporting a hazard or a stick. Reporting it is what gets you care.",
+       "es": "Usted nunca tendrá problemas con CCC por llamar al 911 o a la policía para reportar un peligro, y nadie tiene problemas por reportar un peligro o un pinchazo. Reportarlo es lo que le consigue atención.",
+       "type": "text"
+      },
+      {
+       "en": "CCC has workers compensation insurance for staff on payroll, in every state. It pays for the doctor visit after a needle stick or a splash at work. The visit costs you nothing. When you tell the office, CCC starts the workers compensation claim for you.",
+       "es": "CCC tiene seguro de compensación al trabajador para el personal en la nómina, en todos los estados. Ese seguro paga la visita al médico después de un pinchazo o una salpicadura en el trabajo. La visita no le cuesta nada a usted. Cuando usted le avisa a la oficina, CCC inicia el reclamo de compensación al trabajador por usted.",
+       "type": "text"
+      }
+     ],
+     "id": "getting-care-fast",
+     "seconds": 90,
+     "title": {
+      "en": "Getting care, fast",
+      "es": "Atención médica, enseguida"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": [
+        "Never touch or move a needle. Not with your hands, not in gloves, not with tongs, a towel, a broom or a dustpan.",
+        "Never cover a needle. People need to see it to stay away.",
+        "Never put a needle or a sharp object into a trash bag, a grocery bag, a bottle or your pocket.",
+        "Never open, move or empty a sharps container.",
+        "Never carry a needle anywhere, not in your car and not home.",
+        "Never put a needle or anything bloody into lost and found.",
+        "Never clean blood or a body fluid off a floor, a wall, a counter, a mattress or a couch.",
+        "Never post a photo, the address or door codes online or in group chats. Photos go to the office only."
+       ],
+       "es": [
+        "Nunca toque ni mueva una aguja. Ni con las manos, ni con guantes, ni con pinzas, una toalla, una escoba o un recogedor.",
+        "Nunca tape una aguja. La gente tiene que verla para no acercarse.",
+        "Nunca meta una aguja ni un objeto filoso en una bolsa de basura, en una bolsa del supermercado, en una botella ni en su bolsillo.",
+        "Nunca abra, mueva ni vacíe un bote para agujas.",
+        "Nunca lleve una aguja a ningún lado, ni en su carro ni a su casa.",
+        "Nunca ponga una aguja ni algo con sangre en objetos perdidos.",
+        "Nunca limpie sangre ni un fluido del cuerpo de un piso, una pared, una mesa, un colchón o un sofá.",
+        "Nunca publique una foto, la dirección ni los códigos de la puerta en internet ni en chats de grupo. Las fotos van solo a la oficina."
+       ],
+       "type": "text"
+      },
+      {
+       "en": "You can always talk about safety with your coworkers, the police or a government agency.",
+       "es": "Usted siempre puede hablar de la seguridad con sus compañeros de trabajo, con la policía o con una agencia del gobierno.",
+       "type": "text"
+      }
+     ],
+     "id": "never-do-these",
+     "seconds": 80,
+     "title": {
+      "en": "Never do these things",
+      "es": "Lo que nunca debe hacer"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "Call the CCC office right away, at any hour, day or night: {{OFFICE_PHONE}}",
+       "es": "Llame enseguida a la oficina de CCC, a cualquier hora, de día o de noche: {{OFFICE_PHONE}}",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Call. Do not only text. A call makes sure a real person knows now.",
+        "No answer? Leave a message. Send this text: \"Safety issue. Call me now.\" Keep calling the office.",
+        "A needle or a sharp object? Call your region or division supervisor too, right after the office. Your supervisor is the one who comes with the sharps kit.",
+        "Anything else, and no answer in 10 minutes? Keep calling the office, and also call your supervisor.",
+        "If you were stuck or splashed, say that first. It changes what happens next."
+       ],
+       "es": [
+        "Llame. No mande solo un mensaje de texto. Con una llamada, una persona de verdad se entera enseguida.",
+        "¿No contestan? Deje un mensaje de voz. Mande este texto: \"Problema de seguridad. Llámeme ya.\" Siga llamando a la oficina.",
+        "¿Es una aguja o un objeto filoso? Llame también a su supervisor de región o de división, justo después de la oficina. Su supervisor es quien viene con el kit para agujas.",
+        "¿Es otra cosa y nadie contesta en 10 minutos? Siga llamando a la oficina, y llame también a su supervisor.",
+        "Si usted se pinchó o le salpicó, diga eso primero. Eso cambia lo que pasa después."
+       ],
+       "type": "text"
+      },
+      {
+       "en": "Tell the office:",
+       "es": "Dígale a la oficina:",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Your name and the property address",
+        "What you saw: a needle, a sharp object, blood or a body fluid",
+        "Where it is. For example: \"in the bottom of the bathroom trash can.\"",
+        "How many needles you can see, and whether anything else is there, like small bags or powder",
+        "Whether anyone touched it, and whether anyone was stuck or splashed",
+        "That you took photos, and where you are now"
+       ],
+       "es": [
+        "Su nombre y la dirección de la propiedad",
+        "Qué vio: una aguja, un objeto filoso, sangre o un fluido del cuerpo",
+        "Dónde está. Por ejemplo: \"en el fondo del bote de basura del baño\".",
+        "Cuántas agujas puede ver, y si hay algo más, como bolsitas o polvo",
+        "Si alguien lo tocó, y si alguien se pinchó o le salpicó",
+        "Que tomó fotos, y dónde está usted ahora"
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "Take the photo from where you are. Do not go closer to get a better one.",
+       "es": "Tome la foto desde donde está. No se acerque para sacar una mejor.",
+       "type": "text"
+      }
+     ],
+     "id": "call-the-office",
+     "seconds": 100,
+     "title": {
+      "en": "Call the office and what to say",
+      "es": "Llame a la oficina y qué decir"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "The office takes over the part that is not yours. You do not have to solve this alone.",
+       "es": "La oficina se encarga de la parte que no le toca a usted. Usted no tiene que resolver esto sin ayuda.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "The office tells the property management company what was found, with your photos.",
+        "A needle or two: you go on with the rest of the job, away from that spot, and your supervisor comes with the sharps kit and removes it. When the office has taken over a large amount, you go back to work only when the office tells you.",
+        "Rest of the job done before your supervisor gets there? Call the office. The office tells you whether to wait, and waiting is paid work time.",
+        "If you were stuck or splashed, you do not go on with the job. You go for care.",
+        "The time you spend on a needle, a stain or a call to the office is paid work time.",
+        "If you were stuck or splashed, CCC starts the workers compensation claim for you. If you have questions after that, call the office."
+       ],
+       "es": [
+        "La oficina le avisa a la compañía que administra la propiedad lo que se encontró, con sus fotos.",
+        "Una o dos agujas: usted sigue con el resto del trabajo, lejos de ese lugar, y su supervisor viene con el kit para agujas y la retira. Cuando la oficina se encargó de una cantidad grande, usted vuelve a trabajar solo cuando la oficina le diga.",
+        "¿Terminó el resto del trabajo antes de que llegue su supervisor? Llame a la oficina. La oficina le dice si tiene que esperar, y el tiempo de espera es tiempo de trabajo pagado.",
+        "Si usted se pinchó o le salpicó, no sigue con el trabajo. Va a que lo atiendan.",
+        "El tiempo que usa en una aguja, una mancha o una llamada a la oficina es tiempo de trabajo pagado.",
+        "Si usted se pinchó o le salpicó, CCC inicia el reclamo de compensación al trabajador por usted. Si después tiene preguntas, llame a la oficina."
+       ],
+       "type": "text"
+      }
+     ],
+     "id": "what-happens-next",
+     "seconds": 85,
+     "title": {
+      "en": "What happens next",
+      "es": "Qué pasa después"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": [
+        "A needle: never touch it. Keep everyone away, take a photo from where you are, and call the office and your supervisor.",
+        "Go on with the rest of the job, away from that spot. Your supervisor comes with the sharps kit and removes it.",
+        "Three or more needles, drug powder, an open bag or a broken pipe: touch nothing, leave, call the office.",
+        "Blood on a floor, a wall, a mattress or a couch: never clean it. Photo, close the room, call the office.",
+        "Sheets or towels with a stain smaller than a quarter: gloves on, into the wash. Bigger: into a leak proof bag, photo, tell the office."
+       ],
+       "es": [
+        "Una aguja: nunca la toque. Que nadie se acerque, tome una foto desde donde está, y llame a la oficina y a su supervisor.",
+        "Siga con el resto del trabajo, lejos de ese lugar. Su supervisor viene con el kit para agujas y la retira.",
+        "Tres agujas o más, polvo de drogas, una bolsita abierta o una pipa rota: no toque nada, váyase, llame a la oficina.",
+        "Sangre en un piso, una pared, un colchón o un sofá: nunca la limpie. Foto, cierre el cuarto, llame a la oficina.",
+        "Sábanas o toallas con una mancha más chica que una moneda de 25 centavos: con guantes, a la lavadora. Más grande: a una bolsa que no deja salir líquido, foto, avísele a la oficina."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "If it touched you: wash with soap and water, or rinse your eye with clean water. Call the office and say you were stuck or splashed. The office sends you for care right away. Care comes before the job.",
+       "es": "Si tuvo contacto: lávese con agua y jabón, o enjuáguese el ojo con agua limpia. Llame a la oficina y diga que se pinchó o que le salpicó. La oficina lo manda a que lo atiendan enseguida. La atención va antes que el trabajo.",
+       "type": "callout"
+      },
+      {
+       "en": "In danger? Call 911 first. Then call the office: {{OFFICE_PHONE}}.",
+       "es": "¿Está en peligro? Llame primero al 911. Después llame a la oficina: {{OFFICE_PHONE}}.",
+       "type": "text"
+      }
+     ],
+     "id": "what-to-do-card",
+     "seconds": 90,
+     "title": {
+      "en": "What to do. Save this screen.",
+      "es": "Qué hacer. Guarde esta pantalla."
+     }
+    }
+   ]
+  },
+  "notice": {
+   "ack": {
+    "text": {
+     "en": "I have read this notice.",
+     "es": "He leído este aviso."
+    }
+   },
+   "screens": [
+    {
+     "blocks": [
+      {
+       "en": "This notice tells you what the property owners and managers ask of everyone who works at their properties. It is information about the rules at those properties. It is not instruction about how to do your own work.",
+       "es": "Este aviso le dice lo que los dueños y los administradores de las propiedades piden a todas las personas que trabajan en ellas. Es información sobre las reglas de esas propiedades. No es una instrucción sobre cómo hacer su trabajo.",
+       "type": "text"
+      },
+      {
+       "en": "A needle that has been inside another person can carry hepatitis B, hepatitis C or HIV.",
+       "es": "Una aguja que estuvo dentro del cuerpo de otra persona puede traer hepatitis B, hepatitis C o VIH.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "At these properties, needles, syringes, lancets, razor blades and broken glass with blood on it are left where they are. They are never touched, moved or put in a trash bag. The office is told, and the office arranges their removal.",
+        "At these properties, blood and body fluids on floors, walls, counters and mattresses are not cleaned. The property management company arranges it.",
+        "At these properties, sheets and towels with more than a very small stain are not laundered. They are bagged and reported. A very small stain means smaller than a quarter.",
+        "A large amount of needles or drug items is not touched at all.",
+        "Anyone at the property keeps children and pets away from it.",
+        "The office is told right away, at any hour, so the property management company can be told: {{OFFICE_PHONE}}.",
+        "Photos of it go to the office only, never online or into group chats."
+       ],
+       "es": [
+        "En estas propiedades, las agujas, las jeringas, las lancetas, las navajas y los vidrios rotos con sangre se quedan donde están. Nunca se tocan, no se mueven y no van a una bolsa de basura. Se le avisa a la oficina, y la oficina se encarga de que los retiren.",
+        "En estas propiedades, la sangre y los fluidos del cuerpo en pisos, paredes, mesas y colchones no se limpian. La compañía que administra la propiedad se encarga.",
+        "En estas propiedades, las sábanas y las toallas con más que una mancha muy pequeña no se lavan. Se meten en una bolsa y se reportan. Una mancha muy pequeña quiere decir más chica que una moneda de 25 centavos.",
+        "Una cantidad grande de agujas o de cosas de drogas no se toca para nada.",
+        "Cualquier persona en la propiedad mantiene lejos a los niños y a las mascotas.",
+        "Se le avisa enseguida a la oficina, a cualquier hora, para que se le avise a la compañía que administra la propiedad: {{OFFICE_PHONE}}.",
+        "Las fotos van solo a la oficina, nunca a internet ni a chats de grupo."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "Questions about this notice go to the office at any time.",
+       "es": "Las preguntas sobre este aviso puede hacerlas a la oficina en cualquier momento.",
+       "type": "callout"
+      }
+     ],
+     "id": "notice",
+     "seconds": 120,
+     "title": {
+      "en": "Sharps and body fluids at client properties",
+      "es": "Objetos filosos y fluidos del cuerpo en las propiedades de los clientes"
+     }
+    }
+   ]
+  }
+ },
+ "version": "2026-09-17"
+}
