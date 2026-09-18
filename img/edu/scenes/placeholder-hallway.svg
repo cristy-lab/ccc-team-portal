@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+<!-- PLACEHOLDER scene, release 0.3.5. Used only by the sample pack and the tests, until the real drawings are made. -->
+<rect width="400" height="300" fill="#ECEAF2"/>
+<path d="M0 214h400v86H0z" fill="#CFE3FA"/><path d="M40 250h120M220 272h150" stroke="#FFFCFC" stroke-width="6" stroke-linecap="round" opacity=".8"/>
+<rect x="44" y="50" width="96" height="164" rx="6" fill="#FFFCFC" stroke="#1B175A" stroke-width="5"/><circle cx="124" cy="136" r="6" fill="#1B175A"/>
+<rect x="58" y="66" width="68" height="56" rx="4" fill="#E6F2FD"/>
+<rect y="206" width="400" height="10" fill="#1B175A"/>
+<path d="M246 256l38-150 38 150z" fill="#FFC857" stroke="#1B175A" stroke-width="5" stroke-linejoin="round"/>
+<path d="M236 256h96" stroke="#1B175A" stroke-width="6" stroke-linecap="round"/>
+<path d="M284 150v36" stroke="#1B175A" stroke-width="9" stroke-linecap="round"/><circle cx="284" cy="204" r="5.5" fill="#1B175A"/>
+<path d="M180 70l-20 176" stroke="#1B175A" stroke-width="6" stroke-linecap="round"/>
+<path d="M140 246q20-14 40 0l6 12h-52z" fill="#82CAFB" stroke="#1B175A" stroke-width="4" stroke-linejoin="round"/>
+<ellipse cx="200" cy="270" rx="34" ry="7" fill="#82CAFB" opacity=".7"/>
+<path d="M350 60l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="#F6A078"/>
+<path d="M210 40l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="#6BA9F8"/>
+</svg>

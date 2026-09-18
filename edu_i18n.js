@@ -82,7 +82,12 @@
       edu_preview_note: "This was a preview. It does not count, and no paid minutes were saved.",
       edu_preview_note_notice: "This was a preview. It does not count as a confirmation.",
       edu_tok_office: "the office",
-      edu_tok_supervisor: "your supervisor"
+      edu_tok_supervisor: "your supervisor",
+
+      edu_video_len: "Video · {time}",
+      edu_video_off: "Video needs internet",
+      edu_video_text_show: "Read the video text",
+      edu_video_text_hide: "Hide the video text"
     },
     es: {
       edu_intro: "Aquí están sus capacitaciones. Puede tomarlas en inglés o en español.",
@@ -154,7 +159,12 @@
       edu_preview_note: "Esto fue una vista previa. No cuenta y no se guardaron minutos pagados.",
       edu_preview_note_notice: "Esto fue una vista previa. No cuenta como una confirmación.",
       edu_tok_office: "la oficina",
-      edu_tok_supervisor: "su supervisor"
+      edu_tok_supervisor: "su supervisor",
+
+      edu_video_len: "Video · {time}",
+      edu_video_off: "El video necesita internet",
+      edu_video_text_show: "Leer el texto del video",
+      edu_video_text_hide: "Ocultar el texto del video"
     }
   };
 

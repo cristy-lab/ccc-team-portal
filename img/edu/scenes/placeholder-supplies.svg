@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+<!-- PLACEHOLDER scene, release 0.3.5. Used only by the sample pack and the tests, until the real drawings are made. -->
+<rect width="400" height="300" fill="#FCE9DF"/>
+<circle cx="330" cy="70" r="80" fill="#FFFCFC" opacity=".6"/>
+<rect y="228" width="400" height="72" fill="#E6D2C6"/><rect y="222" width="400" height="10" fill="#1B175A"/>
+<rect x="112" y="74" width="34" height="120" rx="10" fill="#6BA9F8" stroke="#1B175A" stroke-width="4"/><rect x="119" y="54" width="20" height="22" fill="#FFFCFC" stroke="#1B175A" stroke-width="4"/>
+<rect x="156" y="104" width="40" height="92" rx="12" fill="#F6A078" stroke="#1B175A" stroke-width="4"/><rect x="166" y="86" width="20" height="20" rx="4" fill="#FFFCFC" stroke="#1B175A" stroke-width="4"/>
+<rect x="206" y="92" width="36" height="104" rx="10" fill="#FFFCFC" stroke="#1B175A" stroke-width="4"/><rect x="214" y="72" width="20" height="22" fill="#82CAFB" stroke="#1B175A" stroke-width="4"/>
+<path d="M86 146h212l-18 80H104z" fill="#1B175A"/>
+<path d="M96 146q96-90 192 0" fill="none" stroke="#1B175A" stroke-width="8" stroke-linecap="round"/>
+<path d="M104 166h176M110 190h164" stroke="#82CAFB" stroke-width="4" opacity=".6"/>
+<path d="M292 150q30-6 36 26l6 40q2 10-8 10h-14q-8 0-8-8l-2-30q-2-14-12-18z" fill="#FFC857" stroke="#1B175A" stroke-width="4" stroke-linejoin="round"/>
+<path d="M60 60l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="#6BA9F8"/>
+<path d="M270 52l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="#F6A078"/>
+<path d="M350 128l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="#FFFCFC"/>
+</svg>

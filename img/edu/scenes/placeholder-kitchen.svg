@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+<!-- PLACEHOLDER scene, release 0.3.5. Used only by the sample pack and the tests, until the real drawings are made. -->
+<rect width="400" height="300" fill="#E6F2FD"/>
+<rect x="248" y="34" width="120" height="100" rx="8" fill="#FFFCFC" stroke="#1B175A" stroke-width="5"/>
+<rect x="258" y="44" width="45" height="35" fill="#82CAFB"/><rect x="313" y="44" width="45" height="35" fill="#82CAFB"/>
+<rect x="258" y="89" width="45" height="35" fill="#B9DFFC"/><rect x="313" y="89" width="45" height="35" fill="#B9DFFC"/>
+<circle cx="118" cy="70" r="30" fill="#FCE9DF" stroke="#1B175A" stroke-width="4"/><path d="M118 52v18l12 8" fill="none" stroke="#1B175A" stroke-width="4" stroke-linecap="round"/>
+<rect y="186" width="400" height="114" fill="#FFFCFC"/>
+<path d="M100 196v104M200 196v104M300 196v104" stroke="#1B175A" stroke-width="3" opacity=".25"/>
+<g fill="#1B175A"><rect x="84" y="214" width="8" height="30" rx="4"/><rect x="108" y="214" width="8" height="30" rx="4"/><rect x="284" y="214" width="8" height="30" rx="4"/><rect x="308" y="214" width="8" height="30" rx="4"/></g>
+<rect y="172" width="400" height="18" fill="#1B175A"/>
+<path d="M150 172v-40q0-14 14-14h14q10 0 10 10v6" fill="none" stroke="#1B175A" stroke-width="7" stroke-linecap="round"/>
+<rect x="120" y="166" width="100" height="8" rx="4" fill="#B9DFFC"/>
+<rect x="44" y="112" width="40" height="60" rx="10" fill="#6BA9F8" stroke="#1B175A" stroke-width="4"/>
+<rect x="54" y="96" width="20" height="18" fill="#FFFCFC" stroke="#1B175A" stroke-width="4"/>
+<path d="M50 84h36v12H50zM86 90l12 4" fill="#F6A078" stroke="#1B175A" stroke-width="4" stroke-linejoin="round"/>
+<rect x="52" y="130" width="24" height="22" rx="4" fill="#FFFCFC" opacity=".8"/>
+<rect x="248" y="150" width="46" height="22" rx="6" fill="#FFC857" stroke="#1B175A" stroke-width="4"/><rect x="248" y="150" width="46" height="8" rx="4" fill="#9ED36A" stroke="#1B175A" stroke-width="4"/>
+<path d="M212 96l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="#F6A078"/>
+<path d="M110 118l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="#FFFCFC"/>
+<path d="M340 150l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="#F6A078"/>
+</svg>

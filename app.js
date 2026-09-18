@@ -614,7 +614,7 @@
   /* ---- 3. State, router, shared UI ---- */
 
   var CFG = root.CCC_CONFIG || {};
-  var APP_VERSION = CFG.APP_VERSION || "0.3.4";
+  var APP_VERSION = CFG.APP_VERSION || "0.3.5";
 
   var state = {
     lang: "en",
@@ -2531,7 +2531,7 @@
   root.CCCPortal = {
     h: h, icon: icon, t: t, state: state, api: api, randomId: randomId, isOnline: isOnline,
     go: go, goBack: goBack, render: render, signOut: signOut, backButton: backButton,
-    msgBox: msgBox, loading: dataPlaceholder, setTrainings: setTrainings
+    msgBox: msgBox, loading: dataPlaceholder, setTrainings: setTrainings, fx: makeFx, reduced: reducedMotion
   };
 
   function setTrainings(res) {

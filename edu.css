@@ -43,18 +43,6 @@
 
 /* ---- Lesson screens ---- */
 
-.edu-progress { margin-top: 14px; }
-.edu-step-text { font-size: 15px; font-weight: 700; color: var(--muted); }
-.edu-steps { display: flex; gap: 6px; margin-top: 6px; }
-/* The filled and the empty part of the bar are close in lightness, so every segment carries an
-   edge of its own and the line between them can always be seen. */
-.edu-step {
-  flex: 1; height: 6px; border-radius: 3px; background: var(--gray-tint);
-  box-shadow: inset 0 0 0 1px var(--line-strong);
-}
-.edu-step.is-on { background: var(--peach); }
-.edu-lesson .edu-head { margin-top: 16px; }
-
 .edu-body { margin-top: 12px; font-size: 17px; line-height: 1.55; }
 .edu-body > * + * { margin-top: 14px; }
 .edu-steps-list, .edu-bullets { margin: 0; padding-left: 24px; display: grid; gap: 8px; }
@@ -67,11 +55,139 @@
 /* A callout list keeps its items inside the box, under its heading. */
 .edu-callout > ul { margin-top: 8px; }
 
+/* ---- 0.3.5: every screen is a slide ---- */
+
+/* A slide fills the phone below the header: Back and Next end it, at the foot of a short one. */
+.edu.is-slides {
+  display: flex; flex-direction: column;
+  min-height: calc(100vh - 124px); min-height: calc(100dvh - 124px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+}
+.edu.is-slides .page-head { margin-bottom: 6px; }
+.edu.is-slides .page-head h1 { font-size: 16px; color: var(--muted); }
+/* Scroll and pinch zoom stay the phone's, a sideways swipe the slide's. Zoomed in, a drag pans. */
+.edu-slide { flex: 1 0 auto; display: flex; flex-direction: column; touch-action: pan-y pinch-zoom; overflow-wrap: break-word; }
+.edu-zoomed .edu-slide { touch-action: auto; }
+.edu-slide .edu-head { margin-top: 14px; font-size: 24px; }
+/* The heading is first in the page (read before the picture), the picture still shows on top. */
+.edu-slide > .edu-progress { order: -2; }
+.edu-slide > .edu-media, .edu-split > .edu-media { order: -1; }
+
+/* The progress row: one small diamond per screen, the one on screen the big peach gem. With many
+   screens the words go under the diamonds, and a very long training wraps its diamonds too. */
+.edu-progress {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 12px;
+  margin-top: 6px; min-height: 24px;
+}
+.edu-step-text, .edu-qnum { margin-left: auto; font-size: 15px; font-weight: 700; color: var(--muted); white-space: nowrap; }
+.edu-steps { order: -1; display: flex; flex-wrap: wrap; align-items: center; gap: 7px; padding: 3px; min-width: 0; }
+.edu-step {
+  flex: none; width: 10px; height: 10px; border-radius: 2px; transform: rotate(45deg);
+  border: 2px solid var(--line-strong); background: transparent;
+}
+.edu-step.is-on { background: var(--lblue); border-color: var(--muted); }
+.edu-step.is-now {
+  width: 15px; height: 15px; margin: 0 3px; background: var(--peach); border-color: var(--gem);
+  box-shadow: 0 0 0 3px var(--peach-tint);
+}
+.edu-steps.is-many { gap: 4px; }
+.edu-steps.is-many .edu-step { width: 7px; height: 7px; border-width: 1.5px; }
+.edu-steps.is-many .edu-step.is-now { width: 11px; height: 11px; margin: 0 2px; }
+
+/* The big picture of a slide: a drawing or a video. */
+.edu-media { margin-top: 14px; }
+/* A drawing is 4 by 3. --cap is its tallest, and the card narrows with it, so the corners stay on it. */
+.edu-scene {
+  --cap: min(40vh, 340px); max-width: calc(var(--cap) * 4 / 3 + 18px);
+  margin: 0 auto; padding: 8px; border-radius: 22px; border: 1px solid var(--line);
+  background: url(img/lattice-ink.svg), linear-gradient(150deg, var(--glow-blue), var(--glow-peach));
+}
+.edu-scene img {
+  display: block; width: 100%; height: auto; max-height: var(--cap); object-fit: contain; border-radius: 15px;
+}
+.edu-scene figcaption { margin: 8px 6px 2px; color: var(--muted); font-size: 15px; line-height: 1.4; }
+/* Offline, a drawing never saved on this phone leaves its words, not a broken picture. */
+.edu-scene.is-missing img { display: none; }
+.edu-scene-alt { padding: 14px 10px; font-weight: 600; color: var(--text); }
+.is-hero .edu-scene { --cap: min(46vh, 380px); }
+/* full: the picture reaches both edges of the phone. */
+.is-full .edu-media { margin-left: -16px; margin-right: -16px; }
+.is-full .edu-media .edu-scene { max-width: none; }
+.is-full .edu-media .edu-scene, .is-full .edu-media .edu-video-frame { border-radius: 0; border-left: 0; border-right: 0; }
+.is-full .edu-media .edu-video-head, .is-full .edu-media .edu-transcript { margin-left: 16px; margin-right: 16px; }
+.is-full .edu-media .edu-text-btn { margin-left: 8px; }
+/* split: the drawing beside the heading, or above it with large text. */
+.edu-split { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-top: 14px; }
+.edu-split > .edu-media { flex: 5 1 6em; min-width: 0; }
+.edu-split > .edu-head { flex: 6 1 5.5em; min-width: 0; }
+.edu-split .edu-media, .edu-split .edu-head { margin-top: 0; }
+.edu-split .edu-scene { padding: 6px; border-radius: 18px; }
+.edu-split .edu-scene img { border-radius: 12px; }
+
+/* The guide on its round plate. The plate is light in both modes, so the drawing reads the same. */
+.edu-char {
+  flex: none; display: block; width: 76px; height: 76px; border-radius: 50%;
+  background: radial-gradient(circle at 50% 36%, #FFFCFC 0 42%, #D6EAFD);
+  box-shadow: 0 0 0 3px var(--surface), 0 0 0 5px var(--lblue), var(--shadow-sm);
+}
+.edu-char img { display: block; width: 100%; height: 100%; }
+.edu-char.is-small { width: 52px; height: 52px; }
+.edu-char.is-big { width: 148px; height: 148px; }
+/* What the guide says is real text in a bubble, under the guide when the text is large. */
+.edu-say { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+.edu-body > * + .edu-say, .edu-body > .edu-say + * { margin-top: 20px; }
+.edu-bubble {
+  position: relative; flex: 1 1 11em; min-width: 0; padding: 12px 14px; border-radius: 18px;
+  background: var(--surface); border: 2px solid var(--lblue); box-shadow: var(--shadow-sm);
+  font-weight: 600; line-height: 1.45;
+}
+.edu-char + .edu-bubble::before {
+  content: ""; position: absolute; left: -9px; top: 50%; width: 14px; height: 14px; margin-top: -7px;
+  background: inherit; border: 0 solid; border-color: inherit; border-width: 0 0 2px 2px; transform: rotate(45deg);
+}
+.edu-say.is-tip .edu-bubble { border-color: var(--blue); }
+.edu-say.is-stop .edu-bubble { border-color: var(--peach); }
+.edu-top { display: flex; align-items: center; gap: 14px; padding-top: 10px; }
+.edu-top .edu-progress { flex: 1; min-width: 0; }
+
+/* A video: the phone's own player, its title and length above, its text a tap away below. */
+.edu-video { margin: 0; }
+.edu-video-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px; margin-bottom: 8px; }
+.edu-video-title { font-weight: 700; }
+.edu-video-len { color: var(--muted); font-size: 15px; font-weight: 600; }
+.edu-video-frame {
+  position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 18px;
+  background: #0E0C29; border: 1px solid var(--line);
+}
+.edu-video-frame video, .edu-poster { display: block; width: 100%; height: 100%; object-fit: contain; }
+.edu-poster { object-fit: cover; opacity: 0.45; }
+.edu-video-off {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: max-content; max-width: calc(100% - 24px);
+  display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 14px;
+  background: #1B175A; color: #FFFCFC; font-weight: 700; line-height: 1.3; box-shadow: var(--shadow-lg);
+}
+.edu-video-off svg { flex: none; width: 20px; height: 20px; }
+.edu-text-btn { margin: 4px 0 0 -8px; }
+.edu-transcript {
+  margin-top: 4px; padding: 12px 14px; border-radius: 14px; background: var(--surface);
+  border: 1px solid var(--line); font-size: 16px; line-height: 1.5;
+}
+.edu-transcript > * + * { margin-top: 8px; }
+
+/* Back and Next come after the words, never over them. With large text Next takes its own row. */
+.edu-nav { display: flex; flex-wrap: wrap; margin: auto 0 0; padding: 22px 0 calc(12px + env(safe-area-inset-bottom)); }
+.edu-nav .btn { width: min-content; flex: 1 1 auto; padding: 8px 16px; line-height: 1.2; }
+.edu-nav .btn-primary { flex-grow: 999; }
+
+/* A slide comes in from its side, gently, the diamonds and buttons still. Never with less motion. */
+.is-in-next > :not(.edu-nav):not(.edu-progress):not(.edu-top) { animation: edu-next 0.3s ease-out both; }
+.is-in-back > :not(.edu-nav):not(.edu-progress):not(.edu-top) { animation: edu-back 0.3s ease-out both; }
+@keyframes edu-next { from { opacity: 0; transform: translateX(32px); } }
+@keyframes edu-back { from { opacity: 0; transform: translateX(-32px); } }
+
 /* ---- The questions ---- */
 
-.edu-qnum { margin-top: 16px; font-size: 15px; font-weight: 700; color: var(--muted); }
-.edu-quiz-intro { margin-top: 8px; color: var(--muted); font-size: 16px; }
-.edu-prompt { margin-top: 8px; font-size: 21px; }
+.edu-quiz-intro { margin-top: 10px; color: var(--muted); font-size: 16px; }
+.edu-slide .edu-prompt { margin-top: 12px; font-size: 21px; }
 .edu-choices { border: 0; padding: 0; margin: 18px 0 0; min-width: 0; display: grid; gap: 10px; }
 /* A quiz answer is a sentence, so it reads from the left instead of the middle. */
 .edu-choices .choice-face { justify-content: flex-start; text-align: left; font-weight: 600; }
@@ -83,10 +199,19 @@
   width: 76px; height: 76px; margin: 18px auto 0; border-radius: 50%;
   display: grid; place-items: center;
 }
+/* The finish slide: the guide celebrating (or thinking, after a try that did not pass), the mark at its side. */
+.edu-finish-top { position: relative; width: max-content; margin: 18px auto 0; }
+.edu-finish-top.has-char .edu-result-mark {
+  position: absolute; right: -10px; bottom: -4px; width: 52px; height: 52px; margin: 0; box-shadow: 0 0 0 3px var(--bg);
+}
+.edu-finish-top.has-char .edu-result-mark svg { width: 28px; height: 28px; }
+.edu-finish.is-pass .edu-char { animation: edu-pop 0.5s ease-out both; }
+@keyframes edu-pop { from { transform: scale(0.8); opacity: 0; } }
+.edu-fx { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 40; pointer-events: none; }
 .edu-result-mark svg { width: 40px; height: 40px; }
 .edu-result-mark.is-pass { background: var(--success-bg); color: var(--success-text); }
 .edu-result-mark.is-try { background: var(--peach-tint); color: var(--progress-text); }
-.edu-result-title { margin-top: 12px; text-align: center; font-size: 28px; }
+.edu-slide .edu-result-title { margin-top: 12px; text-align: center; font-size: 28px; }
 .edu-score { margin-top: 8px; text-align: center; font-weight: 700; }
 .edu-result-body { margin-top: 10px; text-align: center; color: var(--muted); }
 .edu-paid {
@@ -137,13 +262,36 @@
   border-left: 6px solid var(--peach); font-size: 15px; font-weight: 700;
 }
 .edu-preview svg { flex: none; width: 18px; height: 18px; }
-/* A tap to call number: the text colour of the words around it, underlined, never split in two. */
-.edu-tel { font-weight: 700; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+/* A tap to call number, underlined, kept whole on one line unless no line is wide enough for it. */
+.edu-tel { display: inline-block; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 
 @media (max-width: 359px) {
   .edu-item { padding: 12px 13px 14px; }
   .edu-item-title { font-size: 18px; }
-  .edu-prompt { font-size: 19px; }
+  .edu-slide .edu-prompt { font-size: 19px; }
+  .edu-slide .edu-head { font-size: 22px; }
   .edu-body { font-size: 16.5px; }
-  .edu-result-title { font-size: 25px; }
+  .edu-slide .edu-result-title { font-size: 25px; }
+  .edu-char { width: 62px; height: 62px; }
+  .edu-char.is-small { width: 46px; height: 46px; }
+  .edu-char.is-big { width: 124px; height: 124px; }
+  .edu-say { gap: 14px; }
+  .edu-split { gap: 10px; }
+}
+
+/* A short phone keeps the picture smaller, so more of the slide shows at once. */
+@media (max-height: 760px) {
+  .edu-scene, .is-hero .edu-scene { --cap: 30vh; }
+}
+@media (max-height: 700px) {
+  .edu.is-slides .page-head { margin-bottom: 0; }
+}
+
+@media (prefers-color-scheme: dark) {
+  .edu-scene { background: url(img/lattice-glow.svg), linear-gradient(150deg, var(--glow-blue), var(--glow-peach)); }
+}
+
+/* Nothing moves for someone who asks for less motion: no slide, no pop, and no confetti (web/edu.js). */
+@media (prefers-reduced-motion: reduce) {
+  .edu-slide > *, .edu-char { animation: none !important; transition: none !important; }
 }

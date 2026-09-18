@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<!-- PLACEHOLDER art, release 0.3.5. The neutral stand in guide, used only by the sample pack and the tests. The real character replaces this folder, or gets a folder of its own. -->
+<path d="M33 80L21 94" fill="none" stroke="#1B175A" stroke-width="4" stroke-linecap="round"/>
+<path d="M87 72L99 52" fill="none" stroke="#1B175A" stroke-width="4" stroke-linecap="round"/>
+<g fill="#1B175A"><ellipse cx="47" cy="106" rx="10" ry="5"/><ellipse cx="73" cy="106" rx="10" ry="5"/></g>
+<rect x="28" y="30" width="64" height="74" rx="30" fill="#82CAFB" stroke="#1B175A" stroke-width="3"/>
+<ellipse cx="43" cy="46" rx="6" ry="9" fill="#FFFCFC" opacity=".5"/>
+<path d="M60 12l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="#F6A078" stroke="#1B175A" stroke-width="2" stroke-linejoin="round"/>
+<g fill="#F6A078" opacity=".75"><circle cx="42" cy="72" r="4.5"/><circle cx="78" cy="72" r="4.5"/></g>
+<g fill="#1B175A"><circle cx="50" cy="60" r="4"/><circle cx="70" cy="60" r="4"/></g>
+<path d="M52 73q8 8 16 0" fill="none" stroke="#1B175A" stroke-width="3" stroke-linecap="round"/>
+<path d="M64 51l10-3" stroke="#1B175A" stroke-width="3" stroke-linecap="round"/>
+<circle cx="20" cy="96" r="6.5" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/>
+<rect x="96" y="30" width="7" height="18" rx="3.5" fill="#FFFCFC" stroke="#1B175A" stroke-width="2.5"/>
+<circle cx="100" cy="51" r="6.5" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/>
+<path d="M109 12l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="#FFC857" stroke="#1B175A" stroke-width="1.5" stroke-linejoin="round"/>
+</svg>

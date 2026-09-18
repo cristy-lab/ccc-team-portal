@@ -29,6 +29,17 @@
  *   * The contractor checkpoint (13.7): a notice may name quiz questions a contractor answers
  *     after checking the box. The server says only whether all of them were right, and a miss
  *     shows the notice's own "read the notice again" line and nothing else.
+ *
+ * New in 0.3.5, the presentation player (docs/API.md 13.2):
+ *   * Every screen is a slide: a progress row of small diamonds, a big drawing or video, short text,
+ *     the guide's speech bubble, and Back and Next, which swipe and the arrow keys also reach.
+ *     Swipe never replaces a button, and nothing moves for someone who asks for less motion.
+ *   * Blocks "scene", "say" and "video", and a "layout" per screen (hero, split, full). A guide is
+ *     img/edu/characters/<id>/<pose>.svg, so any character works without a code change. Only files
+ *     of this site are ever drawn.
+ *   * A video is never needed to finish: offline or when it fails, its poster, "Video needs
+ *     internet" and its text take its place, and Next always works. It never plays by itself.
+ *   * A notice stays plain: the guide only in the stop pose, and no video.
  */
 (function (root) {
   "use strict";
@@ -40,6 +51,15 @@
 
   var STATUS_CHIP = { todo: "chip-new", not_passed: "chip-progress", past_due: "chip-pending", done: "chip-done" };
   var PACK_RETRY = 1; // one reload when the pack on the site no longer matches what the server expects
+  var LAYOUTS = { hero: 1, split: 1, full: 1 };
+  var POSES = { hello: 1, tip: 1, stop: 1, think: 1, celebrate: 1 };
+  var ID_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+  // A pack may only name files of this site, under img/edu/ or videos/. Anything else is not drawn.
+  var PATH_RE = /^(img\/edu|videos)\/(?!.*\.\.)[\w.\/-]+$/;
+  var CAPTION_NAMES = { en: "English", es: "Español" };
+  var SLIDES = { lesson: 1, quiz: 1, result: 1, ack: 1, thanks: 1 };
+  var wired = false;
+  var endFx = null; // stops the confetti of a finish slide
 
   /* One person taking one training. Memory only: never stored, and dropped on sign out. */
   var view = null;
@@ -64,7 +84,13 @@
       msg: null,        // {key, vars, kind}
       offline: false,   // opened from the cache with no session
       tries: 0,         // pack reloads after a fingerprint mismatch
-      focus: false      // move the focus to this screen's heading after it is drawn
+      focus: false,     // move the focus to this screen's heading after it is drawn
+      nav: null,        // {next, back} of the slide on screen, for swipe and the arrow keys
+      dir: "",          // next or back: the way the next slide comes in
+      media: {},        // the video elements of the slide on screen, kept across a redraw
+      failed: {},       // videos that could not play
+      open: {},         // video text shown or hidden, by video
+      cheered: false    // the confetti of this finish slide already ran
     };
   }
 
@@ -283,6 +309,10 @@
     view.result = null;
     view.offline = false;
     view.msg = null;
+    view.media = {};
+    view.failed = {};
+    view.open = {};
+    view.cheered = false;
     view.busy = true;
     P.render();
     loadPack(item.pack_url).then(function (loaded) {
@@ -328,6 +358,7 @@
         if (res.training && typeof res.training.preview === "boolean") item.preview = res.training.preview;
         view.offline = false;
         view.msg = null;
+        view.dir = "next";
         go("lesson");
         return;
       }
@@ -412,7 +443,11 @@
       if (res.ok === true) {
         view.result = res.result || null;
         view.msg = null;
-        loadList(function () { go("result"); });
+        view.cheered = false;
+        loadList(function () {
+          view.dir = "next";
+          go("result");
+        });
         return;
       }
       if (auth(res)) return;
@@ -462,7 +497,11 @@
         view.done_on = typeof res.completed_on === "string" ? res.completed_on : "";
         view.msg = null;
         view.check = false;
-        loadList(function () { go("thanks"); });
+        view.cheered = false;
+        loadList(function () {
+          view.dir = "next";
+          go("thanks");
+        });
         return;
       }
       if (auth(res)) return;
@@ -554,6 +593,7 @@
     view.index = 0;
     view.answers = {};
     view.result = null;
+    view.dir = "next";
     newOrder();
     go("quiz");
   }
@@ -685,7 +725,138 @@
     ]);
   }
 
-  /* One lesson screen at a time, with the steps drawn above it. */
+  /* ---- Slides (0.3.5) ---- */
+
+  /* A path from the pack, only when it names a file of this site. */
+  function path(p) {
+    return typeof p === "string" && PATH_RE.test(p) ? p : "";
+  }
+
+  /* The guide of this training, from the pack, or "" when it has none (every pack before 0.3.5). */
+  function guide() {
+    var c = view.pack && view.pack.character;
+    return typeof c === "string" && ID_RE.test(c) ? c : "";
+  }
+
+  /* The guide in one pose, on its round plate. Decorative: what it says is real text beside it. */
+  function figure(pose, cls, who) {
+    who = who || guide();
+    if (!who || !ID_RE.test(who) || !POSES[pose]) return null;
+    var plate = el("span", { class: "edu-char" + (cls ? " " + cls : ""), "aria-hidden": "true" });
+    plate.appendChild(el("img", { src: "img/edu/characters/" + who + "/" + pose + ".svg", alt: "", width: "120",
+      height: "120", decoding: "async", on: { error: function () { plate.hidden = true; } } }));
+    return plate;
+  }
+
+  /* The way from one slide to the next: the slide comes in from that side. */
+  function turn(step, index, dir) {
+    view.dir = dir;
+    view.index = index;
+    view.msg = null;
+    go(step);
+  }
+
+  /* One slide: what swipe and the arrow keys do, and the way it comes in. */
+  function slide(cls, kids, next, back) {
+    view.nav = { next: next || null, back: back || null };
+    var motion = view.dir && !(P.reduced && P.reduced()) ? " is-in-" + view.dir : "";
+    view.dir = "";
+    var node = el("section", { class: "edu-slide " + cls + motion }, kids);
+    swipe(node);
+    return node;
+  }
+
+  /* Back and Next at the foot of a slide, Back first so the order on screen is the order read. */
+  function nav(back, next) {
+    return el("div", { class: "btn-row edu-nav" }, [back, next]);
+  }
+
+  /* True while the page is pinch zoomed in: then a sideways drag pans the page, never a swipe. */
+  function zoomed() {
+    var vv = root.visualViewport;
+    return !!(vv && vv.scale > 1.01);
+  }
+
+  /* A swipe to the left is Next and to the right is Back. Never from the edges of the screen (the
+     phone's back gesture), on a video (its bar is dragged) or zoomed in (a drag reads the line). */
+  function swipe(node) {
+    var from = null;
+    node.addEventListener("pointerdown", function (e) {
+      var w = root.innerWidth || 0;
+      from = e.pointerType === "mouse" || e.isPrimary === false || e.clientX < 24 || (w && e.clientX > w - 24) || zoomed() ||
+        (e.target && e.target.closest && e.target.closest("video")) ? null : { x: e.clientX, y: e.clientY, at: Date.now() };
+    });
+    node.addEventListener("pointercancel", function () { from = null; });
+    node.addEventListener("pointerup", function (e) {
+      var s = from;
+      from = null;
+      if (!s || !view || !view.nav || view.busy) return;
+      var dx = e.clientX - s.x;
+      if (Math.abs(dx) < 60 || Math.abs(dx) < 2 * Math.abs(e.clientY - s.y) || Date.now() - s.at > 1000) return;
+      var go2 = dx < 0 ? view.nav.next : view.nav.back;
+      if (go2) go2();
+    });
+  }
+
+  /* The left and right arrow keys, like Back and Next. Never inside a field, a choice or a video,
+     where the arrows already mean something. */
+  function onKey(e) {
+    if (!view || !view.nav || view.busy || e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+    var fn = e.key === "ArrowRight" ? view.nav.next : e.key === "ArrowLeft" ? view.nav.back : null;
+    var tag = (e.target && e.target.tagName) || "";
+    if (!fn || /^(INPUT|TEXTAREA|SELECT|VIDEO|AUDIO)$/.test(tag) || !doc.querySelector(".edu-slide") ||
+      doc.documentElement.classList.contains("party-open")) return;
+    e.preventDefault();
+    fn();
+  }
+
+  /* Back online with a video that could not play on screen: draw the slide again, so it can. Open
+     video text stays open and the focus stays where it was, never thrown to the top of the page. */
+  function onOnline() {
+    if (!view || view.step !== "lesson" || !doc.querySelector(".edu-video.is-off")) return;
+    var a = doc.activeElement;
+    var s = doc.querySelector(".edu-slide");
+    var had = !!(s && a && s.contains(a));
+    var ctl = had ? a.getAttribute("aria-controls") : "";
+    var at = had && a.parentNode.classList.contains("edu-nav") ? [].indexOf.call(a.parentNode.children, a) : -1;
+    Object.keys(view.open).forEach(function (k) {
+      if (/off$/.test(k) && view.open[k] === true) view.open[k.slice(0, -3)] = true;
+    });
+    view.failed = {};
+    P.render();
+    if (!had) return;
+    var n = (ctl && doc.querySelector('.edu [aria-controls="' + ctl + '"]')) || (at >= 0 && doc.querySelector(".edu-nav").children[at]);
+    if (n) n.focus();
+    else focusHead();
+  }
+
+  function wire() {
+    if (wired) return;
+    wired = true;
+    doc.addEventListener("keydown", onKey);
+    root.addEventListener("online", onOnline);
+    var vv = root.visualViewport;
+    if (vv) vv.addEventListener("resize", function () { doc.documentElement.classList.toggle("edu-zoomed", zoomed()); });
+  }
+
+  /* The diamonds, one per screen: the ones passed are filled light, the one on screen is the big
+     peach gem. is-on marks every screen reached, as the bar of 0.3.4 did. */
+  function steps(i, total, label) {
+    var bar = el("div", { class: "edu-steps" + (total > 16 ? " is-many" : ""), "aria-hidden": "true" });
+    for (var n = 0; n < total; n++) {
+      bar.appendChild(el("span", { class: "edu-step" + (n <= i ? " is-on" : "") + (n === i ? " is-now" : "") }));
+    }
+    return el("div", { class: "edu-progress" }, [
+      // The label introduces the step, so it is read before it and not after.
+      el("span", { class: "sr-only", text: t("edu_progress") }),
+      label,
+      bar
+    ]);
+  }
+
+  /* One lesson screen as a slide. With a layout, the first drawing or video of the screen is the
+     big picture: above the heading (hero, or full, edge to edge), or beside it (split). Without
+     one, every block is drawn in order under the heading, exactly like 0.3.4. */
   function lessonScreen() {
     var screens = view.part.screens;
     var total = screens.length;
@@ -693,78 +864,177 @@
     var page = screens[i];
     var last = i === total - 1;
     var course = view.item.kind !== "notice";
-    var parts = [
-      // A safety notice is often one screen, where "Step 1 of 1" over a full bar says nothing.
-      total > 1 ? steps(i, total) : null,
-      el("h2", { class: "edu-head", "data-edu-head": "1", text: plainText(text(page.title)) }),
-      blocks(page.blocks)
-    ];
-    var next = last
-      ? button("btn-primary", t(course ? "edu_to_quiz" : "edu_to_ack"), function () {
-        view.msg = null;
-        if (course) toQuestions(false);
-        else go("ack");
-      })
-      : button("btn-primary", t("edu_next"), function () {
-        view.index = i + 1;
-        go("lesson");
-      });
-    var row = [next];
-    if (i > 0) {
-      row.push(button("btn-secondary", t("edu_prev"), function () {
-        view.index = i - 1;
-        go("lesson");
-      }));
+    var list = Array.isArray(page.blocks) ? page.blocks : [];
+    var layout = LAYOUTS[page.layout] ? page.layout : "";
+    var lead = -1;
+    for (var k = 0; layout && lead < 0 && k < list.length; k++) {
+      if (list[k] && (list[k].type === "scene" || (course && list[k].type === "video"))) lead = k;
     }
-    parts.push(el("div", { class: "btn-row" }, row));
-    return parts;
+    // Only the videos of this slide are kept, so the ones of the slide before stop and go.
+    view.kept = view.media;
+    view.media = {};
+    var next = last ? function () {
+      view.msg = null;
+      if (course) toQuestions(false);
+      else {
+        view.dir = "next";
+        go("ack");
+      }
+    } : function () { turn("lesson", i + 1, "next"); };
+    var back = i > 0 ? function () { turn("lesson", i - 1, "back"); } : null;
+    var title = el("h2", { class: "edu-head", "data-edu-head": "1", text: plainText(text(page.title)) });
+    var media = lead >= 0 ? el("div", { class: "edu-media" }, block(list[lead], lead)) : null;
+    var split = layout === "split" && media && list[lead].type === "scene";
+    return [slide("is-" + (layout || "flow"), [
+      // A safety notice is often one screen, where "Step 1 of 1" over one diamond says nothing.
+      total > 1 ? steps(i, total, el("p", { class: "edu-step-text", text: t("edu_step", { n: i + 1, total: total }) })) : null,
+      // The heading first, so reading on reaches the picture. edu.css still shows the picture on top.
+      split ? el("div", { class: "edu-split" }, [title, media]) : title,
+      split ? null : media,
+      blocks(list, lead),
+      nav(back ? button("btn-secondary", t("edu_prev"), back) : null,
+        button("btn-primary", t(!last ? "edu_next" : course ? "edu_to_quiz" : "edu_to_ack"), next))
+    ], next, back)];
   }
 
-  function steps(i, total) {
-    var bar = el("div", { class: "edu-steps", "aria-hidden": "true" });
-    for (var n = 0; n < total; n++) {
-      bar.appendChild(el("span", { class: "edu-step" + (n <= i ? " is-on" : "") }));
+  function blocks(list, skip) {
+    var box = el("div", { class: "edu-body" });
+    (Array.isArray(list) ? list : []).forEach(function (b, k) {
+      var node = k === skip ? null : block(b, k);
+      if (node) box.appendChild(node);
+    });
+    return box;
+  }
+
+  function lines(value, tag, cls) {
+    var list = el(tag, { class: cls });
+    value.forEach(function (line) { list.appendChild(el("li", null, rich(line))); });
+    return list;
+  }
+
+  function block(b, k) {
+    if (!b || typeof b !== "object") return null;
+    var notice = view.item && view.item.kind === "notice";
+    if (b.type === "scene") return scene(b);
+    if (b.type === "say") return say(b, notice);
+    // A notice stays short and plain, so it never plays a video.
+    if (b.type === "video") return notice ? null : video(b, "s" + view.index + "b" + k);
+    var value = b[lang()] !== undefined ? b[lang()] : b.en;
+    if (b.type === "steps" && Array.isArray(value)) return lines(value, "ol", "edu-steps-list");
+    if (b.type === "callout" && Array.isArray(value)) {
+      // A callout list: its first line is the heading in the box, and the rest are its bullets.
+      return el("div", { class: "edu-callout" }, [el("p", null, rich(value[0])),
+        value.length > 1 ? lines(value.slice(1), "ul", "edu-bullets") : null]);
     }
-    return el("div", { class: "edu-progress" }, [
-      // The label introduces the step, so it is read before it and not after.
-      el("span", { class: "sr-only", text: t("edu_progress") }),
-      el("p", { class: "edu-step-text", text: t("edu_step", { n: i + 1, total: total }) }),
-      bar
+    if (b.type === "callout") return el("p", { class: "edu-callout" }, rich(value));
+    if (Array.isArray(value)) return lines(value, "ul", "edu-bullets");
+    return el("p", null, rich(value));
+  }
+
+  /* A drawing, with its alt text in the language on screen, or none when it is only decoration.
+     Offline and never saved, its words take its place, so nothing it says is lost. */
+  function scene(b) {
+    var src = path(b.src);
+    if (!src) return null;
+    var alt = b.decorative === true ? "" : text(b.alt);
+    var cap = b.caption ? text(b.caption) : "";
+    var fig = el("figure", { class: "edu-scene" });
+    fig.appendChild(el("img", { src: src, alt: alt, width: "400", height: "300", decoding: "async", on: { error: function () {
+      if (!alt) {
+        fig.hidden = true;
+        return;
+      }
+      fig.classList.add("is-missing");
+      fig.insertBefore(el("p", { class: "edu-scene-alt", text: alt }), fig.firstChild);
+    } } }));
+    if (cap) fig.appendChild(el("figcaption", null, rich(cap)));
+    return fig;
+  }
+
+  /* The guide says one line, as real text in a speech bubble. In a notice, only the stop pose. */
+  function say(b, notice) {
+    var line = b[lang()] !== undefined ? b[lang()] : b.en;
+    if (typeof line !== "string" || !line) return null;
+    var pose = notice ? "stop" : b.pose;
+    return el("div", { class: "edu-say is-" + (POSES[pose] ? pose : "plain") },
+      [figure(pose, "", b.character), el("p", { class: "edu-bubble" }, rich(line))]);
+  }
+
+  function clock(s) {
+    s = Math.max(0, Math.round(Number(s) || 0));
+    return Math.floor(s / 60) + ":" + (s % 60 < 10 ? "0" : "") + (s % 60);
+  }
+
+  /* A video from this site: the native player, never playing by itself, with captions in both
+     languages and its text a tap away. Offline or when it fails: the poster, "Video needs
+     internet" and the text, and Next still works. The same element is kept through a redraw of
+     the slide (the language button), so it keeps playing where it was. */
+  function video(b, key) {
+    var src = path(b.src);
+    var poster = path(b.poster);
+    var title = text(b.title);
+    if (!src) return null;
+    var off = !!view.failed[key] || !P.isOnline();
+    // The text is open whenever the video cannot play, until the person closes it there.
+    var slot = off ? key + "off" : key;
+    if (off && view.open[slot] === undefined) view.open[slot] = true;
+    var shown = view.open[slot] === true;
+    var frame = el("div", { class: "edu-video-frame" });
+    if (off) {
+      if (poster) frame.appendChild(el("img", { class: "edu-poster", src: poster, alt: "", on: { error: function () { this.hidden = true; } } }));
+      frame.appendChild(el("p", { class: "edu-video-off", role: "status" }, [P.icon("wifiOff"), el("span", { text: t("edu_video_off") })]));
+    } else {
+      var v = view.kept && view.kept[key];
+      if (!v || v.getAttribute("data-src") !== src) {
+        v = el("video", { controls: true, playsinline: true, preload: "metadata", poster: poster || null, src: src, "data-src": src });
+        ["en", "es"].forEach(function (l) {
+          var track = b.captions && path(b.captions[l]);
+          if (track) v.appendChild(el("track", { kind: "captions", srclang: l, label: CAPTION_NAMES[l], src: track, default: l === lang() }));
+        });
+        v.addEventListener("error", function () { broke(b, key, v); });
+      } else {
+        // The captions follow the language button, when they are on.
+        var tracks = v.textTracks || [];
+        var on = false;
+        for (var n = 0; n < tracks.length; n++) if (tracks[n].mode === "showing") on = true;
+        for (n = 0; on && n < tracks.length; n++) tracks[n].mode = tracks[n].language === lang() ? "showing" : "disabled";
+      }
+      v.setAttribute("aria-label", title);
+      view.media[key] = v;
+      frame.appendChild(v);
+    }
+    var said = b.transcript ? b.transcript[lang()] || b.transcript.en : "";
+    var box = el("div", { class: "edu-transcript", id: "edu-vt-" + key, hidden: !shown },
+      (Array.isArray(said) ? said : [said]).filter(function (s) { return typeof s === "string"; })
+        .map(function (s) { return el("p", null, rich(s)); }));
+    var toggle = el("button", { type: "button", class: "link-btn edu-text-btn", "aria-controls": "edu-vt-" + key,
+      "aria-expanded": shown ? "true" : "false", text: t(shown ? "edu_video_text_hide" : "edu_video_text_show"),
+      on: { click: function () {
+        // In place, so the focus stays on this button.
+        var now = box.hidden;
+        view.open[slot] = now;
+        box.hidden = !now;
+        toggle.setAttribute("aria-expanded", now ? "true" : "false");
+        toggle.textContent = t(now ? "edu_video_text_hide" : "edu_video_text_show");
+      } } });
+    return el("figure", { class: "edu-video" + (off ? " is-off" : "") }, [
+      el("figcaption", { class: "edu-video-head" }, [el("span", { class: "edu-video-title", text: title }),
+        el("span", { class: "edu-video-len", text: t("edu_video_len", { time: clock(b.seconds) }) })]),
+      frame, toggle, box
     ]);
   }
 
-  function blocks(list) {
-    var box = el("div", { class: "edu-body" });
-    (Array.isArray(list) ? list : []).forEach(function (block) {
-      if (!block || typeof block !== "object") return;
-      var value = block[lang()] !== undefined ? block[lang()] : block.en;
-      if (block.type === "steps" && Array.isArray(value)) {
-        var ol = el("ol", { class: "edu-steps-list" });
-        value.forEach(function (line) { ol.appendChild(el("li", null, rich(line))); });
-        box.appendChild(ol);
-        return;
-      }
-      if (block.type === "callout" && Array.isArray(value)) {
-        // A callout list: its first line is the heading in the box, and the rest are its bullets.
-        var items = el("ul", { class: "edu-bullets" });
-        value.slice(1).forEach(function (line) { items.appendChild(el("li", null, rich(line))); });
-        box.appendChild(el("div", { class: "edu-callout" }, [el("p", null, rich(value[0])),
-          value.length > 1 ? items : null]));
-        return;
-      }
-      if (block.type === "callout") {
-        box.appendChild(el("p", { class: "edu-callout" }, rich(value)));
-        return;
-      }
-      if (Array.isArray(value)) {
-        var ul = el("ul", { class: "edu-bullets" });
-        value.forEach(function (line) { ul.appendChild(el("li", null, rich(line))); });
-        box.appendChild(ul);
-        return;
-      }
-      box.appendChild(el("p", null, rich(value)));
-    });
-    return box;
+  /* The video could not play: swap in the poster and the text where it stood, without a redraw. */
+  function broke(b, key, v) {
+    if (!view) return;
+    view.failed[key] = true;
+    delete view.media[key];
+    var fig = v.parentNode && v.parentNode.parentNode;
+    if (!fig || !fig.parentNode) return;
+    var had = fig.contains(doc.activeElement);
+    var fresh = video(b, key);
+    fig.parentNode.replaceChild(fresh, fig);
+    if (had) fresh.querySelector(".edu-text-btn").focus();
   }
 
   /* One question at a time. No choice here is ever marked right or wrong: the server scores it. */
@@ -793,35 +1063,23 @@
         el("span", { class: "choice-face" }, [P.icon("check"), el("span", { text: plainText(text(c)) })])
       ]));
     });
-    var parts = [
-      el("p", { class: "edu-qnum", text: t("edu_question", { n: i + 1, total: total }) }),
-      el("h2", { class: "edu-head edu-prompt", id: promptId, "data-edu-head": "1", text: plainText(text(q.prompt)) }),
-      group
-    ];
+    var intro = null;
     if (i === 0 && !view.check && view.quiz && view.quiz.pass_percent) {
-      parts.splice(1, 0, el("p", { class: "edu-quiz-intro", text: t("edu_quiz_intro", { n: view.quiz.pass_percent }) }));
+      intro = el("p", { class: "edu-quiz-intro", text: t("edu_quiz_intro", { n: view.quiz.pass_percent }) });
     } else if (i === 0 && view.offline) {
       // Offline there is no session, so the pass mark never arrived. Say what can be done here.
-      parts.splice(1, 0, el("p", { class: "edu-quiz-intro", text: t("edu_offline_quiz") }));
+      intro = el("p", { class: "edu-quiz-intro", text: t("edu_offline_quiz") });
     }
-    var row = [];
-    if (last) {
-      // The checkpoint goes with the confirmation, the quiz on its own.
-      row.push(button("btn-primary", view.busy ? t("edu_sending") : t("edu_send"),
-        view.check ? acknowledge : submit, view.busy));
-    } else {
-      row.push(button("btn-primary", t("edu_next"), function () {
-        if (!view.answers[q.id]) {
-          showMsg("edu_answer_first");
-          return;
-        }
-        view.msg = null;
-        view.index = i + 1;
-        go("quiz");
-      }));
-    }
-    row.push(button("btn-secondary", t("edu_prev"), function () {
+    var next = last ? null : function () {
+      if (!view.answers[q.id]) {
+        showMsg("edu_answer_first");
+        return;
+      }
+      turn("quiz", i + 1, "next");
+    };
+    var back = function () {
       view.msg = null;
+      view.dir = "back";
       if (i === 0 && view.check) {
         // The checkpoint was reached from the confirmation box, so Back returns there.
         view.check = false;
@@ -832,12 +1090,63 @@
         view.index = view.part.screens.length - 1;
         go("lesson");
       } else {
-        view.index = i - 1;
-        go("quiz");
+        turn("quiz", i - 1, "back");
       }
-    }, view.busy));
-    parts.push(el("div", { class: "btn-row" }, row));
-    return parts;
+    };
+    return [slide("is-quiz", [
+      // The guide thinks along on the quiz. Never on a contractor's checkpoint: no coaching there.
+      el("div", { class: "edu-top" }, [
+        steps(i, total, el("p", { class: "edu-qnum", text: t("edu_question", { n: i + 1, total: total }) })),
+        view.check ? null : figure("think", "is-small")
+      ]),
+      intro,
+      el("h2", { class: "edu-head edu-prompt", id: promptId, "data-edu-head": "1", text: plainText(text(q.prompt)) }),
+      group,
+      // The last question is sent only with its button: a swipe or a key never sends answers.
+      nav(button("btn-secondary", t("edu_prev"), back, view.busy), last
+        // The checkpoint goes with the confirmation, the quiz on its own.
+        ? button("btn-primary", view.busy ? t("edu_sending") : t("edu_send"), view.check ? acknowledge : submit, view.busy)
+        : button("btn-primary", t("edu_next"), next))
+    ], next, view.busy ? null : back)];
+  }
+
+  /* The top of a finish slide: the guide celebrating, or thinking after a try that did not pass,
+     with the mark beside it. A pack with no guide shows the mark alone, as before. */
+  function finishTop(pose, pass) {
+    var who = figure(pose, "is-big");
+    return el("div", { class: "edu-finish-top" + (who ? " has-char" : "") }, [who,
+      el("div", { class: "edu-result-mark " + (pass ? "is-pass" : "is-try") }, P.icon(pass ? "check" : "refresh"))]);
+  }
+
+  /* The app's own confetti, once, when someone passes or a contractor confirms. None at all for
+     someone who asks for less motion, and it never covers a button: it falls and is gone. */
+  function cheer() {
+    if (view.cheered || !P.fx || (P.reduced && P.reduced()) || !doc.querySelector(".edu-finish")) return;
+    view.cheered = true;
+    stopFx();
+    var canvas = el("canvas", { class: "edu-fx", "aria-hidden": "true" });
+    doc.body.appendChild(canvas);
+    var fx = P.fx(canvas);
+    fx.resize();
+    var top = doc.querySelector(".edu-finish-top");
+    var r = top ? top.getBoundingClientRect() : null;
+    var x = r ? r.left + r.width / 2 : fx.width() / 2;
+    var y = r ? r.top + r.height / 2 : fx.height() / 3;
+    fx.burst(x, y, 110, 0, Math.PI * 2, 5, 17);
+    var more = root.setTimeout(function () { fx.burst(x, y, 60, -Math.PI * 0.9, -Math.PI * 0.1, 8, 15); }, 260);
+    var done = root.setTimeout(stopFx, 5000);
+    endFx = function () {
+      root.clearTimeout(more);
+      root.clearTimeout(done);
+      fx.stop();
+      if (canvas.parentNode) canvas.parentNode.removeChild(canvas);
+    };
+  }
+
+  function stopFx() {
+    var f = endFx;
+    endFx = null;
+    if (f) f();
   }
 
   /* What the server said. Only the questions that were wrong come back, with no right answer. */
@@ -848,7 +1157,7 @@
     // almost there; nobody who got none is.
     var title = passed ? "edu_pass_title" : (r.correct > 0 ? "edu_fail_title" : "edu_fail_title_zero");
     var parts = [
-      el("div", { class: "edu-result-mark " + (passed ? "is-pass" : "is-try") }, P.icon(passed ? "check" : "refresh")),
+      finishTop(passed ? "celebrate" : "think", passed),
       el("h2", { class: "edu-head edu-result-title", "data-edu-head": "1", text: t(title) }),
       el("p", { class: "edu-score", text: t("edu_score", { correct: r.correct, total: r.total }) }),
       // A preview does not count, so it never says the office has a record of it.
@@ -883,26 +1192,28 @@
         view.answers = {};
         view.result = null;
         view.msg = null;
+        view.dir = "back";
         go("lesson");
       }));
     }
     row.push(button(passed ? "btn-primary" : "btn-secondary", t("edu_back_list"), toList));
     parts.push(el("div", { class: "btn-row" }, row));
-    return parts;
+    if (passed) Promise.resolve().then(cheer);
+    return [slide("edu-finish" + (passed ? " is-pass" : ""), parts, null, null)];
   }
 
-  /* The acknowledgment a contractor signs. Only the date is stored. */
+  /* The acknowledgment a contractor signs. Only the date is stored. Plain, with no guide. */
   function ackScreen() {
     var ack = (view.part && view.part.ack) || {};
     var line = text(ack.text) || t("edu_ack_send");
-    var back = button("btn-secondary", t("edu_prev"), function () {
+    var backTo = function () {
       view.msg = null;
-      view.index = view.part.screens.length - 1;
-      go("lesson");
-    }, view.busy);
+      turn("lesson", view.part.screens.length - 1, "back");
+    };
+    var back = button("btn-secondary", t("edu_prev"), backTo, view.busy);
     if (checkpoint()) {
       // With a checkpoint the confirmation is a box to check, then the questions (13.7).
-      return [
+      return [slide("is-ack", [
         head("h2", "edu_ack_head"),
         el("p", { class: "edu-ack-hint", text: t("edu_ack_hint") }),
         el("div", { class: "edu-choices edu-ack-box" }, el("label", { class: "choice" }, [
@@ -912,37 +1223,33 @@
           } } }),
           el("span", { class: "choice-face" }, [P.icon("check"), el("span", { class: "edu-ack-line", text: plainText(line) })])
         ])),
-        el("div", { class: "btn-row" }, [
-          button("btn-primary", t("edu_to_quiz"), function () {
-            if (view.boxed !== true) {
-              showMsg("edu_ack_box_first");
-              return;
-            }
-            toQuestions(true);
-          }, view.busy),
-          back
-        ])
-      ];
+        nav(back, button("btn-primary", t("edu_to_quiz"), function () {
+          if (view.boxed !== true) {
+            showMsg("edu_ack_box_first");
+            return;
+          }
+          toQuestions(true);
+        }, view.busy))
+      ], null, view.busy ? null : backTo)];
     }
-    return [
+    return [slide("is-ack", [
       head("h2", "edu_ack_head"),
       el("p", { class: "edu-ack-hint", text: t("edu_ack_hint") }),
       el("p", { class: "edu-ack-text" }, rich(line)),
-      el("div", { class: "btn-row" }, [
-        button("btn-primary", view.busy ? t("edu_sending") : t("edu_ack_send"), acknowledge, view.busy),
-        back
-      ])
-    ];
+      // A confirmation is only ever sent with its button, never with a swipe or a key.
+      nav(back, button("btn-primary", view.busy ? t("edu_sending") : t("edu_ack_send"), acknowledge, view.busy))
+    ], null, view.busy ? null : backTo)];
   }
 
   function thanksScreen() {
-    return [
-      el("div", { class: "edu-result-mark is-pass" }, P.icon("check")),
+    Promise.resolve().then(cheer);
+    return [slide("edu-finish is-pass", [
+      finishTop("celebrate", true),
       el("h2", { class: "edu-head edu-result-title", "data-edu-head": "1", text: t("edu_ack_done_title") }),
       el("p", { class: "edu-result-body", text: isPreview() ? t("edu_preview_note_notice")
         : t("edu_ack_done_body", { date: shortDate(view.done_on) }) }),
       el("div", { class: "btn-row" }, button("btn-primary", t("edu_back_list"), toList))
-    ];
+    ], null, null)];
   }
 
   var STEPS = { list: listScreen, lesson: lessonScreen, quiz: quizScreen, result: resultScreen, ack: ackScreen, thanks: thanksScreen };
@@ -960,6 +1267,8 @@
     if (!view) view = blank();
     // A step whose training went away (a language reload, a sign out and back in) starts over.
     if (view.step !== "list" && (!view.item || !view.part)) view = blank();
+    view.nav = null;
+    if (view.step !== "result" && view.step !== "thanks") stopFx();
     var body;
     try {
       body = STEPS[view.step] ? STEPS[view.step]() : listScreen();
@@ -968,8 +1277,11 @@
       fail("edu_err_pack");
       body = listScreen();
     }
-    var page = P.h("div", { class: "edu edu-" + view.step }, [
-      P.h("div", { class: "page-head" }, [backNode(), P.h("h1", { text: t("tile_training_title") })]),
+    var slides = SLIDES[view.step] === 1;
+    var page = P.h("div", { class: "edu edu-" + view.step + (slides ? " is-slides" : "") }, [
+      // On a slide the heading of the page is the training itself, small, so the slide has the room.
+      P.h("div", { class: "page-head" }, [backNode(), P.h("h1", { text: slides && view.item && text(view.item.title) ||
+        t("tile_training_title") })]),
       // Every screen of a preview says so, from the first lesson to the result.
       view.step !== "list" && isPreview() ? previewTag() : null,
       view.busy && QUIET[view.step] ? spinner() : null,
@@ -1008,6 +1320,7 @@
         P = root.CCCPortal;
         H = root.CCCHelpers;
       }
+      wire();
       if (!view) {
         view = blank();
         loadList();
@@ -1016,12 +1329,13 @@
     },
     /* Sign out, or a new person on the same phone: nothing about a training stays behind. */
     reset: function () {
+      stopFx();
       view = null;
     },
     /* For tests: the step and whether an answer is held, never the answers themselves. */
     debug: function () {
       return view ? { step: view.step, index: view.index, answered: Object.keys(view.answers).length, offline: view.offline,
-        check: view.check } : null;
+        check: view.check, next: !!(view.nav && view.nav.next), back: !!(view.nav && view.nav.back) } : null;
     }
   };
 })(window);

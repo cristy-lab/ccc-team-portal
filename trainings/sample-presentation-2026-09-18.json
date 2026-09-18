@@ -1,0 +1,246 @@
+{
+ "character": "guide",
+ "kind": "course",
+ "schema": "ccc-edu-pack/1",
+ "summary": {
+  "en": "A short sample of the new lesson screens: drawings, the guide, a video and two questions. The drawings, the guide and the video are placeholders.",
+  "es": "Una muestra corta de las nuevas pantallas de las lecciones: dibujos, la guía, un video y dos preguntas. Los dibujos, la guía y el video son de muestra."
+ },
+ "title": {
+  "en": "A sample of the new look",
+  "es": "Una muestra del nuevo diseño"
+ },
+ "training_id": "sample-presentation",
+ "variants": {
+  "full": {
+   "quiz": {
+    "questions": [
+     {
+      "choices": [
+       {
+        "en": "Tap Next, or swipe to the left.",
+        "es": "Toque Siguiente, o deslice hacia la izquierda.",
+        "id": "q1_a"
+       },
+       {
+        "en": "Shake the phone.",
+        "es": "Agite el teléfono.",
+        "id": "q1_b"
+       },
+       {
+        "en": "Close the app.",
+        "es": "Cierre la aplicación.",
+        "id": "q1_c"
+       }
+      ],
+      "id": "q1",
+      "prompt": {
+       "en": "How do you go to the next screen?",
+       "es": "¿Cómo pasa a la siguiente pantalla?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Read the video text under it.",
+        "es": "Lea el texto del video que está abajo.",
+        "id": "q2_a"
+       },
+       {
+        "en": "Stop the training for good.",
+        "es": "Deje la capacitación para siempre.",
+        "id": "q2_b"
+       }
+      ],
+      "id": "q2",
+      "prompt": {
+       "en": "A video does not play. What can you do?",
+       "es": "Un video no se reproduce. ¿Qué puede hacer?"
+      }
+     }
+    ],
+    "seconds": 60
+   },
+   "screens": [
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A clean kitchen counter with a spray bottle, a sponge and a window.",
+        "es": "Una encimera de cocina limpia con un atomizador, una esponja y una ventana."
+       },
+       "src": "img/edu/scenes/placeholder-kitchen.svg",
+       "type": "scene"
+      },
+      {
+       "character": "guide",
+       "en": "Hi! I am a placeholder guide. The real one is coming soon.",
+       "es": "¡Hola! Soy una guía de muestra. La verdadera llega pronto.",
+       "pose": "hello",
+       "type": "say"
+      },
+      {
+       "en": "Each screen of a training is one slide. Tap **Next**, or swipe to the left, to go on.",
+       "es": "Cada pantalla de una capacitación es una diapositiva. Toque **Siguiente**, o deslice hacia la izquierda, para seguir.",
+       "type": "text"
+      }
+     ],
+     "id": "welcome",
+     "layout": "hero",
+     "seconds": 40,
+     "title": {
+      "en": "Welcome to the new look",
+      "es": "Le damos la bienvenida al nuevo diseño"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A basket of cleaning supplies with three bottles and a yellow glove.",
+        "es": "Una canasta de productos de limpieza con tres botellas y un guante amarillo."
+       },
+       "caption": {
+        "en": "A placeholder drawing.",
+        "es": "Un dibujo de muestra."
+       },
+       "src": "img/edu/scenes/placeholder-supplies.svg",
+       "type": "scene"
+      },
+      {
+       "en": "A drawing sits next to the words. The words are always the rule.",
+       "es": "Un dibujo va junto a las palabras. Las palabras siempre son la regla.",
+       "type": "text"
+      },
+      {
+       "character": "guide",
+       "en": "Tip: you can go back at any time with Back, or swipe to the right.",
+       "es": "Consejo: puede volver cuando quiera con Atrás, o deslizando hacia la derecha.",
+       "pose": "tip",
+       "type": "say"
+      }
+     ],
+     "id": "pictures",
+     "layout": "split",
+     "seconds": 40,
+     "title": {
+      "en": "Pictures show the idea",
+      "es": "Los dibujos muestran la idea"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "captions": {
+        "en": "videos/placeholder-sample-clip.en.vtt",
+        "es": "videos/placeholder-sample-clip.es.vtt"
+       },
+       "poster": "img/edu/posters/placeholder-sample-clip.jpg",
+       "seconds": 6,
+       "src": "videos/placeholder-sample-clip.mp4",
+       "title": {
+        "en": "Sample clip",
+        "es": "Video de muestra"
+       },
+       "transcript": {
+        "en": "This sample clip shows a test pattern and plays a steady tone. It only tests the video player.",
+        "es": "Este video de muestra presenta un patrón de prueba y se oye un tono constante. Solo sirve para probar el reproductor."
+       },
+       "type": "video"
+      },
+      {
+       "en": "You never have to watch a video to finish. The words on these screens are the training, and the video only helps.",
+       "es": "Nunca tiene que ver un video para terminar. Las palabras de estas pantallas son la capacitación, y el video solo ayuda.",
+       "type": "text"
+      }
+     ],
+     "id": "video",
+     "layout": "full",
+     "seconds": 60,
+     "title": {
+      "en": "A short video",
+      "es": "Un video corto"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A hallway with a yellow wet floor sign next to a mop.",
+        "es": "Un pasillo con un letrero amarillo de piso mojado junto a un trapeador."
+       },
+       "src": "img/edu/scenes/placeholder-hallway.svg",
+       "type": "scene"
+      },
+      {
+       "character": "guide",
+       "en": "If something looks unsafe, stop and call {{OFFICE_PHONE}}.",
+       "es": "Si algo parece peligroso, deténgase y llame a {{OFFICE_PHONE}}.",
+       "pose": "stop",
+       "type": "say"
+      },
+      {
+       "en": [
+        "Stop what you are doing.",
+        "Step back.",
+        "Call the office."
+       ],
+       "es": [
+        "Deje lo que está haciendo.",
+        "Aléjese.",
+        "Llame a la oficina."
+       ],
+       "type": "steps"
+      }
+     ],
+     "id": "stop",
+     "layout": "hero",
+     "seconds": 40,
+     "title": {
+      "en": "When to stop",
+      "es": "Cuándo detenerse"
+     }
+    }
+   ]
+  },
+  "notice": {
+   "ack": {
+    "text": {
+     "en": "I have read this notice.",
+     "es": "He leído este aviso."
+    }
+   },
+   "screens": [
+    {
+     "blocks": [
+      {
+       "decorative": true,
+       "src": "img/edu/scenes/placeholder-hallway.svg",
+       "type": "scene"
+      },
+      {
+       "character": "guide",
+       "en": "Stop and step back if something looks unsafe.",
+       "es": "Deténgase y aléjese si algo parece peligroso.",
+       "pose": "stop",
+       "type": "say"
+      },
+      {
+       "en": "This sample shows how a safety notice looks. It stays short and plain.",
+       "es": "Esta muestra enseña cómo se ve un aviso de seguridad. Es corto y sencillo.",
+       "type": "text"
+      }
+     ],
+     "id": "notice",
+     "layout": "hero",
+     "seconds": 60,
+     "title": {
+      "en": "Sample safety notice",
+      "es": "Aviso de seguridad de muestra"
+     }
+    }
+   ]
+  }
+ },
+ "version": "2026-09-18"
+}

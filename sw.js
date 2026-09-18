@@ -8,18 +8,19 @@
  *     The two lazily loaded bundles (Education and the CEO letter paper) are in there too, so a phone that
  *     goes offline can still open Trainings and the letter. The page never asks for them at
  *     start, which is what start up time depends on, but this worker does save them during
- *     install, so they cost about 65 KB once per release even for somebody who never opens them.
+ *     install, so they cost about 90 KB once per release even for somebody who never opens them.
  *   * PDF files: network first, cached copy only as an offline fallback.
  *   * Training packs (trainings/*.json): network first, with the cached copy as the offline
  *     fallback, so an opened training still reads offline and a corrected pack is picked up at
  *     once. Cache first would have served the old bytes for ever: the phone would keep sending
  *     the old fingerprint, the backend would keep answering PACK_CHANGED, and the person would
  *     be stuck on "This training was updated" until the next release.
+ *   * Videos and captions: network only, never stored, a Range request untouched (0.3.5).
  */
-var CACHE_VERSION = "0.3.4-1";
+var CACHE_VERSION = "0.3.5-1";
 var SHELL_CACHE = "ccc-shell-" + CACHE_VERSION;
 var RUNTIME_CACHE = "ccc-runtime-" + CACHE_VERSION;
-var ASSET_VERSION = "0.3.4";
+var ASSET_VERSION = "0.3.5";
 
 var SHELL = [
   "./",
@@ -109,6 +110,8 @@ self.addEventListener("fetch", function (event) {
   var url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
   if (/\/api(\/|$)/.test(url.pathname)) return;
+  if (request.headers.has("range") || /^(video|audio|track)$/.test(request.destination) ||
+    /\.(mp4|m4v|webm|mov|vtt)$/i.test(url.pathname)) return;
 
   if (/\.pdf$/i.test(url.pathname) || /\/trainings\/.+\.json$/i.test(url.pathname)) {
     event.respondWith(networkFirst(request, RUNTIME_CACHE, null));
