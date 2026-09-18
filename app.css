@@ -460,6 +460,10 @@ html[data-screen="login"] body {
 .notice svg { width: 24px; height: 24px; margin-top: 2px; }
 .notice-label { font-weight: 700; }
 .notice-text { white-space: pre-line; overflow-wrap: anywhere; }
+/* The same band as a link: a new training, a new safety notice, or one that is past due. */
+.notice-go { align-items: center; text-decoration: none; }
+.notice-go > svg:last-child { margin-left: auto; width: 22px; height: 22px; }
+.notice-go .notice-text { font-weight: 600; }
 
 .a2hs {
   position: relative; margin: 16px 0 0; padding: 16px; border-radius: var(--radius);
@@ -513,10 +517,6 @@ html[data-screen="login"] body {
   display: inline-block; padding: 1px 9px; border-radius: 999px; background: var(--peach); color: #1B175A;
   font-size: 14px; font-weight: 700; line-height: 1.5; vertical-align: 2px; white-space: nowrap;
 }
-.soon { text-align: center; padding: 24px 18px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow-sm); }
-.soon-icon { width: 88px; height: 88px; margin: 0 auto 14px; border-radius: 26px; display: grid; place-items: center; background: var(--peach-tint); }
-.soon-icon svg { width: 50px; height: 50px; }
-.soon-text { margin-top: 14px; font-size: 18px; }
 @media (max-height: 740px) {
   /* Short phone screens: fit more of the five buttons on the first screen. */
   .greeting h1 { font-size: clamp(23px, 6.6vw, 27px); }
@@ -811,82 +811,6 @@ html[lang="es"] .party-hb:not(.is-you) { font-size: clamp(36px, 12vw, 54px); }
   .party-btn { min-height: 48px; }
 }
 
-/* The message from the CEO: a paper letter with a gold double border and gold corner diamonds, on navy. */
-html[data-screen="welcome"] body {
-  background: radial-gradient(70% 45% at 0% 100%, rgba(246, 160, 120, 0.2), transparent),
-    linear-gradient(rgba(15, 12, 56, 0), rgba(15, 12, 56, 0.75) 35%, rgba(15, 12, 56, 0.3)), url(img/lattice-glow.svg), var(--welcome-bg);
-}
-.ceo { margin: -6px -6px 0; }
-.letter {
-  position: relative; isolation: isolate; padding: 40px 26px 30px; border-radius: 6px; color: var(--ink);
-  background: url(img/paper-grain.svg), var(--paper);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 24px 50px rgba(5, 3, 30, 0.45), 0 4px 10px rgba(5, 3, 30, 0.25);
-}
-.screen .letter { animation: letter-in 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
-@keyframes letter-in { from { opacity: 0; transform: translateY(18px) scale(0.985); } }
-.letter::before, .letter::after { content: ""; position: absolute; pointer-events: none; }
-.letter::before { inset: 9px; border: 1px solid var(--gold); border-image: linear-gradient(135deg, var(--gold-hi), var(--gold-lo) 30%, var(--gold-hi) 55%, var(--gold-lo) 80%, var(--gold-hi)) 1; }
-.letter::after { inset: 13px; border: 1px solid var(--gold-line); }
-.corner, .flourish i { width: 10px; height: 10px; transform: rotate(45deg); background: linear-gradient(135deg, var(--gold-hi), var(--gold-lo)); }
-.corner { position: absolute; z-index: 1; top: 5px; left: 5px; box-shadow: 0 0 0 3px var(--paper-edge); }
-.c-tr, .c-br { left: auto; right: 5px; }
-.c-bl, .c-br { top: auto; bottom: 5px; box-shadow: 0 0 0 3px var(--paper-edge-b); }
-.crest { position: absolute; z-index: 1; left: 50%; top: 1px; width: 58px; height: 16px; margin-left: -29px; background: url(img/letter-crest.svg) center / 38px 16px no-repeat, url(img/paper-grain.svg), var(--paper-edge); }
-.crest-b { top: auto; bottom: 1px; background-color: var(--paper-edge-b); }
-.ceo-photo { position: relative; width: 112px; height: 112px; margin: 0 auto; }
-.ceo-avatar {
-  position: relative; z-index: 1; width: 100%; height: 100%; border-radius: 50%; overflow: hidden; display: grid; place-items: center;
-  background: url(img/lattice-glow.svg), radial-gradient(90% 90% at 30% 20%, #3A33A6, #1B175A 70%);
-  box-shadow: 0 0 0 3px var(--paper-edge), 0 0 0 5px var(--gold), 0 0 0 6px rgba(156, 118, 48, 0.5), 0 12px 26px rgba(27, 23, 90, 0.28);
-}
-.ceo-avatar img, .ceo-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.2); transform-origin: 47% 36%; }
-.ceo-initial { font-family: var(--serif); font-size: 54px; font-weight: 700; color: #FFFCFC; line-height: 1; }
-.ceo-title { margin-top: 16px; text-align: center; font-size: clamp(25px, 7.4vw, 29px); color: var(--ink-head); text-wrap: balance; }
-.flourish { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 14px auto 18px; }
-.flourish i { width: 9px; height: 9px; }
-.flourish b { width: 54px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold)); }
-.flourish b + i + b { background: linear-gradient(90deg, var(--gold), transparent); }
-.letter-body { font-family: var(--serif); font-size: 17.5px; line-height: 1.62; }
-.letter-body p + p { margin-top: 14px; }
-.letter-lead { font-size: 21px; font-style: italic; line-height: 1.35; color: var(--ink-lead); }
-.letter-body strong { font-style: italic; color: var(--ink-lead); }
-.signoff { margin-top: 22px; font-family: var(--serif); color: var(--ink-soft); }
-.signoff-with { font-style: italic; }
-.signoff-name { position: relative; display: inline-block; margin-top: 2px; padding-bottom: 8px; font-size: 32px; font-style: italic; line-height: 1.1; color: var(--ink-head); }
-.signoff-name::after { content: ""; position: absolute; left: -2px; bottom: -2px; width: 130px; height: 14px; background: url(img/signature-line.svg) 0 0 / 130px 14px no-repeat; }
-.signoff-role { margin-top: 8px; font-family: var(--sans); font-size: 14px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
-.letter-go {
-  position: relative; z-index: 2; overflow: hidden; margin-top: 26px; color: #FFFCFC; background: linear-gradient(140deg, #2A2583, #1B175A);
-  box-shadow: 0 0 0 1px rgba(130, 202, 251, 0.25) inset, 0 6px 12px rgba(27, 23, 90, 0.22);
-}
-.letter-go::before { content: ""; position: absolute; inset: 0; background: url(img/lattice-glow.svg); opacity: 0.7; -webkit-mask-image: linear-gradient(90deg, transparent 30%, #000); mask-image: linear-gradient(90deg, transparent 30%, #000); }
-.letter-go > * { position: relative; }
-/* A burst of gems and sparkles from behind the photo that plays once (never with reduced motion). */
-.burst { position: absolute; left: 50%; top: 50%; }
-.burst > * { position: absolute; left: -9px; top: -8px; width: 18px; height: 16px; opacity: 0; animation: burst 1.7s cubic-bezier(0.12, 0.9, 0.3, 1) var(--d) both; }
-@keyframes burst { 0% { opacity: 0; transform: scale(0.2); } 15%, 70% { opacity: 1; } 100% { opacity: 0; transform: translate(var(--x), var(--y)) rotate(var(--r)); } }
-.burst svg { display: block; --ga: #6BA9F8; --gb: #CFE7FD; }
-.burst svg:nth-of-type(3n+1) { --ga: #F6A078; --gb: #FFE1D1; }
-.burst svg:nth-of-type(3n+2) { --ga: #C9A04C; --gb: #FFF0C9; }
-.burst .pg { fill: var(--ga); }
-.burst .pc { fill: var(--gb); }
-.burst .pf { fill: none; stroke: #FFFCFC; stroke-opacity: 0.55; stroke-width: 1.2; }
-.burst i { width: 16px; height: 16px; background: var(--gold); clip-path: polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%); }
-.burst i:nth-of-type(2) { background: var(--blue); }
-.burst > :nth-child(1) { --x: -104px; --y: -22px; --r: -40deg; --d: 0.1s; }
-.burst > :nth-child(2) { --x: -78px; --y: -66px; --r: 30deg; --d: 0.18s; }
-.burst > :nth-child(3) { --x: -30px; --y: -74px; --r: 45deg; --d: 0.24s; }
-.burst > :nth-child(4) { --x: 42px; --y: -70px; --r: -25deg; --d: 0.12s; }
-.burst > :nth-child(5) { --x: 90px; --y: -52px; --r: 35deg; --d: 0.2s; }
-.burst > :nth-child(6) { --x: 110px; --y: 8px; --r: 45deg; --d: 0.26s; }
-.burst > :nth-child(7) { --x: 100px; --y: 40px; --r: -30deg; --d: 0.14s; }
-.burst > :nth-child(8) { --x: 66px; --y: 56px; --r: 20deg; --d: 0.22s; }
-.burst > :nth-child(9) { --x: -70px; --y: 54px; --r: 45deg; --d: 0.28s; }
-.burst > :nth-child(10) { --x: -108px; --y: 30px; --r: -20deg; --d: 0.08s; }
-@media (max-width: 359px) {
-  .letter { padding: 38px 20px 28px; }
-  .letter-body { font-size: 17px; }
-}
 /* The quiet link on home that opens the letter again. */
 .ceo-link {
   display: flex; align-items: center; gap: 10px; width: fit-content; min-height: 52px; margin: 16px auto 0; padding: 4px 10px 4px 4px;
@@ -894,6 +818,7 @@ html[data-screen="welcome"] body {
 }
 .ceo-link-text { text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 4px; }
 .ceo-link svg { width: 18px; height: 18px; }
+.ceo-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.2); transform-origin: 47% 36%; }
 .ceo-thumb {
   flex: none; width: 38px; height: 38px; border-radius: 50%; overflow: hidden; display: grid; place-items: center;
   background: #1B175A; color: #FFFCFC; font-family: var(--serif); font-weight: 700; box-shadow: 0 0 0 2px var(--bg), 0 0 0 3.5px var(--gold);
@@ -909,9 +834,6 @@ html[data-screen="welcome"] body {
   .keypad::before { background-image: url(img/keypad-gem-dark.svg); }
   .is-scene::before { background: linear-gradient(rgba(10, 8, 34, 0.55), rgba(10, 8, 34, 0.2) 50%, rgba(10, 8, 34, 0.3)); }
   .tile-icon { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06) inset; }
-  .letter { box-shadow: 0 0 0 1px rgba(231, 205, 140, 0.14) inset, 0 24px 50px rgba(0, 0, 0, 0.55); }
-  .letter-go { color: #1B175A; background: linear-gradient(140deg, #9AD5FC, #82CAFB); box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35); }
-  .letter-go::before { background-image: url(img/lattice-ink.svg); opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -924,5 +846,4 @@ html[data-screen="welcome"] body {
   }
   .spinner { animation: spin 1.6s linear infinite !important; }
   .skeleton { animation: none !important; }
-  .burst { display: none; }
 }

@@ -6,21 +6,26 @@
  * {ok:false, error:{code:"NETWORK"}} so the UI has one thing to check.
  *
  * Apps Script sometimes answers with an error page (no JSON, no CORS header) even
- * after the script ran, so ping, dashboard, request and wish try once more after a
- * NETWORK failure. A request sends the same client_request_id both times, and the
- * backend returns the saved request instead of adding a second one. Login is never
- * retried: a second try could count as one more failed sign in.
+ * after the script ran, so ping, dashboard, request, wish and the four Education calls
+ * try once more after a NETWORK failure. A request sends the same client_request_id both
+ * times, and the backend returns the saved request instead of adding a second one. The
+ * Education writes carry one too. Login is never retried: a second try could count as one
+ * more failed sign in.
  */
 (function (root) {
   "use strict";
 
   var TIMEOUT_MS = 35000;
   /* Sending a request can wait up to 10 seconds for the Apps Script lock, then writes
-     the sheet and posts to Slack, so it gets longer before the app gives up. */
+     the sheet and posts to Slack, so it gets longer before the app gives up. The three
+     Education writes take the same lock and do the same work. */
   var REQUEST_TIMEOUT_MS = 45000;
+  var SLOW_ACTIONS = { request: 1, training_start: 1, training_submit: 1, training_ack: 1 };
   var RETRY_DELAY_MS = 1500;
-  // A wish is safe to send twice too: the same emoji to the same person on the same day is saved once.
-  var RETRY_ACTIONS = { ping: 1, dashboard: 1, request: 1, wish: 1 };
+  /* A wish is safe to send twice too: the same emoji to the same person on the same day is saved
+     once. So are the Education calls: trainings only reads, and the three writes carry a
+     client_request_id, so the backend answers with what it already saved. */
+  var RETRY_ACTIONS = { ping: 1, dashboard: 1, request: 1, wish: 1, trainings: 1, training_start: 1, training_submit: 1, training_ack: 1 };
 
   function netError(message) {
     return { ok: false, error: { code: "NETWORK", message: message || "network error" } };
@@ -112,7 +117,7 @@
   }
 
   function timeoutFor(action) {
-    return action === "request" ? REQUEST_TIMEOUT_MS : TIMEOUT_MS;
+    return SLOW_ACTIONS[action] === 1 ? REQUEST_TIMEOUT_MS : TIMEOUT_MS;
   }
 
   function shouldRetry(action, res) {

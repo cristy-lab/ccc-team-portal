@@ -438,6 +438,7 @@
     a2hs: "ccc.a2hs_dismissed",
     lock: "ccc.lock_until",
     draft: "ccc.draft",
+    edu: "ccc.edu",
     party: "ccc.party:"
   };
 
@@ -639,6 +640,8 @@
     loadError: null,
     installPrompt: null,
     flash: null,
+    edu: null,       // the last trainings answer, for the home banner and the tile badge
+    bundle: {},      // lazily loaded bundle name to how far it got (see loadBundle)
     wishPending: {} // person id -> {emoji: true} while a wish is on its way
   };
 
@@ -868,6 +871,9 @@
     state.refreshing = false;
     state.lastRefresh = 0;
     state.wishPending = {};
+    state.edu = null;
+    store.remove(K.edu);
+    if (root.CCCEdu) root.CCCEdu.reset();
     closeParty();
     store.remove(K.token);
     store.remove(K.person);
@@ -900,6 +906,7 @@
         state.netDown = false;
         state.loadError = null;
         state.lastRefresh = Date.now();
+        refreshEdu();
         if (DATA_ROUTES[currentRoute]) render();
         else updateChrome();
         return;
@@ -936,6 +943,64 @@
 
   function externalLink(url, cls, children) {
     return h("a", { class: cls, href: url, target: "_blank", rel: "noopener noreferrer" }, children);
+  }
+
+  /* ---- Lazily loaded bundles ---- */
+
+  /* Two parts of the app are their own files, so the core bundle every phone loads at sign in stays
+     small (README, "Size budgets"):
+       edu     web/edu_i18n.js, web/edu.js and web/edu.css, the Trainings screens
+       letter  web/letter.css, the paper of the message from the CEO
+     They are fetched the first time that screen opens, and the screen is only drawn once every part
+     is in, so nothing is ever seen unstyled. Apps Script serves no files of its own, so
+     tools/build_gas_html.py inlines both bundles and sets BUNDLED, and none of this runs there.
+     state.bundle[name]: 0 not asked for, 1 on its way, 2 it did not arrive, 3 ready. */
+
+  var BUNDLES = {
+    edu: { route: "training", js: ["edu_i18n.js", "edu.js"] },
+    letter: { route: "welcome", js: [] }
+  };
+
+  /* Where app.js was served from, so a bundle is found whatever page the app runs on. */
+  var HERE = ((doc.currentScript && doc.currentScript.src) || "").replace(/[^/]*$/, "");
+
+  function loadBundle(name) {
+    var b = BUNDLES[name];
+    state.bundle[name] = 1;
+    var left = b.js.length + 1;
+    function arrived() {
+      if (--left > 0) return;
+      state.bundle[name] = 3;
+      if (currentRoute === b.route) {
+        currentRoute = null; // draw it as a screen change, so the new heading takes the focus
+        render();
+      }
+    }
+    function missing() {
+      state.bundle[name] = 2;
+      render();
+    }
+    doc.head.appendChild(h("link", { rel: "stylesheet", href: HERE + name + ".css?v=" + APP_VERSION, on: { load: arrived, error: missing } }));
+    b.js.forEach(function (file) {
+      var s = h("script", { src: HERE + file + "?v=" + APP_VERSION, on: { load: arrived, error: missing } });
+      s.async = false; // the strings are in place before the screens that use them run
+      doc.head.appendChild(s);
+    });
+  }
+
+  function bundleReady(name) {
+    if (CFG.BUNDLED === true || state.bundle[name] === 3) return true;
+    if (!state.bundle[name]) loadBundle(name);
+    return false;
+  }
+
+  /* What that screen shows while its files are on the way, or when they did not come. */
+  function bundleWait(name) {
+    if (state.bundle[name] !== 2) return dataPlaceholder(false);
+    return h("div", { class: "load-error" }, [
+      msgBox("error", "wifiOff", t("error_network")),
+      retryButton(function () { state.bundle[name] = 0; render(); })
+    ]);
   }
 
   var SCREENS = {};
@@ -1265,12 +1330,12 @@
     return state.lang === "es" ? es || en : en || es;
   }
 
-  function retryButton() {
+  function retryButton(onClick) {
     return h("button", {
       type: "button",
       class: "btn btn-primary",
       on: {
-        click: function () {
+        click: onClick || function () {
           state.loadError = null;
           render();
           refreshDashboard();
@@ -1359,8 +1424,8 @@
       survey ? tile({ external: true, href: survey, icon: "survey", tone: "ti-lblue", title: t("tile_survey_title"), sub: t("tile_survey_sub") }) : null,
       tile({ route: "calendar", icon: "calendar", tone: "ti-navy", title: t("tile_calendar_title"), sub: t("tile_calendar_sub") }),
       tile({ route: "request", icon: "message", tone: "ti-blue", title: t("tile_change_title"), sub: t("tile_change_sub") }),
-      // Education department, built later. The tile works and opens a coming soon screen.
-      tile({ route: "training", icon: "cap", tone: "ti-peach", title: t("tile_training_title"), sub: t("tile_training_sub"), badge: t("coming_soon") })
+      tile({ route: "training", icon: "cap", tone: "ti-peach", title: t("tile_training_title"), sub: t("tile_training_sub"),
+        badge: state.edu && state.edu.new_count > 0 ? t("edu_new") : null })
     ]);
   }
 
@@ -2025,6 +2090,7 @@
         h("div", null, [h("p", { class: "notice-label", text: t("notice_label") }), h("p", { class: "notice-text", text: notice })])
       ]));
     }
+    parts.push(eduBanner());
     parts.push(tiles(dash));
     // A quiet link, not a sixth button: everyone can read the message from the CEO again.
     parts.push(h("a", { class: "ceo-link", href: "#/welcome", on: { click: navClick("welcome") } }, [
@@ -2056,8 +2122,12 @@
     if (currentRoute === "home" && state.token && welcomeDue()) render();
   }
 
-  /* Remembered as soon as it opens, so a reload never shows it again. Then a burst of gems plays once around the photo. */
+  /* Remembered as soon as it is really on screen, so a reload never shows it again. Then a burst of
+     gems plays once around the photo. Nothing is remembered while web/letter.css is still on its way:
+     the letter has not been seen yet, and this runs again when it is drawn. */
   function welcomeOpened(screen) {
+    var photo = screen.querySelector(".ceo-photo");
+    if (!photo) return;
     if (wantsWelcome(state.dash)) {
       welcomeSeen[state.dash.person.id] = true;
       store.set(welcomeKey(state.dash.person.id), "1");
@@ -2065,7 +2135,6 @@
     if (reducedMotion()) return;
     var burst = h("span", { class: "burst", "aria-hidden": "true" });
     for (var i = 0; i < 10; i++) burst.appendChild(i % 3 === 2 ? h("i") : gemSvg());
-    var photo = screen.querySelector(".ceo-photo");
     photo.insertBefore(burst, photo.firstChild);
   }
 
@@ -2076,6 +2145,8 @@
   }
 
   SCREENS.welcome = function () {
+    // The paper, the gold and the burst are in web/letter.css, which is fetched when it opens.
+    if (!bundleReady("letter")) return h("div", { class: "ceo" }, bundleWait("letter"));
     var gem = function (cls) { return h("span", { class: cls, "aria-hidden": "true" }); };
     var alt = CEO_NAME + ", " + t("ceo_role");
     var motto = t("ceo_p3").split("{motto}");
@@ -2454,17 +2525,55 @@
     return h("div", { class: "requests" }, parts);
   };
 
-  /* ---- Trainings (coming soon) ---- */
+  /* ---- Trainings ---- */
 
+  /* Everything the Education bundle uses from the app shell. */
+  root.CCCPortal = {
+    h: h, icon: icon, t: t, state: state, api: api, randomId: randomId, isOnline: isOnline,
+    go: go, goBack: goBack, render: render, signOut: signOut, backButton: backButton,
+    msgBox: msgBox, loading: dataPlaceholder, setTrainings: setTrainings
+  };
+
+  function setTrainings(res) {
+    state.edu = res;
+    // Home draws the banner and the badge on the tile, and nothing else. The list itself, which
+    // says what this person has and has not finished, stays in memory only: phones here are
+    // shared, and a training somebody did not pass is not for the next person to read.
+    store.setJSON(K.edu, { ok: true, new_count: res.new_count, banner: res.banner });
+  }
+
+  /* Its own call, so nothing about a training is ever inside a saved dashboard. */
+  function refreshEdu() {
+    var token = state.token;
+    api("trainings", { token: token }).then(function (res) {
+      if (token !== state.token || res.ok !== true) return;
+      setTrainings(res);
+      if (currentRoute === "home") render();
+    });
+  }
+
+  var BANNERS = { past_due: 1, new_training: 1, new_notice: 1 };
+
+  /* One line on home: a new course, a new safety notice, or one that is past due. */
+  function eduBanner() {
+    var b = state.edu && state.edu.banner;
+    if (!b || !BANNERS[b.kind]) return null;
+    return h("a", { class: "notice notice-go", href: "#/training", on: { click: navClick("training") } }, [
+      icon("cap"),
+      h("div", null, [
+        h("p", { class: "notice-label", text: t("edu_" + b.kind) }),
+        h("p", { class: "notice-text", text: pickText(b.title, state.lang) })
+      ]),
+      icon("chevronRight")
+    ]);
+  }
+
+  /* The whole screen comes from the bundle: its heading and its Back button change with the step. */
   SCREENS.training = function () {
+    if (bundleReady("edu") && root.CCCEdu) return root.CCCEdu.screen();
     return h("div", { class: "training" }, [
       h("div", { class: "page-head" }, [backButton("home"), h("h1", { text: t("tile_training_title") })]),
-      h("section", { class: "soon" }, [
-        h("span", { class: "soon-icon" }, icon("cap")),
-        h("p", null, h("span", { class: "badge", text: t("coming_soon") })),
-        h("p", { class: "soon-text", text: t("training_body") }),
-        h("div", { class: "btn-row" }, h("button", { type: "button", class: "btn btn-primary", on: { click: function () { goBack("home"); } } }, t("back_home")))
-      ])
+      bundleWait("edu")
     ]);
   };
 
@@ -2530,6 +2639,8 @@
       // Rewrite what an older version saved, so no "My info" details or replies stay on the phone.
       if (state.dash) store.setJSON(K.dash, state.dash);
       state.person = person && typeof person === "object" ? person : (state.dash && state.dash.person) || {};
+      var edu = store.getJSON(K.edu);
+      state.edu = edu && edu.ok === true ? edu : null;
       var draft = store.getJSON(K.draft);
       if (draft && typeof draft === "object") {
         state.draft = {

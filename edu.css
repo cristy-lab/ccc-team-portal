@@ -1,0 +1,124 @@
+/* CCC Team Portal Education styles (the Trainings tile).
+ *
+ * Part of the Education bundle with web/edu.js and web/edu_i18n.js: fetched the first time
+ * someone opens Trainings, never at sign in (README, "Size budgets").
+ *
+ * Everything here uses the tokens of web/app.css, so light and dark mode and the reduced
+ * motion rule all come along, and the colours keep WCAG AA contrast in both modes. The list
+ * rows, the buttons, the chips, the badge and the quiz choices reuse the shell's own classes
+ * (.tile, .btn, .chip, .badge, .choice), so a training looks like the rest of the portal.
+ */
+
+/* The heading of each step takes the focus when the step changes, so a screen reader reads the new
+   screen. It is never reachable with Tab (tabindex is -1), so it gets no ring, the same decision
+   web/app.css makes for h1 and for the main column. */
+.edu-head { font-size: 22px; margin-top: 6px; }
+.edu [data-edu-head]:focus { outline: none; }
+/* The message box is moved to as well, so the person who caused it sees it on a long screen. It
+   is not a control, so it draws no ring, exactly like the headings above. */
+.edu .edu-msg:focus { outline: none; }
+.edu-intro { margin-top: 6px; color: var(--muted); }
+.edu-msg { margin-top: 14px; }
+.edu .offline-note { margin-top: 14px; }
+.edu .msg-quiet { margin-top: 14px; }
+
+/* ---- The list ---- */
+
+.edu-list { list-style: none; padding: 0; margin: 14px 0 0; display: grid; gap: 12px; }
+.edu-item {
+  padding: 14px 16px 16px; border-radius: var(--radius); background: var(--surface);
+  border: 1px solid var(--line); box-shadow: var(--shadow-sm);
+}
+.edu-item.is-new { border-left: 6px solid var(--peach); }
+/* A long title takes the width it needs and the chip drops under it, rather than the title being
+   squeezed into a narrow column beside a chip that keeps its own. */
+.edu-item-top {
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+}
+.edu-item-title { font-size: 19px; line-height: 1.25; flex: 1 1 60%; min-width: 0; }
+.edu-item-meta { margin-top: 6px; color: var(--muted); font-size: 15px; }
+.edu-item .btn { margin-top: 14px; min-height: 52px; }
+.edu-none-title { font-weight: 700; color: var(--text); font-size: 18px; }
+.edu .empty { margin-top: 16px; }
+
+/* ---- Lesson screens ---- */
+
+.edu-progress { margin-top: 14px; }
+.edu-step-text { font-size: 15px; font-weight: 700; color: var(--muted); }
+.edu-steps { display: flex; gap: 6px; margin-top: 6px; }
+/* The filled and the empty part of the bar are close in lightness, so every segment carries an
+   edge of its own and the line between them can always be seen. */
+.edu-step {
+  flex: 1; height: 6px; border-radius: 3px; background: var(--gray-tint);
+  box-shadow: inset 0 0 0 1px var(--line-strong);
+}
+.edu-step.is-on { background: var(--peach); }
+.edu-lesson .edu-head { margin-top: 16px; }
+
+.edu-body { margin-top: 12px; font-size: 17px; line-height: 1.55; }
+.edu-body > * + * { margin-top: 14px; }
+.edu-steps-list, .edu-bullets { margin: 0; padding-left: 24px; display: grid; gap: 8px; }
+.edu-callout {
+  padding: 12px 14px; border-radius: 14px; background: var(--blue-tint);
+  border-left: 6px solid var(--blue); font-weight: 600;
+}
+
+/* ---- The questions ---- */
+
+.edu-qnum { margin-top: 16px; font-size: 15px; font-weight: 700; color: var(--muted); }
+.edu-quiz-intro { margin-top: 8px; color: var(--muted); font-size: 16px; }
+.edu-prompt { margin-top: 8px; font-size: 21px; }
+.edu-choices { border: 0; padding: 0; margin: 18px 0 0; min-width: 0; display: grid; gap: 10px; }
+/* A quiz answer is a sentence, so it reads from the left instead of the middle. */
+.edu-choices .choice-face { justify-content: flex-start; text-align: left; font-weight: 600; }
+.edu-choices .choice-face svg { flex: none; }
+
+/* ---- The result ---- */
+
+.edu-result-mark {
+  width: 76px; height: 76px; margin: 18px auto 0; border-radius: 50%;
+  display: grid; place-items: center;
+}
+.edu-result-mark svg { width: 40px; height: 40px; }
+.edu-result-mark.is-pass { background: var(--success-bg); color: var(--success-text); }
+.edu-result-mark.is-try { background: var(--peach-tint); color: var(--progress-text); }
+.edu-result-title { margin-top: 12px; text-align: center; font-size: 28px; }
+.edu-score { margin-top: 8px; text-align: center; font-weight: 700; }
+.edu-result-body { margin-top: 10px; text-align: center; color: var(--muted); }
+.edu-paid {
+  display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 14px;
+  padding: 10px 14px; border-radius: 14px; background: var(--success-bg); color: var(--success-text);
+  font-weight: 700;
+}
+.edu-paid svg { width: 20px; height: 20px; }
+
+.edu-review-head { margin-top: 26px; font-size: 20px; }
+.edu-missed { list-style: none; padding: 0; margin: 10px 0 0; display: grid; gap: 10px; }
+.edu-missed li {
+  padding: 12px 14px; border-radius: 14px; background: var(--surface);
+  border: 1px solid var(--line); border-left: 6px solid var(--peach); box-shadow: var(--shadow-sm);
+}
+.edu-must {
+  display: flex; align-items: center; gap: 6px; margin-bottom: 6px;
+  color: var(--progress-text); font-size: 15px; font-weight: 700;
+}
+.edu-must svg { width: 18px; height: 18px; }
+/* The question itself, so "Please look at this again" says what to look at. */
+.edu-missed-q { font-weight: 700; line-height: 1.35; margin-bottom: 6px; }
+.edu-why { line-height: 1.5; }
+
+/* ---- The acknowledgment a contractor signs ---- */
+
+.edu-ack-hint { margin-top: 8px; color: var(--muted); }
+.edu-ack-text {
+  margin-top: 14px; padding: 16px; border-radius: var(--radius); background: var(--surface);
+  border: 1px solid var(--line); box-shadow: var(--shadow-sm); font-size: 19px; font-weight: 700;
+}
+
+@media (max-width: 359px) {
+  .edu-item { padding: 12px 13px 14px; }
+  .edu-item-title { font-size: 18px; }
+  .edu-prompt { font-size: 19px; }
+  .edu-body { font-size: 16.5px; }
+  .edu-result-title { font-size: 25px; }
+}

@@ -5,12 +5,21 @@
  *   * Only same origin GET requests are handled. API calls are POST and are never cached.
  *   * Page navigations: network first, cached index.html when offline.
  *   * App shell files (css, js, manifest, icons, logo, the design art and the CEO photo): served from the versioned cache.
+ *     The two lazily loaded bundles (Education and the CEO letter paper) are in there too, so a phone that
+ *     goes offline can still open Trainings and the letter. The page never asks for them at
+ *     start, which is what start up time depends on, but this worker does save them during
+ *     install, so they cost about 46 KB once per release even for somebody who never opens them.
  *   * PDF files: network first, cached copy only as an offline fallback.
+ *   * Training packs (trainings/*.json): network first, with the cached copy as the offline
+ *     fallback, so an opened training still reads offline and a corrected pack is picked up at
+ *     once. Cache first would have served the old bytes for ever: the phone would keep sending
+ *     the old fingerprint, the backend would keep answering PACK_CHANGED, and the person would
+ *     be stuck on "This training was updated" until the next release.
  */
-var CACHE_VERSION = "0.3.2-1";
+var CACHE_VERSION = "0.3.3-2";
 var SHELL_CACHE = "ccc-shell-" + CACHE_VERSION;
 var RUNTIME_CACHE = "ccc-runtime-" + CACHE_VERSION;
-var ASSET_VERSION = "0.3.2";
+var ASSET_VERSION = "0.3.3";
 
 var SHELL = [
   "./",
@@ -20,6 +29,10 @@ var SHELL = [
   "i18n.js?v=" + ASSET_VERSION,
   "api.js?v=" + ASSET_VERSION,
   "app.js?v=" + ASSET_VERSION,
+  "edu_i18n.js?v=" + ASSET_VERSION,
+  "edu.js?v=" + ASSET_VERSION,
+  "edu.css?v=" + ASSET_VERSION,
+  "letter.css?v=" + ASSET_VERSION,
   "manifest.webmanifest",
   "icons/icon-192.png",
   "icons/icon-512.png",
@@ -97,7 +110,7 @@ self.addEventListener("fetch", function (event) {
   if (url.origin !== self.location.origin) return;
   if (/\/api(\/|$)/.test(url.pathname)) return;
 
-  if (/\.pdf$/i.test(url.pathname)) {
+  if (/\.pdf$/i.test(url.pathname) || /\/trainings\/.+\.json$/i.test(url.pathname)) {
     event.respondWith(networkFirst(request, RUNTIME_CACHE, null));
     return;
   }

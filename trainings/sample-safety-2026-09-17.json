@@ -1,0 +1,235 @@
+{
+ "kind": "course",
+ "schema": "ccc-edu-pack/1",
+ "summary": {
+  "en": "What to do when you find something unsafe at a property, how to use cleaning products, and how to lift.",
+  "es": "Qué hacer cuando encuentra algo inseguro en una propiedad, cómo usar los productos de limpieza y cómo levantar peso."
+ },
+ "title": {
+  "en": "Site safety basics",
+  "es": "Seguridad básica del lugar"
+ },
+ "training_id": "sample-safety",
+ "variants": {
+  "full": {
+   "quiz": {
+    "questions": [
+     {
+      "choices": [
+       {
+        "en": "Stop, step back, and tell the office.",
+        "es": "Se detiene, se aleja y avisa a la oficina.",
+        "id": "q1_a"
+       },
+       {
+        "en": "Pick up the glass so that nobody gets hurt.",
+        "es": "Recoge los vidrios para que nadie se lastime.",
+        "id": "q1_b"
+       },
+       {
+        "en": "Finish the room and mention it at the end of the week.",
+        "es": "Termina el cuarto y lo menciona al final de la semana.",
+        "id": "q1_c"
+       }
+      ],
+      "id": "q1",
+      "prompt": {
+       "en": "You find a broken window at a property. What do you do first?",
+       "es": "Encuentra una ventana rota en una propiedad. ¿Qué hace primero?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Pour a second product into the same bottle.",
+        "es": "Echa un segundo producto en el mismo envase.",
+        "id": "q2_a"
+       },
+       {
+        "en": "Rinse, dry, and then try one other product by itself.",
+        "es": "Enjuaga, seca y luego prueba otro producto por separado.",
+        "id": "q2_b"
+       },
+       {
+        "en": "Add bleach to make the first product stronger.",
+        "es": "Agrega cloro para que el primer producto sea más fuerte.",
+        "id": "q2_c"
+       }
+      ],
+      "id": "q2",
+      "prompt": {
+       "en": "One product is not taking the stain out. What do you do?",
+       "es": "Un producto no quita la mancha. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Ask for help, or leave it and tell the office.",
+        "es": "Pide ayuda, o la deja y avisa a la oficina.",
+        "id": "q3_a"
+       },
+       {
+        "en": "Lift it quickly so that it hurts for less time.",
+        "es": "La levanta rápido para que duela menos tiempo.",
+        "id": "q3_b"
+       },
+       {
+        "en": "Drag it down the stairs by yourself.",
+        "es": "La arrastra por las escaleras sin ayuda.",
+        "id": "q3_c"
+       }
+      ],
+      "id": "q3",
+      "prompt": {
+       "en": "A box in the garage is too heavy for you. What do you do?",
+       "es": "Una caja en el garaje es demasiado pesada para usted. ¿Qué hace?"
+      }
+     }
+    ],
+    "seconds": 240
+   },
+   "screens": [
+    {
+     "blocks": [
+      {
+       "en": "Stop what you are doing and step back. Your safety comes before the cleaning.",
+       "es": "Deténgase y aléjese. Su seguridad es lo primero, antes que la limpieza.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Stop and step back.",
+        "Take a photo only if you can do it from a safe place.",
+        "Tell the office right away.",
+        "Wait for the office to answer before you go on."
+       ],
+       "es": [
+        "Deténgase y aléjese.",
+        "Tome una foto solo si puede hacerlo desde un lugar seguro.",
+        "Avise a la oficina de inmediato.",
+        "Espere la respuesta de la oficina antes de seguir."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "You are never asked to clean around something unsafe. The office decides what happens next.",
+       "es": "Nunca se le pide limpiar alrededor de algo inseguro. La oficina decide qué sigue.",
+       "type": "callout"
+      }
+     ],
+     "id": "found_a_hazard",
+     "seconds": 90,
+     "title": {
+      "en": "When you find something unsafe",
+      "es": "Cuando encuentra algo inseguro"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "Never mix two cleaning products. Together they can make a gas that hurts your lungs and your eyes.",
+       "es": "Nunca mezcle dos productos de limpieza. Juntos pueden formar un gas que daña los pulmones y los ojos.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Use one product at a time.",
+        "Rinse the surface and dry it before the next product.",
+        "Open a window when you can.",
+        "Keep every product in the bottle it came in."
+       ],
+       "es": [
+        "Use un producto a la vez.",
+        "Enjuague la superficie y séquela antes del siguiente producto.",
+        "Abra una ventana cuando pueda.",
+        "Guarde cada producto en su envase original."
+       ],
+       "type": "steps"
+      }
+     ],
+     "id": "cleaning_products",
+     "seconds": 90,
+     "title": {
+      "en": "Cleaning products",
+      "es": "Productos de limpieza"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "A box or a bag that is too heavy for you is not your job to carry alone.",
+       "es": "Una caja o una bolsa demasiado pesada para usted no es algo que deba cargar sola.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Ask another cleaner for help, or leave it and tell the office.",
+        "Keep your back straight and bend your knees.",
+        "Use a step stool, never a chair or a bucket.",
+        "Keep both feet on the steps, never on the top of a ladder."
+       ],
+       "es": [
+        "Pida ayuda a otra persona del equipo, o déjelo y avise a la oficina.",
+        "Mantenga la espalda recta y doble las rodillas.",
+        "Use un banquito, nunca una silla ni una cubeta.",
+        "Mantenga los dos pies en los escalones, nunca en la parte de arriba de la escalera."
+       ],
+       "type": "steps"
+      }
+     ],
+     "id": "lifting",
+     "seconds": 90,
+     "title": {
+      "en": "Lifting and ladders",
+      "es": "Cómo levantar peso y usar escaleras"
+     }
+    }
+   ]
+  },
+  "notice": {
+   "ack": {
+    "text": {
+     "en": "I have read this notice.",
+     "es": "He leído este aviso."
+    }
+   },
+   "screens": [
+    {
+     "blocks": [
+      {
+       "en": "This notice tells you what the property owners ask of everyone who works at their properties. It is information, not instruction about how to do your own work.",
+       "es": "Este aviso le dice lo que los dueños de las propiedades piden a todas las personas que trabajan en ellas. Es información, no una instrucción sobre cómo hacer su trabajo.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "If something at a property is unsafe, step back and let the office know.",
+        "Cleaning products are not mixed at these properties.",
+        "Ladders at these properties are used with both feet on the steps."
+       ],
+       "es": [
+        "Si algo en una propiedad es inseguro, aléjese y avise a la oficina.",
+        "En estas propiedades no se mezclan los productos de limpieza.",
+        "En estas propiedades las escaleras se usan con los dos pies en los escalones."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "Questions about this notice go to the office at any time.",
+       "es": "Las preguntas sobre este aviso puede hacerlas a la oficina en cualquier momento.",
+       "type": "callout"
+      }
+     ],
+     "id": "notice",
+     "seconds": 120,
+     "title": {
+      "en": "Site safety notice",
+      "es": "Aviso de seguridad del lugar"
+     }
+    }
+   ]
+  }
+ },
+ "version": "2026-09-17"
+}
