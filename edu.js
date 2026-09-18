@@ -14,6 +14,21 @@
  *
  * Security: like web/app.js, everything from the API or a pack file goes into the page with
  * textContent, never as an HTML string.
+ *
+ * New in 0.3.4 (docs/API.md 13.2 and 13.12):
+ *   * Lesson text may hold {{OFFICE_PHONE}} and {{SUPERVISOR_PHONE}}. They are filled in here, as
+ *     the words are drawn, from the contact the dashboard sent for this person, as a tap to call
+ *     link. With no number they read "the office" or "your supervisor". The pack itself never
+ *     holds a phone number, and the quiz and the grading never depend on a token.
+ *   * Text wrapped in a pair of ** is drawn bold.
+ *   * A draft somebody was named in to preview carries a "Preview, only you can see this" label on
+ *     every screen, and its result says that it does not count.
+ *   * The questions, and the choices of each question, are shuffled once per attempt (13.2), so
+ *     the place of a right answer cannot be learned. Grading is by id, so nothing else changes.
+ *   * A callout may be a list: its first line in the box as the heading, the rest as its bullets.
+ *   * The contractor checkpoint (13.7): a notice may name quiz questions a contractor answers
+ *     after checking the box. The server says only whether all of them were right, and a miss
+ *     shows the notice's own "read the notice again" line and nothing else.
  */
 (function (root) {
   "use strict";
@@ -40,6 +55,9 @@
       quiz: null,       // {pass_percent, question_count}
       index: 0,         // which lesson screen, or which question
       answers: {},      // question id to choice id, for this attempt only
+      order: null,      // the shuffled order of this attempt's questions and choices
+      check: false,     // answering the contractor checkpoint rather than the quiz
+      boxed: false,     // the contractor checked the confirmation box
       result: null,     // what the server said about this attempt
       done_on: "",      // the date an acknowledgment was saved
       busy: false,
@@ -64,6 +82,72 @@
 
   function shortDate(ymd) {
     return ymd ? I.formatShort(ymd, lang()) : "";
+  }
+
+  /* ---- Phone tokens and bold in lesson text ---- */
+
+  var TOKEN_RE = /\{\{(OFFICE_PHONE|SUPERVISOR_PHONE)\}\}/g;
+  var TOKENS = {
+    OFFICE_PHONE: { field: "office_phone", words: "edu_tok_office" },
+    SUPERVISOR_PHONE: { field: "supervisor_phone", words: "edu_tok_supervisor" }
+  };
+
+  /* The number behind a token, as "+" and digits, or "" when the dashboard has none. */
+  function tokenPhone(name) {
+    var contact = P.state.dash && P.state.dash.contact;
+    var value = contact && contact[TOKENS[name].field];
+    return typeof value === "string" && /^\+[0-9]{8,15}$/.test(value) ? value : "";
+  }
+
+  /* +19045550100 reads (904) 555 0100. A number from another country keeps its digits. */
+  function phoneText(num) {
+    var m = /^\+1([0-9]{3})([0-9]{3})([0-9]{4})$/.exec(num);
+    return m ? "(" + m[1] + ") " + m[2] + " " + m[3] : num;
+  }
+
+  /* One lesson string as nodes: **bold** drawn bold, and each token as a tap to call link, or as
+     "the office" or "your supervisor" when there is no number. With plain it is one string, for a
+     heading or a quiz choice, where a link does not belong. A ** with no partner shows as typed. */
+  function rich(value, plain) {
+    var out = [];
+    var said = "";
+    var parts = String(value === undefined || value === null ? "" : value).split("**");
+    parts.forEach(function (part, i) {
+      var bold = i % 2 === 1 && i < parts.length - 1;
+      if (i % 2 === 1 && !bold) part = "**" + part;
+      var nodes = [];
+      var last = 0;
+      part.replace(TOKEN_RE, function (whole, name, at) {
+        said += part.slice(last, at);
+        if (at > last) nodes.push(part.slice(last, at));
+        var num = tokenPhone(name);
+        var words = num ? phoneText(num) : t(TOKENS[name].words);
+        // Words that start a sentence start with a capital letter.
+        if (!num && /(^|[.!?]\s+)$/.test(said)) words = words.charAt(0).toUpperCase() + words.slice(1);
+        nodes.push(num && !plain ? el("a", { class: "edu-tel", href: "tel:" + num, text: words }) : words);
+        said += words;
+        last = at + whole.length;
+        return whole;
+      });
+      if (last < part.length) nodes.push(part.slice(last));
+      said += part.slice(last);
+      if (bold && !plain) out.push(el("strong", null, nodes));
+      else out = out.concat(nodes);
+    });
+    return plain ? out.join("") : out;
+  }
+
+  function plainText(value) {
+    return rich(value, true);
+  }
+
+  function isPreview() {
+    return !!(view.item && view.item.preview === true);
+  }
+
+  /* The label of a preview: only the people named on its Trainings row can see it. */
+  function previewTag() {
+    return el("p", { class: "edu-preview" }, [P.icon("info"), el("span", { text: t("edu_preview") })]);
   }
 
   /* Draw again, and move the focus to the new heading when the screen changed. */
@@ -100,6 +184,7 @@
     if (err.reason === "VERSION_CHANGED" || err.reason === "PACK_CHANGED") return { key: "edu_err_changed", back: true };
     if (err.reason === "SESSION_EXPIRED") return { key: "edu_err_session", back: true };
     if (err.reason === "INCOMPLETE") return { key: "edu_answer_first", back: false };
+    if (err.reason === "REQUIRED") return { key: "edu_ack_box_first", back: false };
     return { key: "edu_err_send", back: false };
   }
 
@@ -192,6 +277,9 @@
     view.quiz = null;
     view.index = 0;
     view.answers = {};
+    view.order = null;
+    view.check = false;
+    view.boxed = false;
     view.result = null;
     view.offline = false;
     view.msg = null;
@@ -236,6 +324,8 @@
       if (res.ok === true) {
         view.session = typeof res.session === "string" ? res.session : "";
         view.quiz = res.training && res.training.quiz ? res.training.quiz : null;
+        // The backend decides what is a preview, so the label follows what it said just now.
+        if (res.training && typeof res.training.preview === "boolean") item.preview = res.training.preview;
         view.offline = false;
         view.msg = null;
         go("lesson");
@@ -292,12 +382,8 @@
   function submit() {
     if (view.busy) return;
     var item = view.item;
-    var questions = quizQuestions();
-    var answers = [];
-    questions.forEach(function (q) {
-      if (view.answers[q.id]) answers.push({ question_id: q.id, choice_id: view.answers[q.id] });
-    });
-    if (answers.length !== questions.length) {
+    var answers = answerList();
+    if (!answers.length) {
       showMsg("edu_answer_first");
       return;
     }
@@ -337,19 +423,23 @@
     });
   }
 
-  /* training_ack. Only the date is kept: no score, no minutes, no attempt. */
+  /* training_ack. Only the date is kept: no score, no minutes, no attempt. With a checkpoint the
+     answers go too, and the server says only whether every one of them was right. */
   function acknowledge() {
     if (view.busy) return;
     var item = view.item;
+    var check = checkpoint();
+    var answers = check ? answerList() : null;
+    if (answers && !answers.length) {
+      showMsg("edu_answer_first");
+      return;
+    }
     if (!view.session || !P.isOnline()) {
       showMsg("edu_offline_ack");
       return;
     }
     var token = P.state.token;
-    view.busy = true;
-    view.msg = null;
-    P.render();
-    P.api("training_ack", {
+    var body = {
       token: token,
       training_id: item.training_id,
       version: item.version,
@@ -358,16 +448,32 @@
       acknowledged: true,
       lang: lang(),
       client_request_id: P.randomId()
-    }).then(function (res) {
+    };
+    if (answers) body.answers = answers;
+    view.busy = true;
+    view.msg = null;
+    P.render();
+    P.api("training_ack", body).then(function (res) {
       view.busy = false;
       if (token !== P.state.token) return;
+      // Like the quiz, the answers are dropped whatever happened next.
+      view.answers = {};
       if (res.ok === true) {
         view.done_on = typeof res.completed_on === "string" ? res.completed_on : "";
         view.msg = null;
+        view.check = false;
         loadList(function () { go("thanks"); });
         return;
       }
       if (auth(res)) return;
+      if (check && res.error && res.error.reason === "CHECKPOINT_MISSED") {
+        // The notice's own line, and nothing about which question it was.
+        view.check = false;
+        view.index = 0;
+        view.msg = { text: check.on_miss, key: "edu_check_missed", kind: "error" };
+        go("ack");
+        return;
+      }
       var p = problem(res);
       fail(p.key === "edu_err_send" && !P.isOnline() ? "edu_offline_ack" : p.key);
       if (p.back) loadList(function () { go("list"); });
@@ -375,9 +481,81 @@
     });
   }
 
+  /* One answer per question of this attempt, in the order shown, or [] while one is missing. */
+  function answerList() {
+    var questions = quizQuestions();
+    var answers = [];
+    questions.forEach(function (q) {
+      if (view.answers[q.id]) answers.push({ question_id: q.id, choice_id: view.answers[q.id] });
+    });
+    return questions.length && answers.length === questions.length ? answers : [];
+  }
+
+  /* The contractor checkpoint of this notice, or null: which quiz questions to answer, and the
+     line a miss shows. */
+  function checkpoint() {
+    var c = view.item && view.item.kind === "notice" && view.part && view.part.checkpoint;
+    return c && Array.isArray(c.question_ids) && c.question_ids.length ? c : null;
+  }
+
+  /* The questions of this attempt, in the lesson file's order: the quiz, or on the notice track the
+     checkpoint questions, taken by id from the quiz of the same file. */
+  function baseQuestions() {
+    var part = view.check ? variantOf(view.pack, "course") : view.part;
+    var all = part && part.quiz && Array.isArray(part.quiz.questions) ? part.quiz.questions : [];
+    if (!view.check) return all;
+    var ids = (checkpoint() || { question_ids: [] }).question_ids;
+    var out = all.filter(function (q) { return q && ids.indexOf(q.id) !== -1; });
+    return out.length === ids.length ? out : [];
+  }
+
+  /* 0 to n minus 1 in a random order (Fisher Yates). */
+  function shuffled(n) {
+    var out = [];
+    var i;
+    for (i = 0; i < n; i++) out.push(i);
+    for (i = n - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var keep = out[i];
+      out[i] = out[j];
+      out[j] = keep;
+    }
+    return out;
+  }
+
+  /* A new order for a new attempt, as the approved training asks: the questions, and the choices of
+     each question. It is kept until the next attempt, so Next, Back, the language button and a
+     redraw all keep it. */
+  function newOrder() {
+    var base = baseQuestions();
+    var choices = {};
+    base.forEach(function (q) { choices[q.id] = shuffled(Array.isArray(q.choices) ? q.choices.length : 0); });
+    view.order = { questions: shuffled(base.length), choices: choices };
+  }
+
+  /* The questions of this attempt, in this attempt's order, each with its choices in order too. */
   function quizQuestions() {
-    var quiz = view.part && view.part.quiz;
-    return quiz && Array.isArray(quiz.questions) ? quiz.questions : [];
+    var base = baseQuestions();
+    var order = view.order;
+    if (!order || order.questions.length !== base.length) return base;
+    return order.questions.map(function (n) {
+      var q = base[n];
+      var list = Array.isArray(q.choices) ? q.choices : [];
+      var idx = order.choices[q.id];
+      if (!idx || idx.length !== list.length) return q;
+      return { id: q.id, prompt: q.prompt, choices: idx.map(function (k) { return list[k]; }) };
+    });
+  }
+
+  /* Into the questions: a fresh attempt with nothing picked and a new order. */
+  function toQuestions(check) {
+    view.msg = null;
+    view.check = check;
+    view.index = 0;
+    view.answers = {};
+    view.result = null;
+    newOrder();
+    go("quiz");
   }
 
   function toList() {
@@ -398,7 +576,8 @@
 
   function message() {
     if (!view.msg) return null;
-    var body = t(view.msg.key, view.msg.vars);
+    // A line from the lesson file (the checkpoint's miss line) in the language on screen now.
+    var body = (view.msg.text && text(view.msg.text)) || t(view.msg.key, view.msg.vars);
     if (view.msg.kind === "info") {
       return el("p", { class: "offline-note", role: "status" }, [P.icon("wifiOff"), el("span", { text: body })]);
     }
@@ -496,6 +675,7 @@
         el("span", { class: "chip " + STATUS_CHIP[item.status || "todo"], text: t(chipKey) })
       ]),
       el("p", { class: "edu-item-meta", text: meta.join(" · ") }),
+      item.preview === true ? previewTag() : null,
       button("btn-primary edu-open", [
         el("span", { text: t("edu_open") }),
         // The visible word and the title, read once each. Both spans together used to say
@@ -516,19 +696,14 @@
     var parts = [
       // A safety notice is often one screen, where "Step 1 of 1" over a full bar says nothing.
       total > 1 ? steps(i, total) : null,
-      el("h2", { class: "edu-head", "data-edu-head": "1", text: text(page.title) }),
+      el("h2", { class: "edu-head", "data-edu-head": "1", text: plainText(text(page.title)) }),
       blocks(page.blocks)
     ];
     var next = last
       ? button("btn-primary", t(course ? "edu_to_quiz" : "edu_to_ack"), function () {
         view.msg = null;
-        if (course) {
-          view.index = 0;
-          view.answers = {};
-          go("quiz");
-        } else {
-          go("ack");
-        }
+        if (course) toQuestions(false);
+        else go("ack");
       })
       : button("btn-primary", t("edu_next"), function () {
         view.index = i + 1;
@@ -565,21 +740,29 @@
       var value = block[lang()] !== undefined ? block[lang()] : block.en;
       if (block.type === "steps" && Array.isArray(value)) {
         var ol = el("ol", { class: "edu-steps-list" });
-        value.forEach(function (line) { ol.appendChild(el("li", { text: String(line) })); });
+        value.forEach(function (line) { ol.appendChild(el("li", null, rich(line))); });
         box.appendChild(ol);
         return;
       }
+      if (block.type === "callout" && Array.isArray(value)) {
+        // A callout list: its first line is the heading in the box, and the rest are its bullets.
+        var items = el("ul", { class: "edu-bullets" });
+        value.slice(1).forEach(function (line) { items.appendChild(el("li", null, rich(line))); });
+        box.appendChild(el("div", { class: "edu-callout" }, [el("p", null, rich(value[0])),
+          value.length > 1 ? items : null]));
+        return;
+      }
       if (block.type === "callout") {
-        box.appendChild(el("p", { class: "edu-callout", text: String(value) }));
+        box.appendChild(el("p", { class: "edu-callout" }, rich(value)));
         return;
       }
       if (Array.isArray(value)) {
         var ul = el("ul", { class: "edu-bullets" });
-        value.forEach(function (line) { ul.appendChild(el("li", { text: String(line) })); });
+        value.forEach(function (line) { ul.appendChild(el("li", null, rich(line))); });
         box.appendChild(ul);
         return;
       }
-      box.appendChild(el("p", { text: String(value === undefined ? "" : value) }));
+      box.appendChild(el("p", null, rich(value)));
     });
     return box;
   }
@@ -607,15 +790,15 @@
             clearMsg();
           } }
         }),
-        el("span", { class: "choice-face" }, [P.icon("check"), el("span", { text: text(c) })])
+        el("span", { class: "choice-face" }, [P.icon("check"), el("span", { text: plainText(text(c)) })])
       ]));
     });
     var parts = [
       el("p", { class: "edu-qnum", text: t("edu_question", { n: i + 1, total: total }) }),
-      el("h2", { class: "edu-head edu-prompt", id: promptId, "data-edu-head": "1", text: text(q.prompt) }),
+      el("h2", { class: "edu-head edu-prompt", id: promptId, "data-edu-head": "1", text: plainText(text(q.prompt)) }),
       group
     ];
-    if (i === 0 && view.quiz && view.quiz.pass_percent) {
+    if (i === 0 && !view.check && view.quiz && view.quiz.pass_percent) {
       parts.splice(1, 0, el("p", { class: "edu-quiz-intro", text: t("edu_quiz_intro", { n: view.quiz.pass_percent }) }));
     } else if (i === 0 && view.offline) {
       // Offline there is no session, so the pass mark never arrived. Say what can be done here.
@@ -623,7 +806,9 @@
     }
     var row = [];
     if (last) {
-      row.push(button("btn-primary", view.busy ? t("edu_sending") : t("edu_send"), submit, view.busy));
+      // The checkpoint goes with the confirmation, the quiz on its own.
+      row.push(button("btn-primary", view.busy ? t("edu_sending") : t("edu_send"),
+        view.check ? acknowledge : submit, view.busy));
     } else {
       row.push(button("btn-primary", t("edu_next"), function () {
         if (!view.answers[q.id]) {
@@ -637,7 +822,11 @@
     }
     row.push(button("btn-secondary", t("edu_prev"), function () {
       view.msg = null;
-      if (i === 0) {
+      if (i === 0 && view.check) {
+        // The checkpoint was reached from the confirmation box, so Back returns there.
+        view.check = false;
+        go("ack");
+      } else if (i === 0) {
         // Back to the lesson screen they were last on, the way the confirmation screen does it,
         // and not to the first one.
         view.index = view.part.screens.length - 1;
@@ -662,7 +851,8 @@
       el("div", { class: "edu-result-mark " + (passed ? "is-pass" : "is-try") }, P.icon(passed ? "check" : "refresh")),
       el("h2", { class: "edu-head edu-result-title", "data-edu-head": "1", text: t(title) }),
       el("p", { class: "edu-score", text: t("edu_score", { correct: r.correct, total: r.total }) }),
-      el("p", { class: "edu-result-body", text: t(passed ? "edu_pass_body" : "edu_fail_body") })
+      // A preview does not count, so it never says the office has a record of it.
+      el("p", { class: "edu-result-body", text: t(isPreview() ? "edu_preview_note" : passed ? "edu_pass_body" : "edu_fail_body") })
     ];
     // Paid time is for taking the training, not for passing it, so the line belongs on both.
     if (r.paid_minutes) {
@@ -678,22 +868,16 @@
         // never sends the right answer, and this is the prompt this phone already has.
         var q = questions.filter(function (x) { return x && x.id === m.question_id; })[0];
         list.appendChild(el("li", null, [
-          q ? el("p", { class: "edu-missed-q", text: text(q.prompt) }) : null,
+          q ? el("p", { class: "edu-missed-q", text: plainText(text(q.prompt)) }) : null,
           m.must_pass === true ? el("p", { class: "edu-must" }, [P.icon("alert"), el("span", { text: t("edu_must_pass") })]) : null,
-          el("p", { class: "edu-why", text: text(m.why) })
+          el("p", { class: "edu-why" }, rich(text(m.why)))
         ]));
       });
       parts.push(el("h3", { class: "edu-review-head", text: t("edu_review_head") }), list);
     }
     var row = [];
     if (!passed) {
-      row.push(button("btn-primary", t("edu_retake"), function () {
-        view.index = 0;
-        view.answers = {};
-        view.result = null;
-        view.msg = null;
-        go("quiz");
-      }));
+      row.push(button("btn-primary", t("edu_retake"), function () { toQuestions(false); }));
       row.push(button("btn-secondary", t("edu_read_again"), function () {
         view.index = 0;
         view.answers = {};
@@ -711,17 +895,42 @@
   function ackScreen() {
     var ack = (view.part && view.part.ack) || {};
     var line = text(ack.text) || t("edu_ack_send");
+    var back = button("btn-secondary", t("edu_prev"), function () {
+      view.msg = null;
+      view.index = view.part.screens.length - 1;
+      go("lesson");
+    }, view.busy);
+    if (checkpoint()) {
+      // With a checkpoint the confirmation is a box to check, then the questions (13.7).
+      return [
+        head("h2", "edu_ack_head"),
+        el("p", { class: "edu-ack-hint", text: t("edu_ack_hint") }),
+        el("div", { class: "edu-choices edu-ack-box" }, el("label", { class: "choice" }, [
+          el("input", { type: "checkbox", checked: view.boxed === true, on: { change: function (e) {
+            view.boxed = e.target.checked === true;
+            clearMsg();
+          } } }),
+          el("span", { class: "choice-face" }, [P.icon("check"), el("span", { class: "edu-ack-line", text: plainText(line) })])
+        ])),
+        el("div", { class: "btn-row" }, [
+          button("btn-primary", t("edu_to_quiz"), function () {
+            if (view.boxed !== true) {
+              showMsg("edu_ack_box_first");
+              return;
+            }
+            toQuestions(true);
+          }, view.busy),
+          back
+        ])
+      ];
+    }
     return [
       head("h2", "edu_ack_head"),
       el("p", { class: "edu-ack-hint", text: t("edu_ack_hint") }),
-      el("p", { class: "edu-ack-text", text: line }),
+      el("p", { class: "edu-ack-text" }, rich(line)),
       el("div", { class: "btn-row" }, [
         button("btn-primary", view.busy ? t("edu_sending") : t("edu_ack_send"), acknowledge, view.busy),
-        button("btn-secondary", t("edu_prev"), function () {
-          view.msg = null;
-          view.index = view.part.screens.length - 1;
-          go("lesson");
-        }, view.busy)
+        back
       ])
     ];
   }
@@ -730,7 +939,8 @@
     return [
       el("div", { class: "edu-result-mark is-pass" }, P.icon("check")),
       el("h2", { class: "edu-head edu-result-title", "data-edu-head": "1", text: t("edu_ack_done_title") }),
-      el("p", { class: "edu-result-body", text: t("edu_ack_done_body", { date: shortDate(view.done_on) }) }),
+      el("p", { class: "edu-result-body", text: isPreview() ? t("edu_preview_note_notice")
+        : t("edu_ack_done_body", { date: shortDate(view.done_on) }) }),
       el("div", { class: "btn-row" }, button("btn-primary", t("edu_back_list"), toList))
     ];
   }
@@ -760,6 +970,8 @@
     }
     var page = P.h("div", { class: "edu edu-" + view.step }, [
       P.h("div", { class: "page-head" }, [backNode(), P.h("h1", { text: t("tile_training_title") })]),
+      // Every screen of a preview says so, from the first lesson to the result.
+      view.step !== "list" && isPreview() ? previewTag() : null,
       view.busy && QUIET[view.step] ? spinner() : null,
       message()
     ]);
@@ -808,7 +1020,8 @@
     },
     /* For tests: the step and whether an answer is held, never the answers themselves. */
     debug: function () {
-      return view ? { step: view.step, index: view.index, answered: Object.keys(view.answers).length, offline: view.offline } : null;
+      return view ? { step: view.step, index: view.index, answered: Object.keys(view.answers).length, offline: view.offline,
+        check: view.check } : null;
     }
   };
 })(window);

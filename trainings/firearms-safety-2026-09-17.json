@@ -1,0 +1,1414 @@
+{
+ "kind": "course",
+ "note": "Portal lesson file for the firearms training Cristy approved on September 17, 2026, built by build_portal_pack.py from the approved text with no word changed. Not shown to anyone. Left out of this version: Screen 11 (Your rights in California) and the California box of the contractor notice, because California and Hawaii wait for counsel and the portal shows no training there. The contractor notice ends with its approved To finish paragraph, then the confirmation box and the 5 checkpoint questions, graded on the server. Phone numbers are written as the office phone and supervisor phone tokens, which the app fills in. The answer key is not in this file.",
+ "schema": "ccc-edu-pack/1",
+ "title": {
+  "en": "Finding a Gun at Work: Firearms Safety",
+  "es": "Si encuentra un arma en el trabajo: seguridad con armas"
+ },
+ "training_id": "firearms-safety",
+ "variants": {
+  "full": {
+   "quiz": {
+    "questions": [
+     {
+      "choices": [
+       {
+        "en": "Put it on the table so the owner sees it, then call the office.",
+        "es": "La pone en la mesa para que el dueño la vea, y llama a la oficina.",
+        "id": "q1_put_on_table"
+       },
+       {
+        "en": "Call the office, then keep cleaning the other rooms while you wait.",
+        "es": "Llama a la oficina y sigue limpiando los otros cuartos mientras espera.",
+        "id": "q1_keep_cleaning"
+       },
+       {
+        "en": "Leave it. Keep people out, call the office, and wait somewhere safe.",
+        "es": "La deja ahí. No deja entrar a nadie, llama a la oficina y espera en un lugar seguro.",
+        "id": "q1_leave_it"
+       },
+       {
+        "en": "Put it in the lost and found bag and tell the office later.",
+        "es": "La pone en la bolsa de objetos perdidos y le avisa a la oficina más tarde.",
+        "id": "q1_lost_and_found"
+       }
+      ],
+      "id": "q1",
+      "prompt": {
+       "en": "The guests checked out. You open a nightstand drawer and see a handgun. No one else is there. What do you do?",
+       "es": "Los huéspedes ya se fueron. Usted abre el cajón de la mesita de noche y ve una pistola. No hay nadie más. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "It is probably a toy, so clean around it and tell the office later.",
+        "es": "Seguramente es de juguete, así que limpia alrededor y le avisa a la oficina más tarde.",
+        "id": "q2_clean_around"
+       },
+       {
+        "en": "Treat it like a real gun. Don't touch it, get away, and call the office.",
+        "es": "La trata como un arma de verdad. No la toca, se aleja y llama a la oficina.",
+        "id": "q2_treat_as_real"
+       },
+       {
+        "en": "Pick it up carefully to check if it is real, then call the office right away.",
+        "es": "La levanta con cuidado para ver si es de verdad y después llama a la oficina enseguida.",
+        "id": "q2_pick_up_to_check"
+       }
+      ],
+      "id": "q2",
+      "prompt": {
+       "en": "On the patio table, you see what looks like a BB gun or a toy gun. What do you do?",
+       "es": "En la mesa del patio, usted ve algo que parece una pistola de balines o de juguete. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Do what the manager says, because the manager is the client.",
+        "es": "Hace lo que dice el administrador, porque es el cliente.",
+        "id": "q3_do_what_manager_says"
+       },
+       {
+        "en": "Say no. Leave it there, wait somewhere safe, and keep calling the office.",
+        "es": "Le dice que no. Lo deja ahí, espera en un lugar seguro y sigue llamando a la oficina.",
+        "id": "q3_say_no_wait"
+       },
+       {
+        "en": "Put it in your car and drive it to the police station.",
+        "es": "Lo pone en su carro y lo lleva a la estación de policía.",
+        "id": "q3_drive_to_police"
+       },
+       {
+        "en": "Call the office first, then move it to the closet while you wait.",
+        "es": "Primero llama a la oficina y después lo pone en el clóset mientras espera.",
+        "id": "q3_call_then_move"
+       }
+      ],
+      "id": "q3",
+      "prompt": {
+       "en": "You find a rifle under a bed. The office has not called back. The next guest arrives in 2 hours. The property manager calls and says, \"Just put it in the owner closet.\" What do you do?",
+       "es": "Usted encuentra un rifle debajo de una cama. La oficina todavía no le ha devuelto la llamada. El próximo huésped llega en 2 horas. El administrador de la propiedad le llama y le dice: \"Póngalo en el clóset del dueño\". ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Take a photo for your team WhatsApp group, then call the office.",
+        "es": "Le toma una foto para el grupo de WhatsApp del equipo y llama a la oficina.",
+        "id": "q4_photo_to_group"
+       },
+       {
+        "en": "Leave the guest a note asking them to lock it up.",
+        "es": "Le deja una nota al huésped para pedirle que la guarde bajo llave.",
+        "id": "q4_leave_note"
+       },
+       {
+        "en": "Don't touch it. Stop working, leave the room, and call the office.",
+        "es": "No la toca. Deja de trabajar, sale del cuarto y llama a la oficina.",
+        "id": "q4_stop_call_office"
+       },
+       {
+        "en": "Leave the room and call 911 right away.",
+        "es": "Sale del cuarto y llama al 911 enseguida.",
+        "id": "q4_call_911"
+       }
+      ],
+      "id": "q4",
+      "prompt": {
+       "en": "A guest is still staying. While you clean, you see a pistol in the guest's open suitcase. The guest is out. What do you do?",
+       "es": "Un huésped todavía está hospedado. Mientras limpia, usted ve una pistola en la maleta abierta del huésped. El huésped no está. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Move the gun to a high shelf, then call the office.",
+        "es": "Pone la pistola en un estante alto y después llama a la oficina.",
+        "id": "q5_move_high"
+       },
+       {
+        "en": "Keep the children away without touching the gun. Call 911, then the office.",
+        "es": "Mantiene a los niños lejos sin tocar el arma. Llama al 911 y después a la oficina.",
+        "id": "q5_keep_away_call_911"
+       },
+       {
+        "en": "Call the office and wait outside for someone to call you back.",
+        "es": "Llama a la oficina y espera afuera a que le devuelvan la llamada.",
+        "id": "q5_call_office_wait"
+       },
+       {
+        "en": "Tell the children not to touch it, and keep cleaning in another room.",
+        "es": "Les dice a los niños que no la toquen y sigue limpiando en otro cuarto.",
+        "id": "q5_tell_children"
+       }
+      ],
+      "id": "q5",
+      "prompt": {
+       "en": "A family arrived early. Two small children are playing in the living room. You see a handgun on a low shelf in that room. What do you do?",
+       "es": "Una familia llegó temprano. Dos niños pequeños están jugando en la sala. Usted ve una pistola en un estante bajo de esa sala. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Take photos of everything, then call the office.",
+        "es": "Le toma fotos a todo y después llama a la oficina.",
+        "id": "q6_take_photos"
+       },
+       {
+        "en": "Touch nothing. Leave the property, call 911, then call the office.",
+        "es": "No toca nada. Sale de la propiedad, llama al 911 y después a la oficina.",
+        "id": "q6_leave_call_911"
+       },
+       {
+        "en": "Call the office and wait inside the home for the police.",
+        "es": "Llama a la oficina y espera dentro de la casa a que llegue la policía.",
+        "id": "q6_wait_inside"
+       },
+       {
+        "en": "Close the closet, finish the job, and tell the office.",
+        "es": "Cierra el clóset, termina el trabajo y le avisa a la oficina.",
+        "id": "q6_finish_job"
+       }
+      ],
+      "id": "q6",
+      "prompt": {
+       "en": "In a closet, you find two handguns, a bag of white powder and a lot of cash. What do you do?",
+       "es": "En un clóset, usted encuentra dos pistolas, una bolsa de polvo blanco y mucho dinero en efectivo. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Tell him calmly that you are with the cleaning company, and ask him to leave.",
+        "es": "Le dice con calma que usted es de la compañía de limpieza y le pide que se vaya.",
+        "id": "q7_ask_him_to_leave"
+       },
+       {
+        "en": "Call the office, then wait at the front door until help comes.",
+        "es": "Llama a la oficina y espera en la puerta de entrada hasta que llegue ayuda.",
+        "id": "q7_wait_at_door"
+       },
+       {
+        "en": "Get out and get to a safe place. Call 911, then call the office.",
+        "es": "Sale y va a un lugar seguro. Llama al 911 y después a la oficina.",
+        "id": "q7_get_out_call_911"
+       }
+      ],
+      "id": "q7",
+      "prompt": {
+       "en": "You arrive to clean. A man who is not the guest is inside. He is yelling and has a gun in his belt. What do you do?",
+       "es": "Usted llega a limpiar. Adentro hay un hombre que no es el huésped. Está gritando y tiene un arma en el cinturón. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Hold it carefully, carry it outside, then call the office right away.",
+        "es": "La agarra con cuidado, la lleva afuera y llama a la oficina enseguida.",
+        "id": "q8_carry_outside"
+       },
+       {
+        "en": "Finger off the trigger, point it where no one is, set it down, and call the office.",
+        "es": "Dedo lejos del gatillo, la apunta hacia donde no haya nadie, la deja con cuidado y llama a la oficina.",
+        "id": "q8_set_down_safely"
+       },
+       {
+        "en": "Open it to see if it is loaded, then put it back where it was and call the office.",
+        "es": "La abre para ver si está cargada, la vuelve a poner donde estaba y llama a la oficina.",
+        "id": "q8_check_if_loaded"
+       },
+       {
+        "en": "Put it in your cleaning bag so no one else touches it, then call the office.",
+        "es": "La pone en su bolsa de limpieza para que nadie más la toque y llama a la oficina.",
+        "id": "q8_put_in_bag"
+       }
+      ],
+      "id": "q8",
+      "prompt": {
+       "en": "You reach under a bed to get a sock. You grab a gun before you see it. What do you do?",
+       "es": "Usted mete la mano debajo de una cama para sacar un calcetín. Agarra una pistola antes de verla. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Go get it for them, because it is their gun.",
+        "es": "Va por el arma y se la trae, porque es del huésped.",
+        "id": "q9_get_it"
+       },
+       {
+        "en": "Check their ID first, then go get the gun for them.",
+        "es": "Primero le pide su identificación y después le trae el arma.",
+        "id": "q9_check_id"
+       },
+       {
+        "en": "Say kindly that you cannot touch it. Don't argue. Call the office.",
+        "es": "Le dice con amabilidad que no puede tocarla. No discute. Llama a la oficina.",
+        "id": "q9_say_no_call_office"
+       },
+       {
+        "en": "Stand in the doorway so they cannot go in, and call the office.",
+        "es": "Se para en la puerta para que no pueda entrar, y llama a la oficina.",
+        "id": "q9_block_door"
+       }
+      ],
+      "id": "q9",
+      "prompt": {
+       "en": "You reported a gun left after checkout. You are waiting outside. The guest comes back, says the gun is theirs, and asks you to get it for them. What do you do?",
+       "es": "Usted reportó un arma que quedó en la casa después de la salida de los huéspedes. Está esperando afuera. El huésped regresa, dice que el arma es suya y le pide que se la traiga. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Text a photo of the gun to the office, then keep working in other rooms.",
+        "es": "Le manda a la oficina una foto del arma por mensaje de texto y sigue trabajando en otros cuartos.",
+        "id": "q10_text_photo_keep_working"
+       },
+       {
+        "en": "Post a photo in the team WhatsApp group to warn everyone.",
+        "es": "Publica una foto en el grupo de WhatsApp del equipo para avisarles a todos.",
+        "id": "q10_post_in_group"
+       },
+       {
+        "en": "Call the office now. Say what you see, where it is, and who is there.",
+        "es": "Llama a la oficina ahora. Dice qué ve, dónde está y quién está ahí.",
+        "id": "q10_call_now"
+       },
+       {
+        "en": "Call the office and send a photo of the gun right away.",
+        "es": "Llama a la oficina y manda una foto del arma enseguida.",
+        "id": "q10_call_and_photo"
+       }
+      ],
+      "id": "q10",
+      "prompt": {
+       "en": "What is the right way to report a gun you found?",
+       "es": "¿Cuál es la forma correcta de reportar un arma que usted encontró?"
+      }
+     }
+    ],
+    "seconds": 300
+   },
+   "screens": [
+    {
+     "blocks": [
+      {
+       "en": "This lesson takes about 29 minutes. The quiz takes about 5 more. It is all paid work time.",
+       "es": "Esta lección dura unos 29 minutos. La prueba dura unos 5 minutos más. Todo es tiempo de trabajo pagado.",
+       "type": "text"
+      },
+      {
+       "en": "You can take the quiz again as many times as you need.",
+       "es": "Puede repetir la prueba todas las veces que necesite.",
+       "type": "text"
+      },
+      {
+       "en": "If you need help reading this or taking the quiz, tell the CCC office.",
+       "es": "Si necesita ayuda para leer esto o para hacer la prueba, dígale a la oficina de CCC.",
+       "type": "text"
+      }
+     ],
+     "id": "before-you-start",
+     "seconds": 30,
+     "title": {
+      "en": "Before you start",
+      "es": "Antes de empezar"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "Guests sometimes leave guns behind in vacation rentals. Homes can have guns too.",
+       "es": "A veces los huéspedes dejan armas olvidadas en las casas de alquiler vacacional. También puede haber armas en las casas de los clientes.",
+       "type": "text"
+      },
+      {
+       "en": "This really happens:",
+       "es": "Esto pasa de verdad:",
+       "type": "text"
+      },
+      {
+       "en": [
+        "In one summer, police in a beach town in North Carolina got 9 calls about guns left in vacation rentals and hotels. Cleaning companies found some of those guns.",
+        "In California, a 9 year old boy found a loaded handgun in a drawer at a vacation rental. It was missed at the turnover before his family arrived.",
+        "In Illinois in 2025, police found 9 guns inside one vacation rental."
+       ],
+       "es": [
+        "En un solo verano, la policía de un pueblo de playa en Carolina del Norte recibió 9 llamadas por armas olvidadas en casas de alquiler vacacional y hoteles. Compañías de limpieza encontraron algunas de esas armas.",
+        "En California, un niño de 9 años encontró una pistola cargada en un cajón de una casa de alquiler vacacional. Nadie la vio en la limpieza antes de que llegara su familia.",
+        "En Illinois, en 2025, la policía encontró 9 armas dentro de una sola casa de alquiler vacacional."
+       ],
+       "type": "text"
+      },
+      {
+       "en": "One day, you may find a gun at work. This lesson shows you what to do. It keeps you safe. It keeps guests and children safe.",
+       "es": "Algún día usted podría encontrar un arma en el trabajo. Esta lección le enseña qué hacer. Así cuidamos su seguridad. Y cuidamos a los huéspedes y a los niños.",
+       "type": "text"
+      },
+      {
+       "en": "The rule is the same for everyone at CCC.",
+       "es": "La regla es la misma para todos en CCC.",
+       "type": "text"
+      }
+     ],
+     "id": "why-it-matters",
+     "seconds": 90,
+     "title": {
+      "en": "Why this matters",
+      "es": "Por qué esto es importante"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "If you see a gun, or anything that looks like a gun:",
+       "es": "Si ve un arma, o algo que parece un arma:",
+       "type": "text"
+      },
+      {
+       "en": [
+        "**Don't touch it.**",
+        "**Get away from it.**",
+        "**Keep everyone out.**",
+        "**Call the office.**",
+        "**Wait for instructions.**"
+       ],
+       "es": [
+        "**No la toque.**",
+        "**Aléjese.**",
+        "**Que nadie entre.**",
+        "**Llame a la oficina.**",
+        "**Espere instrucciones.**"
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "Learn these 5 steps by heart.",
+       "es": "Apréndase estos 5 pasos de memoria.",
+       "type": "text"
+      }
+     ],
+     "id": "five-steps",
+     "seconds": 30,
+     "title": {
+      "en": "The 5 step rule",
+      "es": "La regla de los 5 pasos"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": [
+        "**Don't touch it.** Do not pick it up, move it or cover it. Do not open the drawer, bag or case any wider.",
+        "**Get away from it.** Walk out of the room. Close the room door if you can do it without touching the gun.",
+        "**Keep everyone out.** Ask people to stay out of that room. Never block the way or grab an adult. If an adult will not listen, step away and call the office. If anyone gets angry or threatening, get to a safe place and call 911.",
+        "**Call the office.** Call right away, at any hour, day or night. Make a phone call. Do not only send a text. The number is {{OFFICE_PHONE}}. It is the same number at every hour. The office will tell the property manager.",
+        "**Wait for instructions.** Stop working. Wait in a safe place until the office tells you what to do."
+       ],
+       "es": [
+        "**No la toque.** No la levante, no la mueva y no la tape. No abra más el cajón, la bolsa o el estuche.",
+        "**Aléjese.** Salga del cuarto. Cierre la puerta del cuarto si puede hacerlo sin tocar el arma.",
+        "**Que nadie entre.** Pídales a las personas que no entren a ese cuarto. Nunca le cierre el paso a un adulto ni lo agarre. Si un adulto no le hace caso, aléjese y llame a la oficina. Si alguien se enoja o amenaza, vaya a un lugar seguro y llame al 911.",
+        "**Llame a la oficina.** Llame enseguida, a cualquier hora, de día o de noche. Haga una llamada. No mande solo un mensaje de texto. El número es {{OFFICE_PHONE}}. Es el mismo número a toda hora. La oficina le avisará al administrador de la propiedad.",
+        "**Espere instrucciones.** Deje de trabajar. Espere en un lugar seguro hasta que la oficina le diga qué hacer."
+       ],
+       "type": "steps"
+      }
+     ],
+     "id": "what-each-step-means",
+     "seconds": 90,
+     "title": {
+      "en": "What each step means",
+      "es": "Qué quiere decir cada paso"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "Sometimes finding a gun is an emergency.",
+       "es": "A veces, encontrar un arma es una emergencia.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "**It is an emergency when:**",
+        "A child can reach the gun.",
+        "You see signs of a crime or drugs.",
+        "Someone at the property is threatening people, acts in a dangerous way with a gun, or has a gun and should not be there."
+       ],
+       "es": [
+        "**Es una emergencia cuando:**",
+        "Un niño puede alcanzar el arma.",
+        "Usted ve señales de un crimen o de drogas.",
+        "Alguien en la propiedad está amenazando a la gente, actúa de forma peligrosa con un arma, o lleva un arma y no debería estar ahí."
+       ],
+       "type": "callout"
+      },
+      {
+       "en": "**In an emergency:**",
+       "es": "**En una emergencia:**",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Get to a safe place.",
+        "Call 911 first. Then call the office.",
+        "Do what 911 and the police tell you. Their instructions come first."
+       ],
+       "es": [
+        "Vaya a un lugar seguro.",
+        "Llame primero al 911. Después llame a la oficina.",
+        "Haga lo que le digan el 911 y la policía. Sus instrucciones van primero."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": [
+        "If there are signs of a crime or drugs, or someone is threatening people, acts in a dangerous way with a gun, or has a gun and should not be there, leave the property. Wait away from it, near other people. Do not wait at the door or in the driveway.",
+        "911 can help you in Spanish. Say \"Spanish.\"",
+        "If you ever feel you are in danger, call 911."
+       ],
+       "es": [
+        "Si hay señales de un crimen o de drogas, o alguien está amenazando a la gente, actúa de forma peligrosa con un arma, o lleva un arma y no debería estar ahí, salga de la propiedad. Espere lejos de la propiedad, cerca de otras personas. No espere en la puerta ni en la entrada de carros.",
+        "El 911 le puede ayudar en español. Diga \"Spanish\".",
+        "Si en algún momento siente que está en peligro, llame al 911."
+       ],
+       "type": "text"
+      },
+      {
+       "en": "**Not an emergency:** a calm guest who carries a gun and is not threatening anyone. Do not touch the gun. Call the office.",
+       "es": "**No es una emergencia:** un huésped tranquilo que lleva un arma y no está amenazando a nadie. No toque el arma. Llame a la oficina.",
+       "type": "text"
+      },
+      {
+       "en": "**You will never get in trouble with CCC for calling 911 or the police to report danger.**",
+       "es": "**Usted nunca tendrá problemas con CCC por llamar al 911 o a la policía para reportar un peligro.**",
+       "type": "text"
+      }
+     ],
+     "id": "emergency-exception",
+     "seconds": 120,
+     "title": {
+      "en": "Emergency? Call 911 first.",
+      "es": "¿Es una emergencia? Llame primero al 911."
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": [
+        "**Any gun could be loaded.** You cannot tell by looking. Treat every gun as loaded.",
+        "**Police make it safe.** They know how. It is not your job.",
+        "**The police come to the gun.** The gun never goes to the police. Never carry a gun to a car or to a police station.",
+        "**The law is strict.** Holding a gun you found can get a person in trouble with the law. This can happen even if they only wanted to turn it in.",
+        "**It could be evidence.** If the gun was used in a crime, touching it can ruin evidence."
+       ],
+       "es": [
+        "**Cualquier arma puede estar cargada.** No se puede saber solo con mirarla. Trate toda arma como si estuviera cargada.",
+        "**La policía se encarga del arma.** La policía sabe cómo manejarla sin peligro. Ese no es su trabajo.",
+        "**La policía va adonde está el arma.** El arma nunca va a la policía. Nunca lleve un arma a un carro ni a una estación de policía.",
+        "**La ley es muy estricta.** Una persona que agarra un arma que encontró puede tener problemas con la ley. Esto puede pasar aunque la persona solo quiera entregarla.",
+        "**Puede ser evidencia.** Si el arma se usó en un crimen, tocarla puede dañar la evidencia."
+       ],
+       "type": "text"
+      },
+      {
+       "en": "Do not touch it. Not for a second. Not to \"keep it safe.\" Not to turn it in.",
+       "es": "No la toque. Ni por un segundo. Ni para \"cuidarla\". Ni para entregarla.",
+       "type": "text"
+      }
+     ],
+     "id": "never-touch",
+     "seconds": 60,
+     "title": {
+      "en": "Why you never touch or move a gun",
+      "es": "Por qué nunca debe tocar ni mover un arma"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "Treat all of these like a real, loaded gun:",
+       "es": "Trate todo esto como un arma de verdad y cargada:",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Any real gun: handguns, rifles, shotguns",
+        "BB guns and pellet guns",
+        "Airsoft guns",
+        "Toy or fake guns that look real",
+        "Bullets or shotgun shells, even loose ones",
+        "A gun case or gun box. Do not open it."
+       ],
+       "es": [
+        "Cualquier arma de verdad: pistolas, rifles, escopetas",
+        "Armas de balines o de perdigones",
+        "Armas de airsoft (de bolitas de plástico)",
+        "Pistolas de juguete o réplicas que parecen de verdad",
+        "Balas o cartuchos de escopeta, aunque estén sueltos",
+        "Estuches o cajas para armas. No los abra."
+       ],
+       "type": "text"
+      },
+      {
+       "en": "Not sure if it is real? Treat it as real. You cannot tell without getting close.",
+       "es": "¿No sabe si es de verdad? Trátela como un arma de verdad. No se puede saber sin acercarse.",
+       "type": "text"
+      }
+     ],
+     "id": "what-counts",
+     "seconds": 45,
+     "title": {
+      "en": "What counts",
+      "es": "Qué cuenta como arma"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "**Example:** The guests checked out. You open a nightstand drawer. You see a handgun.",
+       "es": "**Ejemplo:** Los huéspedes ya se fueron. Usted abre el cajón de la mesita de noche. Ve una pistola.",
+       "type": "text"
+      },
+      {
+       "en": "**Do this:**",
+       "es": "**Haga esto:**",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Leave everything just as it is.",
+        "Follow the 5 steps.",
+        "Stop working. Do not keep cleaning the other rooms.",
+        "Call the office. Wait in a safe place until the office tells you what to do."
+       ],
+       "es": [
+        "Deje todo como está.",
+        "Siga los 5 pasos.",
+        "Deje de trabajar. No siga limpiando los otros cuartos.",
+        "Llame a la oficina. Espere en un lugar seguro hasta que la oficina le diga qué hacer."
+       ],
+       "type": "text"
+      }
+     ],
+     "id": "card-1-no-one-there",
+     "seconds": 30,
+     "title": {
+      "en": "Card 1. You find a gun and no one else is there",
+      "es": "Tarjeta 1. Encuentra un arma y no hay nadie más"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "**Example:** The owner has a locked closet or gun safe at the home.",
+       "es": "**Ejemplo:** El dueño tiene en la casa un clóset con llave o una caja fuerte para armas.",
+       "type": "text"
+      },
+      {
+       "en": "**Do this:**",
+       "es": "**Haga esto:**",
+       "type": "text"
+      },
+      {
+       "en": [
+        "This does not count as finding a gun. Keep working.",
+        "Never open owner closets, safes or locked areas.",
+        "If an owner's gun is not locked up, or the closet or safe is open and you can see a gun, it counts as finding a gun. Follow the 5 steps.",
+        "Never move, hold or hand over a gun you find, even if a guest, the owner, the property manager or a supervisor asks you to. Say no and call the office."
+       ],
+       "es": [
+        "Esto no cuenta como encontrar un arma. Siga trabajando.",
+        "Nunca abra clósets, cajas fuertes ni lugares con llave del dueño.",
+        "Si un arma del dueño no está guardada bajo llave, o si el clóset o la caja fuerte están abiertos y usted ve un arma, sí cuenta. Siga los 5 pasos.",
+        "Nunca mueva, agarre ni entregue un arma que encuentre, aunque se lo pida un huésped, el dueño, el administrador de la propiedad o un supervisor. Diga que no y llame a la oficina."
+       ],
+       "type": "text"
+      }
+     ],
+     "id": "card-2-owner-gun",
+     "seconds": 60,
+     "title": {
+      "en": "Card 2. The owner's gun is locked up",
+      "es": "Tarjeta 2. El arma del dueño está guardada bajo llave"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "**Example:** During a guest's stay, you see a gun in the guest's open suitcase. The guest is out.",
+       "es": "**Ejemplo:** Durante la estadía de un huésped, usted ve un arma en la maleta abierta del huésped. El huésped no está.",
+       "type": "text"
+      },
+      {
+       "en": "**Do this:**",
+       "es": "**Haga esto:**",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Don't touch it.",
+        "Do not talk to the guest about it. The office will handle that.",
+        "Stop working and leave the room.",
+        "Call the office. Wait in a safe place until the office tells you what to do."
+       ],
+       "es": [
+        "No la toque.",
+        "No le hable al huésped sobre el arma. La oficina se encarga de eso.",
+        "Deje de trabajar y salga del cuarto.",
+        "Llame a la oficina. Espere en un lugar seguro hasta que la oficina le diga qué hacer."
+       ],
+       "type": "text"
+      },
+      {
+       "en": "A gun in a guest's bag, with no one around, is not an emergency by itself. If someone at the property is threatening people, acts in a dangerous way with a gun, or has a gun and should not be there, it is an emergency. See Card 6.",
+       "es": "Un arma en la maleta de un huésped, sin nadie cerca, no es una emergencia solo por eso. Si alguien en la propiedad está amenazando a la gente, actúa de forma peligrosa con un arma, o lleva un arma y no debería estar ahí, es una emergencia. Vea la Tarjeta 6.",
+       "type": "text"
+      }
+     ],
+     "id": "card-3-guest-staying",
+     "seconds": 60,
+     "title": {
+      "en": "Card 3. The guest is still staying",
+      "es": "Tarjeta 3. El huésped todavía está hospedado"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "**This is an emergency.**",
+       "es": "**Esto es una emergencia.**",
+       "type": "callout"
+      },
+      {
+       "en": "**Example:** A family arrives early. A child is playing near a gun on a low shelf.",
+       "es": "**Ejemplo:** Una familia llega temprano. Un niño está jugando cerca de un arma que está en un estante bajo.",
+       "type": "text"
+      },
+      {
+       "en": "**Do this:**",
+       "es": "**Haga esto:**",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Don't touch the gun.",
+        "Keep the children away from the gun, if you can do it safely.",
+        "Tell the adult in charge right away.",
+        "Call 911. Then call the office.",
+        "Do what 911 and the police tell you."
+       ],
+       "es": [
+        "No toque el arma.",
+        "Mantenga a los niños lejos del arma, si puede hacerlo sin peligro.",
+        "Avísele enseguida al adulto a cargo.",
+        "Llame al 911. Después llame a la oficina.",
+        "Haga lo que le digan el 911 y la policía."
+       ],
+       "type": "text"
+      }
+     ],
+     "id": "card-4-children",
+     "seconds": 45,
+     "title": {
+      "en": "Card 4. Children are nearby",
+      "es": "Tarjeta 4. Hay niños cerca"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "**This is an emergency.**",
+       "es": "**Esto es una emergencia.**",
+       "type": "callout"
+      },
+      {
+       "en": "**Example:** In a closet you see guns, a bag of white powder and a lot of cash.",
+       "es": "**Ejemplo:** En un clóset, usted ve armas, una bolsa de polvo blanco y mucho dinero en efectivo.",
+       "type": "text"
+      },
+      {
+       "en": "**Do this:**",
+       "es": "**Haga esto:**",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Touch nothing. Do not clean anything.",
+        "Leave the property. Wait away from it, near other people. Do not wait at the door or in the driveway.",
+        "From a safe place, call 911. Then call the office.",
+        "Do not take photos.",
+        "Do what 911 and the police tell you. Then wait in a safe place until the office tells you what to do."
+       ],
+       "es": [
+        "No toque nada. No limpie nada.",
+        "Salga de la propiedad. Espere lejos de la propiedad, cerca de otras personas. No espere en la puerta ni en la entrada de carros.",
+        "Desde un lugar seguro, llame al 911. Después llame a la oficina.",
+        "No tome fotos.",
+        "Haga lo que le digan el 911 y la policía. Después espere en un lugar seguro hasta que la oficina le diga qué hacer."
+       ],
+       "type": "text"
+      },
+      {
+       "en": "**Other signs:** drugs, loose pills in small bags, powders, piles of cash, blood, a broken door or window, many guns, a gun hidden in the trash.",
+       "es": "**Otras señales:** drogas, pastillas sueltas en bolsitas, polvos, montones de dinero en efectivo, sangre, una puerta o una ventana rota, muchas armas, un arma escondida en la basura.",
+       "type": "text"
+      }
+     ],
+     "id": "card-5-crime-drugs",
+     "seconds": 60,
+     "title": {
+      "en": "Card 5. Signs of a crime or drugs",
+      "es": "Tarjeta 5. Señales de un crimen o de drogas"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "**This is an emergency.**",
+       "es": "**Esto es una emergencia.**",
+       "type": "callout"
+      },
+      {
+       "en": "**Example:** You arrive to clean. A man who is not the guest is inside. He is yelling. He has a gun in his belt.",
+       "es": "**Ejemplo:** Usted llega a limpiar. Adentro hay un hombre que no es el huésped. Está gritando. Tiene un arma en el cinturón.",
+       "type": "text"
+      },
+      {
+       "en": "**Do this:**",
+       "es": "**Haga esto:**",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Get out right away. Go somewhere away from the property, near other people.",
+        "If you cannot get out, hide. Lock the door. Silence your phone.",
+        "If you hear shots, do the same: get out, or hide.",
+        "Do not argue. Never try to take the gun.",
+        "Call 911 when you are safe. Then call the office.",
+        "If you cannot talk, call 911 anyway and leave the line open. In some areas you can text 911.",
+        "Do what 911 and the police tell you."
+       ],
+       "es": [
+        "Salga enseguida. Vaya a un lugar lejos de la propiedad, cerca de otras personas.",
+        "Si no puede salir, escóndase. Cierre la puerta con seguro. Ponga su teléfono en silencio.",
+        "Si oye disparos, haga lo mismo: salga o escóndase.",
+        "No discuta. Nunca trate de quitarle el arma.",
+        "Llame al 911 cuando esté a salvo. Después llame a la oficina.",
+        "Si no puede hablar, llame al 911 de todos modos y deje la línea abierta. En algunos lugares puede mandar un mensaje de texto al 911.",
+        "Haga lo que le digan el 911 y la policía."
+       ],
+       "type": "text"
+      },
+      {
+       "en": "**Not an emergency:** a calm guest who carries a gun and is not threatening anyone. Do not touch the gun. Call the office. If you ever feel you are in danger, get to a safe place and call 911.",
+       "es": "**No es una emergencia:** un huésped tranquilo que lleva un arma y no está amenazando a nadie. No toque el arma. Llame a la oficina. Si en algún momento siente que está en peligro, vaya a un lugar seguro y llame al 911.",
+       "type": "text"
+      }
+     ],
+     "id": "card-6-carrying-or-threatening",
+     "seconds": 90,
+     "title": {
+      "en": "Card 6. Someone threatens people or acts in a dangerous way with a gun",
+      "es": "Tarjeta 6. Alguien amenaza a la gente o actúa de forma peligrosa con un arma"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "**Example:** You reach under a bed to get a sock. You grab a gun before you see it.",
+       "es": "**Ejemplo:** Usted mete la mano debajo de una cama para sacar un calcetín. Agarra una pistola antes de verla.",
+       "type": "text"
+      },
+      {
+       "en": "**Do this:**",
+       "es": "**Haga esto:**",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Stay calm. Keep your fingers away from the trigger.",
+        "Point it where no one is. Never point it at a person, a door or a thin wall.",
+        "Set it down gently, right where you are. Do not try to unload it.",
+        "Step away. Follow the 5 steps.",
+        "Tell the office you touched it. The police need to know."
+       ],
+       "es": [
+        "Mantenga la calma. Mantenga los dedos lejos del gatillo.",
+        "Apúntela hacia donde no haya nadie. Nunca la apunte hacia una persona, una puerta o una pared delgada.",
+        "Déjela con cuidado ahí mismo, donde usted está. No trate de descargarla.",
+        "Aléjese. Siga los 5 pasos.",
+        "Dígale a la oficina que usted la tocó. La policía necesita saberlo."
+       ],
+       "type": "text"
+      },
+      {
+       "en": "**If a gun starts to fall:** step back and let it fall. Never try to catch it.",
+       "es": "**Si un arma se empieza a caer:** dé un paso atrás y déjela caer. Nunca trate de agarrarla.",
+       "type": "callout"
+      }
+     ],
+     "id": "card-7-touched-by-accident",
+     "seconds": 60,
+     "title": {
+      "en": "Card 7. You touched it by accident",
+      "es": "Tarjeta 7. La tocó sin querer"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": [
+        "Never pick up, move, unload or check a gun.",
+        "Never carry, hide, store or mail a gun.",
+        "Never hand a gun to anyone, or give it back. Not even to a guest who says it is theirs.",
+        "Never put a gun in lost and found. A gun is never lost and found.",
+        "Never clean around it, or keep cleaning while you wait.",
+        "Never take a photo, unless the office asks.",
+        "Never post photos, the address or door codes online or in group chats. Send guests, neighbors and reporters to the office.",
+        "You can always talk about safety with your coworkers, the police or a government agency."
+       ],
+       "es": [
+        "Nunca levante, mueva, descargue ni revise un arma.",
+        "Nunca lleve, esconda, guarde ni mande por correo un arma.",
+        "Nunca le devuelva ni le entregue un arma a nadie, ni siquiera a un huésped que dice que es suya.",
+        "Nunca ponga un arma en objetos perdidos. Un arma nunca va a objetos perdidos.",
+        "Nunca limpie alrededor del arma, ni siga limpiando mientras espera.",
+        "Nunca tome fotos, a menos que la oficina se lo pida.",
+        "Nunca publique fotos, la dirección ni los códigos de la puerta en internet ni en chats de grupo. Si huéspedes, vecinos o periodistas le preguntan, pídales que llamen a la oficina.",
+        "Usted siempre puede hablar de la seguridad con sus compañeros de trabajo, con la policía o con una agencia del gobierno."
+       ],
+       "type": "text"
+      },
+      {
+       "en": "**Never move, hold or hand over a gun you find, even if a guest, the owner, the property manager or a supervisor asks you to.** Say no and call the office.",
+       "es": "**Nunca mueva, agarre ni entregue un arma que encuentre, aunque se lo pida un huésped, el dueño, el administrador de la propiedad o un supervisor.** Diga que no y llame a la oficina.",
+       "type": "callout"
+      }
+     ],
+     "id": "never-list",
+     "seconds": 90,
+     "title": {
+      "en": "Never do these things",
+      "es": "Lo que nunca debe hacer"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "Say kindly: \"I am not allowed to touch it. Please call the office.\"",
+       "es": "Diga con amabilidad: \"No tengo permiso para tocarla. Por favor, llame a la oficina.\" En inglés: \"I am not allowed to touch it. Please call the office.\"",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Do not hand it over, even if the guest says it is theirs.",
+        "Do not argue. Do not try to stop them.",
+        "Step outside and call the office."
+       ],
+       "es": [
+        "No se la entregue, aunque el huésped diga que es suya.",
+        "No discuta. No trate de detener al huésped.",
+        "Salga de la casa y llame a la oficina."
+       ],
+       "type": "text"
+      },
+      {
+       "en": "If the guest gets angry or threatening, it is an emergency. Get to a safe place and call 911.",
+       "es": "Si el huésped se enoja o amenaza, es una emergencia. Vaya a un lugar seguro y llame al 911.",
+       "type": "callout"
+      }
+     ],
+     "id": "guest-comes-back",
+     "seconds": 45,
+     "title": {
+      "en": "If a guest comes back for the gun",
+      "es": "Si un huésped regresa por el arma"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "**Call the CCC office right away, at any hour, day or night:** {{OFFICE_PHONE}}",
+       "es": "**Llame enseguida a la oficina de CCC, a cualquier hora, de día o de noche:** {{OFFICE_PHONE}}",
+       "type": "text"
+      },
+      {
+       "en": [
+        "**One number, day and night.** It is the same number at every hour. There is no second number to remember.",
+        "**Call. Do not only text.** A call makes sure a real person knows now.",
+        "**No answer?** Leave a message. Text \"Safety issue. Call me now.\" Keep calling the office.",
+        "**No answer in 10 minutes?** Keep calling the office. Also call your region or division supervisor: {{SUPERVISOR_PHONE}}. If anyone is in danger, call 911.",
+        "**Guests arriving and no one at CCC answers?** Kindly ask the adults to wait outside, because there is a safety problem. Do not block anyone. If a child can reach the gun, or anyone is in danger, it is an emergency. Call 911.",
+        "**Emergency?** Call 911 first. Then call the office."
+       ],
+       "es": [
+        "**Un solo número, de día y de noche.** Es el mismo número a toda hora. No hay un segundo número que recordar.",
+        "**Llame. No mande solo un mensaje de texto.** Con una llamada, una persona de verdad se entera enseguida.",
+        "**¿No contestan?** Deje un mensaje de voz. Mande este texto: \"Problema de seguridad. Llámeme ya.\" Siga llamando a la oficina.",
+        "**¿Nadie contesta en 10 minutos?** Siga llamando a la oficina. También llame a su supervisor de región o de división: {{SUPERVISOR_PHONE}}. Si alguien está en peligro, llame al 911.",
+        "**¿Llegan huéspedes y nadie de CCC contesta?** Con amabilidad, pídales a los adultos que esperen afuera, porque hay un problema de seguridad. No le cierre el paso a nadie. Si un niño puede alcanzar el arma, o si alguien está en peligro, es una emergencia. Llame al 911.",
+        "**¿Es una emergencia?** Llame primero al 911. Después llame a la oficina."
+       ],
+       "type": "text"
+      }
+     ],
+     "id": "call-the-office",
+     "seconds": 90,
+     "title": {
+      "en": "Call the office",
+      "es": "Llame a la oficina"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": [
+        "Your name and the property address",
+        "What you saw: a gun, bullets, or something that looks like a gun",
+        "Where it is. For example: \"top drawer of the nightstand in the main bedroom.\"",
+        "Who is at the property",
+        "If anyone touched it",
+        "Where you are waiting now"
+       ],
+       "es": [
+        "Su nombre y la dirección de la propiedad",
+        "Qué vio: un arma, balas o algo que parece un arma",
+        "Dónde está. Por ejemplo: \"en el cajón de arriba de la mesita de noche, en el cuarto principal\".",
+        "Quién está en la propiedad",
+        "Si alguien la tocó",
+        "Dónde está esperando usted ahora"
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "Only say what you can see from where you are. Do not go closer to check.",
+       "es": "Diga solo lo que puede ver desde donde está. No se acerque para revisar.",
+       "type": "text"
+      }
+     ],
+     "id": "what-to-say",
+     "seconds": 45,
+     "title": {
+      "en": "What to say",
+      "es": "Qué decir"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "The office takes over. You do not have to handle this alone.",
+       "es": "La oficina se encarga. Usted no tiene que resolver esto sin ayuda.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "The office tells the property manager.",
+        "If the property manager cannot take care of it right away, or no one knows whose gun it is, the office calls the police non emergency line.",
+        "If a guest who checked out left the gun behind, the office always calls the police non emergency line.",
+        "The police come to the gun. You never take it to them.",
+        "The office tells you when you can go back to work or leave.",
+        "If the property manager has not answered within 30 minutes, you may stop the job and leave the property. See \"If the property manager does not answer.\"",
+        "The office makes sure the property manager knows. The property manager decides about the next guest. CCC has no part in guest check in.",
+        "If needed, the office changes the time of the next cleaning with the property manager.",
+        "Someone from CCC will check on you."
+       ],
+       "es": [
+        "La oficina le avisa al administrador de la propiedad.",
+        "Si el administrador no puede encargarse enseguida, o nadie sabe de quién es el arma, la oficina llama a la línea de la policía para casos que no son de emergencia.",
+        "Si el arma la dejó un huésped que ya se fue, la oficina siempre llama a la línea de la policía para casos que no son de emergencia.",
+        "La policía va adonde está el arma. Usted nunca se la lleva a la policía.",
+        "La oficina le dice cuándo puede volver a trabajar o irse.",
+        "Si el administrador de la propiedad no ha contestado en 30 minutos, usted puede dejar la limpieza sin terminar e irse de la propiedad. Vea \"Si el administrador de la propiedad no contesta\".",
+        "La oficina se asegura de que el administrador de la propiedad esté enterado. El administrador decide sobre el próximo huésped. CCC no participa en la entrada de los huéspedes.",
+        "Si hace falta, la oficina cambia con el administrador de la propiedad la hora de la próxima limpieza.",
+        "Alguien de CCC le va a preguntar cómo está."
+       ],
+       "type": "text"
+      },
+      {
+       "en": "If police come, do what they tell you. Their instructions come first. Tell them what you saw and if anyone touched it. Then tell the office what the police said.",
+       "es": "Si llega la policía, haga lo que le digan. Sus instrucciones van primero. Dígales lo que vio y si alguien tocó el arma. Después dígale a la oficina lo que dijo la policía.",
+       "type": "text"
+      }
+     ],
+     "id": "what-happens-next",
+     "seconds": 120,
+     "title": {
+      "en": "What happens next",
+      "es": "Qué pasa después"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": [
+        "**Stop working.** After you find a gun, stop. Do not keep cleaning, not even in other rooms.",
+        "**Wait somewhere safe,** away from the gun. Outside near the front door is good. If it is very hot or raining, wait in your car.",
+        "**In an emergency, wait away from the property,** near other people. Not at the door or in the driveway.",
+        "**Your waiting time is paid work time.** Tell the office what time you stopped working.",
+        "**Stay until the office says it is OK** to go back to work or leave. If the property manager has not answered within 30 minutes, you may leave after you tell the office. If police are there, do what the police tell you first."
+       ],
+       "es": [
+        "**Deje de trabajar.** Después de encontrar un arma, pare. No siga limpiando, ni siquiera en otros cuartos.",
+        "**Espere en un lugar seguro,** lejos del arma. Afuera, cerca de la puerta de entrada, es un buen lugar. Si hace mucho calor o está lloviendo, espere en su carro.",
+        "**En una emergencia, espere lejos de la propiedad,** cerca de otras personas. No en la puerta ni en la entrada de carros.",
+        "**Su tiempo de espera es tiempo de trabajo pagado.** Dígale a la oficina a qué hora dejó de trabajar.",
+        "**Quédese hasta que la oficina le dé permiso** para volver a trabajar o para irse. Si el administrador de la propiedad no ha contestado en 30 minutos, usted puede irse después de avisarle a la oficina. Si la policía está ahí, primero haga lo que le diga la policía."
+       ],
+       "type": "text"
+      }
+     ],
+     "id": "safety-first",
+     "seconds": 90,
+     "title": {
+      "en": "Stop and wait somewhere safe",
+      "es": "Deje de trabajar y espere en un lugar seguro"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": [
+        "**No photos unless the office asks.** If the office asks, take it from where you stand. Do not move anything or go closer. Send it only to the office, the way they tell you.",
+        "**Never stop for a photo in an emergency.**",
+        "**If you ever feel unsafe,** go to a safe place and call. If you are in danger, call 911."
+       ],
+       "es": [
+        "**No tome fotos, a menos que la oficina se lo pida.** Si la oficina se lo pide, tome la foto desde donde está. No mueva nada y no se acerque. Mándela solo a la oficina, como le indiquen.",
+        "**En una emergencia, nunca se detenga a tomar una foto.**",
+        "**Si algo le da miedo o le parece peligroso,** vaya a un lugar seguro y llame. Si está en peligro, llame al 911."
+       ],
+       "type": "text"
+      },
+      {
+       "en": "**You will never get in trouble with CCC for calling 911 or the police to report danger.**",
+       "es": "**Usted nunca tendrá problemas con CCC por llamar al 911 o a la policía para reportar un peligro.**",
+       "type": "text"
+      }
+     ],
+     "id": "photos-and-feeling-unsafe",
+     "seconds": 45,
+     "title": {
+      "en": "Photos, and if you feel unsafe",
+      "es": "Fotos, y si se siente en peligro"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "The office calls the property manager for you. **The 30 minutes start when you call the office.** If the property manager has not answered within 30 minutes, you may stop the job and leave the property.",
+       "es": "La oficina llama al administrador de la propiedad por usted. **Los 30 minutos empiezan cuando usted llama a la oficina.** Si el administrador de la propiedad no ha contestado en 30 minutos, usted puede dejar la limpieza sin terminar e irse de la propiedad.",
+       "type": "text"
+      },
+      {
+       "en": "**Before you leave:**",
+       "es": "**Antes de irse:**",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Do not touch or move the gun. Never take it with you.",
+        "Keep the room door closed, if you closed it. Do not go back in.",
+        "Lock the property the way the office tells you.",
+        "Call the office before you leave. Tell them what time you are leaving."
+       ],
+       "es": [
+        "No toque ni mueva el arma. Nunca se la lleve.",
+        "Si cerró la puerta del cuarto, déjela cerrada. No vuelva a entrar.",
+        "Cierre la propiedad con llave, como le diga la oficina.",
+        "Llame a la oficina antes de irse. Dígale a qué hora se va."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": [
+        "**Your time until you leave is paid work time.**",
+        "**The office keeps working on it.** After you lock up and leave, the office keeps calling the property manager and calls the police non emergency line. The property manager lets the police in. You do not have to stay for that.",
+        "**The next guest is not your job.** The office makes sure the property manager knows. The property manager talks with the next guest. You never hold anyone, never turn anyone away, and never decide who goes in.",
+        "**Guests at the property, or arriving as you leave?** Kindly ask the adults to wait outside, because there is a safety problem. Never block anyone. Tell the office right away. If a child can reach the gun, or anyone is in danger, call 911.",
+        "**If the police ask you to stay,** do what they tell you.",
+        "**This is not for emergencies.** In an emergency, call 911 first."
+       ],
+       "es": [
+        "**Su tiempo hasta que se va es tiempo de trabajo pagado.**",
+        "**La oficina sigue encargándose.** Después de que usted cierra con llave y se va, la oficina sigue llamando al administrador de la propiedad y llama a la línea de la policía para casos que no son de emergencia. El administrador de la propiedad deja entrar a la policía. Usted no se tiene que quedar para eso.",
+        "**El próximo huésped no es su responsabilidad.** La oficina se asegura de que el administrador de la propiedad esté enterado. El administrador habla con el próximo huésped. Usted nunca detiene a nadie, nunca le impide la entrada a nadie y nunca decide quién entra.",
+        "**¿Hay huéspedes en la propiedad, o llegan cuando usted se va?** Con amabilidad, pídales a los adultos que esperen afuera, porque hay un problema de seguridad. Nunca le cierre el paso a nadie. Avísele enseguida a la oficina. Si un niño puede alcanzar el arma, o alguien está en peligro, llame al 911.",
+        "**Si la policía le pide que se quede,** haga lo que le diga.",
+        "**Esto no es para emergencias.** En una emergencia, llame primero al 911."
+       ],
+       "type": "text"
+      }
+     ],
+     "id": "manager-no-answer",
+     "seconds": 150,
+     "title": {
+      "en": "If the property manager does not answer",
+      "es": "Si el administrador de la propiedad no contesta"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "While you work at a client property, do not carry a gun on your body, and do not bring a gun into the home or building.",
+       "es": "Mientras trabaja en la propiedad de un cliente, no lleve un arma de fuego encima y no entre con un arma de fuego a la casa ni al edificio.",
+       "type": "text"
+      },
+      {
+       "en": "This rule does not stop you from keeping your own legal gun locked inside your personal car, where your state's law allows it.",
+       "es": "Esta regla no le prohíbe guardar su propia arma legal bajo llave dentro de su carro personal, donde la ley de su estado lo permita.",
+       "type": "text"
+      },
+      {
+       "en": "Please keep it out of sight.",
+       "es": "Por favor, manténgala fuera de la vista.",
+       "type": "text"
+      },
+      {
+       "en": "Following your state's law on how to lock a gun in a car is up to you.",
+       "es": "Usted es responsable de seguir la ley de su estado sobre cómo guardar un arma bajo llave en un carro.",
+       "type": "text"
+      },
+      {
+       "en": "CCC will never ask if you have a gun in your car. CCC will never search your car.",
+       "es": "CCC nunca le va a preguntar si tiene un arma en su carro. CCC nunca va a revisar su carro.",
+       "type": "text"
+      },
+      {
+       "en": "Some clients do not allow guns anywhere on their property, cars included. When a client has this rule, the office will tell you. Park off the property for that job.",
+       "es": "Algunos clientes no permiten armas en ninguna parte de su propiedad, ni siquiera dentro de un carro. Cuando un cliente tiene esta regla, la oficina le avisará. Para ese trabajo, estaciónese fuera de la propiedad.",
+       "type": "text"
+      },
+      {
+       "en": "This rule is the same for everyone.",
+       "es": "Esta regla es igual para todos.",
+       "type": "text"
+      }
+     ],
+     "id": "own-gun-rule",
+     "seconds": 90,
+     "title": {
+      "en": "CCC rule on your own gun",
+      "es": "Regla de CCC sobre su propia arma"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "**Found a gun? Follow the 5 steps.**",
+       "es": "**¿Encontró un arma? Siga los 5 pasos.**",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Don't touch it.",
+        "Get away from it.",
+        "Keep everyone out.",
+        "Call the office, at any hour, day or night. {{OFFICE_PHONE}}",
+        "Wait for instructions."
+       ],
+       "es": [
+        "No la toque.",
+        "Aléjese.",
+        "Que nadie entre.",
+        "Llame a la oficina, a cualquier hora, de día o de noche. {{OFFICE_PHONE}}",
+        "Espere instrucciones."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": [
+        "**Emergency? Call 911 first. Then call the office.**",
+        "A child can reach the gun.",
+        "You see signs of a crime or drugs.",
+        "Someone at the property is threatening people, acts in a dangerous way with a gun, or has a gun and should not be there."
+       ],
+       "es": [
+        "**¿Es una emergencia? Llame primero al 911. Después llame a la oficina.**",
+        "Un niño puede alcanzar el arma.",
+        "Usted ve señales de un crimen o de drogas.",
+        "Alguien en la propiedad está amenazando a la gente, actúa de forma peligrosa con un arma, o lleva un arma y no debería estar ahí."
+       ],
+       "type": "callout"
+      },
+      {
+       "en": "**Remember:**",
+       "es": "**Recuerde:**",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Bullets, BB guns, airsoft guns and toy guns that look real all count.",
+        "Stop working. Wait somewhere safe. Your waiting time is paid. No photos unless the office asks.",
+        "No answer from the property manager in 30 minutes? You may leave. Leave the gun, lock up the way the office says, and tell the office first.",
+        "The next guest is not your job. The office tells the property manager. Never hold anyone or turn anyone away.",
+        "Never move, carry or hand over a gun, even if someone asks or says it is theirs. Never block or grab anyone.",
+        "Your own gun: never on your body and never inside a client home or building while you work."
+       ],
+       "es": [
+        "Las balas, las armas de balines, las de airsoft y las pistolas de juguete que parecen de verdad también cuentan.",
+        "Deje de trabajar. Espere en un lugar seguro. Su tiempo de espera se paga. No tome fotos, a menos que la oficina se lo pida.",
+        "¿El administrador de la propiedad no contesta en 30 minutos? Usted puede irse. Deje el arma donde está, cierre con llave como le diga la oficina y avísele a la oficina antes de irse.",
+        "El próximo huésped no es su responsabilidad. La oficina le avisa al administrador de la propiedad. Nunca detenga a nadie ni le impida la entrada a nadie.",
+        "Nunca mueva, lleve ni entregue un arma, aunque alguien se lo pida o diga que es suya. Nunca le cierre el paso a nadie ni agarre a nadie.",
+        "Su propia arma: nunca encima de usted y nunca dentro de la casa o el edificio de un cliente mientras trabaja."
+       ],
+       "type": "text"
+      }
+     ],
+     "id": "summary",
+     "seconds": 120,
+     "title": {
+      "en": "Summary",
+      "es": "Resumen"
+     }
+    }
+   ]
+  },
+  "notice": {
+   "ack": {
+    "text": {
+     "en": "I have read this site safety notice. I understand these are safety rules for working at client properties.",
+     "es": "Leí este aviso de seguridad. Entiendo que estas son reglas de seguridad para trabajar en las propiedades de los clientes."
+    }
+   },
+   "checkpoint": {
+    "on_miss": {
+     "en": "Not quite. Please read the notice again, then try again.",
+     "es": "Todavía no. Por favor, lea el aviso otra vez y vuelva a intentarlo."
+    },
+    "question_ids": [
+     "q1",
+     "q3",
+     "q5",
+     "q6",
+     "q7"
+    ]
+   },
+   "screens": [
+    {
+     "blocks": [
+      {
+       "en": "Guns are sometimes left in homes and vacation rentals. These are safety rules for everyone who works at the properties CCC serves.",
+       "es": "A veces quedan armas olvidadas en casas y en casas de alquiler vacacional. Estas son reglas de seguridad para todas las personas que trabajan en las propiedades donde CCC da servicio.",
+       "type": "text"
+      },
+      {
+       "en": "**If you see a gun, bullets, or anything that looks like a gun** (BB, airsoft and toy guns that look real count too):",
+       "es": "**Si ve un arma, balas o algo que parece un arma** (las armas de balines, las de airsoft y las de juguete que parecen de verdad también cuentan):",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Do not touch, move or carry it.",
+        "Keep yourself and others away from it. Never block or grab anyone.",
+        "Call the CCC office right away, at any hour, day or night: {{OFFICE_PHONE}}. It is the same number at every hour. The office tells the property manager.",
+        "No answer? Keep calling the office.",
+        "**No answer in 10 minutes?** Keep calling the office. Also call your region or division supervisor: {{SUPERVISOR_PHONE}}. If anyone is in danger, call 911.",
+        "If guests arrive and no one at CCC answers, kindly ask the adults to wait outside. Never block anyone. If a child can reach the gun, or anyone is in danger, it is an emergency. Call 911.",
+        "Stop work and wait in a safe place until the office says it is OK.",
+        "If the property manager has not answered within 30 minutes, you may leave. Do not touch the gun, keep the room closed, lock up the way the office says, and tell the office before you leave.",
+        "**The next guest is not your job.** CCC makes sure the property manager knows. The property manager decides about the next guest. You never hold anyone, turn anyone away, or decide who goes in.",
+        "No photos unless the office asks.",
+        "Never move, hold or hand over a gun you find, even if a guest, the owner, the property manager or a supervisor asks you to. Say no and call the office.",
+        "Never hand a gun to anyone or give it back, even to a guest who says it is theirs."
+       ],
+       "es": [
+        "No la toque, no la mueva y no la lleve a ningún lado.",
+        "No se acerque, y no deje que otras personas se acerquen. Nunca le cierre el paso a nadie ni agarre a nadie.",
+        "Llame enseguida a la oficina de CCC, a cualquier hora, de día o de noche: {{OFFICE_PHONE}}. Es el mismo número a toda hora. La oficina le avisa al administrador de la propiedad.",
+        "¿No contestan? Siga llamando a la oficina.",
+        "**¿Nadie contesta en 10 minutos?** Siga llamando a la oficina. También llame a su supervisor de región o de división: {{SUPERVISOR_PHONE}}. Si alguien está en peligro, llame al 911.",
+        "Si llegan huéspedes y nadie de CCC contesta, pídales con amabilidad a los adultos que esperen afuera. Nunca le cierre el paso a nadie. Si un niño puede alcanzar el arma, o si alguien está en peligro, es una emergencia. Llame al 911.",
+        "Deje de trabajar y espere en un lugar seguro hasta que la oficina le dé permiso para seguir trabajando o para irse.",
+        "Si el administrador de la propiedad no ha contestado en 30 minutos, usted puede irse. No toque el arma, deje el cuarto cerrado, cierre la propiedad con llave como le diga la oficina y avísele a la oficina antes de irse.",
+        "**El próximo huésped no es su responsabilidad.** CCC se asegura de que el administrador de la propiedad esté enterado. El administrador decide sobre el próximo huésped. Usted nunca detiene a nadie, nunca le impide la entrada a nadie y nunca decide quién entra.",
+        "No tome fotos, a menos que la oficina se lo pida.",
+        "Nunca mueva, agarre ni entregue un arma que encuentre, aunque se lo pida un huésped, el dueño, el administrador de la propiedad o un supervisor. Diga que no y llame a la oficina.",
+        "Nunca le entregue ni le devuelva un arma a nadie, ni siquiera a un huésped que dice que es suya."
+       ],
+       "type": "text"
+      },
+      {
+       "en": "**Emergency? Call 911 first.**",
+       "es": "**¿Es una emergencia? Llame primero al 911.**",
+       "type": "text"
+      },
+      {
+       "en": "It is an emergency when:",
+       "es": "Es una emergencia cuando:",
+       "type": "text"
+      },
+      {
+       "en": [
+        "A child can reach the gun.",
+        "You see signs of a crime or drugs.",
+        "Someone at the property is threatening people, acts in a dangerous way with a gun, or has a gun and should not be there."
+       ],
+       "es": [
+        "Un niño puede alcanzar el arma.",
+        "Usted ve señales de un crimen o de drogas.",
+        "Alguien en la propiedad está amenazando a la gente, actúa de forma peligrosa con un arma, o lleva un arma y no debería estar ahí."
+       ],
+       "type": "text"
+      },
+      {
+       "en": "Get to a safe place. Call 911. Then call the office.",
+       "es": "Vaya a un lugar seguro. Llame al 911. Después llame a la oficina.",
+       "type": "text"
+      },
+      {
+       "en": "A calm guest who carries a gun, and is not threatening anyone, is not an emergency. Call the office.",
+       "es": "Un huésped tranquilo que lleva un arma, y que no está amenazando a nadie, no es una emergencia. Llame a la oficina.",
+       "type": "text"
+      },
+      {
+       "en": "If there are signs of a crime or drugs, or someone is threatening people, acts in a dangerous way with a gun, or has a gun and should not be there, leave the property. Wait away from it, near other people.",
+       "es": "Si hay señales de un crimen o de drogas, o alguien está amenazando a la gente, actúa de forma peligrosa con un arma, o lleva un arma y no debería estar ahí, salga de la propiedad. Espere lejos de la propiedad, cerca de otras personas.",
+       "type": "text"
+      },
+      {
+       "en": "Do what 911 and the police tell you. Their instructions come first.",
+       "es": "Haga lo que le digan el 911 y la policía. Sus instrucciones van primero.",
+       "type": "text"
+      },
+      {
+       "en": "You will never get in trouble with CCC for calling 911 or the police to report danger.",
+       "es": "Usted nunca tendrá problemas con CCC por llamar al 911 o a la policía para reportar un peligro.",
+       "type": "text"
+      },
+      {
+       "en": "**Why:** Police make a found gun safe. Holding or carrying a gun you found can break the law, even if you only meant to turn it in.",
+       "es": "**Por qué:** La policía sabe cómo manejar sin peligro un arma encontrada. Agarrar o llevar un arma que usted encontró puede ser contra la ley, aunque solo quiera entregarla.",
+       "type": "text"
+      },
+      {
+       "en": "**Your own gun:** While you work at a client property, do not carry a gun on your body, and do not bring a gun into the home or building. This rule does not stop you from keeping your own legal gun locked inside your personal car, where your state's law allows it. Please keep it out of sight. CCC will never ask if you have a gun in your car. CCC will never search your car. Some clients do not allow guns anywhere on their property, cars included. When a client has this rule, the office will tell you. Park off the property for that job.",
+       "es": "**Su propia arma:** Mientras trabaja en la propiedad de un cliente, no lleve un arma de fuego encima y no entre con un arma de fuego a la casa ni al edificio. Esta regla no le prohíbe guardar su propia arma legal bajo llave dentro de su carro personal, donde la ley de su estado lo permita. Por favor, manténgala fuera de la vista. CCC nunca le va a preguntar si tiene un arma en su carro. CCC nunca va a revisar su carro. Algunos clientes no permiten armas en ninguna parte de su propiedad, ni siquiera dentro de un carro. Cuando un cliente tiene esta regla, la oficina le avisará. Para ese trabajo, estaciónese fuera de la propiedad.",
+       "type": "text"
+      },
+      {
+       "en": "**To finish:** check the box below, then answer the 5 safety questions correctly. You can try again right away.",
+       "es": "**Para terminar:** marque la casilla de abajo y después conteste bien las 5 preguntas de seguridad. Si se equivoca, puede intentarlo otra vez enseguida.",
+       "type": "text"
+      }
+     ],
+     "id": "notice",
+     "seconds": 330,
+     "title": {
+      "en": "Site safety notice: guns at client properties",
+      "es": "Aviso de seguridad en el lugar de trabajo: armas en las propiedades de clientes"
+     }
+    }
+   ]
+  }
+ },
+ "version": "2026-09-17"
+}

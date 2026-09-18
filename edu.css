@@ -58,10 +58,14 @@
 .edu-body { margin-top: 12px; font-size: 17px; line-height: 1.55; }
 .edu-body > * + * { margin-top: 14px; }
 .edu-steps-list, .edu-bullets { margin: 0; padding-left: 24px; display: grid; gap: 8px; }
+/* Two lists in a row (a numbered list, then bullets) keep the gap a paragraph gets. */
+.edu-body > ol + ul, .edu-body > ul + ol, .edu-body > ul + ul { margin-top: 14px; }
 .edu-callout {
   padding: 12px 14px; border-radius: 14px; background: var(--blue-tint);
   border-left: 6px solid var(--blue); font-weight: 600;
 }
+/* A callout list keeps its items inside the box, under its heading. */
+.edu-callout > ul { margin-top: 8px; }
 
 /* ---- The questions ---- */
 
@@ -114,6 +118,27 @@
   margin-top: 14px; padding: 16px; border-radius: var(--radius); background: var(--surface);
   border: 1px solid var(--line); box-shadow: var(--shadow-sm); font-size: 19px; font-weight: 700;
 }
+/* With a checkpoint the confirmation is a box to check, drawn like a quiz choice with an empty box
+   in front, so it reads as "check the box below" before it is checked. */
+.edu-ack-box .choice-face { font-size: 18px; justify-content: flex-start; text-align: left; }
+.edu-ack-box .choice-face svg {
+  display: block; flex: none; width: 28px; height: 28px; padding: 2px;
+  border: 2px solid currentColor; border-radius: 6px; stroke: transparent;
+}
+.edu-ack-box input:checked + .choice-face svg { stroke: currentColor; }
+
+/* ---- 0.3.4: a preview, and phone numbers in the lesson text ---- */
+
+/* The label on a draft that only the people named on its Trainings row can see. The same pair of
+   colours as the "Try again" mark, which keeps WCAG AA contrast in light and dark mode. */
+.edu-preview {
+  display: flex; align-items: center; gap: 8px; margin-top: 12px; padding: 8px 12px;
+  border-radius: 12px; background: var(--peach-tint); color: var(--progress-text);
+  border-left: 6px solid var(--peach); font-size: 15px; font-weight: 700;
+}
+.edu-preview svg { flex: none; width: 18px; height: 18px; }
+/* A tap to call number: the text colour of the words around it, underlined, never split in two. */
+.edu-tel { font-weight: 700; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
 
 @media (max-width: 359px) {
   .edu-item { padding: 12px 13px 14px; }

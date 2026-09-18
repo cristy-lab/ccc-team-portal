@@ -8,7 +8,7 @@
  *     The two lazily loaded bundles (Education and the CEO letter paper) are in there too, so a phone that
  *     goes offline can still open Trainings and the letter. The page never asks for them at
  *     start, which is what start up time depends on, but this worker does save them during
- *     install, so they cost about 46 KB once per release even for somebody who never opens them.
+ *     install, so they cost about 65 KB once per release even for somebody who never opens them.
  *   * PDF files: network first, cached copy only as an offline fallback.
  *   * Training packs (trainings/*.json): network first, with the cached copy as the offline
  *     fallback, so an opened training still reads offline and a corrected pack is picked up at
@@ -16,10 +16,10 @@
  *     the old fingerprint, the backend would keep answering PACK_CHANGED, and the person would
  *     be stuck on "This training was updated" until the next release.
  */
-var CACHE_VERSION = "0.3.3-2";
+var CACHE_VERSION = "0.3.4-1";
 var SHELL_CACHE = "ccc-shell-" + CACHE_VERSION;
 var RUNTIME_CACHE = "ccc-runtime-" + CACHE_VERSION;
-var ASSET_VERSION = "0.3.3";
+var ASSET_VERSION = "0.3.4";
 
 var SHELL = [
   "./",

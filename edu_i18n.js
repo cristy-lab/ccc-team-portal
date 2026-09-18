@@ -61,6 +61,8 @@
       edu_ack_send: "Confirm",
       edu_ack_done_title: "Thank you",
       edu_ack_done_body: "Your confirmation was saved on {date}. Nothing else is kept for a notice: no score and no minutes.",
+      edu_ack_box_first: "Please check the box first.",
+      edu_check_missed: "Please read the notice again, then try again.",
 
       edu_offline_read: "You are offline. You can read this now, and send your answers when you are back online.",
       edu_offline_read_notice: "You are offline. You can read this now, and confirm it when you are back online.",
@@ -74,7 +76,13 @@
       edu_err_already: "This training is already finished.",
       edu_err_session: "You were on this screen for a while. Please open the training again.",
       edu_err_notready: "This training is not ready yet. The office has been told.",
-      edu_err_send: "Your answers were not sent. Please try again in a moment."
+      edu_err_send: "Your answers were not sent. Please try again in a moment.",
+
+      edu_preview: "Preview, only you can see this",
+      edu_preview_note: "This was a preview. It does not count, and no paid minutes were saved.",
+      edu_preview_note_notice: "This was a preview. It does not count as a confirmation.",
+      edu_tok_office: "the office",
+      edu_tok_supervisor: "your supervisor"
     },
     es: {
       edu_intro: "Aquí están sus capacitaciones. Puede tomarlas en inglés o en español.",
@@ -125,6 +133,8 @@
       edu_ack_send: "Confirmar",
       edu_ack_done_title: "Gracias",
       edu_ack_done_body: "Su confirmación se guardó el {date}. De un aviso no se guarda nada más: ni calificación ni minutos.",
+      edu_ack_box_first: "Por favor marque la casilla primero.",
+      edu_check_missed: "Por favor, lea el aviso otra vez y vuelva a intentarlo.",
 
       edu_offline_read: "Está sin conexión. Puede leerla ahora y enviar sus respuestas cuando vuelva a tener conexión.",
       edu_offline_read_notice: "Está sin conexión. Puede leerlo ahora y confirmarlo cuando vuelva a tener conexión.",
@@ -138,7 +148,13 @@
       edu_err_already: "Esta capacitación ya está terminada.",
       edu_err_session: "Pasó un rato en esta pantalla. Por favor abra la capacitación de nuevo.",
       edu_err_notready: "Esta capacitación todavía no está lista. Ya se avisó a la oficina.",
-      edu_err_send: "Sus respuestas no se enviaron. Por favor inténtelo de nuevo en un momento."
+      edu_err_send: "Sus respuestas no se enviaron. Por favor inténtelo de nuevo en un momento.",
+
+      edu_preview: "Vista previa, solo usted puede ver esto",
+      edu_preview_note: "Esto fue una vista previa. No cuenta y no se guardaron minutos pagados.",
+      edu_preview_note_notice: "Esto fue una vista previa. No cuenta como una confirmación.",
+      edu_tok_office: "la oficina",
+      edu_tok_supervisor: "su supervisor"
     }
   };
 
