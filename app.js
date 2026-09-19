@@ -540,7 +540,8 @@
     refresh: [["path", { d: "M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5M21 12a9 9 0 0 1-15 6.7L3 16M3 21v-5h5" }]],
     wallet: [["rect", { x: 2, y: 6, width: 20, height: 12, rx: 2 }], ["circle", { cx: 12, cy: 12, r: 2 }], ["path", { d: "M6 12h.01M18 12h.01" }]],
     arrowRight: [["path", { d: "M5 12h14M13 6l6 6-6 6" }]],
-    cap: [["path", { d: "M22 10L12 5 2 10l10 5 10-5z" }], ["path", { d: "M6 12v5c3 2.7 9 2.7 12 0v-5M22 10v6" }]]
+    cap: [["path", { d: "M22 10L12 5 2 10l10 5 10-5z" }], ["path", { d: "M6 12v5c3 2.7 9 2.7 12 0v-5M22 10v6" }]],
+    chat: [["path", { d: "M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 21l2.2-5.4A8.4 8.4 0 1 1 21 11.5z" }]]
   };
 
   function svgEl(tag, attrs, children) {
@@ -614,7 +615,7 @@
   /* ---- 3. State, router, shared UI ---- */
 
   var CFG = root.CCC_CONFIG || {};
-  var APP_VERSION = CFG.APP_VERSION || "0.3.5";
+  var APP_VERSION = CFG.APP_VERSION || "0.3.6";
 
   var state = {
     lang: "en",
@@ -645,8 +646,8 @@
     wishPending: {} // person id -> {emoji: true} while a wish is on its way
   };
 
-  var ROUTES = ["login", "choose", "home", "calendar", "request", "requests", "done", "training", "welcome"];
-  var AUTH_ROUTES = { home: 1, calendar: 1, request: 1, requests: 1, done: 1, training: 1, welcome: 1 };
+  var ROUTES = ["login", "choose", "home", "calendar", "request", "requests", "done", "training", "welcome", "messages", "chat"];
+  var AUTH_ROUTES = { home: 1, calendar: 1, request: 1, requests: 1, done: 1, training: 1, welcome: 1, messages: 1, chat: 1 };
   var DATA_ROUTES = { home: 1, calendar: 1, requests: 1 };
   var currentRoute = null;
   var lockTimer = null;
@@ -739,6 +740,8 @@
     if (changed && currentRoute === "login") stopLockTimer();
     currentRoute = route;
     doc.documentElement.setAttribute("data-screen", route);
+    // Messages polls only while its screens show, and hands its badge to home when the person leaves.
+    if (root.CCCMsg) root.CCCMsg.route(route);
 
     var app = $("app");
     if (!app) return;
@@ -874,6 +877,7 @@
     state.edu = null;
     store.remove(K.edu);
     if (root.CCCEdu) root.CCCEdu.reset();
+    if (root.CCCMsg) root.CCCMsg.reset();
     closeParty();
     store.remove(K.token);
     store.remove(K.person);
@@ -947,18 +951,22 @@
 
   /* ---- Lazily loaded bundles ---- */
 
-  /* Two parts of the app are their own files, so the core bundle every phone loads at sign in stays
+  /* Parts of the app that are their own files, so the core bundle every phone loads at sign in stays
      small (README, "Size budgets"):
-       edu     web/edu_i18n.js, web/edu.js and web/edu.css, the Trainings screens
-       letter  web/letter.css, the paper of the message from the CEO
-     They are fetched the first time that screen opens, and the screen is only drawn once every part
-     is in, so nothing is ever seen unstyled. Apps Script serves no files of its own, so
-     tools/build_gas_html.py inlines both bundles and sets BUNDLED, and none of this runs there.
+       edu       web/edu_i18n.js, web/edu.js and web/edu.css, the Trainings screens
+       letter    web/letter.css, the paper of the message from the CEO
+       messages  web/messages_i18n.js, web/messages.js and web/messages.css, Messages (0.3.6)
+       party     web/party.css, the birthday celebration (0.3.6), which opens once it is in
+     They are fetched the first time they are needed, and nothing is drawn before every part is in,
+     so nothing is ever seen unstyled. Apps Script serves no files of its own, so
+     tools/build_gas_html.py inlines every bundle and sets BUNDLED, and none of this runs there.
      state.bundle[name]: 0 not asked for, 1 on its way, 2 it did not arrive, 3 ready. */
 
   var BUNDLES = {
     edu: { route: "training", js: ["edu_i18n.js", "edu.js"] },
-    letter: { route: "welcome", js: [] }
+    letter: { route: "welcome", js: [] },
+    messages: { route: "messages chat", js: ["messages_i18n.js", "messages.js"] },
+    party: { js: [], ready: partyArrived }
   };
 
   /* Where app.js was served from, so a bundle is found whatever page the app runs on. */
@@ -971,7 +979,8 @@
     function arrived() {
       if (--left > 0) return;
       state.bundle[name] = 3;
-      if (currentRoute === b.route) {
+      if (b.ready) b.ready();
+      else if (currentRoute && b.route.indexOf(currentRoute) >= 0) {
         currentRoute = null; // draw it as a screen change, so the new heading takes the focus
         render();
       }
@@ -1399,10 +1408,17 @@
     return card;
   }
 
+  /* An unread count: "3" or "9+" on screen, "3 new" to a screen reader. Nothing for 0. */
+  function newBadge(n) {
+    n = Math.floor(Number(n)) || 0;
+    return n < 1 ? null : [h("span", { class: "badge", "aria-hidden": "true", text: n > 9 ? "9+" : String(n) }),
+      h("span", { class: "sr-only", text: t(n > 9 ? "msg_new_many" : n > 1 ? "msg_new_n" : "msg_new_one", { n: n }) })];
+  }
+
   function tile(o) {
     var titleKids = [o.title];
     if (o.external) titleKids.push(h("span", { class: "sr-only", text: " " + t("opens_new_tab") }));
-    if (o.badge) titleKids.push(" ", h("span", { class: "badge", text: o.badge }));
+    if (o.badge) titleKids = titleKids.concat(" ", typeof o.badge === "string" ? h("span", { class: "badge", text: o.badge }) : o.badge);
     var kids = [
       h("span", { class: "tile-icon " + o.tone }, icon(o.icon)),
       h("span", { class: "tile-body" }, [
@@ -1419,13 +1435,17 @@
     var links = dash.links || {};
     var dayOff = safeUrl(links.day_off_url);
     var survey = safeUrl(links.survey_url);
+    var msg = dash.messages;
     return h("nav", { class: "tiles", "aria-label": t("app_name") }, [
       dayOff ? tile({ external: true, href: dayOff, icon: "dayOff", tone: "ti-peach", title: t("tile_dayoff_title"), sub: t("tile_dayoff_sub") }) : null,
       survey ? tile({ external: true, href: survey, icon: "survey", tone: "ti-lblue", title: t("tile_survey_title"), sub: t("tile_survey_sub") }) : null,
       tile({ route: "calendar", icon: "calendar", tone: "ti-navy", title: t("tile_calendar_title"), sub: t("tile_calendar_sub") }),
       tile({ route: "request", icon: "message", tone: "ti-blue", title: t("tile_change_title"), sub: t("tile_change_sub") }),
       tile({ route: "training", icon: "cap", tone: "ti-peach", title: t("tile_training_title"), sub: t("tile_training_sub"),
-        badge: state.edu && state.edu.new_count > 0 ? t("edu_new") : null })
+        badge: state.edu && state.edu.new_count > 0 ? t("edu_new") : null }),
+      // Messages (0.3.6): only when the backend says this person has it.
+      msg && msg.enabled === true ? tile({ route: "messages", icon: "chat", tone: "ti-lblue", title: t("tile_msg_title"),
+        sub: t(msg.role === "cleaner" ? "tile_msg_sub" : "tile_msg_sub_staff"), badge: newBadge(msg.badge) }) : null
     ]);
   }
 
@@ -1688,6 +1708,14 @@
   var partyPop = null; // while Continue takes the celebration's history entry back: {next, timer}
   var wishFx = null;
   var wishQueue = null;
+  var partyWait = null; // [list, opener] while web/party.css is on its way
+
+  /* web/party.css came: open what waited for it, if the person is still on home. */
+  function partyArrived() {
+    var w = partyWait;
+    partyWait = null;
+    if (w && state.token && currentRoute === "home") openParty(w[0], w[1]);
+  }
 
   /* The history entry is gone: run the navigation that waited for it (so it is not undone). */
   function finishPartyPop() {
@@ -1741,6 +1769,12 @@
       party.list = list;
       fillParty();
       celebrate();
+      return;
+    }
+    // The celebration's look is its own file (the Party bundle): it opens once that is in.
+    if (state.bundle.party === 2) state.bundle.party = 0;
+    if (!bundleReady("party")) {
+      partyWait = [list, opener];
       return;
     }
     var canvas = h("canvas", { class: "party-canvas", "aria-hidden": "true" });
@@ -2527,11 +2561,23 @@
 
   /* ---- Trainings ---- */
 
-  /* Everything the Education bundle uses from the app shell. */
+  /* Everything the Education and Messages bundles use from the app shell. */
   root.CCCPortal = {
     h: h, icon: icon, t: t, state: state, api: api, randomId: randomId, isOnline: isOnline,
     go: go, goBack: goBack, render: render, signOut: signOut, backButton: backButton,
-    msgBox: msgBox, loading: dataPlaceholder, setTrainings: setTrainings, fx: makeFx, reduced: reducedMotion
+    msgBox: msgBox, loading: dataPlaceholder, setTrainings: setTrainings, fx: makeFx, reduced: reducedMotion,
+    icons: ICONS, badge: newBadge, inert: setInert, retry: retryButton,
+    // Leaving Messages hands its last badge to home, in memory, so home is right at once.
+    setBadge: function (n) { if (state.dash && state.dash.messages) state.dash.messages.badge = n; }
+  };
+
+  /* Messages (0.3.6): both screens come from the Messages bundle, which reads the switch from the backend. */
+  SCREENS.messages = SCREENS.chat = function () {
+    if (bundleReady("messages") && root.CCCMsg) return root.CCCMsg.screen(currentRoute);
+    return h("div", { class: "msg" }, [
+      h("div", { class: "page-head" }, [backButton("home"), h("h1", { text: t("tile_msg_title") })]),
+      bundleWait("messages")
+    ]);
   };
 
   function setTrainings(res) {

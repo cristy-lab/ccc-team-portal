@@ -11,6 +11,11 @@
  * times, and the backend returns the saved request instead of adding a second one. The
  * Education writes carry one too. Login is never retried: a second try could count as one
  * more failed sign in.
+ *
+ * Messages (0.3.6, docs/API.md 1 and 14): messages_list, messages_thread, messages_send, messages_hide and
+ * messages_photo try once more too. A send keeps its client_msg_id, so it is saved once, and a hide of a
+ * hidden message only answers already. A send or a hide waits 45 seconds, a send with a photo 90 (two
+ * uploads before the lock). messages_poll is never tried again (the next poll comes soon) and waits 20.
  */
 (function (root) {
   "use strict";
@@ -20,12 +25,15 @@
      the sheet and posts to Slack, so it gets longer before the app gives up. The three
      Education writes take the same lock and do the same work. */
   var REQUEST_TIMEOUT_MS = 45000;
-  var SLOW_ACTIONS = { request: 1, training_start: 1, training_submit: 1, training_ack: 1 };
+  var SLOW_ACTIONS = { request: 1, training_start: 1, training_submit: 1, training_ack: 1, messages_send: 1, messages_hide: 1 };
+  var PHOTO_TIMEOUT_MS = 90000;
+  var POLL_TIMEOUT_MS = 20000;
   var RETRY_DELAY_MS = 1500;
   /* A wish is safe to send twice too: the same emoji to the same person on the same day is saved
      once. So are the Education calls: trainings only reads, and the three writes carry a
      client_request_id, so the backend answers with what it already saved. */
-  var RETRY_ACTIONS = { ping: 1, dashboard: 1, request: 1, wish: 1, trainings: 1, training_start: 1, training_submit: 1, training_ack: 1 };
+  var RETRY_ACTIONS = { ping: 1, dashboard: 1, request: 1, wish: 1, trainings: 1, training_start: 1, training_submit: 1, training_ack: 1,
+    messages_list: 1, messages_thread: 1, messages_send: 1, messages_hide: 1, messages_photo: 1 };
 
   function netError(message) {
     return { ok: false, error: { code: "NETWORK", message: message || "network error" } };
@@ -116,7 +124,9 @@
     });
   }
 
-  function timeoutFor(action) {
+  function timeoutFor(action, payload) {
+    if (action === "messages_poll") return POLL_TIMEOUT_MS;
+    if (action === "messages_send" && payload && payload.photo) return PHOTO_TIMEOUT_MS;
     return SLOW_ACTIONS[action] === 1 ? REQUEST_TIMEOUT_MS : TIMEOUT_MS;
   }
 
@@ -136,13 +146,13 @@
   function call(action, payload) {
     var cfg = root.CCC_CONFIG || {};
     var body = buildBody(action, payload);
-    var timeoutMs = timeoutFor(action);
+    var timeoutMs = timeoutFor(action, payload);
     return send(cfg, body, timeoutMs).then(function (res) {
       if (!shouldRetry(action, res)) return res;
       return new Promise(function (resolve) {
         setTimeout(resolve, RETRY_DELAY_MS);
       }).then(function () {
-        return send(cfg, body, timeoutMs); // the same body, so a request keeps its client_request_id
+        return send(cfg, body, timeoutMs); // the same body, so a request or a message keeps its id
       });
     });
   }

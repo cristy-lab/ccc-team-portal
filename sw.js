@@ -5,10 +5,11 @@
  *   * Only same origin GET requests are handled. API calls are POST and are never cached.
  *   * Page navigations: network first, cached index.html when offline.
  *   * App shell files (css, js, manifest, icons, logo, the design art and the CEO photo): served from the versioned cache.
- *     The two lazily loaded bundles (Education and the CEO letter paper) are in there too, so a phone that
- *     goes offline can still open Trainings and the letter. The page never asks for them at
- *     start, which is what start up time depends on, but this worker does save them during
- *     install, so they cost about 90 KB once per release even for somebody who never opens them.
+ *     The lazily loaded bundles (Education, the CEO letter paper, and since 0.3.6 Messages and the
+ *     birthday celebration) are in there too, so a phone that goes offline can still open them. The
+ *     page never asks for them at start, which is what start up time depends on, but this worker does
+ *     save them during install, so they cost about 160 KB once per release even for somebody who never
+ *     opens them. Messages itself only ever travels in POST answers, which this worker never touches.
  *   * PDF files: network first, cached copy only as an offline fallback.
  *   * Training packs (trainings/*.json): network first, with the cached copy as the offline
  *     fallback, so an opened training still reads offline and a corrected pack is picked up at
@@ -17,10 +18,10 @@
  *     be stuck on "This training was updated" until the next release.
  *   * Videos and captions: network only, never stored, a Range request untouched (0.3.5).
  */
-var CACHE_VERSION = "0.3.5-1";
+var CACHE_VERSION = "0.3.6-1";
 var SHELL_CACHE = "ccc-shell-" + CACHE_VERSION;
 var RUNTIME_CACHE = "ccc-runtime-" + CACHE_VERSION;
-var ASSET_VERSION = "0.3.5";
+var ASSET_VERSION = "0.3.6";
 
 var SHELL = [
   "./",
@@ -34,6 +35,10 @@ var SHELL = [
   "edu.js?v=" + ASSET_VERSION,
   "edu.css?v=" + ASSET_VERSION,
   "letter.css?v=" + ASSET_VERSION,
+  "party.css?v=" + ASSET_VERSION,
+  "messages_i18n.js?v=" + ASSET_VERSION,
+  "messages.js?v=" + ASSET_VERSION,
+  "messages.css?v=" + ASSET_VERSION,
   "manifest.webmanifest",
   "icons/icon-192.png",
   "icons/icon-512.png",

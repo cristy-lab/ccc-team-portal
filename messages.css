@@ -1,0 +1,93 @@
+/* CCC Team Portal Messages (0.3.6). Colors only from the app.css tokens (dark mode, AA). Nothing moves. */
+.msg { overflow-wrap: anywhere; }
+.msg-h2 { font-size: 21px; margin: 24px 0 10px; }
+.msg .msg-quiet, .msg-dlg .msg-quiet { color: var(--muted); font-size: 15px; margin: 8px 0; }
+.msg .load-error, .msg [role="alert"] { margin: 0 0 12px; }
+
+/* The safety lines */
+.msg-safe { display: flex; flex-wrap: wrap; align-items: center; gap: 0 16px; margin: 0 0 16px; padding: 6px 14px; border-radius: 14px; background: var(--peach-tint); color: var(--text); font-weight: 700; }
+.msg-safe a, .msg-safe span { display: inline-flex; align-items: center; min-height: 44px; }
+.msg-safe a { color: inherit; text-underline-offset: 3px; }
+.msg-safe .msg-sos { color: var(--danger-text); }
+.msg-watch { flex-basis: 100%; margin: -6px 0 6px; font-size: 14px; font-weight: 500; color: var(--muted); }
+.msg-safe.is-compact { gap: 0 12px; padding: 0 12px; margin-bottom: 12px; font-size: 15px; }
+
+/* Rows, chips, the search */
+.msg-rows, .msg-list { list-style: none; margin: 0 0 8px; padding: 0; display: grid; gap: 10px; }
+.msg-row { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 64px; padding: 12px 14px; text-align: left; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); color: var(--text); box-shadow: var(--shadow-sm); }
+.msg-row-main { flex: 1; min-width: 0; }
+.msg-row-title { display: block; font-size: 17px; font-weight: 700; line-height: 1.3; }
+.msg-row-sub { display: block; margin-top: 2px; font-size: 15px; color: var(--muted); }
+.msg-row-end { flex: none; display: grid; justify-items: end; gap: 4px; font-size: 14px; color: var(--muted); white-space: nowrap; }
+.msg-tag { display: inline-block; margin: 2px 0 0 6px; padding: 1px 8px; border-radius: 999px; font-size: 13px; font-weight: 700; line-height: 1.5; white-space: nowrap; background: var(--lblue-tint); color: var(--text); }
+.msg-tag.is-wait { background: var(--peach-tint); color: var(--progress-text); }
+.msg-new { margin: 0 0 14px; }
+.msg-links { margin-top: 20px; text-align: center; }
+.msg-paused { width: 100%; min-height: 48px; margin: 0 0 12px; border: 2px dashed var(--line-strong); border-radius: 14px; background: none; font-weight: 700; }
+.msg-chips { display: flex; gap: 8px; overflow-x: auto; margin: 0 -2px 10px; padding: 3px 2px 8px; }
+.msg-chip { flex: none; min-height: 44px; padding: 0 14px; border-radius: 999px; border: 1.5px solid var(--line-strong); background: var(--surface); font-size: 15px; font-weight: 700; white-space: nowrap; }
+.msg-chip[aria-pressed="true"] { background: var(--choice-on-bg); color: var(--choice-on-text); border-color: var(--choice-on-bg); }
+.msg-search { display: block; width: 100%; min-height: 50px; margin: 6px 0 12px; padding: 10px 14px; border: 2px solid var(--line-strong); border-radius: 14px; background: var(--surface); font-size: 17px; }
+.msg-rules p, .msg-rules li { font-size: 17px; line-height: 1.45; margin: 0 0 12px; }
+.msg-rules ul { margin: 0 0 16px; padding-left: 22px; }
+
+/* The chat */
+.msg-sub { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.msg-sub .msg-tag { margin-left: 0; }
+.msg-top { text-align: center; }
+.msg-list { display: flex; flex-direction: column; }
+.msg-day { align-self: center; padding-top: 6px; font-size: 14px; font-weight: 700; color: var(--muted); }
+.msg-b { display: flex; flex-direction: column; align-items: flex-start; max-width: 88%; }
+.msg-b.is-own { align-self: flex-end; align-items: flex-end; }
+.msg-bub { max-width: 100%; padding: 10px 12px; border-radius: 16px 16px 16px 4px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow-sm); }
+.is-own .msg-bub { border-radius: 16px 16px 4px 16px; background: var(--primary-bg); color: var(--primary-text); border-color: var(--primary-bg); }
+.msg-who { margin: 0 0 4px; font-size: 14px; font-weight: 700; color: var(--muted); }
+.msg-text { white-space: pre-wrap; font-size: 17px; line-height: 1.4; }
+.msg-meta { display: flex; align-items: center; gap: 4px; min-height: 24px; margin: 3px 4px 0; font-size: 13px; color: var(--muted); }
+.msg-tr { min-height: 32px; padding: 0; border: 0; background: none; font-size: 14px; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.msg-tr-none { margin-top: 4px; font-size: 14px; font-style: italic; }
+.msg-fail { margin: 2px 4px 0; font-size: 15px; font-weight: 700; color: var(--danger-text); text-align: right; }
+.msg-fail .link-btn { min-height: 40px; color: inherit; }
+.msg-more { width: 44px; height: 32px; padding: 0; border: 0; border-radius: 10px; background: none; color: var(--muted); display: grid; place-items: center; }
+.is-own .msg-more { order: -1; }
+.msg-more svg { width: 22px; height: 22px; }
+.msg-hide { color: var(--danger-text); }
+.msg-gone { font-style: italic; margin-bottom: 4px; }
+
+/* Photos: a box of a fixed width and the photo's shape, so nothing moves when it comes */
+.msg-pic { display: block; width: 240px; max-width: 100%; margin: 0 0 6px; padding: 0; border: 0; border-radius: 12px; background: none; }
+.msg-frame { display: grid; place-items: center; width: 100%; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 12px; background: var(--gray-tint); color: var(--muted); font-size: 15px; font-weight: 700; }
+.msg-frame img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.msg-view img { display: block; max-width: 100%; max-height: calc(100vh - 170px); margin: 0 auto 12px; }
+
+/* The composer stays at the bottom of the screen */
+.msg-foot { position: sticky; bottom: 0; z-index: 5; margin: 8px -16px 0; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: var(--bg); border-top: 1px solid var(--line); }
+.msg-comp { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 8px; }
+.msg-ta { flex: 1 1 0; min-width: 0; min-height: 50px; max-height: 170px; padding: 11px 12px; resize: none; field-sizing: content; border: 2px solid var(--line-strong); border-radius: 14px; background: var(--surface); font-size: 17px; line-height: 1.4; }
+.msg-ta::placeholder { color: var(--muted); opacity: 1; }
+.msg-icon { flex: none; width: 50px; height: 50px; padding: 0; border: 0; border-radius: 14px; background: var(--secondary-bg); color: var(--secondary-text); display: grid; place-items: center; }
+.msg-icon svg { width: 24px; height: 24px; }
+.msg-icon[disabled] { opacity: 0.55; }
+.msg-comp .msg-send { width: auto; min-height: 50px; padding: 0 16px; font-size: 17px; }
+/* Under 360 px Send is its icon (its word stays for a screen reader), so the composer is one row */
+@media (max-width: 359px) {
+  .msg-comp .msg-send { padding: 0 13px; }
+  .msg-send-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}
+.msg-count { margin: 6px 2px 0; font-size: 14px; color: var(--muted); text-align: right; }
+.msg-below { min-height: 44px; margin: 0 0 10px; font-size: 16px; }
+.msg-foot .offline-note { margin-bottom: 10px; }
+.msg-prev { display: flex; gap: 12px; align-items: center; margin: 0 0 10px; }
+.msg-frame.is-prev { flex: none; width: 88px; aspect-ratio: 1; }
+.msg-prev p { font-size: 15px; font-weight: 600; }
+.msg-ro { margin-top: 12px; padding: 12px 14px; border-radius: 14px; background: var(--gray-tint); font-weight: 600; }
+
+/* Dialogs: the photo, the group photo rule, hide */
+.msg-dlg { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; padding: 16px; background: rgba(14, 12, 41, 0.72); }
+.msg-dlg:focus { outline: none; }
+.msg-dlg-card { width: min(100%, 440px); max-height: 100%; overflow-y: auto; padding: 20px; border-radius: 18px; background: var(--surface); box-shadow: var(--shadow-lg); }
+.is-viewer .msg-dlg-card { width: min(100%, 900px); padding: 14px; }
+.msg-dlg .msg-h2 { margin-top: 0; }
+.msg-dlg-q { font-size: 18px; font-weight: 600; line-height: 1.4; margin: 0 0 18px; }
+.msg-dlg-btns { display: grid; gap: 10px; }
+.msg-danger { background: var(--danger-text); color: var(--surface); }
