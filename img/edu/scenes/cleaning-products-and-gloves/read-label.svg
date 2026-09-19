@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+<!-- A large bottle with a label of four picture rows and a magnifying glass. Drawn for the CCC Team Portal training on cleaning products and gloves. No text. -->
+<g stroke-linejoin="round" stroke-linecap="round">
+<rect x="0" y="0" width="400" height="300" fill="#FCE9DF"/>
+<path d="M46 43L48.52 49.48L55 52L48.52 54.52L46 61L43.48 54.52L37 52L43.48 49.48Z" fill="#82CAFB"/>
+<path d="M352 33L353.96 38.04L359 40L353.96 41.96L352 47L350.04 41.96L345 40L350.04 38.04Z" fill="#FFCB8E"/>
+<path d="M364 256L365.68 260.32L370 262L365.68 263.68L364 268L362.32 263.68L358 262L362.32 260.32Z" fill="#F6A078"/>
+<rect x="170" y="30" width="60" height="30" rx="4" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/>
+<rect x="160" y="12" width="80" height="24" rx="7" fill="#F6A078" stroke="#1B175A" stroke-width="3"/>
+<rect x="88" y="52" width="224" height="244" rx="30" fill="#82CAFB" stroke="#1B175A" stroke-width="3"/>
+<rect x="108" y="78" width="184" height="200" rx="12" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/>
+<circle cx="140" cy="106" r="17" fill="#DDEFFD" stroke="#1B175A" stroke-width="2.5"/>
+<rect x="166" y="96" width="100" height="6" rx="3" fill="#C9CCDA"/><rect x="166" y="109" width="70" height="6" rx="3" fill="#C9CCDA"/>
+<circle cx="140" cy="150" r="17" fill="#FDE6D8" stroke="#1B175A" stroke-width="2.5"/>
+<rect x="166" y="140" width="100" height="6" rx="3" fill="#C9CCDA"/><rect x="166" y="153" width="70" height="6" rx="3" fill="#C9CCDA"/>
+<circle cx="140" cy="194" r="17" fill="#DDEFFD" stroke="#1B175A" stroke-width="2.5"/>
+<rect x="166" y="184" width="100" height="6" rx="3" fill="#C9CCDA"/><rect x="166" y="197" width="70" height="6" rx="3" fill="#C9CCDA"/>
+<circle cx="140" cy="238" r="17" fill="#FDE6D8" stroke="#1B175A" stroke-width="2.5"/>
+<rect x="166" y="228" width="100" height="6" rx="3" fill="#C9CCDA"/><rect x="166" y="241" width="70" height="6" rx="3" fill="#C9CCDA"/>
+<rect x="130" y="96" width="20" height="20" rx="3" fill="#BFE2FD" stroke="#1B175A" stroke-width="2"/><path d="M140 96V116M130 106H150" fill="none" stroke="#1B175A" stroke-width="1.5"/>
+<g transform="translate(140 152) scale(0.95)"><path d="M0 -14C5 -6 9 -1 9 4A9 9 0 0 1 -9 4C-9 -1 -5 -6 0 -14Z" fill="#82CAFB" stroke="#1B175A" stroke-width="2.63"/><path d="M-4 3Q-4 7 0 8" fill="none" stroke="#FFFCFC" stroke-width="2.11"/></g>
+<g transform="translate(140 197) scale(0.44)"><g fill="#1B175A" stroke="#1B175A" stroke-width="5.2"><rect x="-14" y="-6" width="28" height="26" rx="8"/><rect x="-14" y="-29" width="7" height="28" rx="3.5"/><rect x="-6.5" y="-34" width="7" height="33" rx="3.5"/><rect x="1" y="-32" width="7" height="31" rx="3.5"/><rect x="8.5" y="-25" width="6.5" height="24" rx="3.25"/><rect x="-25" y="-1" width="8" height="21" rx="4" transform="rotate(-38 -21 9)"/><rect x="-15" y="18" width="30" height="12" rx="3"/></g><g fill="#82CAFB"><rect x="-14" y="-6" width="28" height="26" rx="8"/><rect x="-14" y="-29" width="7" height="28" rx="3.5"/><rect x="-6.5" y="-34" width="7" height="33" rx="3.5"/><rect x="1" y="-32" width="7" height="31" rx="3.5"/><rect x="8.5" y="-25" width="6.5" height="24" rx="3.25"/><rect x="-25" y="-1" width="8" height="21" rx="4" transform="rotate(-38 -21 9)"/><rect x="-15" y="18" width="30" height="12" rx="3"/></g><path d="M-15 20H15" fill="none" stroke="#1B175A" stroke-width="2"/></g>
+<g transform="translate(140 238) scale(0.82)"><path d="M-16 0Q0 -13 16 0Q0 13 -16 0Z" fill="#FFFCFC" stroke="#1B175A" stroke-width="2.5"/><circle cx="0" cy="0" r="5.5" fill="#82CAFB" stroke="#1B175A" stroke-width="2"/><circle cx="0" cy="0" r="2.3" fill="#1B175A"/><circle cx="1.8" cy="-1.8" r="1" fill="#FFFCFC"/></g>
+<circle cx="282" cy="222" r="30" fill="#FFFFFF" stroke="#1B175A" stroke-width="5" fill-opacity=".3"/>
+<path d="M304 244L338 280" fill="none" stroke="#1B175A" stroke-width="16"/><path d="M304 244L338 280" fill="none" stroke="#FFCB8E" stroke-width="10"/>
+</g>
+</svg>

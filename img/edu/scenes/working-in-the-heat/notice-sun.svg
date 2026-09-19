@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+<!-- Decorative, for the contractor notice: a hot sun, a thermometer and heat lines, with a shade tree. Nobody in it. Drawn for the CCC Team Portal, no text. -->
+<defs><linearGradient id="whR_l1" x1="0" y1="0" x2="0" y2="300" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FFEBCF"/><stop offset="1" stop-color="#FEF1EA"/></linearGradient><radialGradient id="whR_r2" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#FFCB8E" stop-opacity="0.9"/><stop offset="1" stop-color="#FFCB8E" stop-opacity="0"/></radialGradient><radialGradient id="whR_r3" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#FFF6D6"/><stop offset="0.6" stop-color="#FFCB8E"/><stop offset="1" stop-color="#F6A078"/></radialGradient></defs>
+<rect width="400" height="300" fill="url(#whR_l1)"/>
+<circle cx="96" cy="84" r="120" fill="url(#whR_r2)"/>
+<path d="M141 84L163 84M136.5 103.5L150.4 110.2M124.1 119.2L137.8 136.4M106 127.9L109.4 142.9M86 127.9L81.1 149.3M67.9 119.2L58.3 131.2M55.5 103.5L35.6 113.1M51 84L35.6 84M55.5 64.5L35.6 54.9M67.9 48.8L58.3 36.8M86 40.1L81.1 18.7M106 40.1L109.4 25.1M124.1 48.8L137.8 31.6M136.5 64.5L150.4 57.8" stroke="#FFCB8E" stroke-width="6.4" stroke-linecap="round"/><circle cx="96" cy="84" r="40" fill="url(#whR_r3)"/>
+<path d="M0 238H400V300H0Z" fill="#FCE3D6"/>
+<path d="M0 238H400" stroke="#1B175A" stroke-width="3"/>
+<path d="M58 226q-4 -10 0 -20q4 -10 0 -20q-4 -10 0 -20M76 226q-4 -10 0 -20q4 -10 0 -20q-4 -10 0 -20M94 226q-4 -10 0 -20q4 -10 0 -20q-4 -10 0 -20" fill="none" stroke="#F6A078" stroke-width="3.5" stroke-linecap="round" opacity="0.8"/>
+<path d="M176 226q-4 -11.7 0 -23.3q4 -11.7 0 -23.3q-4 -11.7 0 -23.3M194 226q-4 -11.7 0 -23.3q4 -11.7 0 -23.3q-4 -11.7 0 -23.3M212 226q-4 -11.7 0 -23.3q4 -11.7 0 -23.3q-4 -11.7 0 -23.3" fill="none" stroke="#F0877A" stroke-width="3.5" stroke-linecap="round" opacity="0.7"/>
+<ellipse cx="330" cy="244" rx="70" ry="10" fill="#D6EAFD" opacity=".6"/>
+<path d="M323 240C324 210 322 188 325 170H335C338 188 336 210 337 240Z" fill="#3B3685" stroke="#1B175A" stroke-width="3" stroke-linejoin="round"/><path d="M272 162C258 130 290 100 320 108C344 84 392 100 390 132C412 148 392 180 364 174C340 188 286 188 272 162Z" fill="#4E9FE0" stroke="#1B175A" stroke-width="3" stroke-linejoin="round"/><path d="M290 144C290 124 308 114 324 118C338 102 364 104 372 118" fill="none" stroke="#82CAFB" stroke-width="5" stroke-linecap="round" opacity=".9"/>
+<g transform="translate(250 72)"><rect x="-9.5" y="0" width="18.9" height="120" rx="9.5" fill="#FFFCFC" stroke="#1B175A" stroke-width="3.5"/><circle cx="0" cy="120" r="14.9" fill="#F6A078" stroke="#1B175A" stroke-width="3.5"/><rect x="-4.7" y="19" width="9.5" height="101" rx="4.7" fill="#F6A078"/><circle cx="0" cy="120" r="10.1" fill="#F6A078"/><path d="M8.5 30h-6.8M8.5 50.4h-6.8M8.5 70.8h-6.8" stroke="#1B175A" stroke-width="2.7" stroke-linecap="round" opacity=".5"/></g>
+<path d="M210 34L211.7 38.3L216 40L211.7 41.7L210 46L208.3 41.7L204 40L208.3 38.3Z" fill="#FFFCFC"/>
+<path d="M380 35L381.4 38.6L385 40L381.4 41.4L380 45L378.6 41.4L375 40L378.6 38.6Z" fill="#F6A078"/>
+<path d="M160 145L161.4 148.6L165 150L161.4 151.4L160 155L158.6 151.4L155 150L158.6 148.6Z" fill="#FFFCFC"/>
+</svg>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+<!-- Why this matters: four everyday risks of cleaning work, a wet floor, stairs, a tub and a heavy bag. Flat vector, no text. -->
+<defs><linearGradient id="sflRk_bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E2F1FD"/><stop offset="1" stop-color="#FDE5D8"/></linearGradient></defs>
+<rect x="0" y="0" width="400" height="300" fill="url(#sflRk_bg)"/>
+<rect x="24" y="20" width="166" height="122" rx="16" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/>
+<rect x="32" y="28" width="150" height="106" rx="10" fill="#E2F1FD"/>
+<rect x="210" y="20" width="166" height="122" rx="16" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/>
+<rect x="218" y="28" width="150" height="106" rx="10" fill="#FDE5D8"/>
+<rect x="24" y="158" width="166" height="122" rx="16" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/>
+<rect x="32" y="166" width="150" height="106" rx="10" fill="#FDE5D8"/>
+<rect x="210" y="158" width="166" height="122" rx="16" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/>
+<rect x="218" y="166" width="150" height="106" rx="10" fill="#E2F1FD"/>
+<path d="M32 114 L182 114" fill="none" stroke="#1B175A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="88" cy="119" rx="46" ry="8" fill="#B7DDFB"/><path d="M62.7 118.2Q78.8 115 97.2 116.6" fill="none" stroke="#FFFCFC" stroke-width="2.4" stroke-linecap="round"/>
+<path d="M60 62C62 66.5 66.2 71 60 77C53.8 71 58 66.5 60 62Z" fill="#82CAFB" stroke="#1B175A" stroke-width="2.2" stroke-linejoin="round"/>
+<path d="M86 42C88.4 47.4 93.4 52.8 86 60C78.6 52.8 83.6 47.4 86 42Z" fill="#82CAFB" stroke="#1B175A" stroke-width="2.2" stroke-linejoin="round"/>
+<path d="M112 67C113.8 71 117.6 75.1 112 80.5C106.4 75.1 110.2 71 112 67Z" fill="#82CAFB" stroke="#1B175A" stroke-width="2.2" stroke-linejoin="round"/>
+<path d="M170 44 L152 118" fill="none" stroke="#1B175A" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="M170 44 L152 118" fill="none" stroke="#F9C9A8" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M146 114L158 114L160 121L144 121Z" fill="#82CAFB" stroke="#1B175A" stroke-width="2.4" stroke-linejoin="round"/><path d="M146 120Q141.8 125 138.2 129M148 120Q145.2 125 142.8 129M150 120Q148.6 125 147.4 129M152 120Q152 125 152 129M154 120Q155.4 125 156.6 129M156 120Q158.8 125 161.2 129M158 120Q162.2 125 165.8 129" fill="none" stroke="#1B175A" stroke-width="5.5" stroke-linecap="round"/><path d="M146 120Q141.8 125 138.2 129M148 120Q145.2 125 142.8 129M150 120Q148.6 125 147.4 129M152 120Q152 125 152 129M154 120Q155.4 125 156.6 129M156 120Q158.8 125 161.2 129M158 120Q162.2 125 165.8 129" fill="none" stroke="#FDE5D8" stroke-width="2.6" stroke-linecap="round"/>
+<path d="M234 126V106H262V86H290V66H318V46H346V126Z" fill="#EBC19E" stroke="#1B175A" stroke-width="3" stroke-linejoin="round"/><rect x="231" y="104" width="34" height="7" rx="2.5" fill="#F7D9BE" stroke="#1B175A" stroke-width="2.4"/><rect x="259" y="84" width="34" height="7" rx="2.5" fill="#F7D9BE" stroke="#1B175A" stroke-width="2.4"/><rect x="287" y="64" width="34" height="7" rx="2.5" fill="#F7D9BE" stroke="#1B175A" stroke-width="2.4"/><rect x="315" y="44" width="34" height="7" rx="2.5" fill="#F7D9BE" stroke="#1B175A" stroke-width="2.4"/>
+<path d="M244 106 L244 80" fill="none" stroke="#1B175A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M272 86 L272 60" fill="none" stroke="#1B175A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M300 66 L300 40" fill="none" stroke="#1B175A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M328 46 L328 20" fill="none" stroke="#1B175A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M240 80 L342 42" fill="none" stroke="#1B175A" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M240 80 L342 42" fill="none" stroke="#F6A078" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="76" cy="202" r="8" fill="#FFFCFC" stroke="#1B175A" stroke-width="2.2"/>
+<circle cx="94" cy="192" r="6" fill="#FFFCFC" stroke="#1B175A" stroke-width="2.2"/>
+<circle cx="110" cy="204" r="9" fill="#FFFCFC" stroke="#1B175A" stroke-width="2.2"/>
+<path d="M46 218H168V246C168 256 162 262 152 262H62C52 262 46 256 46 246Z" fill="#FFFCFC" stroke="#1B175A" stroke-width="3" stroke-linejoin="round"/>
+<rect x="40" y="212" width="134" height="11" rx="5.5" fill="#FFFCFC" stroke="#1B175A" stroke-width="2.8"/>
+<path d="M60 262 L58 270" fill="none" stroke="#1B175A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M154 262 L156 270" fill="none" stroke="#1B175A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M160 212V188H148" fill="none" stroke="#1B175A" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M160 212V188H148" fill="none" stroke="#FFFCFC" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="293" cy="264" rx="44" ry="5" fill="#C9DEF4"/>
+<path d="M258 260C249.6 226.9 263.6 191.8 284.6 190.2C288.8 184 290.9 180.9 293 182.4L301.4 190.2C322.4 191.8 336.4 226.9 328 260C314 265 272 265 258 260Z" fill="#FFFCFC" stroke="#1B175A" stroke-width="3" stroke-linejoin="round"/><path d="M260.1 230.8Q293 238.6 325.9 230.8" fill="none" stroke="#82CAFB" stroke-width="4"/><path d="M262.2 240.2Q293 248 323.8 240.2" fill="none" stroke="#82CAFB" stroke-width="4"/><path d="M283.2 191.8Q293 196.5 302.8 191.8" fill="none" stroke="#1B175A" stroke-width="2.6" stroke-linecap="round"/><path d="M293 193.4Q307 176.2 311.2 185.6" fill="none" stroke="#1B175A" stroke-width="2.4" stroke-linecap="round"/>
+<path d="M246 232q-8 6 0 12M340 232q8 6 0 12" fill="none" stroke="#F6A078" stroke-width="3" stroke-linecap="round"/>
+<path d="M238 229q-10 8 0 16M348 229q10 8 0 16" fill="none" stroke="#F6A078" stroke-width="3" stroke-linecap="round"/>
+<circle cx="200" cy="150" r="20" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/>
+<path d="M200 162C188 153 183 147 183 141C183 135 188 131 193 131C196 131 199 133 200 136C201 133 204 131 207 131C212 131 217 135 217 141C217 147 212 153 200 162Z" fill="#F6A078" stroke="#1B175A" stroke-width="2.4" stroke-linejoin="round"/>
+</svg>

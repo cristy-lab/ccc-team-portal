@@ -1,0 +1,1031 @@
+{
+ "character": "duo",
+ "kind": "course",
+ "schema": "ccc-edu-pack/1",
+ "summary": {
+  "en": "Wet floors, stairs, tubs, step stools and heavy bags. How to work without getting hurt, and what to do if you are hurt anyway.",
+  "es": "Pisos mojados, escaleras, tinas, banquitos y bolsas pesadas. Cómo trabajar sin lastimarse, y qué hacer si de todos modos se lastima."
+ },
+ "title": {
+  "en": "Slips, Falls, Lifting and Reporting an Injury",
+  "es": "Caídas, cómo levantar peso y cómo reportar una lesión"
+ },
+ "training_id": "slips-falls-and-lifting",
+ "variants": {
+  "full": {
+   "quiz": {
+    "questions": [
+     {
+      "choices": [
+       {
+        "en": "Walk across quickly so that you lose less time.",
+        "es": "Cruza rápido para perder menos tiempo.",
+        "id": "q1_a"
+       },
+       {
+        "en": "Take your shoes off and cross in your socks.",
+        "es": "Se quita los zapatos y cruza en calcetines.",
+        "id": "q1_b"
+       },
+       {
+        "en": "Wait until it is dry, or go around another way.",
+        "es": "Espera a que se seque, o da la vuelta por otro lado.",
+        "id": "q1_c"
+       },
+       {
+        "en": "Carry the vacuum across now, so that you only cross once.",
+        "es": "Cruza ahora con la aspiradora, para cruzar una sola vez.",
+        "id": "q1_d"
+       }
+      ],
+      "id": "q1",
+      "prompt": {
+       "en": "You just mopped the kitchen floor. It is still wet and you need to get to the laundry room on the other side. What do you do?",
+       "es": "Acaba de trapear el piso de la cocina. Todavía está mojado y usted necesita llegar al cuarto de lavado que está del otro lado. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Lift it fast and turn toward the stairs in one movement.",
+        "es": "La levanta rápido y gira hacia la escalera en un solo movimiento.",
+        "id": "q2_a"
+       },
+       {
+        "en": "Split it into two loads, or leave it and ask the office for help.",
+        "es": "La divide en dos partes, o la deja y le pide ayuda a la oficina.",
+        "id": "q2_b"
+       },
+       {
+        "en": "Drag it down the stairs behind you.",
+        "es": "La arrastra escaleras abajo detrás de usted.",
+        "id": "q2_c"
+       },
+       {
+        "en": "Throw it down the stairwell and pick it up at the bottom.",
+        "es": "La tira por el hueco de la escalera y la recoge abajo.",
+        "id": "q2_d"
+       }
+      ],
+      "id": "q2",
+      "prompt": {
+       "en": "A linen bag at the top of the stairs is heavier than anything you have carried today. You are working alone. What do you do?",
+       "es": "Una bolsa de ropa de cama que está arriba de la escalera pesa más que todo lo que ha cargado hoy. Usted está trabajando sin nadie más en la casa. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Stand on the chair. It is sturdy.",
+        "es": "Se para en la silla. Está firme.",
+        "id": "q3_a"
+       },
+       {
+        "en": "Borrow the ladder from the client's garage.",
+        "es": "Toma prestada la escalera de mano del garaje del cliente.",
+        "id": "q3_b"
+       },
+       {
+        "en": "Stand on the top cap of your step stool to gain a few inches.",
+        "es": "Se para en la tapa de arriba del banquito para ganar unos centímetros.",
+        "id": "q3_c"
+       },
+       {
+        "en": "Leave that part, and tell the office you could not reach it safely.",
+        "es": "Deja esa parte, y le avisa a la oficina que no la pudo alcanzar con seguridad.",
+        "id": "q3_d"
+       }
+      ],
+      "id": "q3",
+      "prompt": {
+       "en": "You need to wipe the top of a ceiling fan. Your step stool does not get you high enough. There is a chair in the room and a ladder in the client's garage. What do you do?",
+       "es": "Necesita limpiar la parte de arriba de un ventilador de techo. Su banquito no alcanza esa altura. En el cuarto hay una silla y en el garaje del cliente hay una escalera de mano. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Tell CCC today, even though it seems small.",
+        "es": "Le avisa a CCC hoy mismo, aunque parezca poca cosa.",
+        "id": "q4_a"
+       },
+       {
+        "en": "Wait and see how it feels in a few days, then decide.",
+        "es": "Espera a ver cómo se siente en unos días, y después decide.",
+        "id": "q4_b"
+       },
+       {
+        "en": "Mention it to another cleaner and leave it there.",
+        "es": "Se lo comenta a otra persona del equipo y ahí lo deja.",
+        "id": "q4_c"
+       },
+       {
+        "en": "Save it for the end of the week so that you do not interrupt the day.",
+        "es": "Lo guarda para el fin de semana para no interrumpir el día.",
+        "id": "q4_d"
+       }
+      ],
+      "id": "q4",
+      "prompt": {
+       "en": "You slip in a bathroom and land hard on your hip. You can stand up and walk, and the job is almost finished. What do you do?",
+       "es": "Se resbala en un baño y se golpea fuerte la cadera. Se puede parar y caminar, y el trabajo ya casi está terminado. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Tighten it with a screwdriver from your own bag.",
+        "es": "Lo aprieta con un desarmador de su propia bolsa.",
+        "id": "q5_a"
+       },
+       {
+        "en": "Keep using the stairs and just be careful.",
+        "es": "Sigue usando la escalera y nada más tiene cuidado.",
+        "id": "q5_b"
+       },
+       {
+        "en": "Stop using those stairs and tell the office the same day.",
+        "es": "Deja de usar esa escalera y avisa a la oficina el mismo día.",
+        "id": "q5_c"
+       },
+       {
+        "en": "Leave a note for the guest and finish the job.",
+        "es": "Le deja una nota al huésped y termina el trabajo.",
+        "id": "q5_d"
+       }
+      ],
+      "id": "q5",
+      "prompt": {
+       "en": "Halfway up the outside stairs you feel the handrail move in your hand. It is loose where it meets the wall. What do you do?",
+       "es": "A media escalera de afuera siente que el barandal se mueve en su mano. Está flojo donde se une a la pared. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Wear the sandals just for today.",
+        "es": "Usa las sandalias solo por hoy.",
+        "id": "q6_a"
+       },
+       {
+        "en": "Wear the worn shoes and step carefully.",
+        "es": "Usa los zapatos gastados y pisa con cuidado.",
+        "id": "q6_b"
+       },
+       {
+        "en": "Stick grip pads onto the worn soles.",
+        "es": "Les pega almohadillas antideslizantes a las suelas gastadas.",
+        "id": "q6_c"
+       },
+       {
+        "en": "Tell the office before your shift starts.",
+        "es": "Avisa a la oficina antes de que empiece su turno.",
+        "id": "q6_d"
+       }
+      ],
+      "id": "q6",
+      "prompt": {
+       "en": "You turn your work shoes over the night before and the tread is worn smooth. The only other shoes you own are open toe sandals. What do you do?",
+       "es": "Anoche volteó sus zapatos de trabajo y vio que la suela está lisa por el uso. Los únicos otros zapatos que tiene son sandalias abiertas. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Leave it and step over it each time.",
+        "es": "Lo deja ahí y lo brinca cada vez.",
+        "id": "q7_a"
+       },
+       {
+        "en": "Find a closer outlet, or run the cord along the wall so it does not cross the walkway.",
+        "es": "Busca un enchufe más cerca, o pasa el cable pegado a la pared para que no cruce el paso.",
+        "id": "q7_b"
+       },
+       {
+        "en": "Run the cord under the hallway rug.",
+        "es": "Pasa el cable por debajo de la alfombra del pasillo.",
+        "id": "q7_c"
+       },
+       {
+        "en": "Tape the cord to the client's floor.",
+        "es": "Pega el cable al piso del cliente con cinta.",
+        "id": "q7_d"
+       }
+      ],
+      "id": "q7",
+      "prompt": {
+       "en": "The only outlet you can find is at the far end of the hall, so the vacuum cord runs across the hallway you keep walking through. What do you do?",
+       "es": "El único enchufe que encuentra está al fondo del pasillo, así que el cable de la aspiradora cruza el pasillo por donde usted pasa todo el tiempo. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Say nothing, and pay for the doctor yourself.",
+        "es": "No dice nada, y paga el médico usted.",
+        "id": "q8_a"
+       },
+       {
+        "en": "Report it only if you end up needing a doctor.",
+        "es": "La reporta solo si al final necesita un médico.",
+        "id": "q8_b"
+       },
+       {
+        "en": "Ignore that and report the fall today. The office tells you where to go for care, and nobody can be punished for reporting.",
+        "es": "No le hace caso y reporta la caída hoy. La oficina le dice adónde ir para que lo atiendan, y a nadie se le puede castigar por reportar.",
+        "id": "q8_c"
+       },
+       {
+        "en": "Do what the other cleaner says, because she has been here longer.",
+        "es": "Hace lo que dice la otra persona, porque lleva más tiempo aquí.",
+        "id": "q8_d"
+       }
+      ],
+      "id": "q8",
+      "prompt": {
+       "en": "Another cleaner tells you not to report the fall you had yesterday, because at CCC you pay your own medical bills anyway and reporting only causes trouble. What do you do?",
+       "es": "Otra persona del equipo le dice que no reporte la caída de ayer, porque en CCC uno paga sus propias cuentas médicas de todos modos y reportar solo causa problemas. ¿Qué hace?"
+      }
+     }
+    ],
+    "seconds": 300
+   },
+   "screens": [
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A cleaner in the grey CCC polo reads this training on her phone by a sunny front door.",
+        "es": "Una trabajadora con la camisa gris de CCC lee esta capacitación en su teléfono junto a una puerta soleada."
+       },
+       "src": "img/edu/scenes/slips-falls-and-lifting/start.svg",
+       "type": "scene"
+      },
+      {
+       "character": "duo",
+       "en": "Hi! Let's go through this together, one screen at a time.",
+       "es": "¡Hola! Vamos a verlo juntos, una pantalla a la vez.",
+       "pose": "hello",
+       "type": "say"
+      },
+      {
+       "en": "This lesson takes about 12 minutes. The quiz takes about 5 more. It is all paid work time.",
+       "es": "Esta lección dura unos 12 minutos. La prueba dura unos 5 minutos más. Todo es tiempo de trabajo pagado.",
+       "type": "text"
+      },
+      {
+       "en": "You can take the quiz again as many times as you need.",
+       "es": "Puede repetir la prueba todas las veces que necesite.",
+       "type": "text"
+      },
+      {
+       "en": "If you need help reading this or taking the quiz, tell the CCC office.",
+       "es": "Si necesita ayuda para leer esto o para hacer la prueba, dígale a la oficina de CCC.",
+       "type": "text"
+      }
+     ],
+     "id": "before-you-start",
+     "layout": "full",
+     "seconds": 30,
+     "title": {
+      "en": "Before you start",
+      "es": "Antes de empezar"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "Four pictures: a wet floor with a mop, stairs with a rail, a bathtub, and a heavy linen bag.",
+        "es": "Cuatro dibujos: un piso mojado con un trapeador, una escalera con barandal, una tina y una bolsa pesada de ropa de cama."
+       },
+       "src": "img/edu/scenes/slips-falls-and-lifting/everyday-risks.svg",
+       "type": "scene"
+      },
+      {
+       "en": "Cleaning makes floors slippery. That is the job. A floor you just washed is the most dangerous floor in the house.",
+       "es": "La limpieza deja los pisos resbalosos. Así es el trabajo. El piso que acaba de lavar es el piso más peligroso de la casa.",
+       "type": "text"
+      },
+      {
+       "character": "clara",
+       "en": "Oh! So the floor you just cleaned is the slippery one.",
+       "es": "¡Ah! Entonces el piso que acaba de limpiar es el resbaloso.",
+       "pose": "tip",
+       "type": "say"
+      },
+      {
+       "en": "Wet floors, stairs, tubs and heavy bags are the everyday risks in this work. Almost every one of these injuries can be prevented.",
+       "es": "Los pisos mojados, las escaleras, las tinas y las bolsas pesadas son los riesgos de todos los días en este trabajo. Casi todas esas lesiones se pueden evitar.",
+       "type": "text"
+      },
+      {
+       "en": "Nothing in this house is worth your back or your head. Going slowly is fine.",
+       "es": "Nada en esta casa vale su espalda ni su cabeza. Ir despacio está bien.",
+       "type": "callout"
+      }
+     ],
+     "id": "why-it-matters",
+     "layout": "hero",
+     "seconds": 45,
+     "title": {
+      "en": "Why this matters",
+      "es": "Por qué esto es importante"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A cleaner mops the floor while she moves back toward an open door. The floor she already mopped is wet and shiny, and the floor under her feet is dry.",
+        "es": "Una trabajadora trapea el piso mientras retrocede hacia una puerta abierta. El piso que ya trapeó está mojado y brillante, y el piso bajo sus pies está seco."
+       },
+       "src": "img/edu/scenes/slips-falls-and-lifting/mop-to-door.svg",
+       "type": "scene"
+      },
+      {
+       "en": "Water, soap and floor polish all make a floor slick. The law calls this a walking surface and it has to be kept safe and dry where that is possible.",
+       "es": "El agua, el jabón y el abrillantador dejan el piso resbaloso. La ley llama a esto una superficie para caminar, y debe mantenerse segura y seca cuando se pueda.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Mop toward the door, so you never walk back over the wet part.",
+        "Dry a spill the moment you see it. Do not leave it for later.",
+        "Wait for the floor to dry before you carry anything across it.",
+        "Dry your own shoes when they get wet."
+       ],
+       "es": [
+        "Trapee hacia la puerta, para no volver a pisar la parte mojada.",
+        "Seque un derrame en el momento en que lo vea. No lo deje para después.",
+        "Espere a que el piso se seque antes de cruzar con algo en las manos.",
+        "Seque sus zapatos cuando se mojen."
+       ],
+       "type": "steps"
+      },
+      {
+       "character": "cris",
+       "en": "Mop toward the door, so you never walk back over the wet part.",
+       "es": "Trapee hacia la puerta, para no volver a pisar la parte mojada.",
+       "pose": "tip",
+       "type": "say"
+      }
+     ],
+     "id": "wet-floors",
+     "layout": "hero",
+     "seconds": 55,
+     "title": {
+      "en": "The floor you just cleaned",
+      "es": "El piso que acaba de limpiar"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A lit hallway. The vacuum is plugged into the outlet right beside it, its cord runs along the wall, and the rug lies flat with nothing under it.",
+        "es": "Un pasillo con la luz encendida. La aspiradora está conectada al enchufe de al lado, el cable va junto a la pared, y la alfombra está plana, sin nada debajo."
+       },
+       "src": "img/edu/scenes/slips-falls-and-lifting/clear-path.svg",
+       "type": "scene"
+      },
+      {
+       "en": "Most trips are over something we brought into the house ourselves.",
+       "es": "La mayoría de los tropiezos son con algo que nosotros mismos llevamos a la casa.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Keep cords, bags, buckets and the vacuum out of the walkway.",
+        "Plug the vacuum into the closest outlet, so the cord does not cross the hall.",
+        "Never run a cord under a rug. The heat cannot escape and the cord gets pinched, and that starts fires.",
+        "Turn the light on before you walk into a room, a closet, a stairway or a garage."
+       ],
+       "es": [
+        "Mantenga los cables, las bolsas, las cubetas y la aspiradora fuera del paso.",
+        "Conecte la aspiradora en el enchufe más cercano, para que el cable no cruce el pasillo.",
+        "Nunca pase un cable por debajo de una alfombra. El calor no puede salir y el cable se aplasta, y así empiezan los incendios.",
+        "Encienda la luz antes de entrar a un cuarto, a un clóset, a una escalera o al garaje."
+       ],
+       "type": "steps"
+      },
+      {
+       "character": "cris",
+       "en": "Never run a cord under a rug.",
+       "es": "Nunca pase un cable por debajo de una alfombra.",
+       "pose": "stop",
+       "type": "say"
+      },
+      {
+       "en": "If you cannot see the floor, do not step on it.",
+       "es": "Si no puede ver el piso, no lo pise.",
+       "type": "callout"
+      }
+     ],
+     "id": "clear-the-path",
+     "layout": "hero",
+     "seconds": 50,
+     "title": {
+      "en": "Keep the path clear",
+      "es": "Mantenga el paso libre"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A closed toe work shoe, and a second shoe turned over to show a deep, even tread.",
+        "es": "Un zapato de trabajo cerrado, y otro zapato volteado que muestra una suela con dibujo profundo y parejo."
+       },
+       "src": "img/edu/scenes/slips-falls-and-lifting/shoes.svg",
+       "type": "scene"
+      },
+      {
+       "en": "Closed toe shoes with a rubber sole and a deep tread are the ones that hold on a wet floor.",
+       "es": "Los zapatos cerrados, con suela de hule y dibujo profundo, son los que agarran en un piso mojado.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Closed toe. Never sandals, never open toe.",
+        "Turn them over and look at the sole. Worn smooth means it does not grip.",
+        "The tread pattern should be even all across the sole.",
+        "The shoe should fit close to the foot, not loose.",
+        "Grip pads stuck onto an old sole are not the same thing."
+       ],
+       "es": [
+        "Cerrados. Nunca sandalias, nunca con los dedos de los pies al aire.",
+        "Voltéelos y mire la suela. Si está lisa por el uso, ya no agarra.",
+        "El dibujo de la suela debe ser parejo en toda la superficie.",
+        "El zapato debe quedar ajustado al pie, no flojo.",
+        "Las almohadillas antideslizantes pegadas en una suela vieja no son lo mismo."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "Shoes worn out? Tell the office before your shift, not after a fall.",
+       "es": "¿Zapatos gastados? Avise a la oficina antes de su turno, no después de una caída.",
+       "type": "callout"
+      }
+     ],
+     "id": "your-shoes",
+     "layout": "split",
+     "seconds": 45,
+     "title": {
+      "en": "Your shoes",
+      "es": "Sus zapatos"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A cleaner kneels on a knee pad outside a dry bathtub and reaches in with a sponge. The water is off.",
+        "es": "Una trabajadora está arrodillada sobre una rodillera fuera de una tina seca y alcanza adentro con una esponja. El agua está cerrada."
+       },
+       "src": "img/edu/scenes/slips-falls-and-lifting/tub-kneel.svg",
+       "type": "scene"
+      },
+      {
+       "en": "A tub you are cleaning is wet and curved. Stairs are worse, because a full load hides the steps.",
+       "es": "La tina que está limpiando está mojada y curva. Las escaleras son peores, porque una carga llena le tapa los escalones.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Never stand on the edge or the rim of a tub, and never stand in a wet tub. If you have to step in, turn the water off, step onto a dry surface, and keep one hand on something fixed.",
+        "Kneel outside the tub to reach in. Use a knee pad.",
+        "On stairs, keep one hand free for the rail.",
+        "Carry only what still lets you see the steps. Two trips are faster than a fall."
+       ],
+       "es": [
+        "Nunca se pare en el borde ni en la orilla de la tina, y nunca se pare en una tina mojada. Si tiene que meterse, cierre el agua, pise sobre una superficie seca, y deje una mano agarrada de algo fijo.",
+        "Arrodíllese fuera de la tina para alcanzar adentro. Use una rodillera.",
+        "En las escaleras, deje una mano libre para el barandal.",
+        "Cargue solo lo que le permita ver los escalones. Dos viajes son más rápidos que una caída."
+       ],
+       "type": "steps"
+      },
+      {
+       "character": "cris",
+       "en": "Never stand on the edge or the rim of a tub.",
+       "es": "Nunca se pare en el borde ni en la orilla de la tina.",
+       "pose": "stop",
+       "type": "say"
+      },
+      {
+       "en": "No knee pad? Ask the office.",
+       "es": "¿No tiene rodillera? Pregúntele a la oficina.",
+       "type": "callout"
+      }
+     ],
+     "id": "tubs-and-stairs",
+     "layout": "hero",
+     "seconds": 55,
+     "title": {
+      "en": "Tubs, showers and stairs",
+      "es": "Tinas, duchas y escaleras"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A cleaner stands with both feet on the middle step of a step stool, facing it. She holds its rail with one hand and wipes a high shelf with the other. A chair stands empty nearby.",
+        "es": "Una trabajadora está parada con los dos pies en el escalón del medio de un banquito, mirando hacia él. Con una mano se agarra del barandal y con la otra limpia una repisa alta. Cerca hay una silla vacía."
+       },
+       "src": "img/edu/scenes/slips-falls-and-lifting/step-stool.svg",
+       "type": "scene"
+      },
+      {
+       "en": "Most falls that break a bone start with a person standing on something that was never made for standing.",
+       "es": "Casi todas las caídas que rompen un hueso empiezan cuando una persona se para en algo que no es para pararse.",
+       "type": "text"
+      },
+      {
+       "character": "cris",
+       "en": "Never stand on a chair, a table, a bucket, a box or the edge of a tub.",
+       "es": "Nunca se pare en una silla, una mesa, una cubeta, una caja ni en el borde de la tina.",
+       "pose": "stop",
+       "type": "say"
+      },
+      {
+       "en": [
+        "Never stand on a chair, a table, a bucket, a box or the edge of a tub.",
+        "Use the step stool. Keep both feet on the steps.",
+        "The top step and the top cap are not steps.",
+        "Face the stool going up and going down, and keep your hands free.",
+        "Never use a ladder that belongs to the client.",
+        "Still cannot reach it safely? Stop and tell the office."
+       ],
+       "es": [
+        "Nunca se pare en una silla, una mesa, una cubeta, una caja ni en el borde de la tina.",
+        "Use el banquito. Mantenga los dos pies en los escalones.",
+        "El escalón más alto y la tapa de arriba no son escalones.",
+        "Mire hacia el banquito al subir y al bajar, y lleve las manos libres.",
+        "Nunca use la escalera de mano del cliente.",
+        "¿Aun así no lo puede alcanzar con seguridad? Deténgase y avise a la oficina."
+       ],
+       "type": "steps"
+      }
+     ],
+     "id": "reaching-high",
+     "layout": "hero",
+     "seconds": 60,
+     "title": {
+      "en": "Reaching high places",
+      "es": "Cómo alcanzar lo alto"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A cleaner nudges a full linen bag with her foot to feel how heavy it is. A laundry cart waits nearby.",
+        "es": "Una trabajadora empuja con el pie una bolsa llena de ropa de cama para sentir cuánto pesa. Cerca hay un carrito de lavandería."
+       },
+       "src": "img/edu/scenes/slips-falls-and-lifting/feel-weight.svg",
+       "type": "scene"
+      },
+      {
+       "en": "The decision happens before you touch the bag. Once it is off the floor it is too late.",
+       "es": "La decisión se toma antes de tocar la bolsa. Cuando ya está en el aire, es tarde.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Push the bag with your foot or tip it, to feel the weight first.",
+        "Too heavy, or hard to hold? Split it into two, or ask for help.",
+        "Use a cart whenever there is one.",
+        "Clear the path first, and know where you will set it down."
+       ],
+       "es": [
+        "Empuje la bolsa con el pie o inclínela, para sentir el peso primero.",
+        "¿Muy pesada, o difícil de agarrar? Divídala en dos, o pida ayuda.",
+        "Use un carrito siempre que haya uno.",
+        "Despeje el camino primero, y sepa dónde la va a dejar."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "NIOSH says the most one person should lift with two hands, in perfect conditions, is 51 pounds. A stairway, a doorway or a twist makes that number smaller.",
+       "es": "NIOSH dice que lo máximo que una persona debe levantar con las dos manos, en condiciones perfectas, son 51 libras. Una escalera, una puerta o un giro bajan ese número.",
+       "type": "callout"
+      }
+     ],
+     "id": "before-you-lift",
+     "layout": "hero",
+     "seconds": 55,
+     "title": {
+      "en": "Before you lift",
+      "es": "Antes de levantar peso"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A cleaner lifts a linen bag with both hands, close to her body, pushing up with her legs.",
+        "es": "Una trabajadora levanta una bolsa de ropa de cama con las dos manos, pegada al cuerpo, empujando con las piernas."
+       },
+       "src": "img/edu/scenes/slips-falls-and-lifting/lift.svg",
+       "type": "scene"
+      },
+      {
+       "en": "These six are the ones that save a back. They come from NIOSH, the federal safety research agency.",
+       "es": "Estos seis puntos son los que salvan una espalda. Vienen de NIOSH, la agencia federal que investiga la seguridad en el trabajo.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Get a secure grip, and use both hands.",
+        "Keep the load close to your body.",
+        "Keep the lift between your knees and your shoulders.",
+        "Push up with your legs, not with your back.",
+        "Move smoothly. No jerking.",
+        "Do not twist. Step to one side to turn."
+       ],
+       "es": [
+        "Agarre bien la carga, y use las dos manos.",
+        "Mantenga la carga pegada al cuerpo.",
+        "Levante entre las rodillas y los hombros.",
+        "Empuje con las piernas, no con la espalda.",
+        "Muévase suave. Sin jalones.",
+        "No gire la cintura. Dé un paso hacia el lado para voltear."
+       ],
+       "type": "steps"
+      },
+      {
+       "character": "cris",
+       "en": "Push up with your legs, not with your back.",
+       "es": "Empuje con las piernas, no con la espalda.",
+       "pose": "tip",
+       "type": "say"
+      },
+      {
+       "en": "Heavy work, then lighter work. Take your short rest breaks. A short rest break is paid work time.",
+       "es": "Un trabajo pesado, y luego uno más ligero. Tome sus descansos cortos. Un descanso corto es tiempo de trabajo pagado.",
+       "type": "callout"
+      }
+     ],
+     "id": "how-to-lift",
+     "layout": "hero",
+     "seconds": 65,
+     "title": {
+      "en": "How to lift",
+      "es": "Cómo levantar peso"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "Stairs with a loose rail and a cracked step. A cleaner stays off them and calls on her phone.",
+        "es": "Una escalera con el barandal flojo y un escalón roto. Una trabajadora no la usa y llama por teléfono."
+       },
+       "src": "img/edu/scenes/slips-falls-and-lifting/unsafe-stairs.svg",
+       "type": "scene"
+      },
+      {
+       "en": "Some things are not yours to fix. A loose stair rail. A broken step. A torn rug. A floor tile that moves. Water coming from under a wall. A dark stairway.",
+       "es": "Hay cosas que no le toca arreglar. Un barandal flojo. Un escalón roto. Una alfombra rota. Una loseta suelta. Agua que sale de una pared. Unas escaleras sin luz.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Stop using that spot.",
+        "Tell the office the same day.",
+        "Do not repair it yourself.",
+        "If the whole place is unsafe, stop work and call."
+       ],
+       "es": [
+        "Deje de usar ese lugar.",
+        "Avise a la oficina el mismo día.",
+        "No lo arregle usted.",
+        "Si todo el lugar es inseguro, deje de trabajar y llame."
+       ],
+       "type": "steps"
+      },
+      {
+       "character": "cris",
+       "en": "Stop using that spot. Do not repair it yourself.",
+       "es": "Deje de usar ese lugar. No lo arregle usted.",
+       "pose": "stop",
+       "type": "say"
+      },
+      {
+       "en": "Nobody gets in trouble for reporting a hazard, and you will never get in trouble with CCC for calling 911 or the police to report danger.",
+       "es": "Nadie tiene problemas por reportar un peligro, y usted nunca tendrá problemas con CCC por llamar al 911 o a la policía para reportar un peligro.",
+       "type": "callout"
+      }
+     ],
+     "id": "the-property",
+     "layout": "hero",
+     "seconds": 45,
+     "title": {
+      "en": "When the property is not safe",
+      "es": "Cuando la propiedad no es segura"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A cleaner sits on a chair in a dry spot with her phone and a first aid box, away from a wet floor.",
+        "es": "Una trabajadora está sentada en una silla en un lugar seco, con su teléfono y un botiquín, lejos de un piso mojado."
+       },
+       "src": "img/edu/scenes/slips-falls-and-lifting/safe-spot.svg",
+       "type": "scene"
+      },
+      {
+       "en": [
+        "Stop. Get to a safe, dry place.",
+        "If it is serious, call 911 first. Bleeding that will not stop, a hit to the head, a broken bone, trouble breathing.",
+        "Tell CCC right away, the same day, even when it seems small.",
+        "Stay where you are safe until CCC answers you."
+       ],
+       "es": [
+        "Deténgase. Vaya a un lugar seguro y seco.",
+        "Si es grave, llame primero al 911. Sangrado que no para, un golpe en la cabeza, un hueso roto, dificultad para respirar.",
+        "Avise a CCC de inmediato, el mismo día, aunque parezca poca cosa.",
+        "Quédese en un lugar seguro hasta que CCC le conteste."
+       ],
+       "type": "steps"
+      },
+      {
+       "character": "cris",
+       "en": "Stop. Get to a safe, dry place.",
+       "es": "Deténgase. Vaya a un lugar seguro y seco.",
+       "pose": "stop",
+       "type": "say"
+      }
+     ],
+     "id": "if-you-get-hurt",
+     "layout": "hero",
+     "seconds": 35,
+     "title": {
+      "en": "If you get hurt",
+      "es": "Si se lastima"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A phone with a call sign, and a map pin over a small clinic.",
+        "es": "Un teléfono con el símbolo de llamada, y un marcador de mapa sobre una clínica pequeña."
+       },
+       "src": "img/edu/scenes/slips-falls-and-lifting/call-office.svg",
+       "type": "scene"
+      },
+      {
+       "en": "Call the office: {{OFFICE_PHONE}}. The office tells you where to go for care. There is no one clinic. The office sends you to the right place for where you are.",
+       "es": "Llame a la oficina: {{OFFICE_PHONE}}. La oficina le dice adónde ir para que lo atiendan. No hay una sola clínica. La oficina lo manda al lugar correcto según donde esté.",
+       "type": "callout"
+      },
+      {
+       "en": "A small pain today can be a hurt back next month. Reporting today is what covers your care later.",
+       "es": "Un dolor pequeño hoy puede ser una espalda lastimada el mes que viene. Reportar hoy es lo que cubre su atención después.",
+       "type": "text"
+      }
+     ],
+     "id": "if-you-get-hurt-2",
+     "layout": "hero",
+     "seconds": 25,
+     "title": {
+      "en": "If you get hurt",
+      "es": "Si se lastima"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A friendly doctor with a clipboard talks with a cleaner in the grey CCC polo, who sits in a clinic room.",
+        "es": "Un médico amable con una tabla de notas habla con una trabajadora con la camisa gris de CCC, sentada en un consultorio."
+       },
+       "src": "img/edu/scenes/slips-falls-and-lifting/doctor-visit.svg",
+       "type": "scene"
+      },
+      {
+       "en": "CCC has workers compensation insurance for staff on payroll, in every state. It pays for the doctor visit after a work injury, and the visit costs you nothing. For an emergency, go straight to care and tell the office after. For anything that is not an emergency, call the office first so CCC sends you to the right doctor, because in Florida the insurer has to approve the doctor before the visit is covered.",
+       "es": "CCC tiene seguro de compensación al trabajador para el personal en la nómina, en todos los estados. Ese seguro paga la visita al médico después de una lesión del trabajo, y la visita no le cuesta nada a usted. Si es una emergencia, vaya directo a que lo atiendan y avísele a la oficina después. Si no es una emergencia, llame primero a la oficina para que CCC lo mande con el médico correcto, porque en Florida la aseguradora tiene que aprobar al médico antes de que la visita quede cubierta.",
+       "type": "text"
+      }
+     ],
+     "id": "you-do-not-pay",
+     "layout": "hero",
+     "seconds": 45,
+     "title": {
+      "en": "You do not pay for the doctor visit",
+      "es": "Usted no paga la visita al médico"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A clipboard with three checked boxes, and a shield with a heart.",
+        "es": "Una tabla de notas con tres casillas marcadas, y un escudo con un corazón."
+       },
+       "src": "img/edu/scenes/slips-falls-and-lifting/report-ok.svg",
+       "type": "scene"
+      },
+      {
+       "en": "An older CCC deck said that workers pay all of their own medical costs. That sentence does not apply to you, and it is not part of this training.",
+       "es": "Un material antiguo de CCC decía que el trabajador paga todos sus gastos médicos. Esa frase no se aplica a usted, y no es parte de esta capacitación.",
+       "type": "text"
+      },
+      {
+       "en": "Reporting an injury cannot be punished. Federal law says an employer may not fire you or treat you worse for reporting one.",
+       "es": "A nadie se le puede castigar por reportar una lesión. La ley federal dice que un empleador no puede despedir ni tratar peor a una persona por reportar una lesión.",
+       "type": "text"
+      },
+      {
+       "en": "Tell the office about the injury, and CCC starts the workers compensation claim for you.",
+       "es": "Avise a la oficina de la lesión, y CCC inicia por usted el reclamo de compensación al trabajador.",
+       "type": "callout"
+      }
+     ],
+     "id": "you-do-not-pay-2",
+     "layout": "split",
+     "seconds": 30,
+     "title": {
+      "en": "You do not pay for the doctor visit",
+      "es": "Usted no paga la visita al médico"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "One card with six small pictures: a wet floor, a shoe, stairs with a rail, a step stool, a heavy bag and a phone.",
+        "es": "Una tarjeta con seis dibujos pequeños: un piso mojado, un zapato, una escalera con barandal, un banquito, una bolsa pesada y un teléfono."
+       },
+       "src": "img/edu/scenes/slips-falls-and-lifting/lesson-card.svg",
+       "type": "scene"
+      },
+      {
+       "en": "The whole lesson on one card.",
+       "es": "Toda la lección en una sola tarjeta.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Mop toward the door. Dry a spill right away.",
+        "Keep the path clear. Turn the light on.",
+        "Closed toe shoes with tread that still grips.",
+        "One hand free for the rail. Carry only what lets you see.",
+        "Step stool only. Never a chair, a bucket or the client's ladder.",
+        "Feel the weight first. Split it, or ask for help.",
+        "Close to the body, push with the legs, turn with your feet.",
+        "Something unsafe at the property? Stop and tell the office.",
+        "Hurt? Get safe, 911 if it is serious, tell CCC the same day.",
+        "The office tells you where to go for care."
+       ],
+       "es": [
+        "Trapee hacia la puerta. Seque un derrame enseguida.",
+        "Mantenga el paso libre. Encienda la luz.",
+        "Zapatos cerrados con suela que todavía agarre.",
+        "Una mano libre para el barandal. Cargue solo lo que le deje ver.",
+        "Solo el banquito. Nunca una silla, una cubeta ni la escalera de mano del cliente.",
+        "Sienta el peso primero. Divídalo, o pida ayuda.",
+        "Pegado al cuerpo, empuje con las piernas, voltee con los pies.",
+        "¿Algo inseguro en la propiedad? Pare y avise a la oficina.",
+        "¿Se lastimó? Póngase a salvo, 911 si es grave, avise a CCC el mismo día.",
+        "La oficina le dice adónde ir para que lo atiendan."
+       ],
+       "type": "steps"
+      },
+      {
+       "character": "clara",
+       "en": "That is the whole lesson, on one card!",
+       "es": "¡Esa es toda la lección, en una sola tarjeta!",
+       "pose": "tip",
+       "type": "say"
+      }
+     ],
+     "id": "what-to-do",
+     "layout": "split",
+     "seconds": 45,
+     "title": {
+      "en": "What to do",
+      "es": "Qué hacer"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A phone with a call sign, with daytime and the sun on one side and nighttime and the moon on the other.",
+        "es": "Un teléfono con el símbolo de llamada, con el día y el sol de un lado y la noche y la luna del otro."
+       },
+       "src": "img/edu/scenes/slips-falls-and-lifting/any-hour.svg",
+       "type": "scene"
+      },
+      {
+       "en": "Call the CCC office: {{OFFICE_PHONE}}, the same number at every hour.",
+       "es": "Llame a la oficina de CCC: {{OFFICE_PHONE}}, el mismo número a toda hora.",
+       "type": "callout"
+      },
+      {
+       "character": "duo",
+       "en": "Up next, the questions. You can take them again as many times as you need.",
+       "es": "Ahora siguen las preguntas. Puede repetirlas todas las veces que necesite.",
+       "pose": "think",
+       "type": "say"
+      }
+     ],
+     "id": "what-to-do-2",
+     "layout": "hero",
+     "seconds": 15,
+     "title": {
+      "en": "What to do",
+      "es": "Qué hacer"
+     }
+    }
+   ]
+  },
+  "notice": {
+   "ack": {
+    "text": {
+     "en": "I have read this notice.",
+     "es": "He leído este aviso."
+    }
+   },
+   "screens": [
+    {
+     "blocks": [
+      {
+       "decorative": true,
+       "src": "img/edu/scenes/slips-falls-and-lifting/notice-home.svg",
+       "type": "scene"
+      },
+      {
+       "en": "This notice tells you about conditions at the properties CCC serves, and what the property owners ask of everyone who works there. It is information about the properties. It is not instruction about how you do your own work.",
+       "es": "Este aviso le informa sobre las condiciones de las propiedades donde CCC da servicio, y sobre lo que los dueños piden a todas las personas que trabajan ahí. Es información sobre las propiedades. No es una instrucción sobre cómo hace usted su trabajo.",
+       "type": "text"
+      },
+      {
+       "en": "Floors at these properties get wet. Tubs, showers, tile and stairs get slippery. Some properties have loose rugs, broken steps, loose stair rails or poor lighting.",
+       "es": "En estas propiedades los pisos se mojan. Las tinas, las duchas, la loseta y las escaleras se ponen resbalosas. Algunas propiedades tienen alfombras sueltas, escalones rotos, barandales flojos o poca luz.",
+       "type": "text"
+      },
+      {
+       "character": "duo",
+       "en": "Floors at these properties get wet.",
+       "es": "En estas propiedades los pisos se mojan.",
+       "pose": "stop",
+       "type": "say"
+      }
+     ],
+     "id": "notice",
+     "layout": "hero",
+     "seconds": 60,
+     "title": {
+      "en": "Site safety notice: floors, stairs and heights",
+      "es": "Aviso de seguridad del lugar: pisos, escaleras y alturas"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "character": "duo",
+       "en": "An unsafe condition at a property is reported to the CCC office. Nobody repairs it.",
+       "es": "Una condición insegura en una propiedad se reporta a la oficina de CCC. Nadie la repara.",
+       "pose": "stop",
+       "type": "say"
+      },
+      {
+       "en": [
+        "Ladders, step stools, chairs and furniture that belong to the client are not used at these properties.",
+        "Equipment at the property that belongs to the client is not used.",
+        "An unsafe condition at a property is reported to the CCC office. Nobody repairs it.",
+        "Walkways are kept clear, and cords are never run under rugs."
+       ],
+       "es": [
+        "En estas propiedades no se usan escaleras de mano, banquitos, sillas ni muebles que sean del cliente.",
+        "No se usa el equipo de la propiedad que pertenece al cliente.",
+        "Una condición insegura en una propiedad se reporta a la oficina de CCC. Nadie la repara.",
+        "Los pasillos se mantienen libres, y los cables nunca se pasan por debajo de las alfombras."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "Questions about this notice go to the CCC office at any time: {{OFFICE_PHONE}}.",
+       "es": "Las preguntas sobre este aviso puede hacerlas a la oficina de CCC en cualquier momento: {{OFFICE_PHONE}}.",
+       "type": "callout"
+      }
+     ],
+     "id": "notice-2",
+     "seconds": 60,
+     "title": {
+      "en": "Site safety notice: floors, stairs and heights",
+      "es": "Aviso de seguridad del lugar: pisos, escaleras y alturas"
+     }
+    }
+   ]
+  }
+ },
+ "version": "2026-09-18"
+}

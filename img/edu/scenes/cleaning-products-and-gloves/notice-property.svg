@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+<!-- A house front with a path, a tree and the sun, nobody in it. Drawn for the CCC Team Portal training on cleaning products and gloves. No text. -->
+<g stroke-linejoin="round" stroke-linecap="round">
+<rect x="0" y="0" width="400" height="300" fill="#E6F2FD"/>
+<circle cx="336" cy="58" r="27" fill="#FFE6C4"/><circle cx="336" cy="58" r="22" fill="#FFCB8E"/><path d="M365 58L374 58M356.51 78.51L362.87 84.87M336 87L336 96M315.49 78.51L309.13 84.87M307 58L298 58M315.49 37.49L309.13 31.13M336 29L336 20M356.51 37.49L362.87 31.13" fill="none" stroke="#FFCB8E" stroke-width="4"/>
+<ellipse cx="90" cy="50" rx="36" ry="10" fill="#FFFCFC"/>
+<ellipse cx="210" cy="30" rx="24" ry="7" fill="#FFFCFC"/>
+<rect x="0" y="240" width="400" height="60" fill="#FCE9DF"/><path d="M0 240H400" fill="none" stroke="#1B175A" stroke-width="3"/>
+<path d="M112 122L207 64L302 122Z" fill="#1B175A" stroke="#1B175A" stroke-width="3"/><rect x="122" y="122" width="170" height="118" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/><rect x="140" y="162" width="42" height="78" fill="#82CAFB" stroke="#1B175A" stroke-width="3"/><rect x="147" y="170" width="28" height="26" rx="2" fill="none" stroke="#1B175A" stroke-width="2" stroke-opacity=".5"/><circle cx="174" cy="202" r="3" fill="#FFCB8E" stroke="#1B175A" stroke-width="1.6"/><rect x="230" y="144" width="44" height="40" rx="3" fill="#82CAFB" stroke="#1B175A" stroke-width="3"/><path d="M252 144V184M230 164H274" fill="none" stroke="#1B175A" stroke-width="2.5"/>
+<ellipse cx="162" cy="256" rx="18" ry="5" fill="#FFFCFC" stroke="#1B175A" stroke-width="2"/>
+<ellipse cx="170" cy="272" rx="20" ry="6" fill="#FFFCFC" stroke="#1B175A" stroke-width="2"/>
+<ellipse cx="180" cy="290" rx="22" ry="6.5" fill="#FFFCFC" stroke="#1B175A" stroke-width="2"/>
+<g transform="translate(52 242)"><rect x="-6" y="-60" width="12" height="60" rx="4" fill="#C98F6B" stroke="#1B175A" stroke-width="3"/><g fill="#1B175A" stroke="#1B175A" stroke-width="5.2"><circle cx="0" cy="-96" r="34"/><circle cx="-26" cy="-72" r="22"/><circle cx="26" cy="-74" r="22"/><circle cx="0" cy="-66" r="20"/></g><g fill="#BFE2FD"><circle cx="0" cy="-96" r="34"/><circle cx="-26" cy="-72" r="22"/><circle cx="26" cy="-74" r="22"/><circle cx="0" cy="-66" r="20"/></g><path d="M-10 -104Q-4 -112 6 -110" fill="none" stroke="#FFFCFC" stroke-width="3" stroke-opacity=".8"/></g>
+<g transform="translate(338 242) scale(1.1)"><g fill="#1B175A" stroke="#1B175A" stroke-width="5.2"><circle cx="-16" cy="-12" r="14"/><circle cx="4" cy="-22" r="18"/><circle cx="22" cy="-10" r="13"/><rect x="-30" y="-12" width="64" height="12" rx="6"/></g><g fill="#BFE2FD"><circle cx="-16" cy="-12" r="14"/><circle cx="4" cy="-22" r="18"/><circle cx="22" cy="-10" r="13"/><rect x="-30" y="-12" width="64" height="12" rx="6"/></g></g>
+<path d="M96 103L97.96 108.04L103 110L97.96 111.96L96 117L94.04 111.96L89 110L94.04 108.04Z" fill="#FFCB8E"/>
+<path d="M372 114L373.68 118.32L378 120L373.68 121.68L372 126L370.32 121.68L366 120L370.32 118.32Z" fill="#F6A078"/>
+</g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+<!-- Two bottles leaning together and a soft cloud rising where they meet. Drawn for the CCC Team Portal training on cleaning products and gloves. No text. -->
+<g stroke-linejoin="round" stroke-linecap="round">
+<rect x="0" y="0" width="400" height="300" fill="#FCE9DF"/>
+<path d="M0 70H400M0 140H400M80 0V212M200 0V212M320 0V212" fill="none" stroke="#F3D2C0" stroke-width="2"/>
+<rect x="0" y="224" width="400" height="76" fill="#F3DCCD"/><rect x="-4" y="212" width="408" height="12" fill="#1B175A"/>
+<path d="M100 236V300M200 236V300M300 236V300" fill="none" stroke="#1B175A" stroke-width="2.5" stroke-opacity=".2"/>
+<g transform="translate(122 212) rotate(9) scale(1.3)"><path d="M2 -64Q26 -66 23 -38" fill="none" stroke="#1B175A" stroke-width="12"/><path d="M2 -64Q26 -66 23 -38" fill="none" stroke="#FFFCFC" stroke-width="6"/><path d="M-24 0V-50Q-24 -62 -13 -66L-7 -68V-72H7V-68L-3 -66Q10 -63 12 -58V-50L24 -46V0Z" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/><rect x="-8" y="-82" width="16" height="12" rx="3" fill="#F6A078" stroke="#1B175A" stroke-width="3"/><rect x="-18" y="-42" width="36" height="32" rx="4" fill="#D9ECFD" stroke="#1B175A" stroke-width="2"/><g transform="translate(0 -24) scale(0.7)"><path d="M0 -14C5 -6 9 -1 9 4A9 9 0 0 1 -9 4C-9 -1 -5 -6 0 -14Z" fill="#82CAFB" stroke="#1B175A" stroke-width="3.57"/><path d="M-4 3Q-4 7 0 8" fill="none" stroke="#FFFCFC" stroke-width="2.86"/></g></g>
+<g transform="translate(278 212) rotate(-9) scale(1.35)"><rect x="-15" y="-52" width="30" height="52" rx="7" fill="#82CAFB" stroke="#1B175A" stroke-width="3"/><rect x="-6" y="-60" width="12" height="9" rx="1.5" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/><path d="M-10 -60V-71Q-10 -76 -5 -76H14L21 -70L14 -65H6V-60Z" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/><path d="M3 -64L7 -53L3 -52L0 -61Z" fill="#1B175A" stroke="#1B175A" stroke-width="1.5"/><rect x="-10" y="-40" width="20" height="24" rx="3" fill="#FFFCFC" stroke="#1B175A" stroke-width="2"/><rect x="-6" y="-34" width="12" height="3.5" rx="1.75" fill="#C9CCDA"/><rect x="-6" y="-27" width="9" height="3.5" rx="1.75" fill="#C9CCDA"/></g>
+<g fill="#1B175A" stroke="#1B175A" stroke-width="5.2"><circle cx="200" cy="112" r="30"/><circle cx="170" cy="128" r="21"/><circle cx="230" cy="128" r="21"/><circle cx="184" cy="90" r="19"/><circle cx="216" cy="88" r="17"/><rect x="166" y="120" width="68" height="26" rx="13"/></g><g fill="#FFCB8E"><circle cx="200" cy="112" r="30"/><circle cx="170" cy="128" r="21"/><circle cx="230" cy="128" r="21"/><circle cx="184" cy="90" r="19"/><circle cx="216" cy="88" r="17"/><rect x="166" y="120" width="68" height="26" rx="13"/></g>
+<path d="M186 108Q200 100 214 108" fill="none" stroke="#FFFCFC" stroke-width="3" stroke-opacity=".8"/>
+<path d="M142 100Q146 86 158 90M262 102Q258 88 246 92" fill="none" stroke="#FFCB8E" stroke-width="5"/>
+<path d="M132 70l6 -7 5 7 6 -7M256 64l6 -7 5 7 6 -7M146 42l5 -6 4 6 5 -6" fill="none" stroke="#F6A078" stroke-width="3"/>
+</g>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+<!-- A wall thermostat with its needle in the hot zone under a silent air conditioner, with heat waves. Drawn for the CCC Team Portal, no text. -->
+<defs><linearGradient id="whG_l1" x1="0" y1="0" x2="0" y2="300" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FEF1EA"/><stop offset="1" stop-color="#FCE3D6"/></linearGradient><linearGradient id="whG_l2" x1="46" y1="0" x2="214" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#82CAFB"/><stop offset="0.5" stop-color="#FFCB8E"/><stop offset="1" stop-color="#F0877A"/></linearGradient></defs>
+<rect width="400" height="300" fill="url(#whG_l1)"/>
+<rect x="206" y="34" width="170" height="64" rx="12" fill="#FFFCFC" stroke="#1B175A" stroke-width="3.5"/>
+<path d="M222 78H360M222 88H360" stroke="#C9C8DD" stroke-width="3" stroke-linecap="round"/>
+<rect x="222" y="48" width="44" height="14" rx="5" fill="#3B3685" stroke="#1B175A" stroke-width="2.5"/>
+<circle cx="356" cy="54" r="5.5" fill="#F0877A" stroke="#1B175A" stroke-width="2"/>
+<path d="M246 116l16 16m0 -16l-16 16" stroke="#3B3685" stroke-width="4" stroke-linecap="round"/>
+<path d="M290 110v14M314 110v14M338 110v14" stroke="#1B175A" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 7" opacity=".6"/>
+<circle cx="130" cy="170" r="92" fill="#FFFCFC" stroke="#1B175A" stroke-width="4"/>
+<path d="M66.2 213.7A77.3 77.3 0 1 1 193.8 213.7" fill="none" stroke="url(#whG_l2)" stroke-width="16" stroke-linecap="round"/>
+<path d="M130 170L182.1 151.5" stroke="#1B175A" stroke-width="7" stroke-linecap="round"/>
+<circle cx="130" cy="170" r="12" fill="#F6A078" stroke="#1B175A" stroke-width="3"/>
+<rect x="102" y="210" width="56" height="18" rx="9" fill="#D6EAFD" stroke="#1B175A" stroke-width="2.5"/>
+<path d="M270 280q-6 -20 0 -40q6 -20 0 -40q-6 -20 0 -40M296 280q-6 -20 0 -40q6 -20 0 -40q-6 -20 0 -40M322 280q-6 -20 0 -40q6 -20 0 -40q-6 -20 0 -40M348 280q-6 -20 0 -40q6 -20 0 -40q-6 -20 0 -40" fill="none" stroke="#F0877A" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
+<path d="M40 34L41.7 38.3L46 40L41.7 41.7L40 46L38.3 41.7L34 40L38.3 38.3Z" fill="#FFFCFC"/>
+<path d="M378 145L379.4 148.6L383 150L379.4 151.4L378 155L376.6 151.4L373 150L376.6 148.6Z" fill="#FFFCFC"/>
+</svg>

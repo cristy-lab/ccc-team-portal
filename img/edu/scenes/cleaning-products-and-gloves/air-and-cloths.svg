@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+<!-- An open window, a fan, an open door, and three products each with its own cloth. Drawn for the CCC Team Portal training on cleaning products and gloves. No text. -->
+<g stroke-linejoin="round" stroke-linecap="round">
+<rect x="0" y="0" width="400" height="300" fill="#E6F2FD"/>
+<rect x="0" y="252" width="400" height="48" fill="#FCE9DF"/><path d="M0 252H400" fill="none" stroke="#1B175A" stroke-width="3"/>
+<rect x="20" y="40" width="126" height="112" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/>
+<rect x="30" y="50" width="50" height="92" fill="#BFE2FD" stroke="#1B175A" stroke-width="2.5"/>
+<path d="M84 50L122 42V150L84 142Z" fill="#D9ECFD" stroke="#1B175A" stroke-width="2.5"/>
+<path d="M22 40Q48 84 30 152H20V40Z" fill="#F6A078" stroke="#1B175A" stroke-width="2.5"/>
+<path d="M96 88q16 -6 32 0t32 0q8 -2 6 -9" fill="none" stroke="#82CAFB" stroke-width="4"/>
+<path d="M112 118q13.5 -6 27 0t27 0q8 -2 6 -9" fill="none" stroke="#82CAFB" stroke-width="4"/>
+<circle cx="214" cy="74" r="30" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/>
+<g fill="#F6A078" stroke="#1B175A" stroke-width="2"><ellipse cx="214" cy="58" rx="7" ry="14" transform="rotate(0 214 74)"/><ellipse cx="214" cy="58" rx="7" ry="14" transform="rotate(120 214 74)"/><ellipse cx="214" cy="58" rx="7" ry="14" transform="rotate(240 214 74)"/></g>
+<circle cx="214" cy="74" r="5" fill="#1B175A"/>
+<path d="M252 64q8.5 -4 17 0t17 0" fill="none" stroke="#82CAFB" stroke-width="3.5"/><path d="M252 84q7.5 -4 15 0t15 0" fill="none" stroke="#82CAFB" stroke-width="3.5"/>
+<rect x="300" y="70" width="80" height="183" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/><rect x="310" y="80" width="60" height="173" fill="#FFF3E2"/>
+<path d="M346 110L348.24 115.76L354 118L348.24 120.24L346 126L343.76 120.24L338 118L343.76 115.76Z" fill="#FFCB8E"/>
+<path d="M310 80L284 94V266L310 253Z" fill="#F6A078" stroke="#1B175A" stroke-width="3"/><circle cx="292" cy="170" r="3.5" fill="#FFCB8E" stroke="#1B175A" stroke-width="1.8"/>
+<rect x="118" y="190" width="158" height="12" rx="3" fill="#1B175A"/><rect x="130" y="202" width="9" height="50" fill="#1B175A"/><rect x="255" y="202" width="9" height="50" fill="#1B175A"/>
+<g transform="translate(146 190) scale(0.8)"><rect x="-15" y="-52" width="30" height="52" rx="7" fill="#82CAFB" stroke="#1B175A" stroke-width="3"/><rect x="-6" y="-60" width="12" height="9" rx="1.5" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/><path d="M-10 -60V-71Q-10 -76 -5 -76H14L21 -70L14 -65H6V-60Z" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/><path d="M3 -64L7 -53L3 -52L0 -61Z" fill="#1B175A" stroke="#1B175A" stroke-width="1.5"/><rect x="-10" y="-40" width="20" height="24" rx="3" fill="#FFFCFC" stroke="#1B175A" stroke-width="2"/><rect x="-6" y="-34" width="12" height="3.5" rx="1.75" fill="#C9CCDA"/><rect x="-6" y="-27" width="9" height="3.5" rx="1.75" fill="#C9CCDA"/></g><g transform="translate(198 190) scale(0.76)"><path d="M-13 0V-52Q-13 -60 -6 -64V-74H6V-64Q13 -60 13 -52V0Z" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/><rect x="-7.5" y="-84" width="15" height="11" rx="2.5" fill="#F6A078" stroke="#1B175A" stroke-width="3"/><rect x="-9" y="-44" width="18" height="26" rx="3" fill="#FFFCFC" stroke="#1B175A" stroke-width="2"/><rect x="-5" y="-38" width="10" height="3.5" rx="1.75" fill="#C9CCDA"/><rect x="-5" y="-31" width="7" height="3.5" rx="1.75" fill="#C9CCDA"/></g><g transform="translate(249 190) scale(0.76)"><path d="M-5 -50V-58L13 -74L19 -68L5 -55V-50Z" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/><path d="M17 -76L23 -70L20 -67L14 -73Z" fill="#F6A078" stroke="#1B175A" stroke-width="2"/><rect x="-15" y="-52" width="30" height="52" rx="9" fill="#FFCB8E" stroke="#1B175A" stroke-width="3"/><rect x="-10" y="-38" width="20" height="22" rx="3" fill="#FFFCFC" stroke="#1B175A" stroke-width="2"/><rect x="-6" y="-32" width="12" height="3.5" rx="1.75" fill="#C9CCDA"/><rect x="-6" y="-25" width="8" height="3.5" rx="1.75" fill="#C9CCDA"/></g>
+<path d="M132 197H160L158 236Q146 240 134 236Z" fill="#82CAFB" stroke="#1B175A" stroke-width="2.5"/>
+<path d="M133 206H159" fill="none" stroke="#1B175A" stroke-width="2" stroke-opacity=".45"/>
+<path d="M184 197H212L210 236Q198 240 186 236Z" fill="#F6A078" stroke="#1B175A" stroke-width="2.5"/>
+<path d="M185 206H211" fill="none" stroke="#1B175A" stroke-width="2" stroke-opacity=".45"/>
+<path d="M235 197H263L261 236Q249 240 237 236Z" fill="#FFCB8E" stroke="#1B175A" stroke-width="2.5"/>
+<path d="M236 206H262" fill="none" stroke="#1B175A" stroke-width="2" stroke-opacity=".45"/>
+</g>
+</svg>

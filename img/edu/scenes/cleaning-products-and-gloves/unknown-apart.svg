@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+<!-- A bottle with a blank label and a bleach jug, kept apart by a no sign. Drawn for the CCC Team Portal training on cleaning products and gloves. No text. -->
+<g stroke-linejoin="round" stroke-linecap="round">
+<rect x="0" y="0" width="400" height="300" fill="#FCE9DF"/>
+<rect x="0" y="262" width="400" height="38" fill="#F6D6C4"/><path d="M0 262H400" fill="none" stroke="#1B175A" stroke-width="3"/>
+<rect x="22" y="196" width="356" height="12" rx="3" fill="#1B175A"/>
+<rect x="62" y="208" width="10" height="28" fill="#1B175A"/>
+<rect x="328" y="208" width="10" height="28" fill="#1B175A"/>
+<g transform="translate(96 196) scale(1.4)"><path d="M-13 0V-52Q-13 -60 -6 -64V-74H6V-64Q13 -60 13 -52V0Z" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/><rect x="-7.5" y="-84" width="15" height="11" rx="2.5" fill="#B9BBC6" stroke="#1B175A" stroke-width="3"/><rect x="-9" y="-46" width="18" height="30" rx="3" fill="none" stroke="#1B175A" stroke-width="2" stroke-dasharray="4 3.5"/></g>
+<g transform="translate(304 196) scale(1.3)"><path d="M2 -64Q26 -66 23 -38" fill="none" stroke="#1B175A" stroke-width="12"/><path d="M2 -64Q26 -66 23 -38" fill="none" stroke="#FFFCFC" stroke-width="6"/><path d="M-24 0V-50Q-24 -62 -13 -66L-7 -68V-72H7V-68L-3 -66Q10 -63 12 -58V-50L24 -46V0Z" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/><rect x="-8" y="-82" width="16" height="12" rx="3" fill="#F6A078" stroke="#1B175A" stroke-width="3"/><rect x="-18" y="-42" width="36" height="32" rx="4" fill="#D9ECFD" stroke="#1B175A" stroke-width="2"/><g transform="translate(0 -24) scale(0.7)"><path d="M0 -14C5 -6 9 -1 9 4A9 9 0 0 1 -9 4C-9 -1 -5 -6 0 -14Z" fill="#82CAFB" stroke="#1B175A" stroke-width="3.57"/><path d="M-4 3Q-4 7 0 8" fill="none" stroke="#FFFCFC" stroke-width="2.86"/></g></g>
+<path d="M200 58V186" fill="none" stroke="#F6A078" stroke-width="4" stroke-dasharray="8 9" stroke-linecap="butt"/>
+<path d="M146 146H168M162 139L170 146L162 153" fill="none" stroke="#1B175A" stroke-width="3"/>
+<path d="M254 146H232M238 139L230 146L238 153" fill="none" stroke="#1B175A" stroke-width="3"/>
+<circle cx="200" cy="120" r="29.2" fill="#FFFCFC" stroke="#1B175A" stroke-width="2.5"/><circle cx="200" cy="120" r="25" fill="none" stroke="#F6A078" stroke-width="6"/><path d="M184.45 104.45L215.55 135.55" fill="none" stroke="#F6A078" stroke-width="6" stroke-linecap="butt"/>
+<path d="M40 39L41.96 44.04L47 46L41.96 47.96L40 53L38.04 47.96L33 46L38.04 44.04Z" fill="#82CAFB"/>
+<path d="M360 46L361.68 50.32L366 52L361.68 53.68L360 58L358.32 53.68L354 52L358.32 50.32Z" fill="#FFCB8E"/>
+</g>
+</svg>

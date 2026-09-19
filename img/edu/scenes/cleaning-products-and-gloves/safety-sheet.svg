@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+<!-- A clipboard with a long sheet beside the bottle it belongs to. Drawn for the CCC Team Portal training on cleaning products and gloves. No text. -->
+<g stroke-linejoin="round" stroke-linecap="round">
+<rect x="0" y="0" width="400" height="300" fill="#E6F2FD"/>
+<rect x="0" y="258" width="400" height="42" fill="#D6EAFB"/><path d="M0 258H400" fill="none" stroke="#1B175A" stroke-width="3"/>
+<path d="M60 52L62.24 57.76L68 60L62.24 62.24L60 68L57.76 62.24L52 60L57.76 57.76Z" fill="#F6A078"/>
+<path d="M110 29L111.4 32.6L115 34L111.4 35.4L110 39L108.6 35.4L105 34L108.6 32.6Z" fill="#FFCB8E"/>
+<rect x="184" y="34" width="150" height="236" rx="6" fill="#FFFCFC" stroke="#1B175A" stroke-width="3" transform="rotate(4 259 152)"/>
+<rect x="152" y="24" width="170" height="262" rx="14" fill="#FFCB8E" stroke="#1B175A" stroke-width="3"/>
+<rect x="166" y="44" width="142" height="230" rx="6" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/>
+<path d="M166 50Q166 44 172 44H302Q308 44 308 50V66H166Z" fill="#82CAFB" stroke="#1B175A" stroke-width="3"/>
+<rect x="202" y="10" width="70" height="28" rx="8" fill="#1B175A"/>
+<circle cx="237" cy="18" r="6" fill="#FFCB8E"/>
+<circle cx="193" cy="85" r="8" fill="#F6A078" stroke="#1B175A" stroke-width="2"/><circle cx="193" cy="85" r="2.6" fill="#FFFCFC"/>
+<rect x="212" y="78" width="80" height="5" rx="2.5" fill="#C9CCDA"/><rect x="212" y="89" width="62" height="5" rx="2.5" fill="#C9CCDA"/>
+<rect x="180" y="112" width="112" height="5" rx="2.5" fill="#C9CCDA"/><rect x="180" y="123" width="96" height="5" rx="2.5" fill="#C9CCDA"/><rect x="180" y="134" width="104" height="5" rx="2.5" fill="#C9CCDA"/>
+<rect x="180" y="148" width="112" height="5" rx="2.5" fill="#C9CCDA"/><rect x="180" y="159" width="96" height="5" rx="2.5" fill="#C9CCDA"/><rect x="180" y="170" width="104" height="5" rx="2.5" fill="#C9CCDA"/>
+<circle cx="193" cy="191" r="8" fill="#82CAFB" stroke="#1B175A" stroke-width="2"/><circle cx="193" cy="191" r="2.6" fill="#FFFCFC"/>
+<rect x="212" y="184" width="80" height="5" rx="2.5" fill="#C9CCDA"/><rect x="212" y="195" width="62" height="5" rx="2.5" fill="#C9CCDA"/>
+<rect x="180" y="218" width="112" height="5" rx="2.5" fill="#C9CCDA"/><rect x="180" y="229" width="96" height="5" rx="2.5" fill="#C9CCDA"/><rect x="180" y="240" width="104" height="5" rx="2.5" fill="#C9CCDA"/>
+<rect x="180" y="254" width="112" height="5" rx="2.5" fill="#C9CCDA"/><rect x="180" y="265" width="96" height="5" rx="2.5" fill="#C9CCDA"/><rect x="180" y="276" width="104" height="5" rx="2.5" fill="#C9CCDA"/>
+<g transform="translate(82 258) scale(1.55)"><rect x="-15" y="-52" width="30" height="52" rx="7" fill="#82CAFB" stroke="#1B175A" stroke-width="3"/><rect x="-6" y="-60" width="12" height="9" rx="1.5" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/><path d="M-10 -60V-71Q-10 -76 -5 -76H14L21 -70L14 -65H6V-60Z" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/><path d="M3 -64L7 -53L3 -52L0 -61Z" fill="#1B175A" stroke="#1B175A" stroke-width="1.5"/><rect x="-10" y="-40" width="20" height="24" rx="3" fill="#FFFCFC" stroke="#1B175A" stroke-width="2"/><rect x="-6" y="-34" width="12" height="3.5" rx="1.75" fill="#C9CCDA"/><rect x="-6" y="-27" width="9" height="3.5" rx="1.75" fill="#C9CCDA"/></g>
+<path d="M108 190Q136 170 164 172" fill="none" stroke="#F6A078" stroke-width="4" stroke-dasharray="1 9"/>
+</g>
+</svg>

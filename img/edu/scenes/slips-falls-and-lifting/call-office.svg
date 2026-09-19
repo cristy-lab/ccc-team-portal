@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+<!-- Call the office: a phone with the call sign, and a map pin over a small clinic. Flat vector, no text. -->
+<defs><linearGradient id="sflCo_bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E2F1FD"/><stop offset="1" stop-color="#D5EAFD"/></linearGradient></defs>
+<rect x="0" y="0" width="400" height="300" fill="url(#sflCo_bg)"/>
+<ellipse cx="270" cy="262" rx="96" ry="12" fill="#C4E0F8"/>
+<path d="M180 200C214 236 236 198 256 170" fill="none" stroke="#F6A078" stroke-width="5" stroke-linecap="round" stroke-dasharray=".5 12"/>
+<rect x="70" y="36" width="104" height="212" rx="18.7" fill="#1B175A"/><rect x="78.3" y="55.1" width="87.4" height="169.6" rx="10.4" fill="#FFFCFC"/><rect x="109.5" y="43.4" width="25" height="4.7" rx="2.1" fill="#3B3782"/><circle cx="122" cy="133.5" r="31.2" fill="#F6A078" stroke="#1B175A" stroke-width="2.4"/><path transform="translate(122 133.5) scale(2.3) translate(-.6 -2)" d="M-7.2 -8.6C-5.6 -9.8 -3.8 -9.4 -3 -7.8L-1.4 -4.2C-.8 -2.9 -1.2 -1.6 -2.3 -.8L-3.6 .2C-2.3 2.8 -.2 4.9 2.4 6.2L3.4 4.9C4.2 3.8 5.5 3.4 6.8 4L10.4 5.6C12 6.4 12.4 8.2 11.2 9.8L10.1 11.2C8.4 13.2 5.2 13.6 2.6 12.2C-3 9.2 -7.6 4.6 -10.6 -1C-12 -3.6 -11.6 -6.8 -9.6 -8.5Z" fill="#FFFCFC" stroke="#1B175A" stroke-width="0.9" stroke-linejoin="round"/>
+<path d="M168 94.4A60 60 0 0 1 168 171.6" fill="none" stroke="#F6A078" stroke-width="4.5" stroke-linecap="round"/><path d="M174.9 88.6A69 69 0 0 1 174.9 177.4" fill="none" stroke="#F6A078" stroke-width="4.5" stroke-linecap="round"/>
+<rect x="222" y="192" width="100" height="70" rx="4" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/>
+<path d="M212 196 L272 158 L332 196Z" fill="#82CAFB" stroke="#1B175A" stroke-width="3" stroke-linejoin="round"/>
+<rect x="260" y="222" width="24" height="40" rx="3" fill="#E2F1FD" stroke="#1B175A" stroke-width="2.6"/>
+<circle cx="240" cy="216" r="9" fill="#FFFCFC" stroke="#1B175A" stroke-width="2.4"/>
+<circle cx="304" cy="216" r="9" fill="#FFFCFC" stroke="#1B175A" stroke-width="2.4"/>
+<path d="M272 172v14M265 179h14" fill="none" stroke="#FFFCFC" stroke-width="5" stroke-linecap="round"/>
+<path d="M318 60C298 60 284 75 284 94C284 118 318 150 318 150C318 150 352 118 352 94C352 75 338 60 318 60Z" fill="#F6A078" stroke="#1B175A" stroke-width="3.2" stroke-linejoin="round"/>
+<circle cx="318" cy="94" r="11" fill="#FFFCFC" stroke="#1B175A" stroke-width="2.6"/>
+<path d="M40 42Q41.6 48.4 48 50Q41.6 51.6 40 58Q38.4 51.6 32 50Q38.4 48.4 40 42Z" fill="#FFCB8E"/>
+<path d="M372 174Q373.2 178.8 378 180Q373.2 181.2 372 186Q370.8 181.2 366 180Q370.8 178.8 372 174Z" fill="#82CAFB"/>
+<path d="M210 54Q211.2 58.8 216 60Q211.2 61.2 210 66Q208.8 61.2 204 60Q208.8 58.8 210 54Z" fill="#F6A078"/>
+</svg>

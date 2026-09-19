@@ -1,0 +1,1112 @@
+{
+ "character": "duo",
+ "kind": "course",
+ "schema": "ccc-edu-pack/1",
+ "summary": {
+  "en": "The hottest place in this job is inside a closed unit. How to drink, rest and cool down, the signs of heat illness, and what to do when someone is in danger.",
+  "es": "El lugar más caliente de este trabajo está adentro, en una casa cerrada. Cómo tomar agua, descansar y refrescarse, las señales de una enfermedad por calor y qué hacer cuando alguien está en peligro."
+ },
+ "title": {
+  "en": "Working in the Heat: Water, Rest and a Cool Place",
+  "es": "Trabajar con calor: agua, descanso y un lugar fresco"
+ },
+ "training_id": "working-in-the-heat",
+ "variants": {
+  "full": {
+   "quiz": {
+    "questions": [
+     {
+      "choices": [
+       {
+        "en": "Call 911, move her to a cool place, start cooling her right away, and stay with her.",
+        "es": "Llama al 911, la lleva a un lugar fresco, empieza a refrescarla de inmediato y se queda con ella.",
+        "id": "q1_a"
+       },
+       {
+        "en": "Sit her in the car with the air on, give her a cold sports drink, and see if she gets better.",
+        "es": "La sienta en el carro con el aire puesto, le da una bebida deportiva fría y espera a ver si mejora.",
+        "id": "q1_b"
+       },
+       {
+        "en": "Finish the home quickly so you can both leave, then drive her home.",
+        "es": "Termina la casa rápido para que las dos se puedan ir, y luego la lleva a su casa.",
+        "id": "q1_c"
+       }
+      ],
+      "id": "q1",
+      "prompt": {
+       "en": "It is August. You and a workmate are cleaning a home that was closed all week. She starts answering your questions with words that make no sense, and she is slurring. What do you do?",
+       "es": "Es agosto. Usted y una compañera limpian una casa que estuvo cerrada toda la semana. Ella empieza a contestar con palabras sin sentido y no habla claro. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Finish the two rooms fast, then rest in the car before you drive.",
+        "es": "Termina los dos cuartos rápido y luego descansa en el carro antes de manejar.",
+        "id": "q2_a"
+       },
+       {
+        "en": "Open a window, work slower, and keep going so the home is ready on time.",
+        "es": "Abre una ventana, trabaja más despacio y sigue para que la casa esté lista a tiempo.",
+        "id": "q2_b"
+       },
+       {
+        "en": "Stop now. Go somewhere cooler, sit, drink water, and tell your supervisor or the office.",
+        "es": "Para ya. Va a un lugar más fresco, se sienta, toma agua y avisa a su supervisor de región o de división, o a la oficina.",
+        "id": "q2_c"
+       }
+      ],
+      "id": "q2",
+      "prompt": {
+       "en": "You have a headache, you feel dizzy and your stomach is upset. Two rooms are left and the next guest arrives at four. What do you do?",
+       "es": "Tiene dolor de cabeza, se siente con mareo y con el estómago revuelto. Le faltan dos cuartos y el próximo huésped llega a las cuatro. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "A big bottle at lunch, so you do not have to stop during the job.",
+        "es": "Una botella grande a la hora del almuerzo, para no tener que parar durante el trabajo.",
+        "id": "q3_a"
+       },
+       {
+        "en": "About 1 cup every 15 to 20 minutes, before you feel thirsty.",
+        "es": "Como 1 vaso cada 15 a 20 minutos, antes de tener sed.",
+        "id": "q3_b"
+       },
+       {
+        "en": "Whenever you feel thirsty, because thirst tells you when your body needs water.",
+        "es": "Cuando tenga sed, porque la sed le avisa cuando su cuerpo necesita agua.",
+        "id": "q3_c"
+       }
+      ],
+      "id": "q3",
+      "prompt": {
+       "en": "You are working in the heat. How much water, and how often?",
+       "es": "Está trabajando con calor. ¿Cuánta agua y cada cuánto?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Stay until the dizziness is gone, and say out loud that you are not right yet.",
+        "es": "Se queda hasta que se le quite el mareo, y dice en voz alta que todavía no está bien.",
+        "id": "q4_a"
+       },
+       {
+        "en": "Go back now and take a longer break at the end of the route.",
+        "es": "Regresa ya y toma un descanso más largo al final de la ruta.",
+        "id": "q4_b"
+       },
+       {
+        "en": "Go back now, but drink water while you work to make up for it.",
+        "es": "Regresa ya, pero toma agua mientras trabaja para compensar.",
+        "id": "q4_c"
+       }
+      ],
+      "id": "q4",
+      "prompt": {
+       "en": "You stopped to cool down. After 3 minutes you still feel dizzy, and someone says the crew is waiting on you. What do you do?",
+       "es": "Paró para refrescarse. Después de 3 minutos todavía siente el mareo, y alguien le dice que el equipo está esperando. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Keep up anyway, so nobody thinks you are slow.",
+        "es": "Le sigue el paso de todos modos, para que nadie piense que es lenta.",
+        "id": "q5_a"
+       },
+       {
+        "en": "Drink an energy drink to get through the rest of the route.",
+        "es": "Se toma una bebida energética para aguantar el resto de la ruta.",
+        "id": "q5_b"
+       },
+       {
+        "en": "Tell your supervisor the heat is new to you, take your cool down rests, and build up over the next week or two.",
+        "es": "Le dice a su supervisor de región o de división que el calor es nuevo para usted, toma sus descansos para refrescarse, y va subiendo el ritmo en una o dos semanas.",
+        "id": "q5_c"
+       }
+      ],
+      "id": "q5",
+      "prompt": {
+       "en": "It is your first week and it is July. The crew keeps a pace you cannot match, and by the second home you are wiped out. What do you do?",
+       "es": "Es su primera semana y es julio. El equipo lleva un ritmo que usted no alcanza, y para la segunda casa ya está agotada. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Help her drink it slowly, because she needs the water most right now.",
+        "es": "La ayuda a tomarla despacio, porque ahora es cuando más necesita el agua.",
+        "id": "q6_a"
+       },
+       {
+        "en": "Give her nothing to drink. Use the water to wet her skin, keep cooling her, and wait for 911.",
+        "es": "No le da nada de tomar. Usa el agua para mojarle la piel, la sigue refrescando y espera al 911.",
+        "id": "q6_b"
+       },
+       {
+        "en": "Wait until she can stand up, then let her drink as much as she wants.",
+        "es": "Espera a que se pueda parar, y luego la deja tomar toda el agua que quiera.",
+        "id": "q6_c"
+       }
+      ],
+      "id": "q6",
+      "prompt": {
+       "en": "A workmate passed out in a hot home. She is awake now but confused. Someone hands you a bottle of cold water for her. What do you do?",
+       "es": "Una compañera se desmayó en una casa caliente. Ya despertó pero está confundida. Alguien le pasa una botella de agua fría para ella. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Yes. Under 80 degrees there is no heat risk.",
+        "es": "Sí. Abajo de 80 grados no hay riesgo por calor.",
+        "id": "q7_a"
+       },
+       {
+        "en": "No. Humidity, hard work and still air all make it worse, so watch for the signs and take cool down rests.",
+        "es": "No. La humedad, el trabajo pesado y el aire quieto lo empeoran, así que esté pendiente de las señales y tome descansos para refrescarse.",
+        "id": "q7_b"
+       },
+       {
+        "en": "Yes, as long as you finish within two hours.",
+        "es": "Sí, mientras termine en menos de dos horas.",
+        "id": "q7_c"
+       }
+      ],
+      "id": "q7",
+      "prompt": {
+       "en": "The thermostat in the home reads 79 degrees. The air is heavy and wet, no fan is on, and you are carrying linen up and down stairs. Are you safe from heat illness?",
+       "es": "El termostato de la casa marca 79 grados Fahrenheit. El aire está pesado y húmedo, no hay ventilador prendido, y usted está subiendo y bajando escaleras con ropa de cama. ¿Está a salvo de una enfermedad por calor?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Tell the office before you keep working, and let them decide what happens with the job.",
+        "es": "Avisa a la oficina antes de seguir trabajando, y deja que ellos decidan qué pasa con el trabajo.",
+        "id": "q8_a"
+       },
+       {
+        "en": "Work faster so you are out of there sooner.",
+        "es": "Trabaja más rápido para salir de ahí más pronto.",
+        "id": "q8_b"
+       },
+       {
+        "en": "Finish the job and mention it in the notes at the end of the day.",
+        "es": "Termina el trabajo y lo menciona en las notas al final del día.",
+        "id": "q8_c"
+       }
+      ],
+      "id": "q8",
+      "prompt": {
+       "en": "You arrive and the home is very hot inside. The air conditioning does not seem to be working and the home is not getting any cooler. What do you do?",
+       "es": "Llega y la casa está muy caliente adentro. El aire acondicionado no parece estar funcionando y la casa no se refresca nada. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Let her lie down in the hot room so she does not have to move, and keep working.",
+        "es": "La deja acostada en el cuarto caliente para que no se tenga que mover, y usted sigue trabajando.",
+        "id": "q9_a"
+       },
+       {
+        "en": "Have her walk it off outside in the sun for a few minutes.",
+        "es": "Hace que camine un rato afuera en el sol para que se le pase.",
+        "id": "q9_b"
+       },
+       {
+        "en": "Cooler place, sit or lie down, small sips of cool water, cold wet cloths on her skin, and medical care if she does not get better.",
+        "es": "Un lugar más fresco, que se siente o se acueste, tragos pequeños de agua fresca, paños mojados con agua fría en la piel, y atención médica si no mejora.",
+        "id": "q9_c"
+       }
+      ],
+      "id": "q9",
+      "prompt": {
+       "en": "A workmate feels sick from the heat. She is awake, talking normally, sweating and nauseated. What is the right help?",
+       "es": "Una compañera se siente mal por el calor. Está despierta, habla normal, está sudando y con náuseas. ¿Cuál es la ayuda correcta?"
+      }
+     }
+    ],
+    "seconds": 240
+   },
+   "screens": [
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A CCC team member in the grey polo waves in front of a home on a sunny day, holding a water bottle.",
+        "es": "Una persona del equipo de CCC con la camisa gris saluda frente a una casa en un día de sol, con una botella de agua en la mano."
+       },
+       "src": "img/edu/scenes/working-in-the-heat/welcome.svg",
+       "type": "scene"
+      },
+      {
+       "character": "duo",
+       "en": "Hello! This training is all about the heat. Let's go step by step.",
+       "es": "¡Hola! Esta capacitación es sobre el calor. Vamos paso a paso.",
+       "pose": "hello",
+       "type": "say"
+      },
+      {
+       "en": "This lesson takes about 11 minutes. The quiz takes about 4 more. It is all paid work time.",
+       "es": "Esta lección dura unos 11 minutos. La prueba dura unos 4 minutos más. Todo es tiempo de trabajo pagado.",
+       "type": "text"
+      },
+      {
+       "en": "You can take the quiz again as many times as you need.",
+       "es": "Puede repetir la prueba todas las veces que necesite.",
+       "type": "text"
+      },
+      {
+       "en": "If you need help reading this or taking the quiz, tell the CCC office.",
+       "es": "Si necesita ayuda para leer esto o para hacer la prueba, dígale a la oficina de CCC.",
+       "type": "text"
+      }
+     ],
+     "id": "before-you-start",
+     "layout": "hero",
+     "seconds": 30,
+     "title": {
+      "en": "Before you start",
+      "es": "Antes de empezar"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A closed home with the blinds down under a hot sun. Inside it is hot. A car sits in the parking lot next to it.",
+        "es": "Una casa cerrada con las persianas abajo bajo un sol fuerte. Adentro hace calor. Al lado hay un carro en el estacionamiento."
+       },
+       "src": "img/edu/scenes/working-in-the-heat/closed-home.svg",
+       "type": "scene"
+      },
+      {
+       "en": "The hottest place in this job is usually inside, not outside.",
+       "es": "El lugar más caliente de este trabajo casi siempre está adentro, no afuera.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "A home that sat closed all week with the air off can be hotter inside than the parking lot.",
+        "You are working hard in it. Carrying, bending, scrubbing, stairs.",
+        "A hot room does not look dangerous. That is why people get hurt in one."
+       ],
+       "es": [
+        "Una casa que estuvo cerrada toda la semana con el aire apagado puede estar más caliente adentro que el estacionamiento.",
+        "Y adentro usted trabaja duro. Cargando, agachándose, tallando, subiendo escaleras.",
+        "Un cuarto caliente no se ve peligroso. Por eso la gente se lastima adentro."
+       ],
+       "type": "text"
+      },
+      {
+       "character": "clara",
+       "en": "Whoa! Hotter inside than the parking lot?",
+       "es": "¡Uy! ¿Más caliente adentro que el estacionamiento?",
+       "pose": "stop",
+       "type": "say"
+      },
+      {
+       "en": "Heat illness starts small. Feeling tired and getting a headache can turn into heat stroke, and heat stroke is a medical emergency.",
+       "es": "La enfermedad por calor empieza poco a poco. Sentir cansancio y dolor de cabeza puede convertirse en un golpe de calor, y el golpe de calor es una emergencia médica.",
+       "type": "callout"
+      }
+     ],
+     "id": "why-this-matters",
+     "layout": "full",
+     "seconds": 45,
+     "title": {
+      "en": "Why this matters",
+      "es": "Por qué esto es importante"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "Four pictures: a glass of water, a chair, a shady tree with a breeze, and a phone.",
+        "es": "Cuatro dibujos: un vaso de agua, una silla, un árbol con sombra y brisa, y un teléfono."
+       },
+       "src": "img/edu/scenes/working-in-the-heat/four-things.svg",
+       "type": "scene"
+      },
+      {
+       "en": [
+        "Water.",
+        "Rest.",
+        "A cool place.",
+        "Tell someone."
+       ],
+       "es": [
+        "Agua.",
+        "Descanso.",
+        "Un lugar fresco.",
+        "Avise a alguien."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "Learn these four by heart. The rest of this lesson only fills them in.",
+       "es": "Apréndase estas cuatro de memoria. El resto de la lección solo las explica.",
+       "type": "text"
+      },
+      {
+       "character": "cris",
+       "en": "Water, rest, a cool place, tell someone. Say them with me!",
+       "es": "Agua, descanso, un lugar fresco, avise a alguien. ¡Dígalas conmigo!",
+       "pose": "tip",
+       "type": "say"
+      }
+     ],
+     "id": "the-four-things",
+     "layout": "hero",
+     "seconds": 30,
+     "title": {
+      "en": "The four things",
+      "es": "Las cuatro cosas"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A team member drinks from a water bottle next to a water jug and cups.",
+        "es": "Una persona del equipo toma agua de una botella junto a un garrafón de agua y unos vasos."
+       },
+       "src": "img/edu/scenes/working-in-the-heat/water.svg",
+       "type": "scene"
+      },
+      {
+       "en": "Drink before you are thirsty. Thirst shows up late.",
+       "es": "Tome agua antes de tener sed. La sed llega tarde.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "For normal work in the heat, drink about 1 cup of water every 15 to 20 minutes.",
+        "That is about 4 cups an hour. Do not drink more than 6 cups in one hour.",
+        "Water is best. No alcohol. Go easy on drinks with a lot of sugar or caffeine.",
+        "If you sweat for several hours, a sports drink with electrolytes helps too."
+       ],
+       "es": [
+        "Para el trabajo normal con calor, tome como 1 vaso de agua cada 15 a 20 minutos.",
+        "Son unos 4 vasos por hora. No tome más de 6 vasos en una hora.",
+        "El agua es lo mejor. Nada de alcohol. Poca bebida con mucha azúcar o cafeína.",
+        "Si suda por varias horas, una bebida deportiva con electrolitos también ayuda."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "No water with you, or not sure where to get it? Ask the office.",
+       "es": "¿No tiene agua, o no sabe dónde conseguirla? Pregúntele a la oficina.",
+       "type": "callout"
+      },
+      {
+       "character": "clara",
+       "en": "Noted!",
+       "es": "¡Anotado!",
+       "pose": "tip",
+       "type": "say"
+      }
+     ],
+     "id": "water",
+     "layout": "split",
+     "seconds": 60,
+     "title": {
+      "en": "Water",
+      "es": "Agua"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A team member rests on a bench in the shade of a tree with a water bottle, her gloves off beside her.",
+        "es": "Una persona del equipo descansa en una banca a la sombra de un árbol con una botella de agua, con los guantes quitados a su lado."
+       },
+       "src": "img/edu/scenes/working-in-the-heat/cool-rest.svg",
+       "type": "scene"
+      },
+      {
+       "en": "When you feel the heat in your body, stop. A short rest now prevents an emergency later.",
+       "es": "Cuando sienta el calor en su cuerpo, pare. Un descanso corto ahora evita una emergencia después.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Go somewhere cooler. A shaded spot, a room that is already cool, or your car with the air on.",
+        "Sit down. Take off gloves and any heavy layer.",
+        "Drink water.",
+        "Stay until the feeling is gone. Give it at least 5 minutes.",
+        "If it does not pass, tell someone and do not go back to work."
+       ],
+       "es": [
+        "Vaya a un lugar más fresco. Una sombra, un cuarto que ya esté fresco, o su carro con el aire puesto.",
+        "Siéntese. Quítese los guantes y cualquier ropa gruesa.",
+        "Tome agua.",
+        "Quédese ahí hasta que se le quiten las señales. Dele por lo menos 5 minutos.",
+        "Si no se le quita, avise a alguien y no vuelva al trabajo."
+       ],
+       "type": "steps"
+      },
+      {
+       "character": "cris",
+       "en": "Feel the heat in your body? Stop, and rest in a cool place.",
+       "es": "¿Siente el calor en su cuerpo? Pare y descanse en un lugar fresco.",
+       "pose": "stop",
+       "type": "say"
+      }
+     ],
+     "id": "rest-and-a-cool-place",
+     "layout": "split",
+     "seconds": 45,
+     "title": {
+      "en": "Rest, in a cool place",
+      "es": "Descanso, en un lugar fresco"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A team member on the phone outside a hot home, next to a shield with a check mark.",
+        "es": "Una persona del equipo habla por teléfono afuera de una casa caliente, junto a un escudo con una marca de visto bueno."
+       },
+       "src": "img/edu/scenes/working-in-the-heat/report-danger.svg",
+       "type": "scene"
+      },
+      {
+       "en": "You will never get in trouble with CCC for calling 911 or the police to report danger, and nobody gets in trouble for reporting a hazard, like a home that will not cool down.",
+       "es": "Usted nunca tendrá problemas con CCC por llamar al 911 o a la policía para reportar un peligro, y nadie tiene problemas por reportar un peligro, como una casa que no se enfría.",
+       "type": "callout"
+      }
+     ],
+     "id": "rest-and-a-cool-place-2",
+     "layout": "hero",
+     "seconds": 15,
+     "title": {
+      "en": "Rest, in a cool place",
+      "es": "Descanso, en un lugar fresco"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A wall thermostat with the needle in the hot zone, under an air conditioner that is not blowing.",
+        "es": "Un termostato de pared con la aguja en la zona caliente, debajo de un aire acondicionado que no está echando aire."
+       },
+       "src": "img/edu/scenes/working-in-the-heat/hot-thermostat.svg",
+       "type": "scene"
+      },
+      {
+       "en": "Sometimes the air conditioning is off, set high, or broken, and the home stays hot while you work.",
+       "es": "A veces el aire acondicionado está apagado, puesto muy alto, o descompuesto, y la casa sigue caliente mientras usted trabaja.",
+       "type": "text"
+      },
+      {
+       "character": "cris",
+       "en": "Home not cooling down? Tell the office before you keep working.",
+       "es": "¿La casa no se enfría? Avise a la oficina antes de seguir trabajando.",
+       "pose": "tip",
+       "type": "say"
+      },
+      {
+       "en": [
+        "Not sure whether you may turn on the air conditioning, or to what temperature? Ask the office.",
+        "If the home does not cool down, tell the office before you keep working.",
+        "A home that stays dangerously hot is a problem for the office to solve, not something to push through."
+       ],
+       "es": [
+        "¿No sabe si puede prender el aire acondicionado, o a qué temperatura? Pregúntele a la oficina.",
+        "Si la casa no se enfría, avise a la oficina antes de seguir trabajando.",
+        "Una casa que se queda peligrosamente caliente es un problema que resuelve la oficina, no algo que usted deba aguantar."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "Call the office at any hour: {{OFFICE_PHONE}}. The office decides what happens with the job.",
+       "es": "Llame a la oficina a cualquier hora: {{OFFICE_PHONE}}. La oficina decide qué pasa con el trabajo.",
+       "type": "callout"
+      }
+     ],
+     "id": "a-unit-that-will-not-cool",
+     "layout": "split",
+     "seconds": 40,
+     "title": {
+      "en": "A home that will not cool down",
+      "es": "Una casa que no se enfría"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A small plant under the sun, and bars that grow a little taller each day.",
+        "es": "Una plantita bajo el sol, y unas barras que crecen un poco más cada día."
+       },
+       "src": "img/edu/scenes/working-in-the-heat/new-to-heat.svg",
+       "type": "scene"
+      },
+      {
+       "en": "Your first days working in heat are your most dangerous days. Your body is not used to it yet.",
+       "es": "Sus primeros días trabajando con calor son sus días más peligrosos. Su cuerpo todavía no está acostumbrado.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "It takes about 1 to 2 weeks of working in the heat before your body gets used to it.",
+        "New in the heat? Day one should be a short day in the heat, and each day a little longer.",
+        "Away for a week or more, or sick? You start over. Build back up.",
+        "Tell your supervisor when the heat is new to you. That is information she needs, not a complaint."
+       ],
+       "es": [
+        "Su cuerpo tarda como 1 a 2 semanas trabajando con calor en acostumbrarse.",
+        "¿El calor es nuevo para usted? El primer día debe ser un día corto con calor, y cada día un poco más largo.",
+        "¿Estuvo una semana o más sin trabajar, o estuvo enfermo o enferma? Empiece de nuevo. Suba poco a poco otra vez.",
+        "Dígale a su supervisor de región o de división cuando el calor sea nuevo para usted. Es información que necesita, no una queja."
+       ],
+       "type": "steps"
+      },
+      {
+       "character": "clara",
+       "en": "Got it!",
+       "es": "¡Entendido!",
+       "pose": "tip",
+       "type": "say"
+      }
+     ],
+     "id": "new-to-the-heat",
+     "layout": "split",
+     "seconds": 45,
+     "title": {
+      "en": "New to the heat",
+      "es": "Nueva en el calor"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A tired team member with a hand on her forehead, drops of sweat and a dizzy swirl.",
+        "es": "Una persona del equipo cansada, con la mano en la frente, gotas de sudor y un remolino de mareo."
+       },
+       "src": "img/edu/scenes/working-in-the-heat/early-signs.svg",
+       "type": "scene"
+      },
+      {
+       "en": "These are the early signs. This is heat exhaustion.",
+       "es": "Estas son las primeras señales. Esto es agotamiento por calor.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Headache.",
+        "Dizzy or lightheaded.",
+        "Sick to your stomach.",
+        "Weak, or very tired.",
+        "Sweating a lot, and very thirsty.",
+        "Short tempered, or peeing less than usual."
+       ],
+       "es": [
+        "Dolor de cabeza.",
+        "Mareo o sensación de que se va a desmayar.",
+        "Náuseas o estómago revuelto.",
+        "Debilidad o mucho cansancio.",
+        "Sudar mucho y tener mucha sed.",
+        "Estar de mal genio, u orinar menos de lo normal."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "Early signs are not a reason to push harder. They are the reason to stop.",
+       "es": "Las primeras señales no son razón para esforzarse más. Son la razón para parar.",
+       "type": "callout"
+      }
+     ],
+     "id": "early-signs",
+     "layout": "split",
+     "seconds": 45,
+     "title": {
+      "en": "The early signs",
+      "es": "Las primeras señales"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A team member with her eyes closed and a dizzy swirl, and another team member calling for help on the phone next to an emergency light.",
+        "es": "Una persona del equipo con los ojos cerrados y un remolino de mareo, y otra persona del equipo que pide ayuda por teléfono junto a una luz de emergencia."
+       },
+       "src": "img/edu/scenes/working-in-the-heat/danger-signs.svg",
+       "type": "scene"
+      },
+      {
+       "en": "These are the danger signs. This is heat stroke, and it is a medical emergency.",
+       "es": "Estas son las señales de peligro. Esto es un golpe de calor, y es una emergencia médica.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Confused, or not making sense.",
+        "Slurred speech.",
+        "Passing out.",
+        "A seizure.",
+        "Skin hot and dry, or still sweating a lot.",
+        "Very high body temperature."
+       ],
+       "es": [
+        "Está confundida o no dice cosas con sentido.",
+        "No habla claro, arrastra las palabras.",
+        "Se desmaya.",
+        "Una convulsión.",
+        "La piel caliente y seca, o todavía sudando mucho.",
+        "Temperatura del cuerpo muy alta."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "One danger sign is enough. Call 911.",
+       "es": "Una sola señal de peligro es suficiente. Llame al 911.",
+       "type": "callout"
+      },
+      {
+       "character": "cris",
+       "en": "Know these signs. Any one of them is an emergency.",
+       "es": "Conozca estas señales. Cualquiera de ellas es una emergencia.",
+       "pose": "stop",
+       "type": "say"
+      }
+     ],
+     "id": "danger-signs",
+     "layout": "split",
+     "seconds": 45,
+     "title": {
+      "en": "The danger signs",
+      "es": "Las señales de peligro"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "In a cool room, a team member rests in a chair with a cold cloth on her neck while another team member hands her a cup of water.",
+        "es": "En un cuarto fresco, una persona del equipo descansa en un sillón con un paño frío en el cuello mientras otra persona del equipo le da un vaso de agua."
+       },
+       "src": "img/edu/scenes/working-in-the-heat/help-early.svg",
+       "type": "scene"
+      },
+      {
+       "en": "A workmate has the early signs and is awake and talking normally. Do this.",
+       "es": "Otra persona del equipo tiene las primeras señales, está despierta y habla normal. Haga esto.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Take her out of the hot room to a cooler place.",
+        "Have her sit or lie down.",
+        "Give cool water in small sips, while she is awake and able to drink.",
+        "Cool her skin with cold wet cloths, or have her wash her face and neck with cold water.",
+        "If she does not get better, or gets worse, call 911, or call the office, which tells you where to take her for care."
+       ],
+       "es": [
+        "Sáquela del cuarto caliente a un lugar más fresco.",
+        "Que se siente o se acueste.",
+        "Dele agua fresca en tragos pequeños, mientras la persona esté despierta y pueda tomar.",
+        "Refrésquele la piel con paños mojados con agua fría, o que se lave la cara y el cuello con agua fría.",
+        "Si no mejora, o empeora, llame al 911, o llame a la oficina, que le dice adónde llevarla para que la atiendan."
+       ],
+       "type": "steps"
+      }
+     ],
+     "id": "help-early-signs",
+     "layout": "hero",
+     "seconds": 40,
+     "title": {
+      "en": "Helping with the early signs",
+      "es": "Cómo ayudar con las primeras señales"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A phone calling the office, a first aid kit, and a calendar with one day checked.",
+        "es": "Un teléfono llamando a la oficina, un botiquín y un calendario con un día marcado."
+       },
+       "src": "img/edu/scenes/working-in-the-heat/same-day-report.svg",
+       "type": "scene"
+      },
+      {
+       "en": "A heat illness at work is a work injury. Tell the office the same day. For staff on payroll, the visit costs the worker nothing. For staff on payroll, the office reports the injury and CCC starts the workers compensation claim.",
+       "es": "Una enfermedad por calor en el trabajo es una lesión del trabajo. Avísele a la oficina el mismo día. Para el personal en la nómina, la visita no le cuesta nada a la persona enferma. Para el personal en la nómina, la oficina reporta la lesión y CCC inicia el reclamo de compensación al trabajador.",
+       "type": "text"
+      },
+      {
+       "en": "Nobody goes back to work while the signs are still there. Call the office, and they will tell you what happens with the rest of her route.",
+       "es": "Nadie vuelve al trabajo mientras siga con las señales. Llame a la oficina y le dirán qué pasa con el resto de la ruta de esa persona.",
+       "type": "callout"
+      }
+     ],
+     "id": "help-early-signs-2",
+     "layout": "hero",
+     "seconds": 20,
+     "title": {
+      "en": "Helping with the early signs",
+      "es": "Cómo ayudar con las primeras señales"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "In a cool room, a team member lies on her back on a mat with her eyes closed, with cold packs on her neck and under her arm. Another team member kneels beside her and puts a cold wet cloth on her arm, and a fan moves the air.",
+        "es": "En un cuarto fresco, una persona del equipo está acostada boca arriba en un tapete con los ojos cerrados, con bolsas frías en el cuello y debajo del brazo. Otra persona del equipo, arrodillada a su lado, le pone un paño mojado y frío en el brazo, y un ventilador mueve el aire."
+       },
+       "src": "img/edu/scenes/working-in-the-heat/cool-fast.svg",
+       "type": "scene"
+      },
+      {
+       "en": "Confused, slurring, passed out, or having a seizure. This is heat stroke. Cooling her fast is what saves her life.",
+       "es": "Confundida, no habla claro, desmayada, o con una convulsión. Esto es un golpe de calor. Refrescarla rápido es lo que le salva la vida.",
+       "type": "text"
+      },
+      {
+       "character": "cris",
+       "en": "Do not wait for the ambulance to start cooling her.",
+       "es": "No espere a la ambulancia para empezar a refrescarla.",
+       "pose": "stop",
+       "type": "say"
+      },
+      {
+       "en": [
+        "Call 911 first.",
+        "Move her into shade or a cool room. Take off extra clothing.",
+        "Cool her fast. Cold water or an ice bath if you have one. If not, wet her skin and put cold wet cloths on it.",
+        "Put cold packs or ice under the arms, on the neck and on the groin, if you have them.",
+        "Move air over her.",
+        "Do not give her anything to drink.",
+        "Stay with her until help arrives."
+       ],
+       "es": [
+        "Llame primero al 911.",
+        "Llévela a la sombra o a un cuarto fresco. Quítele la ropa de más.",
+        "Refrésquela rápido. Agua fría o un baño de hielo si lo tiene. Si no, mójele la piel y póngale paños mojados con agua fría.",
+        "Póngale bolsas de hielo debajo de los brazos, en el cuello y en la ingle, si las tiene.",
+        "Échele aire.",
+        "No le dé nada de tomar.",
+        "Quédese con ella hasta que llegue la ayuda."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "Do not wait for the ambulance to start cooling her.",
+       "es": "No espere a la ambulancia para empezar a refrescarla.",
+       "type": "callout"
+      }
+     ],
+     "id": "help-danger-signs",
+     "layout": "hero",
+     "seconds": 55,
+     "title": {
+      "en": "Helping with the danger signs",
+      "es": "Cómo ayudar con las señales de peligro"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "Two team members in the grey polo check on each other. One gives a thumbs up.",
+        "es": "Dos personas del equipo con la camisa gris se preguntan cómo van. Una levanta el pulgar."
+       },
+       "src": "img/edu/scenes/working-in-the-heat/pairs.svg",
+       "type": "scene"
+      },
+      {
+       "en": "Nobody notices their own confusion. That is why we watch each other.",
+       "es": "Nadie se da cuenta de su propia confusión. Por eso nos cuidamos entre nosotras.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Work in pairs where you can, and check on each other in the hottest hours.",
+        "If a workmate is confused or not making sense, treat it as an emergency.",
+        "If you clean alone, tell someone when you start a very hot home and when you finish."
+       ],
+       "es": [
+        "Trabajen en parejas cuando se pueda, y pregúntense cómo van en las horas de más calor.",
+        "Si otra persona del equipo está confundida o no dice cosas con sentido, trátelo como una emergencia.",
+        "Si limpia una casa sin nadie más, avise a alguien cuando empiece y cuando termine."
+       ],
+       "type": "steps"
+      },
+      {
+       "character": "clara",
+       "en": "Good plan!",
+       "es": "¡Buen plan!",
+       "pose": "tip",
+       "type": "say"
+      },
+      {
+       "en": "Not sure who to tell? Ask the office.",
+       "es": "¿No sabe a quién avisarle? Pregúntele a la oficina.",
+       "type": "callout"
+      }
+     ],
+     "id": "watch-each-other",
+     "layout": "hero",
+     "seconds": 35,
+     "title": {
+      "en": "Watch each other",
+      "es": "Cuídense entre ustedes"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A stuffy room with sun through the window, drops of humidity in the air, a fan that is off, and a basket of linen on the stairs.",
+        "es": "Un cuarto sofocante con sol por la ventana, gotas de humedad en el aire, un ventilador apagado y una canasta de ropa de cama en la escalera."
+       },
+       "src": "img/edu/scenes/working-in-the-heat/worse.svg",
+       "type": "scene"
+      },
+      {
+       "en": "The number on the thermostat is not the whole story.",
+       "es": "El número del termostato no lo dice todo.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Humidity. Wet air makes it harder for sweat to cool you.",
+        "Hard work. Carrying linen, scrubbing, stairs.",
+        "No air moving in the room.",
+        "Heavy clothes, gloves, long sleeves.",
+        "Alcohol the night before, being sick, or not sleeping.",
+        "Some medicines and some health problems. Ask your own doctor about yours, not the office."
+       ],
+       "es": [
+        "La humedad. El aire húmedo hace más difícil que el sudor la refresque.",
+        "El trabajo pesado. Cargar ropa de cama, tallar, subir escaleras.",
+        "Que no se mueva el aire en el cuarto.",
+        "Ropa gruesa, guantes, mangas largas.",
+        "El alcohol la noche anterior, estar enferma, o no dormir.",
+        "Algunas medicinas y algunos problemas de salud. Pregúntele a su propio médico por los suyos, no a la oficina."
+       ],
+       "type": "steps"
+      },
+      {
+       "character": "clara",
+       "en": "It all adds up!",
+       "es": "¡Todo suma!",
+       "pose": "tip",
+       "type": "say"
+      },
+      {
+       "en": "Being in full sun can add as much as 15 degrees to how hot it feels.",
+       "es": "Estar bajo el sol directo puede agregar hasta 15 grados Fahrenheit a lo caliente que se siente.",
+       "type": "callout"
+      }
+     ],
+     "id": "what-makes-it-worse",
+     "layout": "split",
+     "seconds": 45,
+     "title": {
+      "en": "What makes it worse",
+      "es": "Qué lo empeora"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A team member talks on the phone. Speech bubbles show a hot home and a thermometer.",
+        "es": "Una persona del equipo habla por teléfono. Los globos de diálogo muestran una casa caliente y un termómetro."
+       },
+       "src": "img/edu/scenes/working-in-the-heat/tell-someone.svg",
+       "type": "scene"
+      },
+      {
+       "en": "Telling someone is part of the job. It is not a complaint.",
+       "es": "Avisar es parte del trabajo. No es una queja.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Tell your supervisor or the office when you feel the early signs.",
+        "Tell them when a home will not cool down.",
+        "Tell them when the heat is new to you.",
+        "Danger signs are different. Call 911 first, then call the office."
+       ],
+       "es": [
+        "Dígale a su supervisor de región o de división, o a la oficina, cuando sienta las primeras señales.",
+        "Avíseles cuando una casa no se enfríe.",
+        "Avíseles cuando el calor sea nuevo para usted.",
+        "Las señales de peligro son distintas. Llame primero al 911 y después a la oficina."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "Office: {{OFFICE_PHONE}}, the same number at every hour. No answer? Also call your region or division supervisor: {{SUPERVISOR_PHONE}}.",
+       "es": "Oficina: {{OFFICE_PHONE}}, el mismo número a toda hora. ¿No contestan? Llame también a su supervisor de región o de división: {{SUPERVISOR_PHONE}}.",
+       "type": "callout"
+      }
+     ],
+     "id": "tell-someone",
+     "layout": "split",
+     "seconds": 35,
+     "title": {
+      "en": "Tell someone",
+      "es": "Avise a alguien"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "One card with six small pictures: water, a chair in the shade, a sore head, an emergency light, a cold pack and speech bubbles.",
+        "es": "Una tarjeta con seis dibujitos: agua, una silla a la sombra, una cabeza adolorida, una luz de emergencia, una bolsa fría y globos de diálogo."
+       },
+       "src": "img/edu/scenes/working-in-the-heat/card.svg",
+       "type": "scene"
+      },
+      {
+       "en": "This is the whole training on one card.",
+       "es": "Esta es toda la capacitación en una tarjeta.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Drink about 1 cup of water every 15 to 20 minutes.",
+        "Stop at the first sign. Cool place, sit, water, at least 5 minutes.",
+        "Early signs: headache, dizzy, sick to your stomach, weak, sweating a lot.",
+        "Danger signs: confused, slurred speech, passed out. Call 911.",
+        "Cool her fast, and give a confused person nothing to drink.",
+        "Tell someone. Every time."
+       ],
+       "es": [
+        "Tome como 1 vaso de agua cada 15 a 20 minutos.",
+        "Pare a la primera señal. Lugar fresco, siéntese, agua, por lo menos 5 minutos.",
+        "Primeras señales: dolor de cabeza, mareo, náuseas, debilidad, sudar mucho.",
+        "Señales de peligro: confundida, no habla claro, desmayada. Llame al 911.",
+        "Refrésquela rápido, y a una persona confundida no le dé nada de tomar.",
+        "Avise a alguien. Siempre."
+       ],
+       "type": "steps"
+      },
+      {
+       "character": "duo",
+       "en": "That is the whole card. Next up, the quiz!",
+       "es": "Esa es toda la tarjeta. ¡Ahora sigue la prueba!",
+       "pose": "think",
+       "type": "say"
+      }
+     ],
+     "id": "what-to-do-card",
+     "layout": "hero",
+     "seconds": 45,
+     "title": {
+      "en": "What to do: the card",
+      "es": "Qué hacer: la tarjeta"
+     }
+    }
+   ]
+  },
+  "notice": {
+   "ack": {
+    "text": {
+     "en": "I have read this notice.",
+     "es": "He leído este aviso."
+    }
+   },
+   "screens": [
+    {
+     "blocks": [
+      {
+       "decorative": true,
+       "src": "img/edu/scenes/working-in-the-heat/closed-home.svg",
+       "type": "scene"
+      },
+      {
+       "en": "Homes sit closed between guests, sometimes with the air off. Inside they can get hotter than the air outdoors. This notice is information about that hazard at the properties CCC serves. It is not instruction about how you run your own work.",
+       "es": "Las casas se quedan cerradas entre huésped y huésped, a veces con el aire apagado. Adentro pueden estar más calientes que el aire de afuera. Este aviso es información sobre ese peligro en las propiedades que atiende CCC. No es una instrucción sobre cómo usted maneja su propio trabajo.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Tell the office when a home will not cool down, and when a property has no working air conditioning.",
+        "CCC never asks anyone to keep working in a home that has become dangerously hot."
+       ],
+       "es": [
+        "Avise a la oficina cuando una casa no se enfríe, y cuando una propiedad no tenga aire acondicionado funcionando.",
+        "CCC nunca le pide a nadie que siga trabajando en una casa que se puso peligrosamente caliente."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "Nothing in this notice sets your hours, your breaks or the way you do your work. Questions about it go to the office at any time.",
+       "es": "Nada en este aviso fija sus horas, sus descansos ni la forma en que hace su trabajo. Las preguntas sobre este aviso puede hacerlas a la oficina en cualquier momento.",
+       "type": "callout"
+      },
+      {
+       "character": "duo",
+       "en": "Tell the office when a home will not cool down.",
+       "es": "Avise a la oficina cuando una casa no se enfríe.",
+       "pose": "stop",
+       "type": "say"
+      }
+     ],
+     "id": "notice",
+     "layout": "hero",
+     "seconds": 90,
+     "title": {
+      "en": "Heat notice: homes that sit closed",
+      "es": "Aviso sobre el calor: casas que están cerradas"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "decorative": true,
+       "src": "img/edu/scenes/working-in-the-heat/notice-sun.svg",
+       "type": "scene"
+      },
+      {
+       "en": "This part is public health information, not a CCC instruction.",
+       "es": "Esta parte es información de salud pública, no una instrucción de CCC.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "The early signs of heat illness: headache, dizzy, sick to your stomach, weak, sweating a lot.",
+        "The danger signs: confused, slurred speech, passing out, a seizure. Those are a medical emergency.",
+        "For the danger signs, the public health advice is to call 911, start cooling the person right away, and give a confused person nothing to drink."
+       ],
+       "es": [
+        "Las primeras señales de una enfermedad por calor: dolor de cabeza, mareo, náuseas, debilidad, sudar mucho.",
+        "Las señales de peligro: confusión, no hablar claro, desmayo, una convulsión. Eso es una emergencia médica.",
+        "Ante las señales de peligro, lo que recomienda la salud pública es llamar al 911, empezar a refrescar a la persona de inmediato, y no darle nada de tomar a una persona confundida."
+       ],
+       "type": "steps"
+      }
+     ],
+     "id": "notice-health",
+     "layout": "hero",
+     "seconds": 90,
+     "title": {
+      "en": "Heat illness: what it looks like",
+      "es": "Enfermedad por calor: cómo se ve"
+     }
+    }
+   ]
+  }
+ },
+ "version": "2026-09-18"
+}

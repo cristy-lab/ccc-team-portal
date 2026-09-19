@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+<!-- Water running over a forearm at a sink, and an eye with water drops. Drawn for the CCC Team Portal training on cleaning products and gloves. No text. -->
+<g stroke-linejoin="round" stroke-linecap="round">
+<rect x="0" y="0" width="400" height="300" fill="#E6F2FD"/>
+<path d="M0 52H400M0 104H400M0 156H400M66 0V196M132 0V196M198 0V196M264 0V196M330 0V196" fill="none" stroke="#D3E7FA" stroke-width="2"/>
+<rect x="0" y="208" width="400" height="92" fill="#D6EAFB"/><rect x="-4" y="196" width="408" height="12" fill="#1B175A"/>
+<g transform="translate(66 196) scale(1.1)"><path d="M-3 -56V-64H14V-58" fill="none" stroke="#1B175A" stroke-width="7"/><path d="M-3 -56V-64H14V-58" fill="none" stroke="#FFFCFC" stroke-width="2.5"/><rect x="-7" y="-56" width="14" height="8" rx="2" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/><rect x="-16" y="-48" width="32" height="48" rx="9" fill="#F6A078" stroke="#1B175A" stroke-width="3"/><rect x="-10" y="-36" width="20" height="20" rx="3" fill="#FFFCFC" stroke="#1B175A" stroke-width="2"/><g transform="translate(0 -24) scale(0.5)"><path d="M0 -14C5 -6 9 -1 9 4A9 9 0 0 1 -9 4C-9 -1 -5 -6 0 -14Z" fill="#82CAFB" stroke="#1B175A" stroke-width="5"/><path d="M-4 3Q-4 7 0 8" fill="none" stroke="#FFFCFC" stroke-width="4"/></g></g>
+<rect x="140" y="104" width="16" height="70" rx="3" fill="#B9BBC6" stroke="#1B175A" stroke-width="3"/>
+<path d="M148 106Q148 86 172 86H206" fill="none" stroke="#1B175A" stroke-width="18"/><path d="M148 106Q148 86 172 86H206" fill="none" stroke="#B9BBC6" stroke-width="12"/>
+<rect x="200" y="78" width="12" height="18" rx="2" fill="#B9BBC6" stroke="#1B175A" stroke-width="3"/>
+<path d="M206 98V178" fill="none" stroke="#82CAFB" stroke-width="9" stroke-linecap="butt"/>
+<path d="M203.5 100V170" fill="none" stroke="#FFFCFC" stroke-width="2" stroke-opacity=".8"/>
+<path d="M118 158H296Q292 196 250 196H164Q122 196 118 158Z" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/>
+<path d="M126 166H288" fill="none" stroke="#C9CCDA" stroke-width="2.5"/>
+<path d="M404 118L402 146L236 166L232 146Z" fill="#B07A52" stroke="#1B175A" stroke-width="3"/>
+<g transform="translate(228 156) rotate(-6)"><g fill="#1B175A" stroke="#1B175A" stroke-width="5.2"><rect x="-16" y="-10" width="30" height="22" rx="9"/><rect x="-34" y="-8" width="22" height="6" rx="3"/><rect x="-36" y="-1" width="24" height="6" rx="3"/><rect x="-34" y="6" width="22" height="6" rx="3"/><rect x="-10" y="8" width="8" height="16" rx="4" transform="rotate(20 -6 16)"/></g><g fill="#B07A52"><rect x="-16" y="-10" width="30" height="22" rx="9"/><rect x="-34" y="-8" width="22" height="6" rx="3"/><rect x="-36" y="-1" width="24" height="6" rx="3"/><rect x="-34" y="6" width="22" height="6" rx="3"/><rect x="-10" y="8" width="8" height="16" rx="4" transform="rotate(20 -6 16)"/></g></g>
+<path d="M372 114L404 110V152L372 150Z" fill="#B9BBC6" stroke="#1B175A" stroke-width="3"/>
+<path d="M372 114V150" fill="none" stroke="#1B175A" stroke-width="2.5"/>
+<path d="M206 150V160" fill="none" stroke="#82CAFB" stroke-width="9" stroke-linecap="butt" stroke-opacity=".85"/>
+<circle cx="190" cy="140" r="3" fill="#82CAFB" stroke="#1B175A" stroke-width="1.4"/>
+<circle cx="184" cy="154" r="2.5" fill="#82CAFB" stroke="#1B175A" stroke-width="1.4"/>
+<circle cx="224" cy="142" r="3" fill="#82CAFB" stroke="#1B175A" stroke-width="1.4"/>
+<circle cx="232" cy="132" r="2.2" fill="#82CAFB" stroke="#1B175A" stroke-width="1.4"/>
+<circle cx="196" cy="176" r="2.5" fill="#82CAFB" stroke="#1B175A" stroke-width="1.4"/>
+<circle cx="218" cy="180" r="2.5" fill="#82CAFB" stroke="#1B175A" stroke-width="1.4"/>
+<circle cx="328" cy="60" r="32" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/><g transform="translate(328 70) scale(1.05)"><path d="M-16 0Q0 -13 16 0Q0 13 -16 0Z" fill="#FFFCFC" stroke="#1B175A" stroke-width="2.5"/><circle cx="0" cy="0" r="5.5" fill="#82CAFB" stroke="#1B175A" stroke-width="2"/><circle cx="0" cy="0" r="2.3" fill="#1B175A"/><circle cx="1.8" cy="-1.8" r="1" fill="#FFFCFC"/></g><g transform="translate(316 46) scale(0.45)"><path d="M0 -14C5 -6 9 -1 9 4A9 9 0 0 1 -9 4C-9 -1 -5 -6 0 -14Z" fill="#82CAFB" stroke="#1B175A" stroke-width="5.56"/><path d="M-4 3Q-4 7 0 8" fill="none" stroke="#FFFCFC" stroke-width="4.44"/></g><g transform="translate(330 40) scale(0.45)"><path d="M0 -14C5 -6 9 -1 9 4A9 9 0 0 1 -9 4C-9 -1 -5 -6 0 -14Z" fill="#82CAFB" stroke="#1B175A" stroke-width="5.56"/><path d="M-4 3Q-4 7 0 8" fill="none" stroke="#FFFCFC" stroke-width="4.44"/></g><g transform="translate(342 48) scale(0.4)"><path d="M0 -14C5 -6 9 -1 9 4A9 9 0 0 1 -9 4C-9 -1 -5 -6 0 -14Z" fill="#82CAFB" stroke="#1B175A" stroke-width="6.25"/><path d="M-4 3Q-4 7 0 8" fill="none" stroke="#FFFCFC" stroke-width="5"/></g>
+</g>
+</svg>

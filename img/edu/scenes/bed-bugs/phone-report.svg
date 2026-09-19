@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+<!-- A phone call. A bubble shows a bed with a pin on the exact spot. Bed bugs presentation, CCC Team Portal. Flat vector, no text. -->
+<rect x="0" y="0" width="400" height="300" fill="#E6F2FD"/>
+<circle cx="92" cy="160" r="86" fill="#FFFCFC"/>
+<g transform="translate(80 162) scale(2.1)"><rect x="-17" y="-30" width="34" height="60" rx="7" fill="#1B175A"/><rect x="-13" y="-23" width="26" height="42" rx="3" fill="#82CAFB"/><rect x="-5" y="-27" width="10" height="2.2" rx="1.1" fill="#FFFCFC"/><circle cx="0" cy="24.5" r="2.4" fill="#FFFCFC"/><path d="M24 -16 Q31 -8 24 0 M31 -23 Q43 -8 31 7" fill="none" stroke="#F6A078" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g>
+<path d="M204 54 H374 Q386 54 386 66 V200 Q386 212 374 212 H240 L208 242 L218 212 H204 Q192 212 192 200 V66 Q192 54 204 54 Z" fill="#FFFCFC" stroke="#1B175A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(292 150) scale(1.8)"><rect x="-30" y="-4" width="60" height="12" rx="3" fill="#FFCB8E" stroke="#1B175A" stroke-width="3"/><rect x="-26" y="-18" width="54" height="14" rx="5" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/><rect x="-36" y="-30" width="9" height="40" rx="3" fill="#FFCB8E" stroke="#1B175A" stroke-width="3"/><rect x="-22" y="-25" width="16" height="8" rx="4" fill="#FFFCFC" stroke="#1B175A" stroke-width="2.5"/><rect x="-26" y="8" width="5" height="6" fill="#1B175A"/><rect x="22" y="8" width="5" height="6" fill="#1B175A"/></g>
+<g transform="translate(312 131) scale(1.1)"><path d="M0 0 C-4 -8 -13 -15 -13 -24 A13 13 0 0 1 13 -24 C13 -15 4 -8 0 0 Z" fill="#F6A078" stroke="#1B175A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="0" cy="-24" r="4.6" fill="#FFFCFC"/></g>
+<path d="M30 29 L32 34 L37 36 L32 38 L30 43 L28 38 L23 36 L28 34 Z" fill="#F6A078"/><path d="M380 255 L382 260 L387 262 L382 264 L380 269 L378 264 L373 262 L378 260 Z" fill="#82CAFB"/><path d="M250 258 L251.7 262.3 L256 264 L251.7 265.7 L250 270 L248.3 265.7 L244 264 L248.3 262.3 Z" fill="#F6A078"/>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+<!-- Your shoes: a closed toe work shoe, and a second one turned over to show an even, deep tread. Flat vector, no text. -->
+<defs><linearGradient id="sflSh_bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E2F1FD"/><stop offset="1" stop-color="#FDE5D8"/></linearGradient><clipPath id="sflSh_so"><path d="M300 44C338 44 354 82 350 120C346 152 336 170 338 200C340 234 326 258 300 258C274 258 260 234 262 200C264 170 254 152 250 120C246 82 262 44 300 44Z"/></clipPath></defs>
+<rect x="0" y="0" width="400" height="300" fill="url(#sflSh_bg)"/>
+<ellipse cx="126" cy="232" rx="104" ry="10" fill="#C9DEF4"/>
+<path d="M34 222V170C34 140 52 124 80 124L104 130C114 120 130 122 140 138C158 150 190 154 206 170C220 184 222 206 214 222Z" fill="#2B2A47" stroke="#1B175A" stroke-width="3.5" stroke-linejoin="round"/>
+<path d="M150 146C170 152 196 158 206 172" fill="none" stroke="#4A4970" stroke-width="4" stroke-linecap="round"/>
+<path d="M104 130C112 142 126 150 140 138" fill="none" stroke="#4A4970" stroke-width="4" stroke-linecap="round"/>
+<path d="M108 142l14 -8M112 152l16 -9M118 161l16 -9" fill="none" stroke="#FFFCFC" stroke-width="3.4" stroke-linecap="round"/>
+<path d="M44 150C60 150 70 162 72 180" fill="none" stroke="#4A4970" stroke-width="4" stroke-linecap="round"/>
+<path d="M26 218H218C224 218 226 236 218 238H32C24 238 22 220 26 218Z" fill="#FFFCFC" stroke="#1B175A" stroke-width="3.2" stroke-linejoin="round"/>
+<path d="M36 238v7h9v-7M52 238v7h9v-7M68 238v7h9v-7M84 238v7h9v-7M100 238v7h9v-7M116 238v7h9v-7M132 238v7h9v-7M148 238v7h9v-7M164 238v7h9v-7M180 238v7h9v-7M196 238v7h9v-7" fill="#1B175A"/>
+<g transform="rotate(16 300 150)"><path d="M300 44C338 44 354 82 350 120C346 152 336 170 338 200C340 234 326 258 300 258C274 258 260 234 262 200C264 170 254 152 250 120C246 82 262 44 300 44Z" fill="#E4E7F0" stroke="#1B175A" stroke-width="3.5"/><g clip-path="url(#sflSh_so)"><path d="M262 52L300 62L338 52M262 67L300 77L338 67M262 82L300 92L338 82M262 97L300 107L338 97M262 112L300 122L338 112M262 127L300 137L338 127M262 142L300 152L338 142M262 157L300 167L338 157M262 172L300 182L338 172M262 187L300 197L338 187M262 202L300 212L338 202M262 217L300 227L338 217M262 232L300 242L338 232M262 247L300 257L338 247" fill="none" stroke="#1B175A" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/></g><path d="M300 44C338 44 354 82 350 120C346 152 336 170 338 200C340 234 326 258 300 258C274 258 260 234 262 200C264 170 254 152 250 120C246 82 262 44 300 44Z" fill="none" stroke="#1B175A" stroke-width="3.5"/></g>
+<path d="M372 51Q373.8 58.2 381 60Q373.8 61.8 372 69Q370.2 61.8 363 60Q370.2 58.2 372 51Z" fill="#F6A078"/>
+<path d="M236 34Q237.2 38.8 242 40Q237.2 41.2 236 46Q234.8 41.2 230 40Q234.8 38.8 236 34Z" fill="#82CAFB"/>
+<path d="M46 83Q47.4 88.6 53 90Q47.4 91.4 46 97Q44.6 91.4 39 90Q44.6 88.6 46 83Z" fill="#FFCB8E"/>
+</svg>

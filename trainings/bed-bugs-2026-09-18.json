@@ -1,0 +1,1302 @@
+{
+ "character": "duo",
+ "kind": "course",
+ "schema": "ccc-edu-pack/1",
+ "summary": {
+  "en": "How to spot bed bugs at a property, what to do the moment you see them, and how to keep them out of your own home.",
+  "es": "Cómo reconocer las chinches en una propiedad, qué hacer en el momento en que las ve y cómo evitar que lleguen a su casa."
+ },
+ "title": {
+  "en": "Bed Bugs: How to Spot Them and Stop Them",
+  "es": "Chinches: cómo reconocerlas y cómo detenerlas"
+ },
+ "training_id": "bed-bugs",
+ "variants": {
+  "full": {
+   "quiz": {
+    "questions": [
+     {
+      "choices": [
+       {
+        "en": "Wipe the spots off and finish making the bed.",
+        "es": "Limpia los puntos y termina de hacer la cama.",
+        "id": "q1_a"
+       },
+       {
+        "en": "Strip the bed and take the linens to the laundry so the bugs leave the room.",
+        "es": "Quita la ropa de cama y la lleva a la lavandería para que las chinches salgan del cuarto.",
+        "id": "q1_b"
+       },
+       {
+        "en": "Stop, leave everything as it is, step out of the room and call the office.",
+        "es": "Se detiene, deja todo como está, sale del cuarto y llama a la oficina.",
+        "id": "q1_c"
+       },
+       {
+        "en": "Vacuum the seam first, then call the office.",
+        "es": "Primero aspira la costura y después llama a la oficina.",
+        "id": "q1_d"
+       }
+      ],
+      "id": "q1",
+      "prompt": {
+       "en": "You pull the top sheet back. Along the mattress seam there are small dark dots and one reddish stain. What do you do?",
+       "es": "Usted levanta la sábana de arriba. A lo largo de la costura del colchón hay puntitos oscuros y una mancha rojiza. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Put the linens straight into your car so they are out of the room.",
+        "es": "Pone la ropa de cama directo en su carro para sacarla del cuarto.",
+        "id": "q2_a"
+       },
+       {
+        "en": "Put the linens down in that room, step out, and call the office.",
+        "es": "Deja la ropa de cama en ese cuarto, sale y llama a la oficina.",
+        "id": "q2_b"
+       },
+       {
+        "en": "Put the linens in the washer at the property and start the hot cycle.",
+        "es": "Mete la ropa de cama en la lavadora de la propiedad y pone el ciclo caliente.",
+        "id": "q2_c"
+       },
+       {
+        "en": "Shake the linens out over the tub and then bag them.",
+        "es": "Sacude la ropa de cama sobre la tina y después la mete en una bolsa.",
+        "id": "q2_d"
+       }
+      ],
+      "id": "q2",
+      "prompt": {
+       "en": "The bed is already stripped and the linens are in your arms. Now you see a live bug on the mattress seam. What do you do?",
+       "es": "La cama ya está sin ropa y usted tiene la ropa de cama en los brazos. En ese momento ve una chinche viva en la costura del colchón. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Tell her it is bed bugs and that the owner will pay for a treatment.",
+        "es": "Le dice que son chinches y que el dueño va a pagar un tratamiento.",
+        "id": "q3_a"
+       },
+       {
+        "en": "Tell her it is not bed bugs, because you looked and there is nothing there.",
+        "es": "Le dice que no son chinches, porque usted revisó y no hay nada.",
+        "id": "q3_b"
+       },
+       {
+        "en": "Do not say what it is. Do not touch her things. Call the office.",
+        "es": "No dice qué es. No toca las cosas de ella. Llama a la oficina.",
+        "id": "q3_c"
+       },
+       {
+        "en": "Open her suitcase and check it for bugs.",
+        "es": "Abre la maleta de ella y la revisa para buscar chinches.",
+        "id": "q3_d"
+       }
+      ],
+      "id": "q3",
+      "prompt": {
+       "en": "A guest says she woke up with itchy bites. You look at the bed and see nothing at all. What do you do?",
+       "es": "Una huésped dice que amaneció con picaduras que le dan comezón. Usted mira la cama y no ve absolutamente nada. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Spray them with rubbing alcohol.",
+        "es": "Rociarlas con alcohol.",
+        "id": "q4_a"
+       },
+       {
+        "en": "Spray them with a bug spray from the store.",
+        "es": "Rociarlas con un insecticida de la tienda.",
+        "id": "q4_b"
+       },
+       {
+        "en": "Vacuum them up and throw the bag away outside.",
+        "es": "Aspirarlas y tirar la bolsa afuera.",
+        "id": "q4_c"
+       },
+       {
+        "en": "None of these. A licensed pest control company treats them. You only report them.",
+        "es": "Ninguna. Una compañía de control de plagas con licencia hace el tratamiento. Usted solo reporta.",
+        "id": "q4_d"
+       }
+      ],
+      "id": "q4",
+      "prompt": {
+       "en": "What is the right way to get rid of bed bugs you find at a property?",
+       "es": "¿Cuál es la forma correcta de acabar con las chinches que usted encuentra en una propiedad?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Dark spots the size of a pen dot on the mattress seam, which soak into the cloth.",
+        "es": "Puntos oscuros del tamaño del punto de un bolígrafo en la costura del colchón, que se corren en la tela.",
+        "id": "q5_a"
+       },
+       {
+        "en": "A little dust under the bed.",
+        "es": "Un poco de polvo debajo de la cama.",
+        "id": "q5_b"
+       },
+       {
+        "en": "A mattress that is old.",
+        "es": "Un colchón viejo.",
+        "id": "q5_c"
+       },
+       {
+        "en": "A guest who left the room messy.",
+        "es": "Un huésped que dejó el cuarto desordenado.",
+        "id": "q5_d"
+       }
+      ],
+      "id": "q5",
+      "prompt": {
+       "en": "Which of these is a sign of bed bugs?",
+       "es": "¿Cuál de estas cosas es una señal de chinches?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "In the kitchen sink drain.",
+        "es": "En el desagüe del fregadero de la cocina.",
+        "id": "q6_a"
+       },
+       {
+        "en": "In the piping, seams and tag of the mattress and box spring, and in cracks in the bed frame and headboard.",
+        "es": "En el ribete, las costuras y la etiqueta del colchón y de la base de la cama, y en las grietas del armazón y de la cabecera.",
+        "id": "q6_b"
+       },
+       {
+        "en": "In the middle of the bathroom floor.",
+        "es": "En medio del piso del baño.",
+        "id": "q6_c"
+       },
+       {
+        "en": "Outside in the garden.",
+        "es": "Afuera, en el jardín.",
+        "id": "q6_d"
+       }
+      ],
+      "id": "q6",
+      "prompt": {
+       "en": "You are changing a bed. Where are bed bugs most likely to be hiding?",
+       "es": "Usted está cambiando una cama. ¿Dónde es más probable que estén escondidas las chinches?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "On the bed, so you do not lose them.",
+        "es": "Sobre la cama, para no perderlas.",
+        "id": "q7_a"
+       },
+       {
+        "en": "On the soft chair in the corner.",
+        "es": "Sobre la silla de tela del rincón.",
+        "id": "q7_b"
+       },
+       {
+        "en": "Out of the bedroom, and never on a bed or on soft furniture.",
+        "es": "Fuera del cuarto, y nunca sobre una cama ni sobre muebles de tela.",
+        "id": "q7_c"
+       },
+       {
+        "en": "Under the mattress, out of the way.",
+        "es": "Debajo del colchón, para que no estorben.",
+        "id": "q7_d"
+       }
+      ],
+      "id": "q7",
+      "prompt": {
+       "en": "You have your own bag and your coat with you. Where do they go while you work in a bedroom?",
+       "es": "Usted trae su bolsa y su chaqueta. ¿Dónde las pone mientras trabaja en un cuarto donde se duerme?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Start cleaning. If you do not see any bugs, it is fine.",
+        "es": "Empieza a limpiar. Si no ve chinches, no hay problema.",
+        "id": "q8_a"
+       },
+       {
+        "en": "Clean everything except the bedroom.",
+        "es": "Limpia todo menos el cuarto donde se duerme.",
+        "id": "q8_b"
+       },
+       {
+        "en": "Call the office before you start and ask whether the pest control company has finished and the unit is cleared.",
+        "es": "Llama a la oficina antes de empezar y pregunta si la compañía de control de plagas ya terminó y si la unidad ya está autorizada.",
+        "id": "q8_c"
+       },
+       {
+        "en": "Bring your own spray, just in case.",
+        "es": "Lleva su propio insecticida, por si acaso.",
+        "id": "q8_d"
+       }
+      ],
+      "id": "q8",
+      "prompt": {
+       "en": "The office sends you back to the same unit the next day. Nobody has told you whether it was treated. What do you do?",
+       "es": "La oficina le pide que vuelva a la misma unidad al día siguiente. Nadie le ha dicho si le hicieron tratamiento. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Yes, if you wipe them down first.",
+        "es": "Sí, si primero las limpia.",
+        "id": "q9_a"
+       },
+       {
+        "en": "Yes, if you put them in a bag first.",
+        "es": "Sí, si primero las mete en una bolsa.",
+        "id": "q9_b"
+       },
+       {
+        "en": "No. Nothing moves from one property to another.",
+        "es": "No. Nada se pasa de una propiedad a otra.",
+        "id": "q9_c"
+       },
+       {
+        "en": "Yes, if the owner says it is fine.",
+        "es": "Sí, si el dueño dice que está bien.",
+        "id": "q9_d"
+       }
+      ],
+      "id": "q9",
+      "prompt": {
+       "en": "A lamp and a small side table from a unit that had bed bugs would be useful at another property. May you take them?",
+       "es": "Una lámpara y una mesita de una unidad que tuvo chinches servirían en otra propiedad. ¿Se las puede llevar?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Bed bugs spread serious diseases to people.",
+        "es": "Las chinches transmiten enfermedades graves a las personas.",
+        "id": "q10_a"
+       },
+       {
+        "en": "Bed bugs are not known to spread disease, but the bites itch and scratching can cause a skin infection.",
+        "es": "No se sabe que las chinches transmitan enfermedades, pero las picaduras dan comezón y rascarse puede causar una infección en la piel.",
+        "id": "q10_b"
+       },
+       {
+        "en": "Bed bugs only bite people who are dirty.",
+        "es": "Las chinches solo pican a las personas sucias.",
+        "id": "q10_c"
+       },
+       {
+        "en": "A bed bug bite always shows right away, so you always know.",
+        "es": "La picadura de chinche siempre sale enseguida, así que uno siempre se da cuenta.",
+        "id": "q10_d"
+       }
+      ],
+      "id": "q10",
+      "prompt": {
+       "en": "Which one of these is true about bed bugs and health?",
+       "es": "¿Cuál de estas cosas es cierta sobre las chinches y la salud?"
+      }
+     }
+    ],
+    "seconds": 240
+   },
+   "screens": [
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A tidy bedroom with a made bed, a lamp and a window.",
+        "es": "Un cuarto ordenado con la cama hecha, una lámpara y una ventana."
+       },
+       "src": "img/edu/scenes/bed-bugs/welcome-bedroom.svg",
+       "type": "scene"
+      },
+      {
+       "character": "duo",
+       "en": "Hi! Let's learn about bed bugs together.",
+       "es": "¡Hola! Vamos a aprender juntos sobre las chinches.",
+       "pose": "hello",
+       "type": "say"
+      },
+      {
+       "en": "This lesson takes about 15 minutes. The quiz takes about 4 more. It is all paid work time.",
+       "es": "Esta lección dura unos 15 minutos. La prueba dura unos 4 minutos más. Todo es tiempo de trabajo pagado.",
+       "type": "text"
+      },
+      {
+       "en": "You can take the quiz again as many times as you need.",
+       "es": "Puede repetir la prueba todas las veces que necesite.",
+       "type": "text"
+      },
+      {
+       "en": "If you need help reading this or taking the quiz, tell the CCC office.",
+       "es": "Si necesita ayuda para leer esto o para hacer la prueba, dígale a la oficina de CCC.",
+       "type": "text"
+      }
+     ],
+     "id": "before-you-start",
+     "layout": "full",
+     "seconds": 30,
+     "title": {
+      "en": "Before you start",
+      "es": "Antes de empezar"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "Between two homes: a suitcase, a bag and a stack of folded clothes. A magnifying glass shows two small bugs on the suitcase seam.",
+        "es": "Entre dos casas: una maleta, una bolsa y una pila de ropa doblada. Una lupa muestra dos chinches pequeñas en la costura de la maleta."
+       },
+       "src": "img/edu/scenes/bed-bugs/bags-travel.svg",
+       "type": "scene"
+      },
+      {
+       "en": "Bed bugs travel. They ride in bags, folded clothes, bedding and furniture, and that is how they move from one place to another.",
+       "es": "Las chinches viajan. Se meten en las bolsas, en la ropa doblada, en la ropa de cama y en los muebles, y así pasan de un lugar a otro.",
+       "type": "text"
+      },
+      {
+       "en": "That is why they turn up in vacation rentals and in co living homes. A guest brings them in without knowing.",
+       "es": "Por eso aparecen en las casas de alquiler vacacional y en las casas de co living. Un huésped las trae sin darse cuenta.",
+       "type": "text"
+      },
+      {
+       "en": "Bed bugs are not known to spread disease. But the bites itch, they keep people awake, and scratching a bite can cause a skin infection.",
+       "es": "No se sabe que las chinches transmitan enfermedades. Pero las picaduras dan comezón, no dejan dormir, y rascarse una picadura puede causar una infección en la piel.",
+       "type": "text"
+      }
+     ],
+     "id": "why-it-matters",
+     "layout": "hero",
+     "seconds": 45,
+     "title": {
+      "en": "Why this matters",
+      "es": "Por qué esto es importante"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A cleaner in a grey CCC shirt has stepped out of a bedroom and calls on her phone. Through the open door, a bed with small dark dots on the mattress seam.",
+        "es": "Una limpiadora con camisa gris de CCC salió del cuarto y llama por teléfono. Por la puerta abierta se ve una cama con puntitos oscuros en la costura del colchón."
+       },
+       "src": "img/edu/scenes/bed-bugs/see-and-tell.svg",
+       "type": "scene"
+      },
+      {
+       "character": "cris",
+       "en": "Your job is to see them and tell the office.",
+       "es": "Su trabajo es verlas y avisar a la oficina.",
+       "pose": "tip",
+       "type": "say"
+      },
+      {
+       "en": "When bed bugs are missed at a turnover, three things happen. The next guest gets bitten. The owner pays for a treatment. And the bugs can ride home inside your own bag, to your own family.",
+       "es": "Cuando nadie ve las chinches en una limpieza, pasan tres cosas. Al siguiente huésped lo pican. El dueño paga un tratamiento. Y las chinches se pueden ir a su casa dentro de su propia bolsa, con su familia.",
+       "type": "text"
+      },
+      {
+       "en": "Your job is to see them and tell the office. You never treat them. That work belongs to a licensed pest control company.",
+       "es": "Su trabajo es verlas y avisar a la oficina. Usted nunca las trata. Ese trabajo le toca a una compañía de control de plagas con licencia.",
+       "type": "text"
+      }
+     ],
+     "id": "why-it-matters-part-2",
+     "layout": "hero",
+     "seconds": 30,
+     "title": {
+      "en": "Why this matters",
+      "es": "Por qué esto es importante"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A bed bug next to an apple seed of the same length, a redder rounder one that has fed, a pale young one and a tiny white egg.",
+        "es": "Una chinche junto a una semilla de manzana del mismo largo, una más roja y redonda que ya comió, una joven pálida y un huevo blanco muy pequeño."
+       },
+       "src": "img/edu/scenes/bed-bugs/size-guide.svg",
+       "type": "scene"
+      },
+      {
+       "en": "A grown bed bug is about the size of an apple seed, 5 mm to 7 mm long. It is flat, oval and brown.",
+       "es": "Una chinche adulta mide más o menos como una semilla de manzana, de 5 mm a 7 mm de largo. Es plana, ovalada y de color café.",
+       "type": "text"
+      },
+      {
+       "character": "clara",
+       "en": "Wow! About the size of an apple seed.",
+       "es": "¡Uy! Más o menos como una semilla de manzana.",
+       "pose": "tip",
+       "type": "say"
+      },
+      {
+       "en": "After it feeds it looks redder, rounder and longer.",
+       "es": "Después de comer se ve más roja, más redonda y más larga.",
+       "type": "text"
+      },
+      {
+       "en": "A young one is smaller and almost see through, a whitish yellow.",
+       "es": "Una chinche joven es más pequeña y casi transparente, de color amarillo blancuzco.",
+       "type": "text"
+      },
+      {
+       "en": "An egg is the size of the head of a pin and pearl white.",
+       "es": "Un huevo es del tamaño de la cabeza de un alfiler y de color blanco perla.",
+       "type": "text"
+      },
+      {
+       "en": "A bed bug has no wings, so it cannot fly. It is as flat as the edge of a credit card, so it fits into very small spaces.",
+       "es": "La chinche no tiene alas, así que no puede volar. Es tan plana como el borde de una tarjeta de crédito, por eso cabe en espacios muy pequeños.",
+       "type": "callout"
+      }
+     ],
+     "id": "what-they-look-like",
+     "layout": "hero",
+     "seconds": 60,
+     "title": {
+      "en": "What a bed bug looks like",
+      "es": "Cómo se ve una chinche"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A close look at a mattress seam with the sheet pulled back: small dark dots, a reddish stain, tiny white eggs, a pale shed skin and one bug.",
+        "es": "La costura de un colchón vista de cerca, con la sábana levantada: puntitos oscuros, una mancha rojiza, huevitos blancos, una piel clara y una chinche."
+       },
+       "src": "img/edu/scenes/bed-bugs/seam-signs.svg",
+       "type": "scene"
+      },
+      {
+       "en": "Most of the time you see the marks before you see a bug. Look for these five signs.",
+       "es": "Casi siempre usted ve las señales antes de ver una chinche. Busque estas cinco señales.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Dark spots about the size of a pen dot. That is bed bug waste. It soaks into the cloth like a marker.",
+        "Rusty or reddish stains on the sheets or the mattress, from a bug that was crushed.",
+        "Eggs and eggshells, about 1 mm, pearl white.",
+        "Pale yellow skins that the young bugs shed as they grow.",
+        "Live bugs."
+       ],
+       "es": [
+        "Puntos oscuros del tamaño del punto de un bolígrafo. Es el excremento de la chinche. Se corre en la tela como un marcador.",
+        "Manchas rojizas o color óxido en las sábanas o en el colchón, de una chinche aplastada.",
+        "Huevos y cascarones, de más o menos 1 mm, de color blanco perla.",
+        "Pieles de color amarillo claro que las chinches jóvenes sueltan cuando crecen.",
+        "Chinches vivas."
+       ],
+       "type": "steps"
+      }
+     ],
+     "id": "the-signs",
+     "layout": "hero",
+     "seconds": 60,
+     "title": {
+      "en": "The signs to look for",
+      "es": "Las señales que hay que buscar"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A washing machine and a tied bag of linens, each inside a no sign.",
+        "es": "Una lavadora y una bolsa amarrada con ropa de cama, cada una dentro de una señal de prohibido."
+       },
+       "src": "img/edu/scenes/bed-bugs/no-wash-no-bag.svg",
+       "type": "scene"
+      },
+      {
+       "character": "cris",
+       "en": "Do not wash or bag anything.",
+       "es": "No lave nada ni meta nada en una bolsa.",
+       "pose": "stop",
+       "type": "say"
+      },
+      {
+       "en": "These spots are not the blood size rule from the needles training. Do not wash or bag anything. Stop and call the office.",
+       "es": "Para estas manchas no se usa la regla de la moneda de la capacitación de agujas. No lave nada ni meta nada en una bolsa. Deténgase y llame a la oficina.",
+       "type": "text"
+      },
+      {
+       "en": "Bites are not proof. A bed bug bite looks like other bites, a mark can take up to 14 days to show, and some people get no mark at all. Look for the spots and the skins, not for bites.",
+       "es": "Las picaduras no son evidencia. La picadura de chinche se parece a otras picaduras, la marca puede tardar hasta 14 días en salir, y a algunas personas no les sale ninguna marca. Busque los puntos y las pieles, no las picaduras.",
+       "type": "callout"
+      }
+     ],
+     "id": "the-signs-part-2",
+     "layout": "hero",
+     "seconds": 30,
+     "title": {
+      "en": "The signs to look for",
+      "es": "Las señales que hay que buscar"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A bed with circles on the mattress piping, seam and tag, the box spring, and cracks in the frame and headboard. A dashed line marks the floor around the bed.",
+        "es": "Una cama con círculos en el ribete, la costura y la etiqueta del colchón, en la base de la cama y en las grietas del armazón y de la cabecera. Una línea punteada marca el piso alrededor de la cama."
+       },
+       "src": "img/edu/scenes/bed-bugs/where-they-hide.svg",
+       "type": "scene"
+      },
+      {
+       "en": "Bed bugs stay close to where people sleep. They live within about 8 feet of the bed.",
+       "es": "Las chinches se quedan cerca de donde duerme la gente. Viven a menos de 8 pies de la cama, más o menos.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "The seams, the piping and the tag of the mattress. The piping is the cord that runs around the edge.",
+        "The same places on the box spring.",
+        "Cracks in the bed frame and in the headboard.",
+        "In a badly infested room, also the seams of chairs and couches, between cushions, in the folds of curtains, in drawer joints, under loose wallpaper, and where the wall meets the ceiling."
+       ],
+       "es": [
+        "Las costuras, el ribete y la etiqueta del colchón. El ribete es la cinta que va por la orilla.",
+        "Los mismos lugares en la base de la cama, el box spring.",
+        "Las grietas del armazón de la cama y de la cabecera.",
+        "En un cuarto muy infestado, también las costuras de las sillas y los sofás, entre los cojines, en los pliegues de las cortinas, en las uniones de los cajones, debajo del papel tapiz despegado y donde la pared se junta con el techo."
+       ],
+       "type": "steps"
+      },
+      {
+       "character": "clara",
+       "en": "So many hiding spots!",
+       "es": "¡Cuántos escondites!",
+       "pose": "tip",
+       "type": "say"
+      },
+      {
+       "en": "You do not have to take anything apart. Look at what you can already see while you change the bed.",
+       "es": "Usted no tiene que desarmar nada. Mire lo que ya se ve mientras cambia la cama.",
+       "type": "text"
+      }
+     ],
+     "id": "where-they-hide",
+     "layout": "hero",
+     "seconds": 60,
+     "title": {
+      "en": "Where they hide",
+      "es": "Dónde se esconden"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "Small pictures of the steps: a raised hand, a bed with a crossed out arrow, a door with an arrow pointing out, a phone and an hourglass.",
+        "es": "Dibujos pequeños de los pasos: una mano levantada, una cama con una flecha tachada, una puerta con una flecha hacia afuera, un teléfono y un reloj de arena."
+       },
+       "src": "img/edu/scenes/bed-bugs/five-steps.svg",
+       "type": "scene"
+      },
+      {
+       "character": "duo",
+       "en": "Learn these steps by heart.",
+       "es": "Apréndase estos pasos de memoria.",
+       "pose": "stop",
+       "type": "say"
+      },
+      {
+       "en": "If you see any of those signs:",
+       "es": "Si ve cualquiera de esas señales:",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Stop.",
+        "Do not move anything.",
+        "Step out of the room.",
+        "Call the office.",
+        "Wait for instructions."
+       ],
+       "es": [
+        "Deténgase.",
+        "No mueva nada.",
+        "Salga del cuarto.",
+        "Llame a la oficina.",
+        "Espere instrucciones."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "Learn these 5 steps by heart. They work the way the gun rule works: you find it, you leave it exactly as it is, you call, and you wait. The words are different here because moving a bed bug is what spreads it.",
+       "es": "Apréndase estos 5 pasos de memoria. Funcionan como la regla de las armas: usted lo encuentra, lo deja exactamente como está, llama, y espera. Aquí las palabras son distintas porque mover una chinche es lo que la pasa a otros cuartos.",
+       "type": "text"
+      }
+     ],
+     "id": "five-steps",
+     "layout": "full",
+     "seconds": 30,
+     "title": {
+      "en": "The 5 step rule",
+      "es": "La regla de los 5 pasos"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A cleaner in a grey CCC shirt closes a bedroom door with his phone at his ear. His cart and bag stay in the hallway.",
+        "es": "Un limpiador con camisa gris de CCC cierra la puerta de un cuarto con el teléfono en el oído. Su carrito y su bolsa se quedan en el pasillo."
+       },
+       "src": "img/edu/scenes/bed-bugs/step-out-door.svg",
+       "type": "scene"
+      },
+      {
+       "en": [
+        "Stop. Stop cleaning that room right away. Do not finish the bed.",
+        "Do not move anything. Do not pull the sheets off. Do not move or flip the mattress or the box spring. Do not move the furniture. Do not use the vacuum. Moving things pushes bed bugs into other rooms, and the pest control company needs to see the room the way you found it.",
+        "Step out of the room. Take nothing out with you. Leave the linens where they are, even the ones already off the bed. Keep your own bag, your coat and your cart out of that room. Close the door.",
+        "Call the office. Call right away. Make a phone call. Do not send only a text. The number is {{OFFICE_PHONE}}. It is the same number at every hour.",
+        "Wait for instructions. The office decides what happens next. Do not go back into that room until the office tells you."
+       ],
+       "es": [
+        "Deténgase. Deje de limpiar ese cuarto enseguida. No termine la cama.",
+        "No mueva nada. No quite las sábanas. No mueva ni voltee el colchón ni la base de la cama. No mueva los muebles. No use la aspiradora. Cuando usted mueve las cosas, empuja las chinches hacia otros cuartos, y la compañía de control de plagas necesita ver el cuarto como usted lo encontró.",
+        "Salga del cuarto. No saque nada. Deje la ropa de cama donde está, hasta la que ya quitó de la cama. Mantenga su bolsa, su chaqueta y su carrito fuera de ese cuarto. Cierre la puerta.",
+        "Llame a la oficina. Llame enseguida. Haga una llamada. No mande solo un mensaje de texto. El número es {{OFFICE_PHONE}}. Es el mismo número a toda hora.",
+        "Espere instrucciones. La oficina decide qué sigue. No vuelva a entrar a ese cuarto hasta que la oficina se lo diga."
+       ],
+       "type": "steps"
+      }
+     ],
+     "id": "what-each-step-means",
+     "layout": "split",
+     "seconds": 60,
+     "title": {
+      "en": "What each step means",
+      "es": "Qué quiere decir cada paso"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A quiet hallway with closed doors. A cleaning cart waits outside, next to an hourglass.",
+        "es": "Un pasillo tranquilo con las puertas cerradas. Un carrito de limpieza espera afuera, junto a un reloj de arena."
+       },
+       "src": "img/edu/scenes/bed-bugs/hallway-wait.svg",
+       "type": "scene"
+      },
+      {
+       "character": "cris",
+       "en": "Do not start cleaning another room until the office tells you.",
+       "es": "No empiece a limpiar otro cuarto hasta que la oficina se lo diga.",
+       "pose": "stop",
+       "type": "say"
+      },
+      {
+       "en": "No answer? Leave a message and keep calling the office. If nobody answers in 10 minutes, also call your region or division supervisor: {{SUPERVISOR_PHONE}}.",
+       "es": "¿No contestan? Deje un mensaje y siga llamando a la oficina. Si nadie contesta en 10 minutos, llame también a su supervisor de región o de división: {{SUPERVISOR_PHONE}}.",
+       "type": "callout"
+      },
+      {
+       "en": "Do not start cleaning another room until the office tells you.",
+       "es": "No empiece a limpiar otro cuarto hasta que la oficina se lo diga.",
+       "type": "callout"
+      }
+     ],
+     "id": "what-each-step-means-part-2",
+     "layout": "hero",
+     "seconds": 30,
+     "title": {
+      "en": "What each step means",
+      "es": "Qué quiere decir cada paso"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A spray bottle, a vacuum and a mattress lifted on one end, each inside a no sign.",
+        "es": "Un atomizador, una aspiradora y un colchón levantado de un lado, cada uno dentro de una señal de prohibido."
+       },
+       "src": "img/edu/scenes/bed-bugs/never-spray-vacuum.svg",
+       "type": "scene"
+      },
+      {
+       "character": "cris",
+       "en": "Never spray. Never vacuum. Never move a mattress.",
+       "es": "Nunca rocíe nada. Nunca aspire. Nunca mueva un colchón.",
+       "pose": "stop",
+       "type": "say"
+      },
+      {
+       "en": [
+        "Never spray anything on bed bugs. Not bug spray, not alcohol, not bleach, not gasoline or any other fuel. Alcohol and fuels catch fire easily and can hurt you and the people in the home.",
+        "Never vacuum bed bugs. The vacuum then carries them to the next home.",
+        "Never move or flip a mattress or a box spring.",
+        "Never carry linens or towels out of that room, to a laundry, to your car or to another property.",
+        "Never move furniture, lamps, pictures or anything else from one property to another."
+       ],
+       "es": [
+        "Nunca les eche nada a las chinches. Ni insecticida, ni alcohol, ni cloro, ni gasolina ni ningún otro combustible. El alcohol y los combustibles se prenden con facilidad y pueden lastimarle a usted y a las personas de la casa.",
+        "Nunca aspire chinches. Después la aspiradora se las lleva a la siguiente casa.",
+        "Nunca mueva ni voltee un colchón ni una base de cama.",
+        "Nunca saque la ropa de cama ni las toallas de ese cuarto, ni a una lavandería, ni a su carro, ni a otra propiedad.",
+        "Nunca mueva muebles, lámparas, cuadros ni ninguna otra cosa de una propiedad a otra."
+       ],
+       "type": "text"
+      }
+     ],
+     "id": "never-list",
+     "layout": "hero",
+     "seconds": 50,
+     "title": {
+      "en": "Never do these things",
+      "es": "Lo que nunca debe hacer"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A bag on a bed, and a phone sharing a photo to a group chat, each inside a no sign.",
+        "es": "Una bolsa sobre una cama, y un teléfono que comparte una foto en un chat de grupo, cada uno dentro de una señal de prohibido."
+       },
+       "src": "img/edu/scenes/bed-bugs/never-bag-on-bed.svg",
+       "type": "scene"
+      },
+      {
+       "en": [
+        "Never put your bag, your coat, your phone or clean linens on a bed or on soft furniture.",
+        "Never tell the guest or the owner that it is bed bugs. You report what you saw. The office and the pest control company say what it is.",
+        "Never post a photo, an address or the name of a property online or in a group chat.",
+        "Never keep working in that room to finish quickly."
+       ],
+       "es": [
+        "Nunca ponga su bolsa, su chaqueta, su teléfono ni la ropa de cama limpia sobre una cama ni sobre muebles de tela.",
+        "Nunca le diga al huésped ni al dueño que son chinches. Usted reporta lo que vio. La oficina y la compañía de control de plagas dicen qué es.",
+        "Nunca publique una foto, una dirección ni el nombre de una propiedad en internet ni en un chat de grupo.",
+        "Nunca siga limpiando ese cuarto para terminar rápido."
+       ],
+       "type": "text"
+      }
+     ],
+     "id": "never-list-part-2",
+     "layout": "hero",
+     "seconds": 40,
+     "title": {
+      "en": "Never do these things",
+      "es": "Lo que nunca debe hacer"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A bed with the top sheet pulled back. Small dark dots and a reddish stain run along the mattress seam.",
+        "es": "Una cama con la sábana de arriba levantada. Hay puntitos oscuros y una mancha rojiza a lo largo de la costura del colchón."
+       },
+       "src": "img/edu/scenes/bed-bugs/card-dark-spots.svg",
+       "type": "scene"
+      },
+      {
+       "en": "Example: You pull the top sheet back. Along the mattress seam there are small dark dots and one reddish stain.",
+       "es": "Ejemplo: Usted levanta la sábana de arriba. A lo largo de la costura del colchón hay puntitos oscuros y una mancha rojiza.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Stop. Lay the sheet back down where it was.",
+        "Do not pull the rest of the bedding off.",
+        "Step out and close the door. Leave your cart outside the room.",
+        "Call the office. Say what you saw and exactly where."
+       ],
+       "es": [
+        "Deténgase. Vuelva a bajar la sábana donde estaba.",
+        "No quite el resto de la ropa de cama.",
+        "Salga y cierre la puerta. Deje su carrito fuera del cuarto.",
+        "Llame a la oficina. Diga qué vio y en qué lugar exacto."
+       ],
+       "type": "steps"
+      },
+      {
+       "character": "clara",
+       "en": "Good catch!",
+       "es": "¡Bien visto!",
+       "pose": "tip",
+       "type": "say"
+      }
+     ],
+     "id": "card-1-dark-spots",
+     "layout": "hero",
+     "seconds": 45,
+     "title": {
+      "en": "Card 1. Dark spots on the mattress seam",
+      "es": "Tarjeta 1. Puntos oscuros en la costura del colchón"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A made bed with nothing to see on it, and a guest's closed suitcase beside it.",
+        "es": "Una cama hecha donde no se ve nada, y la maleta cerrada de una huésped al lado."
+       },
+       "src": "img/edu/scenes/bed-bugs/card-guest-bites.svg",
+       "type": "scene"
+      },
+      {
+       "en": "Example: A guest tells you she woke up with itchy bites. You look at the bed and you see nothing.",
+       "es": "Ejemplo: Una huésped le dice que amaneció con picaduras que le dan comezón. Usted mira la cama y no ve nada.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Do not say what it is. Not yes and not no.",
+        "Say: \"I will tell the office right away.\"",
+        "Do not touch or open the guest's bags.",
+        "Step out and call the office."
+       ],
+       "es": [
+        "No diga qué es. Ni que sí, ni que no.",
+        "Diga: \"Le voy a avisar a la oficina enseguida\". En inglés: \"I will tell the office right away.\"",
+        "No toque ni abra las maletas de la huésped.",
+        "Salga y llame a la oficina."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "Bites are a poor sign either way. A mark can take up to 14 days to show, and many other things leave the same mark.",
+       "es": "Las picaduras no sirven como evidencia, ni a favor ni en contra. La marca puede tardar hasta 14 días en salir, y muchas otras cosas dejan la misma marca.",
+       "type": "text"
+      },
+      {
+       "character": "cris",
+       "en": "Say: \"I will tell the office right away.\"",
+       "es": "Diga: \"Le voy a avisar a la oficina enseguida\".",
+       "pose": "tip",
+       "type": "say"
+      }
+     ],
+     "id": "card-2-guest-says-bitten",
+     "layout": "hero",
+     "seconds": 45,
+     "title": {
+      "en": "Card 2. A guest says she was bitten",
+      "es": "Tarjeta 2. Una huésped dice que la picaron"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A bare mattress with one small bug on the seam. The linens lie on the floor of the same room, and the door is closed.",
+        "es": "Un colchón sin ropa con una chinche pequeña en la costura. La ropa de cama está en el piso del mismo cuarto, y la puerta está cerrada."
+       },
+       "src": "img/edu/scenes/bed-bugs/card-stripped.svg",
+       "type": "scene"
+      },
+      {
+       "en": "Example: The bed is already stripped. The linens are in your arms. Now you see a live bug on the mattress seam.",
+       "es": "Ejemplo: La cama ya está sin ropa. Usted tiene la ropa de cama en los brazos. En ese momento ve una chinche viva en la costura del colchón.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Put the linens down in that room. On the floor is fine.",
+        "Do not carry them to the laundry, to your cart or to your car.",
+        "Do not shake them out.",
+        "Wash your hands. Step out and close the door.",
+        "Call the office and tell them the bed was already stripped."
+       ],
+       "es": [
+        "Deje la ropa de cama en ese mismo cuarto. En el piso está bien.",
+        "No la lleve a la lavandería, ni a su carrito, ni a su carro.",
+        "No la sacuda.",
+        "Lávese las manos. Salga y cierre la puerta.",
+        "Llame a la oficina y avise que la cama ya estaba sin ropa."
+       ],
+       "type": "steps"
+      },
+      {
+       "character": "cris",
+       "en": "Put the linens down in that room.",
+       "es": "Deje la ropa de cama en ese mismo cuarto.",
+       "pose": "stop",
+       "type": "say"
+      }
+     ],
+     "id": "card-3-already-stripped",
+     "layout": "hero",
+     "seconds": 45,
+     "title": {
+      "en": "Card 3. You already stripped the bed",
+      "es": "Tarjeta 3. Usted ya quitó la ropa de cama"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A cleaning cart waits outside a closed front door in the morning sun.",
+        "es": "Un carrito de limpieza espera afuera de una puerta cerrada, con el sol de la mañana."
+       },
+       "src": "img/edu/scenes/bed-bugs/card-sent-back.svg",
+       "type": "scene"
+      },
+      {
+       "en": "Example: The office sends you back to the same unit the next day. Nobody has told you whether it was treated.",
+       "es": "Ejemplo: La oficina le pide que vuelva a la misma unidad al día siguiente. Nadie le ha dicho si le hicieron tratamiento.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Do not start.",
+        "Call the office. Ask whether the pest control company has finished and whether the unit is cleared for cleaning.",
+        "Do not bring your own spray."
+       ],
+       "es": [
+        "No empiece.",
+        "Llame a la oficina. Pregunte si la compañía de control de plagas ya terminó y si ya se puede limpiar la unidad.",
+        "No lleve su propio insecticida."
+       ],
+       "type": "steps"
+      },
+      {
+       "character": "cris",
+       "en": "Do not start. Call the office.",
+       "es": "No empiece. Llame a la oficina.",
+       "pose": "stop",
+       "type": "say"
+      }
+     ],
+     "id": "card-4-sent-back",
+     "layout": "hero",
+     "seconds": 30,
+     "title": {
+      "en": "Card 4. You are sent back the next day",
+      "es": "Tarjeta 4. Vuelve a la misma unidad al día siguiente"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "At home, a clothes dryer and a closed plastic bag of clothes next to it.",
+        "es": "En casa, una secadora y a su lado una bolsa de plástico cerrada con ropa."
+       },
+       "src": "img/edu/scenes/bed-bugs/home-dryer.svg",
+       "type": "scene"
+      },
+      {
+       "en": "Bed bugs hide in the seams and folds of bags, folded clothes, bedding and furniture. That is how they leave a property.",
+       "es": "Las chinches se esconden en las costuras y los pliegues de las bolsas, la ropa doblada, la ropa de cama y los muebles. Así es como salen de una propiedad.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Keep your bag and your coat out of the bedroom. Never on a bed and never on soft furniture.",
+        "Keep clean linens in a closed bag or a covered cart until you use them.",
+        "If you think something came home with you, put those clothes straight into the dryer on high heat. A dryer on high heat can kill bed bugs.",
+        "Carry them in a closed plastic bag, and go from the bag straight into the dryer.",
+        "Do not spray alcohol, bug spray or any fuel in your home. It can catch fire."
+       ],
+       "es": [
+        "Mantenga su bolsa y su chaqueta fuera del cuarto donde se duerme. Nunca sobre una cama y nunca sobre muebles de tela.",
+        "Guarde la ropa de cama limpia en una bolsa cerrada o en un carrito tapado hasta que la use.",
+        "Si cree que algo se fue con usted a su casa, meta esa ropa directo a la secadora en calor alto. La secadora en calor alto puede matar las chinches.",
+        "Llévela en una bolsa de plástico cerrada, y pásela de la bolsa directo a la secadora.",
+        "No rocíe alcohol, insecticida ni ningún combustible en su casa. Se puede prender."
+       ],
+       "type": "steps"
+      }
+     ],
+     "id": "protect-yourself",
+     "layout": "hero",
+     "seconds": 60,
+     "title": {
+      "en": "Protect yourself and your family",
+      "es": "Cuídese usted y cuide a su familia"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A cozy home at night with warm light in the windows and a heart above the roof.",
+        "es": "Una casa acogedora de noche, con luz cálida en las ventanas y un corazón sobre el techo."
+       },
+       "src": "img/edu/scenes/bed-bugs/not-your-fault.svg",
+       "type": "scene"
+      },
+      {
+       "en": "Finding bed bugs is not your fault, and it does not mean anyone was dirty. They arrive in guests' bags. If you think bed bugs went home with you, tell the office.",
+       "es": "Encontrar chinches no es culpa suya, y no quiere decir que la casa esté sucia ni que alguien sea sucio. Llegan en las maletas de los huéspedes. Si cree que las chinches se fueron con usted a su casa, avísele a la oficina.",
+       "type": "callout"
+      },
+      {
+       "character": "clara",
+       "en": "It is not your fault.",
+       "es": "No es culpa suya.",
+       "pose": "tip",
+       "type": "say"
+      }
+     ],
+     "id": "protect-yourself-part-2",
+     "layout": "hero",
+     "seconds": 30,
+     "title": {
+      "en": "Protect yourself and your family",
+      "es": "Cuídese usted y cuide a su familia"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A phone call. A speech bubble shows a bed with a pin on the exact spot.",
+        "es": "Una llamada. Un globo muestra una cama con una marca en el lugar exacto."
+       },
+       "src": "img/edu/scenes/bed-bugs/phone-report.svg",
+       "type": "scene"
+      },
+      {
+       "character": "cris",
+       "en": "Say only what you saw. Do not guess.",
+       "es": "Diga solo lo que vio. No adivine.",
+       "pose": "tip",
+       "type": "say"
+      },
+      {
+       "en": [
+        "Your name and the property",
+        "What you saw: live bugs, dark spots, shed skins, eggs, or reddish stains",
+        "Which room, and exactly where. For example: \"the seam on the left side of the mattress, in the front bedroom.\"",
+        "Whether you had already moved or stripped anything before you saw it",
+        "Whether there are guests at the property right now",
+        "Where you are waiting"
+       ],
+       "es": [
+        "Su nombre y la propiedad",
+        "Qué vio: chinches vivas, puntos oscuros, pieles, huevos o manchas rojizas",
+        "En qué cuarto y en qué lugar exacto. Por ejemplo: \"en la costura del lado izquierdo del colchón, en el cuarto de adelante\".",
+        "Si usted ya había movido o quitado algo antes de verlo",
+        "Si en este momento hay huéspedes en la propiedad",
+        "Dónde está esperando usted"
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "Say only what you saw. Do not guess.",
+       "es": "Diga solo lo que vio. No adivine.",
+       "type": "text"
+      },
+      {
+       "en": "If the office wants a photo, they will tell you where to send it. Never post it in a group chat.",
+       "es": "Si la oficina quiere una foto, le dirá a dónde mandarla. Nunca la publique en un chat de grupo.",
+       "type": "callout"
+      }
+     ],
+     "id": "what-to-say",
+     "layout": "split",
+     "seconds": 45,
+     "title": {
+      "en": "What to say when you call",
+      "es": "Qué decir cuando llame"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A plain pest control van parked outside a house.",
+        "es": "Una camioneta de control de plagas, sin letreros, estacionada afuera de una casa."
+       },
+       "src": "img/edu/scenes/bed-bugs/what-next.svg",
+       "type": "scene"
+      },
+      {
+       "en": "The office takes it from there. You do not have to handle this alone.",
+       "es": "La oficina se encarga. Usted no tiene que resolver esto sin ayuda.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "The office tells the property manager or the owner.",
+        "A licensed pest control company decides what it is and treats it.",
+        "The office tells you when you can go back and what to clean."
+       ],
+       "es": [
+        "La oficina le avisa al administrador de la propiedad o al dueño.",
+        "Una compañía de control de plagas con licencia decide qué es y hace el tratamiento.",
+        "La oficina le dice cuándo puede regresar y qué limpiar."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "You will never get in trouble with CCC for reporting bed bugs. Nobody gets in trouble for reporting a hazard, and you will never get in trouble with CCC for calling 911 or the police to report danger.",
+       "es": "Usted nunca tendrá problemas con CCC por reportar chinches. Nadie tiene problemas por reportar un peligro, y usted nunca tendrá problemas con CCC por llamar al 911 o a la policía para reportar un peligro.",
+       "type": "callout"
+      },
+      {
+       "character": "duo",
+       "en": "You do not have to handle this alone.",
+       "es": "Usted no tiene que resolver esto sin ayuda.",
+       "pose": "tip",
+       "type": "say"
+      }
+     ],
+     "id": "what-happens-next",
+     "layout": "hero",
+     "seconds": 45,
+     "title": {
+      "en": "What happens next",
+      "es": "Qué pasa después"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A pocket card with small pictures: a raised hand, a bed with a crossed out arrow, a door, a phone and an hourglass, and a spray bottle, a vacuum and a mattress inside no signs.",
+        "es": "Una tarjeta de bolsillo con dibujos pequeños: una mano levantada, una cama con una flecha tachada, una puerta, un teléfono y un reloj de arena, y un atomizador, una aspiradora y un colchón dentro de señales de prohibido."
+       },
+       "src": "img/edu/scenes/bed-bugs/the-card.svg",
+       "type": "scene"
+      },
+      {
+       "en": "If you see dark spots, shed skins, eggs, reddish stains or a live bug:",
+       "es": "Si ve puntos oscuros, pieles, huevos, manchas rojizas o una chinche viva:",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Stop. Do not move anything. Step out. Call the office. Wait.",
+        "Never spray. Never vacuum. Never move a mattress.",
+        "Nothing leaves that room. Nothing goes to another property.",
+        "Keep your bag and your coat out of the bedroom.",
+        "Office: {{OFFICE_PHONE}}, the same number at every hour."
+       ],
+       "es": [
+        "Deténgase. No mueva nada. Salga. Llame a la oficina. Espere.",
+        "Nunca rocíe nada. Nunca aspire. Nunca mueva un colchón.",
+        "Nada sale de ese cuarto. Nada pasa a otra propiedad.",
+        "Mantenga su bolsa y su chaqueta fuera del cuarto donde se duerme.",
+        "Oficina: {{OFFICE_PHONE}}, el mismo número a toda hora."
+       ],
+       "type": "steps"
+      },
+      {
+       "character": "duo",
+       "en": "Remember this card. The quiz is next.",
+       "es": "Recuerde esta tarjeta. Ahora sigue la prueba.",
+       "pose": "think",
+       "type": "say"
+      }
+     ],
+     "id": "what-to-do-card",
+     "layout": "hero",
+     "seconds": 30,
+     "title": {
+      "en": "What to do: the card",
+      "es": "Qué hacer: la tarjeta"
+     }
+    }
+   ]
+  },
+  "notice": {
+   "ack": {
+    "text": {
+     "en": "I have read this notice.",
+     "es": "He leído este aviso."
+    }
+   },
+   "screens": [
+    {
+     "blocks": [
+      {
+       "decorative": true,
+       "src": "img/edu/scenes/bed-bugs/notice-travel.svg",
+       "type": "scene"
+      },
+      {
+       "en": "This notice tells you what the property owners and managers ask of everyone who works at their properties. It is information about the rules at those properties. It is not instruction about how to do your own work.",
+       "es": "Este aviso le dice lo que los dueños y los administradores de las propiedades piden a todas las personas que trabajan en ellas. Es información sobre las reglas de esas propiedades. No es una instrucción sobre cómo hacer su trabajo.",
+       "type": "text"
+      },
+      {
+       "en": "Bed bugs travel inside bags, folded clothes, bedding and furniture. They move from one property to another inside the things people carry.",
+       "es": "Las chinches viajan dentro de las bolsas, la ropa doblada, la ropa de cama y los muebles. Pasan de una propiedad a otra dentro de las cosas que la gente carga.",
+       "type": "text"
+      },
+      {
+       "character": "duo",
+       "en": "Nothing moves between properties.",
+       "es": "Nada se pasa de una propiedad a otra.",
+       "pose": "stop",
+       "type": "say"
+      }
+     ],
+     "id": "notice",
+     "layout": "hero",
+     "seconds": 60,
+     "title": {
+      "en": "Bed bugs at client properties",
+      "es": "Chinches en las propiedades de los clientes"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "decorative": true,
+       "src": "img/edu/scenes/bed-bugs/notice-homes.svg",
+       "type": "scene"
+      },
+      {
+       "en": [
+        "Nothing moves between properties. Furniture, mattresses, linens, lamps, pictures and any other item stay where they are.",
+        "Personal bags, coats and carts stay out of bedrooms, off beds and off soft furniture.",
+        "If insects, small dark spots, shed skins or reddish stains are seen on a bed, a mattress or soft furniture, nothing at all is moved, cleaned, sprayed or vacuumed, and the office is told: {{OFFICE_PHONE}}.",
+        "At these properties nobody sprays or treats a bed bug problem. A licensed pest control company does that work.",
+        "Photos, addresses and property names are not posted online or in group chats."
+       ],
+       "es": [
+        "Nada se pasa de una propiedad a otra. Los muebles, los colchones, la ropa de cama, las lámparas, los cuadros y cualquier otra cosa se quedan donde están.",
+        "Las bolsas personales, las chaquetas y los carritos se quedan fuera de los cuartos donde se duerme, fuera de las camas y fuera de los muebles de tela.",
+        "Si se ven insectos, puntos oscuros pequeños, pieles o manchas rojizas en una cama, un colchón o un mueble de tela, no se mueve, no se limpia, no se rocía y no se aspira nada, y se le avisa a la oficina: {{OFFICE_PHONE}}.",
+        "En estas propiedades nadie rocía ni trata un problema de chinches. Ese trabajo lo hace una compañía de control de plagas con licencia.",
+        "Las fotos, las direcciones y los nombres de las propiedades no se publican en internet ni en chats de grupo."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "Questions about this notice go to the office at any time.",
+       "es": "Las preguntas sobre este aviso puede hacerlas a la oficina en cualquier momento.",
+       "type": "callout"
+      }
+     ],
+     "id": "notice-part-2",
+     "layout": "hero",
+     "seconds": 90,
+     "title": {
+      "en": "Bed bugs at client properties",
+      "es": "Chinches en las propiedades de los clientes"
+     }
+    }
+   ]
+  }
+ },
+ "version": "2026-09-18"
+}
