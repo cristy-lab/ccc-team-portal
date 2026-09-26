@@ -126,7 +126,30 @@
     ["msg_role_sup", "supervisor", "supervisor"],
     ["msg_you", "You", "Usted"],
     ["msg_today", "Today", "Hoy"],
-    ["msg_yesterday", "Yesterday", "Ayer"]
+    ["msg_yesterday", "Yesterday", "Ayer"],
+    // 0.3.7: profile pictures and the group member list.
+    ["msg_me", "Your picture and notifications", "Su foto y notificaciones"],
+    ["msg_pic_head", "Your profile picture", "Su foto de perfil"],
+    ["msg_pic_rule", "Use a clear photo of yourself. No other people, no children, nothing inappropriate. The office, your supervisors and everyone in your groups will see it, and the office can remove it.",
+      "Use una foto clara de usted. Sin otras personas, sin niños, nada inapropiado. La oficina, sus supervisores y todas las personas de sus grupos la verán, y la oficina la puede quitar."],
+    ["msg_pic_choose", "Choose a picture", "Elegir una foto"],
+    ["msg_pic_change", "Change picture", "Cambiar la foto"],
+    ["msg_pic_use", "Use this picture", "Usar esta foto"],
+    ["msg_pic_remove", "Remove picture", "Quitar la foto"],
+    ["msg_rm", "Remove", "Quitar"],
+    ["msg_pic_rm_q", "Remove your picture? The office keeps a record of it.", "¿Quitar su foto? La oficina guarda un registro."],
+    ["msg_pic_rm_other_q", "Remove this profile picture for everyone? The office keeps a record of it.",
+      "¿Quitar esta foto de perfil para todos? La oficina guarda un registro."],
+    ["msg_pic_removed", "The office removed your picture. You can choose another one that follows the rule.",
+      "La oficina quitó su foto. Puede elegir otra que siga la regla."],
+    ["msg_pic_saved", "Your picture is saved.", "Su foto se guardó."],
+    ["msg_pic_limit", "You can change your picture again tomorrow.", "Puede cambiar su foto otra vez mañana."],
+    ["msg_pic_off", "Profile pictures are off right now.", "Las fotos de perfil no están disponibles por ahora."],
+    ["msg_pic_of", "Profile picture of {name}", "Foto de perfil de {name}"],
+    ["msg_members", "Members ({n})", "Miembros ({n})"],
+    ["msg_members_head", "Who is in this group", "Quién está en este grupo"],
+    ["msg_av_views", "You opened many pictures in a short time. Please try again later.",
+      "Abrió muchas fotos en poco tiempo. Por favor, intente de nuevo más tarde."]
   ];
 
   var strings = root.CCC_I18N && root.CCC_I18N.strings;

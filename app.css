@@ -465,24 +465,6 @@ html[data-screen="login"] body {
 .notice-go > svg:last-child { margin-left: auto; width: 22px; height: 22px; }
 .notice-go .notice-text { font-weight: 600; }
 
-.a2hs {
-  position: relative; margin: 16px 0 0; padding: 16px; border-radius: var(--radius);
-  background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow);
-}
-.a2hs-head { display: flex; gap: 12px; align-items: flex-start; padding-right: 40px; }
-.a2hs-icon { width: 44px; height: 44px; border-radius: 12px; background: var(--lblue-tint); display: grid; place-items: center; flex: none; }
-.a2hs-icon svg { width: 26px; height: 26px; }
-.a2hs-title { font-weight: 700; font-size: 17px; }
-.a2hs-body { color: var(--muted); margin-top: 2px; }
-.a2hs-body svg { width: 18px; height: 18px; vertical-align: -3px; }
-.a2hs-close {
-  position: absolute; right: 4px; top: 4px; width: 48px; height: 48px; border: 0; border-radius: 12px;
-  background: transparent; color: var(--muted); display: grid; place-items: center;
-}
-.a2hs-close svg { width: 22px; height: 22px; }
-.a2hs-actions { display: flex; gap: 10px; margin-top: 12px; }
-.a2hs-actions .btn { min-height: 48px; font-size: 17px; }
-
 .tiles { display: grid; gap: 12px; margin: 18px 0 0; }
 .tile {
   display: flex; align-items: center; gap: 14px; min-height: 84px; padding: 14px 14px 14px 16px;

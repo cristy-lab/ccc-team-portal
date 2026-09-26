@@ -1,12 +1,13 @@
-/* CCC Team Portal Messages (0.3.6), lazily loaded with messages_i18n.js and messages.css. Contract:
- * docs/API.md 14. Text only via textContent, a photo only from a data:image/jpeg URL, drawn again on a
- * canvas (no location data). Nothing stored but the rules version. Polling only while on screen. */
+/* CCC Team Portal Messages (0.3.6, 0.3.7), lazily loaded with messages_i18n.js and messages.css. Contract:
+ * docs/API.md 14 and 15. Text only via textContent, a photo or a picture only from a data:image/jpeg URL,
+ * drawn again on a canvas (no location data). Nothing stored but the rules version. Polling only while on
+ * screen, every fast_s seconds while a chat on screen is hot (0.3.7). Pictures in memory only, by key. */
 (function (root) {
   "use strict";
 
   var doc = root.document, I = root.CCC_I18N, P = null, H = null;
-  // 2: rule 5 changed.
-  var RULES_V = "2", JPEG = "data:image/jpeg;base64,", BATCH = 12;
+  // 2: rule 5 changed. AV: pictures kept in memory, AVB: keys per profile_photos call.
+  var RULES_V = "2", JPEG = "data:image/jpeg;base64,", BATCH = 12, AV = 150, AVB = 24, KEY = /^[a-f0-9]{20}$/;
   // Idle time, then the wait: 15 s, 30 s after 2 minutes, 60 s after 5, paused after 15.
   var STEPS = [[900000, 0], [300000, 60000], [120000, 30000], [0, 15000]];
   // Tests run this clock by hand.
@@ -25,7 +26,10 @@
       tid: "", hint: {}, th: null, msgs: [], older: "none", out: [], drafts: {}, photo: null,
       filter: { region: "", waiting: false, sup: false }, q: "", qRegion: "", orig: {}, menu: null, below: false,
       readTo: 0, readSent: 0, thumbs: {}, thumbKeys: [], fulls: {}, fullKeys: [], gone: {}, want: [], asking: null,
-      poll: { timer: 0, busy: false, active: 0, fails: 0, paused: false, wait: 0 }, dom: null
+      poll: { timer: 0, busy: false, active: 0, fails: 0, paused: false, wait: 0 }, dom: null,
+      // 0.3.7: when the chat on screen was last active, a thread to open from a notice, the pictures
+      // (by key, in memory only), and the picture being made on the settings screen.
+      hotAt: 0, pend: "", av: {}, avKeys: [], avGone: {}, avDead: {}, avWant: [], avAsking: null, pic: null, picNote: null
     };
   }
 
@@ -94,9 +98,11 @@
   /* The words for a refused call. */
   function errKey(res) {
     var e = (res && res.error) || {}, c = e.code, r = e.reason;
-    if (c === "RATE_LIMITED") return r === "PHOTOS" ? "msg_photo_limit" : r === "VIEWS" ? "msg_views_limit" : "msg_limit";
+    if (c === "RATE_LIMITED") {
+      return { PHOTOS: "msg_photo_limit", VIEWS: "msg_views_limit", PROFILE: "msg_pic_limit", AVATARS: "msg_av_views" }[r] || "msg_limit";
+    }
     if (c === "FORBIDDEN") {
-      return { PHOTOS_OFF: "msg_photos_off", MESSAGES_OFF: "msg_off", READ_ONLY: "msg_ro", NOT_FOUND: "msg_not_found" }[r] || "error_server";
+      return { PHOTOS_OFF: "msg_photos_off", MESSAGES_OFF: "msg_off", READ_ONLY: "msg_ro", NOT_FOUND: "msg_not_found", AVATARS_OFF: "msg_pic_off" }[r] || "error_server";
     }
     if (c === "VALIDATION" && e.field === "photo") return "msg_bad_photo";
     if (c === "NETWORK") return online() ? "error_network" : "msg_offline";
@@ -170,9 +176,129 @@
 
   function tag(text, cls) { return el("span", { class: "msg-tag" + (cls ? " " + cls : ""), text: text }); }
 
+  /* ---- Pictures (0.3.7): a key or initials; the key is also the version, so a key is asked for once ---- */
+
+  /* A key the app may show: pictures on, well formed, and not removed since. (live() below is the poll.) */
+  function liveKey(k) { return !!(V.list && V.list.avatars) && typeof k === "string" && KEY.test(k) && !V.avDead[k] ? k : ""; }
+
+  /* The first letter of the first and of the last word, in the app language. */
+  function initials(name) {
+    var w = String(name || "").trim().split(/\s+/).map(function (x) { return (x.match(/\p{L}/u) || [""])[0]; }).filter(Boolean);
+    return (w.length > 1 ? w[0] + w[w.length - 1] : w[0] || "").toLocaleUpperCase(I.locales[lang()]);
+  }
+
+  /* One of six colors, always the same for a name. */
+  function hue(name) {
+    var n = 0;
+    String(name || "").split("").forEach(function (c) { n = (n * 31 + c.charCodeAt(0)) % 9973; });
+    return n % 6;
+  }
+
+  function face(k, name, size) {
+    var url = k && V.av[k], a = el("span", { class: "msg-av s" + size + " c" + hue(name), "aria-hidden": "true", "data-avk": k || null,
+      "data-av": k && !url && !V.avGone[k] ? k : null, "data-ini": initials(name) });
+    return paint(a, url);
+  }
+
+  function paint(a, url) {
+    clear(a).appendChild(url ? img(url, "") : el("span", { text: a.getAttribute("data-ini") }));
+    return a;
+  }
+
+  /* A picture that opens larger on a tap, named for a screen reader. Inside a dialog (the member list)
+     that dialog closes first, because only one is ever open, and the focus goes back to what opened it. */
+  function avatar(k, name, size, inDialog) {
+    k = liveKey(k);
+    var a = face(k, name, size);
+    if (!k) return a;
+    var b = button("msg-av-btn", a, function () {
+      var back = inDialog && dlg ? dlg.opener : b;
+      if (inDialog && dlg) closeDialog(true);
+      bigPic(k, name, back);
+    }, { "aria-label": t("msg_pic_of", { name: name }), "data-k": "av" + k });
+    return b;
+  }
+
+  /* Pictures on screen and not in memory yet: asked for 24 at a time. */
+  function seeAv() {
+    if (!V || !inside()) return;
+    var h = root.innerHeight;
+    Array.prototype.forEach.call(doc.querySelectorAll("[data-av]"), function (n) {
+      var k = n.getAttribute("data-av"), r = n.getBoundingClientRect();
+      if (!r.height || r.bottom < -200 || r.top > h + 200) return;
+      n.removeAttribute("data-av");
+      if (!V.av[k] && V.avWant.indexOf(k) < 0 && (V.avAsking || []).indexOf(k) < 0) V.avWant.push(k);
+    });
+    askAv();
+  }
+
+  function askAv() {
+    if (!V || V.avAsking || !V.avWant.length) return;
+    var token = P.state.token, keys = V.avWant.splice(0, AVB);
+    V.avAsking = keys;
+    P.api("profile_photos", { token: token, avatars: keys }).then(function (res) {
+      if (!V || token !== P.state.token) return;
+      V.avAsking = null;
+      if (!res.ok) {
+        if (!fatal(res) && res.error.reason === "AVATARS") {
+          V.note = "msg_av_views";
+          redrawNotes();
+        }
+        return;
+      }
+      arr(res.photos).forEach(function (p) {
+        if (p && keys.indexOf(p.avatar) >= 0 && typeof p.data_url === "string" && p.data_url.indexOf(JPEG) === 0) keep(V.av, V.avKeys, AV, p.avatar, p.data_url);
+      });
+      keys.forEach(function (k) {
+        if (!V.av[k]) V.avGone[k] = 1;
+        Array.prototype.forEach.call(doc.querySelectorAll('[data-avk="' + k + '"]'), function (a) { paint(a, V.av[k]); });
+      });
+      askAv();
+    });
+  }
+
+  /* The picture larger, with the name; the office can remove it (recorded like a hide). */
+  function bigPic(k, name, opener) {
+    var label = t("msg_pic_of", { name: name }), kids = [el("h2", { class: "msg-h2", text: name }),
+      el("div", { class: "msg-big" }, V.av[k] ? img(V.av[k], label) : face("", name, 96))];
+    if (myRole() === "office") {
+      kids.push(button("btn btn-secondary msg-danger-text", t("msg_pic_remove"), function () {
+        closeDialog(true);
+        confirmRm(t("msg_pic_rm_other_q"), opener, { avatar: k });
+      }, { "data-k": "rmpic" }));
+    }
+    openDialog(label, kids.concat(button("btn btn-secondary", t("close"), function () { closeDialog(); })), opener);
+  }
+
+  /* Remove a picture: your own (no key), or for the office anybody's by its key. */
+  function confirmRm(q, opener, body) {
+    openDialog(q, [el("p", { class: "msg-dlg-q", text: q }), dialogButtons(t("msg_rm"), "msg-danger", function () {
+      closeDialog(true);
+      var token = P.state.token;
+      body.token = token;
+      P.api("profile_photo_remove", body).then(function (res) {
+        if (!V || token !== P.state.token) return;
+        if (!res.ok) {
+          if (fatal(res)) return;
+          V.picNote = V.note = errKey(res);
+        } else if (body.avatar) {
+          V.avDead[body.avatar] = 1;
+        } else {
+          V.list.me.avatar = null;
+          V.list.me.avatar_changes_left = Math.max(0, (V.list.me.avatar_changes_left || 1) - (res.removed ? 1 : 0));
+          V.picNote = null;
+        }
+        refresh(!!body.avatar); // a removal by the office changes the heading too, so that screen is drawn again
+        var n = body.avatar ? (V.dom && V.dom.list) || doc.querySelector("#app h1") : doc.querySelector('#app [data-k="pic"]');
+        if (n) quietFocus(n);
+      });
+    })], opener);
+  }
+
   /* A row that opens a thread. */
-  function row(k, title, labels, sub, at, unread, onClick) {
+  function row(k, title, labels, sub, at, unread, onClick, lead) {
     return el("li", null, button("msg-row", [
+      lead || null,
       el("span", { class: "msg-row-main" }, [
         el("span", { class: "msg-row-title" }, [title].concat(labels)),
         sub ? el("span", { class: "msg-row-sub", text: sub }) : null
@@ -184,7 +310,8 @@
   /* A person's row, with the Supervisor label. */
   function personRow(k, p, more, at, unread) {
     return row(k + keyOf(p.thread_id), String(p.name || ""), [p.supervisor ? tag(t("msg_sup")) : null].concat(more || []).filter(Boolean), p.region || "",
-      at, unread, function () { open(p.thread_id, { kind: "direct", name: p.name, region: p.region, supervisor: p.supervisor === true }); });
+      at, unread, function () { open(p.thread_id, { kind: "direct", name: p.name, region: p.region, supervisor: p.supervisor === true, avatar: p.avatar }); },
+      V.list.avatars ? face(liveKey(p.avatar), p.name, 36) : null);
   }
 
   function chip(label, on, onClick, k) {
@@ -207,7 +334,7 @@
         P.retry(function () { V.err = null; loadList(); refresh(); })]) : P.loading(false));
       return out;
     }
-    out = out.concat(notes());
+    out = out.concat(notes(), pushCard(false), meLink());
     var own = L.office_thread;
     if (own && own.thread_id) {
       out.push(el("ul", { class: "msg-rows" }, row("own", t("msg_office"), [], t(priv() ? "msg_office_sup" : "msg_office_cleaner"),
@@ -223,6 +350,25 @@
     if (staff && L.inbox) out = out.concat(el("h2", { class: "msg-h2", text: t("msg_people") }), inbox(L.inbox, role));
     out.push(el("p", { class: "msg-links" }, button("link-btn", t("msg_rules"), function () { view("rules"); }, { "data-k": "rules" })));
     return out;
+  }
+
+  /* The notice card (panel: the controls on the settings screen), from the Push bundle, fetched when needed. */
+  function pushCard(panel) {
+    if (!V.list.push || !P.withPush) return null;
+    var slot = el("div");
+    P.withPush(function (X) {
+      var c = panel ? X.panel() : X.messagesCard();
+      if (c) slot.appendChild(c);
+    });
+    return slot;
+  }
+
+  /* Your picture and notifications. */
+  function meLink() {
+    var L = V.list, me = L.me || {};
+    if (!L.avatars && !L.push) return null;
+    return button("msg-me", [L.avatars ? face(liveKey(me.avatar), me.name, 36) : null, el("span", { text: t("msg_me") }), P.icon("chevronRight")],
+      function () { view("me"); }, { "data-k": "me" });
   }
 
   function inbox(box, role) {
@@ -290,13 +436,130 @@
     ];
   }
 
+  /* Your picture and notifications (0.3.7). The rule shows before any file is picked, every time. */
+  function meScreen() {
+    var L = V.list, me = L.me || {}, k = liveKey(me.avatar), pic = V.pic, busy = !!(pic && (pic.busy || pic.sending));
+    var file = el("input", { type: "file", accept: "image/*", hidden: true, tabindex: "-1", on: { change: pickedPic } });
+    var said = el("p", { class: "msg-pic-note", role: "status" }), out = [
+      heading(t("msg_me"), button("back-btn", [P.icon("chevronLeft"), el("span", { text: t("back") })], function () {
+        V.pic = V.picNote = null;
+        view("list");
+      })), banner(false), el("h2", { class: "msg-h2", text: t("msg_pic_head") })];
+    if (V.picNote) Promise.resolve().then(function () { said.textContent = t(V.picNote); });
+    if (!L.avatars) out.push(el("p", { text: t("msg_pic_off") }));
+    else {
+      out.push(el("div", { class: "msg-pic-me" }, [pic && pic.url ? el("span", { class: "msg-av s96" }, img(pic.url, t("msg_pic_of", { name: me.name || "" })))
+        : face(k, me.name, 96), el("p", { class: "msg-row-title", text: String(me.name || "") })]));
+      if (me.avatar_removed_by_office && !k) out.push(P.msgBox("info", "info", t("msg_pic_removed")));
+      out.push(el("p", { class: "msg-pic-rule", text: t("msg_pic_rule") }));
+      if (pic && pic.busy) out.push(el("p", { class: "msg-quiet", role: "status" }, [el("span", { class: "spinner", "aria-hidden": "true" }), " ", t("msg_preparing")]));
+      out.push(el("div", { class: "msg-pic-btns" }, pic && pic.url ? [
+        button("btn btn-primary", pic.sending ? t("msg_sending") : t("msg_pic_use"), usePic, { "data-k": "use", "aria-disabled": busy ? "true" : null }),
+        button("btn btn-secondary", t("msg_cancel"), function () {
+          V.pic = V.picNote = null;
+          refresh();
+          quietFocus(doc.querySelector('#app [data-k="pic"]'));
+        }, { "data-k": "cancel" })
+      ] : [
+        button("btn btn-primary", t(k ? "msg_pic_change" : "msg_pic_choose"), function () { if (!busy) file.click(); }, { "data-k": "pic", "aria-disabled": busy ? "true" : null }),
+        k ? button("btn btn-secondary", t("msg_pic_remove"), function (e) { confirmRm(t("msg_pic_rm_q"), e.currentTarget, {}); }, { "data-k": "rm" }) : null
+      ]), said, file);
+    }
+    return out.concat(pushCard(true));
+  }
+
+  function pickedPic(e) {
+    var input = e.target, f = input.files && input.files[0];
+    input.value = "";
+    if (!f) return;
+    V.pic = { busy: true };
+    V.picNote = null;
+    refresh();
+    makePic(f).then(function (b64) {
+      if (!V || !V.pic) return;
+      V.pic = { url: JPEG + b64, photo: b64, id: P.randomId() };
+      refresh();
+      quietFocus(doc.querySelector('#app [data-k="use"]'));
+    }, function () {
+      if (!V) return;
+      V.pic = null;
+      V.picNote = "msg_bad_photo";
+      refresh();
+    });
+  }
+
+  /* Try again keeps the client_req_id, so a picture is stored once. */
+  function usePic() {
+    var pic = V.pic, token = P.state.token;
+    if (!pic || pic.sending) return;
+    pic.sending = true;
+    V.picNote = null;
+    refresh();
+    P.api("profile_photo_set", { token: token, photo: pic.photo, client_req_id: pic.id }).then(function (res) {
+      if (!V || token !== P.state.token) return;
+      pic.sending = false;
+      if (res.ok && KEY.test(res.avatar || "")) {
+        keep(V.av, V.avKeys, AV, res.avatar, pic.url);
+        var me = V.list.me = V.list.me || {};
+        me.avatar = res.avatar;
+        me.avatar_removed_by_office = false;
+        if (typeof res.avatar_changes_left === "number") me.avatar_changes_left = res.avatar_changes_left;
+        V.pic = null;
+        V.picNote = "msg_pic_saved";
+      } else if (!fatal(res)) {
+        V.picNote = errKey(res);
+        if (V.picNote === "msg_bad_photo" || V.picNote === "msg_pic_limit" || V.picNote === "msg_pic_off") V.pic = null;
+      }
+      refresh();
+      quietFocus(doc.querySelector('#app [data-k="' + (V.pic ? "use" : "pic") + '"]'));
+    });
+  }
+
+  /* docs/API.md 15.7: the centered square, 256 by 256 on white, a new JPEG of at most 40,000 bytes. */
+  function makePic(file) {
+    return decode(file).then(function (pic0) {
+      var w = pic0.naturalWidth, h = pic0.naturalHeight, s = Math.min(w, h), c = canvas(256, 256);
+      c.getContext("2d").drawImage(pic0, (w - s) / 2, (h - s) / 2, s, s, 0, 0, 256, 256);
+      pic0.src = "";
+      return jpeg(c, [0.85, 0.75, 0.65], 40000);
+    }).then(function (r) {
+      if (!r) throw new Error("big");
+      return base64(r.b);
+    });
+  }
+
   function open(tid, hint) {
     var n = blank();
-    ["th", "msgs", "older", "photo", "note", "orig", "menu", "below", "readTo", "readSent", "want", "view", "busy"].forEach(function (k) { V[k] = n[k]; });
+    ["th", "msgs", "older", "photo", "note", "orig", "menu", "below", "readTo", "readSent", "want", "view", "busy", "hotAt"].forEach(function (k) { V[k] = n[k]; });
     V.tid = tid;
     V.hint = hint || {};
     zeroUnread(tid);
+    shut(tid);
     P.go("chat");
+  }
+
+  /* A chat that opens closes its notices already on the phone (only with the service worker). */
+  function shut(tid) {
+    try {
+      var sw = root.navigator.serviceWorker;
+      if (sw && sw.controller) {
+        sw.ready.then(function (r) { return r.getNotifications({ tag: "ccc-" + tid }); }).then(function (l) {
+          arr(l).forEach(function (x) { x.close(); });
+        }, function () {});
+      }
+    } catch (e) { /* nothing to close */ }
+  }
+
+  /* A thread from a tapped notice: with the list's hint when the list has it. */
+  function openPending() {
+    var id = V.pend, L = V.list, hint = {};
+    V.pend = "";
+    if (L.office_thread && L.office_thread.thread_id === id) hint = { kind: "own" };
+    arr(L.groups).forEach(function (g) { if (g.thread_id === id) hint = { kind: "group", name: g.name }; });
+    arr(L.inbox && L.inbox.threads).forEach(function (p) {
+      if (p.thread_id === id) hint = { kind: "direct", name: p.name, region: p.region, supervisor: p.supervisor === true, avatar: p.avatar };
+    });
+    open(id, hint);
   }
 
   /* Read now: out of the badge (a staff thread counts 1 while waiting and unread). */
@@ -318,9 +581,11 @@
     P.api("messages_list", { token: token }).then(function (res) {
       if (!V || token !== P.state.token) return;
       if (res.ok) {
+        var dm = P.state.dash && P.state.dash.messages;
         V.list = res;
         V.head = Number(res.head) || 0;
         V.err = null;
+        if (dm) dm.push = res.push === true;
         if (route === "messages" && V.view !== "pick") refresh();
         return plan();
       }
@@ -354,6 +619,9 @@
       V.readTo = V.readSent = lastSeq();
       refresh(first);
       toBottom();
+      // A thread opened a moment after its newest message is live chat already.
+      var nw = list[list.length - 1];
+      if (nw && clock.now() - when(nw.at).getTime() <= hotMs()) heat();
     });
   }
 
@@ -375,12 +643,16 @@
     } else if (isGroup()) {
       title = H.pickText((th && th.name) || V.hint.name, lang());
       note = "msg_group_note";
+      // 0.3.7: who is in the group, with their pictures.
+      sub = th && th.members > 0 ? el("p", { class: "msg-sub" }, button("link-btn", t("msg_members", { n: th.members }), function (e) { members(e.currentTarget); },
+        { "data-k": "mem" })) : null;
     } else {
       title = String(person.name || "");
-      sub = el("p", { class: "page-sub msg-sub" }, [person.supervisor ? tag(t("msg_sup")) : null, person.region ? el("span", { text: person.region }) : null]);
+      sub = el("p", { class: "page-sub msg-sub" }, [V.list.avatars ? avatar(person.avatar, title, 36) : null,
+        person.supervisor ? tag(t("msg_sup")) : null, person.region ? el("span", { text: person.region }) : null]);
       note = person.supervisor || person.office_only ? "msg_office_sup" : "msg_staff_note";
     }
-    var d = V.dom = { top: el("div", { class: "msg-top" }), list: el("ol", { class: "msg-list", "aria-label": t("msg_list") }), note: el("div"),
+    var d = V.dom = { top: el("div", { class: "msg-top" }), list: el("ol", { class: "msg-list", "aria-label": t("msg_list"), tabindex: "-1" }), note: el("div"),
       live: el("p", { class: "sr-only", "aria-live": "polite" }) };
     var out = [heading(title, P.backButton("messages"), [sub, el("p", { class: "page-sub", text: t(note) })]), banner(true), d.top, d.list, d.note, d.live];
     if (!th) d.list.appendChild(el("li", null, P.loading(false)));
@@ -408,23 +680,28 @@
     var ol = V.dom && V.dom.list, day = "";
     if (!ol || !V.th) return;
     clear(ol);
-    var all = V.msgs.concat(V.out.filter(function (o) { return o.tid === V.tid; }));
+    var all = V.msgs.concat(V.out.filter(function (o) { return o.tid === V.tid; })), who = "";
     all.forEach(function (m) {
-      var d = dayText(m.at);
-      if (d !== day) ol.appendChild(el("li", { class: "msg-day", text: day = d }));
-      ol.appendChild(bubble(m));
+      var d = dayText(m.at), w = m.from.you ? "" : m.from.name + "|" + m.from.role;
+      if (d !== day) {
+        ol.appendChild(el("li", { class: "msg-day", text: day = d }));
+        who = "";
+      }
+      // A picture beside the first message of a run from another person (0.3.7).
+      ol.appendChild(bubble(m, w && w !== who));
+      who = w;
     });
     if (!all.length) ol.appendChild(el("li", { class: "msg-day", text: t("msg_empty") }));
     root.setTimeout(seen, 0);
   }
 
-  function bubble(m) {
-    var pending = !!m.state, mine = m.from.you === true;
+  function bubble(m, first) {
+    var pending = !!m.state, mine = m.from.you === true, pics = !mine && V.list.avatars;
     var kids = [el("p", mine ? { class: "sr-only", text: t("msg_you") } : { class: "msg-who", text: whoLine(m) })];
     if (m.photo) kids.push(pic(m));
     var meta = el("div", { class: "msg-meta" }, el("span", { text: timeText(m.at) + (m.state === "sending" ? " · " + t("msg_sending") : "") }));
-    var li = el("li", { class: "msg-b" + (mine ? " is-own" : ""), tabindex: "-1", "data-seq": pending ? null : m.seq },
-      [el("div", { class: "msg-bub" }, kids.concat(words(m))), meta]);
+    var li = el("li", { class: "msg-b" + (mine ? " is-own" : "") + (pics ? " has-av" : ""), tabindex: "-1", "data-seq": pending ? null : m.seq },
+      [pics && first ? avatar(m.from.avatar, String(m.from.name || ""), 28) : null, el("div", { class: "msg-bub" }, kids.concat(words(m))), meta]);
     if (m.state === "failed") {
       li.appendChild(el("p", { class: "msg-fail", role: "alert" }, [t("msg_not_sent"), " ",
         button("link-btn", t("msg_retry"), function () { push(m); }, { "data-k": "retry" + m.id })]));
@@ -483,6 +760,7 @@
   /* Thumbnails to ask for whose bubble is in or near view (after a draw, on scroll). */
   function seen() {
     var list = V && V.dom && V.dom.list, h = root.innerHeight;
+    seeAv();
     if (!list || !doc.body.contains(list)) return;
     Array.prototype.forEach.call(list.querySelectorAll("[data-want]"), function (b) {
       var r = b.getBoundingClientRect();
@@ -613,6 +891,25 @@
       } else if (res.ok || !fatal(res)) {
         status.textContent = t(res.ok ? "msg_photo_gone" : errKey(res));
       }
+    });
+  }
+
+  /* Who is in this group (0.3.7): office first, then supervisors, then everyone else. No ids. */
+  function members(opener) {
+    var tid = V.tid, token = P.state.token, list = el("ul", { class: "msg-rows msg-mems" }, el("li", null, P.loading(false)));
+    var head = t("msg_members_head");
+    openDialog(head, [el("h2", { class: "msg-h2", text: head }), list, button("btn btn-secondary", t("close"), function () { closeDialog(); })], opener);
+    P.api("messages_members", { token: token, thread_id: tid }).then(function (res) {
+      if (!V || token !== P.state.token || !doc.body.contains(list)) return;
+      clear(list);
+      if (!res.ok) return fatal(res) || list.appendChild(el("li", { class: "msg-quiet", text: t(errKey(res)) }));
+      arr(res.members).forEach(function (m) {
+        var name = String(m.name || ""), r = m.role === "office" ? "msg_office" : m.role === "supervisor" ? "msg_sup" : "";
+        // A tappable picture here, so the office can open and remove a bad one without opening the person's thread.
+        list.appendChild(el("li", { class: "msg-mem" }, [V.list.avatars ? avatar(m.avatar, name, 36, true) : null, el("span", { class: "msg-row-title", text: name }),
+          r ? tag(t(r)) : null, m.you === true ? tag(t("msg_you")) : null]));
+      });
+      seeAv();
     });
   }
 
@@ -762,17 +1059,8 @@
 
   /* docs/API.md 14.14: 1600 px on white, a JPEG under 600,000 bytes, a 320 px thumbnail under 40,000. */
   function prepare(file) {
-    if (!file || file.size > 30 * 1024 * 1024) return Promise.reject(new Error("size"));
-    return dataUrl(file).then(function (url) {
-      var pic0 = new root.Image();
-      return new Promise(function (ok, no) {
-        pic0.onload = ok;
-        pic0.onerror = no;
-        pic0.src = url;
-      }).then(function () {
-        if (!pic0.naturalWidth) throw new Error("empty");
-        return shrink(pic0, 1600, [0.82, 0.72, 0.62], 600000);
-      }).then(function (full) {
+    return decode(file).then(function (pic0) {
+      return shrink(pic0, 1600, [0.82, 0.72, 0.62], 600000).then(function (full) {
         return full || shrink(pic0, 1280, [0.72, 0.62], 600000);
       }).then(function (full) {
         pic0.src = "";
@@ -787,15 +1075,43 @@
     });
   }
 
+  /* A picked file read with FileReader (never a blob: link) and decoded; the phone turned it upright. */
+  function decode(file) {
+    if (!file || file.size > 30 * 1024 * 1024) return Promise.reject(new Error("size"));
+    return dataUrl(file).then(function (url) {
+      var pic0 = new root.Image();
+      return new Promise(function (ok, no) {
+        pic0.onload = ok;
+        pic0.onerror = no;
+        pic0.src = url;
+      }).then(function () {
+        if (!pic0.naturalWidth) throw new Error("empty");
+        return pic0;
+      });
+    });
+  }
+
+  /* A white canvas: drawing through it writes a new JPEG with no location, camera or date data. */
+  function canvas(w, h) {
+    var c = doc.createElement("canvas"), g = c.getContext("2d");
+    c.width = w;
+    c.height = h;
+    g.fillStyle = "#fff";
+    g.fillRect(0, 0, w, h);
+    g.imageSmoothingQuality = "high";
+    return c;
+  }
+
   function shrink(src, max, qs, limit) {
     var w = src.naturalWidth || src.width, h = src.naturalHeight || src.height, k = Math.min(1, max / Math.max(w, h));
-    var c = doc.createElement("canvas"), g = c.getContext("2d"), i = 0;
-    c.width = Math.max(1, Math.round(w * k));
-    c.height = Math.max(1, Math.round(h * k));
-    g.fillStyle = "#fff";
-    g.fillRect(0, 0, c.width, c.height);
-    g.imageSmoothingQuality = "high";
-    g.drawImage(src, 0, 0, c.width, c.height);
+    var c = canvas(Math.max(1, Math.round(w * k)), Math.max(1, Math.round(h * k)));
+    c.getContext("2d").drawImage(src, 0, 0, c.width, c.height);
+    return jpeg(c, qs, limit);
+  }
+
+  /* The first quality that fits the limit, or null. */
+  function jpeg(c, qs, limit) {
+    var i = 0;
     function next() {
       if (i >= qs.length) return Promise.resolve(null);
       return new Promise(function (ok) { c.toBlob(ok, "image/jpeg", qs[i++]); }).then(function (b) {
@@ -830,6 +1146,7 @@
     d.ta.value = V.drafts[V.tid] = "";
     V.photo = V.note = null;
     drawAll();
+    heat(); // at Send, not at the answer
     push(item);
     toBottom();
     d.ta.focus();
@@ -886,13 +1203,32 @@
     if (V) V.poll.timer = 0;
   }
 
-  /* The next poll by idle time (docs/API.md 14.7). floor: at least this long, still pausing. */
+  /* Live chat (0.3.7, docs/API.md 15.1): messages_list.poll says how fast (fast_s 3 to 15, else never) and
+     how long activity keeps a chat on screen hot (hot_s). */
+  function fastMs() {
+    var f = +((V.list && V.list.poll) || {}).fast_s;
+    return f >= 3 && f <= 15 && f % 1 === 0 ? f * 1000 : 0;
+  }
+  function hotMs() {
+    var s = +((V.list && V.list.poll) || {}).hot_s;
+    return s >= 10 && s <= 600 ? s * 1000 : 120000;
+  }
+  function hot() { return route === "chat" && !!V.th && !!fastMs() && clock.now() - V.hotAt < hotMs(); }
+
+  /* Activity in the chat on screen: the next poll comes fast_s after the previous answer. */
+  function heat() {
+    var p = V.poll;
+    V.hotAt = clock.now();
+    if (hot() && !p.busy && !(p.timer && p.wait <= fastMs())) plan();
+  }
+
+  /* The next poll by idle time (docs/API.md 14.7), or fast while hot. floor: at least this long, still pausing. */
   function plan(ms, floor) {
     stop();
     if (!live()) return;
     var p = V.poll, idle = Math.max(0, clock.now() - p.active);
     if (ms === undefined) {
-      ms = STEPS.filter(function (s) { return idle >= s[0]; })[0][1];
+      ms = hot() ? fastMs() : STEPS.filter(function (s) { return idle >= s[0]; })[0][1];
       if (!ms) {
         if (!p.paused) { p.paused = true; redrawNotes(); }
         return;
@@ -930,7 +1266,13 @@
       if (!V || token !== P.state.token) return;
       p.busy = false;
       if (!res.ok) {
+        var e = res.error || {};
         if (fatal(res)) return;
+        // Too many polls this minute (0.3.7): wait as told, silently, then the normal rhythm, not fast.
+        if (e.code === "RATE_LIMITED" && e.reason === "POLLS") {
+          V.hotAt = 0;
+          return plan(Math.max(1, Math.min(60, +e.retry_after_s || 60)) * 1000);
+        }
         if (++p.fails === 3) redrawNotes();
         return plan(undefined, 60000);
       }
@@ -963,6 +1305,7 @@
     V.msgs = merge(V.msgs, fresh);
     drop(arr(res.hidden), false);
     if (!fresh.length) return;
+    V.hotAt = clock.now(); // news in the chat on screen, from anyone: live chat (the poll plans next)
     zeroUnread(tid);
     drawList();
     var theirs = fresh.filter(function (m) { return !m.from.you; }), said = V.dom.live;
@@ -987,7 +1330,8 @@
     ["pointerdown", "keydown", "focusin"].forEach(function (ev) { doc.addEventListener(ev, wake, true); });
     doc.addEventListener("keydown", dialogKeys);
     root.addEventListener("scroll", function () {
-      if (!V || route !== "chat") return;
+      if (!V || !inside()) return;
+      if (route !== "chat") return seeAv();
       if (root.scrollY !== V.pos) wake();
       seen();
       if (V.below && atBottom()) { V.below = false; drawComp(); read(); }
@@ -1018,6 +1362,11 @@
     route = r;
     V = V || blank();
     var body, cls = V.view;
+    // A tapped notice (0.3.7): open that thread once the list is in.
+    if (P.state.openThread) {
+      V.pend = P.state.openThread;
+      P.state.openThread = "";
+    }
     if (V.fresh) {
       V.fresh = V.off = false;
       V.poll.active = clock.now();
@@ -1042,9 +1391,14 @@
       body = [heading(t("msg_title"), P.backButton("home")), banner(false), P.msgBox("wait", "wifiOff", t("msg_offline"))];
     } else {
       V.dom = null;
-      body = V.view === "pick" && V.list && V.list.inbox ? pickScreen() : listScreen();
+      if (V.pend && V.list && r === "messages") {
+        V.view = cls = "list";
+        Promise.resolve().then(function () { if (V && V.pend && route === "messages") openPending(); });
+      }
+      body = V.view === "pick" && V.list && V.list.inbox ? pickScreen() : V.view === "me" && V.list ? meScreen() : listScreen();
     }
     if (!V.poll.timer && !V.poll.busy) plan();
+    root.setTimeout(seeAv, 0);
     return el("div", { class: "msg is-" + cls }, body);
   }
 
@@ -1056,6 +1410,7 @@
       route = r;
       if (!V) return;
       if (r !== "chat") V.dom = null;
+      if (r !== "chat") V.hotAt = 0;
       if (inside()) {
         V.fresh = V.fresh || !was;
         return;
@@ -1071,11 +1426,28 @@
       closeDialog(true);
       V = null;
     },
+    /* A notice arrived while Messages is on screen (0.3.7). The chat on screen checks at once and is live
+       again. Anything else waits a random moment under 3 seconds, so one announcement to everybody does
+       not make every open app call the backend in the same instant (docs/API.md 15.12). */
+    pushed: function (open) {
+      var p = V && V.poll;
+      if (!V || !inside()) return;
+      if (route === "chat" && open === V.tid) {
+        V.hotAt = clock.now();
+        return wake(true);
+      }
+      p.active = clock.now();
+      if (p.paused) { p.paused = false; redrawNotes(); }
+      if (!p.busy) plan(1 + Math.floor(Math.random() * 3000));
+    },
     clock: clock,
     errKey: errKey,
     prepare: prepare,
+    makePic: makePic,
+    initials: initials,
     debug: function () {
-      return V && { tid: V.tid, poll: V.poll, thumbs: V.thumbKeys.slice(), fulls: V.fullKeys.slice(), dialog: !!dlg };
+      return V && { tid: V.tid, poll: V.poll, thumbs: V.thumbKeys.slice(), fulls: V.fullKeys.slice(), dialog: !!dlg, hot: hot(),
+        avatars: V.avKeys.slice(), pend: V.pend };
     }
   };
 })(window);

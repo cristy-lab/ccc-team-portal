@@ -151,12 +151,6 @@
       back_home: "Back to home",
       see_my_requests: "See my requests",
 
-      a2hs_title: "Add the portal to your home screen",
-      a2hs_android: "Open it with one tap, like an app.",
-      a2hs_install: "Install",
-      a2hs_ios: "Tap the Share button, then tap Add to Home Screen.",
-      a2hs_dismiss: "Not now",
-
       party_title: "Happy Birthday",
       party_title_you: "Happy Birthday, {name}!",
       party_from: "Happy birthday from {company}",
@@ -328,12 +322,6 @@
       done_body: "La oficina le va a responder pronto.",
       back_home: "Volver al inicio",
       see_my_requests: "Ver mis solicitudes",
-
-      a2hs_title: "Agregue el portal a su pantalla de inicio",
-      a2hs_android: "Ábralo con un solo toque, como una aplicación.",
-      a2hs_install: "Instalar",
-      a2hs_ios: "Toque el botón Compartir y luego toque Agregar a inicio.",
-      a2hs_dismiss: "Ahora no",
 
       party_title: "¡Feliz cumpleaños!",
       party_title_you: "¡Feliz cumpleaños, {name}!",

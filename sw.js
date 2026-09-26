@@ -5,23 +5,23 @@
  *   * Only same origin GET requests are handled. API calls are POST and are never cached.
  *   * Page navigations: network first, cached index.html when offline.
  *   * App shell files (css, js, manifest, icons, logo, the design art and the CEO photo): served from the versioned cache.
- *     The lazily loaded bundles (Education, the CEO letter paper, and since 0.3.6 Messages and the
- *     birthday celebration) are in there too, so a phone that goes offline can still open them. The
+ *     The lazily loaded bundles (Education, the CEO letter paper, Messages, the birthday celebration and
+ *     Push) are in there too, so a phone that goes offline can still open them. The
  *     page never asks for them at start, which is what start up time depends on, but this worker does
- *     save them during install, so they cost about 160 KB once per release even for somebody who never
+ *     save them during install, so they cost about 180 KB once per release even for somebody who never
  *     opens them. Messages itself only ever travels in POST answers, which this worker never touches.
  *   * PDF files: network first, cached copy only as an offline fallback.
- *   * Training packs (trainings/*.json): network first, with the cached copy as the offline
- *     fallback, so an opened training still reads offline and a corrected pack is picked up at
- *     once. Cache first would have served the old bytes for ever: the phone would keep sending
- *     the old fingerprint, the backend would keep answering PACK_CHANGED, and the person would
- *     be stuck on "This training was updated" until the next release.
+ *   * Training packs (trainings/*.json): network first, the cached copy offline, so a corrected pack is
+ *     picked up at once (cache first kept the old bytes, and PACK_CHANGED, until the next release).
  *   * Videos and captions: network only, never stored, a Range request untouched (0.3.5).
+ *   * vendor/firebase/ files (0.3.7): kept once seen with their ?v=, never in SHELL.
+ *   * A push (0.3.7) shows exactly one notice, from data.title and data.body only. A tap opens its chat.
  */
-var CACHE_VERSION = "0.3.6-1";
+var CACHE_VERSION = "0.3.7-2";
 var SHELL_CACHE = "ccc-shell-" + CACHE_VERSION;
 var RUNTIME_CACHE = "ccc-runtime-" + CACHE_VERSION;
-var ASSET_VERSION = "0.3.6";
+var ASSET_VERSION = "0.3.7";
+var OPEN_RE = /^(d:[A-Za-z0-9_.]{1,64}|g:[a-z0-9]+(-[a-z0-9]+)*)$/;
 
 var SHELL = [
   "./",
@@ -39,6 +39,9 @@ var SHELL = [
   "messages_i18n.js?v=" + ASSET_VERSION,
   "messages.js?v=" + ASSET_VERSION,
   "messages.css?v=" + ASSET_VERSION,
+  "push_i18n.js?v=" + ASSET_VERSION,
+  "push.js?v=" + ASSET_VERSION,
+  "push.css?v=" + ASSET_VERSION,
   "manifest.webmanifest",
   "icons/icon-192.png",
   "icons/icon-512.png",
@@ -142,7 +145,8 @@ self.addEventListener("fetch", function (event) {
     caches.match(request).then(function (hit) {
       if (hit) return hit;
       return fetch(request).then(function (res) {
-        if (res && res.ok && res.type === "basic" && /\.(png|jpg|jpeg|svg|webp|ico)$/i.test(url.pathname)) {
+        if (res && res.ok && res.type === "basic" && (/\.(png|jpg|jpeg|svg|webp|ico)$/i.test(url.pathname) ||
+          (/\/vendor\/firebase\//.test(url.pathname) && /[?&]v=/.test(url.search)))) {
           var copy = res.clone();
           caches.open(RUNTIME_CACHE).then(function (cache) { cache.put(request, copy); });
         }
@@ -150,4 +154,37 @@ self.addEventListener("fetch", function (event) {
       });
     })
   );
+});
+
+/* Even an empty or broken push shows one notice: iPhone ends a subscription whose pushes show nothing. */
+function tell(msg) {
+  return self.clients.matchAll({ type: "window", includeUncontrolled: true }).then(function (list) {
+    list.forEach(function (c) { c.postMessage(msg); });
+  });
+}
+
+self.addEventListener("push", function (event) {
+  var d = {};
+  try { d = (event.data && event.data.json().data) || {}; } catch (e) { d = {}; }
+  var open = OPEN_RE.test(d.open || "") && String(d.open).length <= 66 ? d.open : "";
+  event.waitUntil(self.registration.showNotification(String(d.title || "CCC Team Portal").slice(0, 60), {
+    body: String(d.body || "").slice(0, 120), tag: open ? "ccc-" + open : "ccc", renotify: true,
+    icon: "icons/icon-192.png", lang: d.lang === "es" ? "es" : "en", data: { open: open }
+  }).then(function () { return tell({ type: "ccc-push", open: open }); }));
+});
+
+self.addEventListener("notificationclick", function (event) {
+  var n = event.notification, o = n.data && n.data.open, open = OPEN_RE.test(o || "") ? o : "";
+  n.close();
+  var scope = self.registration.scope;
+  event.waitUntil(self.clients.matchAll({ type: "window", includeUncontrolled: true }).then(function (list) {
+    var win = list.filter(function (c) { return c.url.indexOf(scope) === 0; })[0];
+    if (!win) return self.clients.openWindow(new URL(open ? "./#/messages?open=" + encodeURIComponent(open) : "./#/home", scope).href);
+    win.postMessage({ type: "ccc-open", open: open });
+    return win.focus && win.focus();
+  }));
+});
+
+self.addEventListener("pushsubscriptionchange", function (event) {
+  event.waitUntil(tell({ type: "ccc-sub" }));
 });

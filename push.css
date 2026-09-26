@@ -1,0 +1,35 @@
+/* CCC Team Portal Push (0.3.7): the add to home screen card (moved from app.css as it was), the notice
+   cards and the notices panel. Colors only from the app.css tokens (dark mode, AA). Nothing moves. */
+.a2hs { position: relative; margin: 16px 0 0; padding: 16px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); }
+.a2hs-head { display: flex; gap: 12px; align-items: flex-start; padding-right: 40px; }
+.a2hs-icon { width: 44px; height: 44px; border-radius: 12px; background: var(--lblue-tint); display: grid; place-items: center; flex: none; }
+.a2hs-icon svg { width: 26px; height: 26px; }
+.a2hs-title { font-weight: 700; font-size: 17px; }
+.a2hs-body { color: var(--muted); margin-top: 2px; }
+.a2hs-body svg { width: 18px; height: 18px; vertical-align: -3px; }
+.a2hs-close { position: absolute; right: 4px; top: 4px; width: 48px; height: 48px; border: 0; border-radius: 12px; background: transparent; color: var(--muted); display: grid; place-items: center; }
+.a2hs-close svg { width: 22px; height: 22px; }
+.a2hs-actions { display: flex; gap: 10px; margin-top: 12px; }
+.a2hs-actions .btn, .push-acts .btn, .push-box .btn { min-height: 48px; font-size: 17px; }
+/* The notice card and the panel */
+.push-card .a2hs-head { padding-right: 0; }
+.push-card .a2hs-body, .push-steps { color: var(--text); }
+.push-acts { display: grid; gap: 10px; margin-top: 12px; }
+.push-more > summary { display: flex; align-items: center; gap: 8px; min-height: 48px; font-weight: 700; color: var(--primary-bg); list-style: none; }
+.push-more > summary::-webkit-details-marker { display: none; }
+/* A caret, so the line reads as something to open: down, and up once it is. */
+.push-more > summary::after { content: ""; width: 9px; height: 9px; border-right: 2.5px solid currentColor; border-bottom: 2.5px solid currentColor; transform: translateY(-3px) rotate(45deg); }
+.push-more[open] > summary::after { transform: translateY(2px) rotate(-135deg); }
+.push-more[open] > summary { margin-bottom: -4px; }
+.push-steps { margin: 8px 0 0; padding-left: 22px; line-height: 1.45; }
+.push-steps li { margin: 0 0 6px; }
+.push-steps svg { width: 18px; height: 18px; vertical-align: -3px; }
+.push-note { margin: 8px 0 0; font-weight: 700; color: var(--text); }
+.push-note:empty { display: none; }
+.push-note:focus, .push-strong:focus { outline: none; }
+.push-box.is-panel { display: grid; gap: 12px; }
+.push-box.is-panel > * { margin: 0; }
+.push-h2 { font-size: 21px; margin: 12px 0 0; }
+.push-strong { font-weight: 700; }
+.push-sw { display: flex; align-items: center; gap: 12px; min-height: 48px; font-size: 17px; font-weight: 600; }
+.push-sw input { flex: none; width: 24px; height: 24px; margin: 0; accent-color: var(--primary-bg); }

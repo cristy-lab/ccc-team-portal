@@ -91,3 +91,34 @@
 .msg-dlg-q { font-size: 18px; font-weight: 600; line-height: 1.4; margin: 0 0 18px; }
 .msg-dlg-btns { display: grid; gap: 10px; }
 .msg-danger { background: var(--danger-text); color: var(--surface); }
+
+/* 0.3.7: pictures and initials. Six fills that keep white initials at 4.5:1 or more, in light and dark */
+.msg-av { flex: none; display: inline-grid; place-items: center; overflow: hidden; border-radius: 50%; color: #FFFCFC; font-weight: 700; line-height: 1; }
+.msg-av img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.msg-av.s28 { width: 28px; height: 28px; font-size: 12px; }
+.msg-av.s36 { width: 36px; height: 36px; font-size: 14px; }
+.msg-av.s96 { width: 96px; height: 96px; font-size: 34px; }
+.msg-av.c0 { background: #1B175A; }
+.msg-av.c1 { background: #2F5FB8; }
+.msg-av.c2 { background: #9A2617; }
+.msg-av.c3 { background: #14512F; }
+.msg-av.c4 { background: #6B2E0E; }
+.msg-av.c5 { background: #5B3A96; }
+.msg-av-btn { flex: none; display: inline-grid; padding: 0; border: 0; border-radius: 50%; background: none; }
+.msg-sub .msg-av-btn { margin-right: 4px; }
+.msg-b.has-av { position: relative; padding-left: 36px; }
+.msg-b.has-av > .msg-av, .msg-b.has-av > .msg-av-btn { position: absolute; left: 0; top: 2px; }
+.msg-me { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 56px; margin: 0 0 14px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); color: var(--text); font-size: 17px; font-weight: 700; text-align: left; }
+.msg-me > span:not(.msg-av) { flex: 1; }
+.msg-me > svg { width: 22px; height: 22px; }
+.msg-pic-me { display: flex; align-items: center; gap: 16px; margin: 0 0 12px; }
+.msg-pic-rule { font-size: 17px; line-height: 1.45; margin: 0 0 12px; }
+.msg-pic-btns { display: grid; gap: 10px; margin: 0 0 8px; }
+.msg-pic-note { font-weight: 700; margin: 8px 0; }
+.msg-pic-note:empty { display: none; }
+.msg-mems { display: grid; gap: 8px; margin: 0 0 16px; }
+.msg-mem { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; min-height: 48px; }
+.msg-mem .msg-tag { margin: 0; }
+.msg-big { display: grid; place-items: center; margin: 0 0 12px; }
+.msg-big img { display: block; width: 256px; max-width: 100%; aspect-ratio: 1; border-radius: 16px; }
+.msg-danger-text { color: var(--danger-text); }

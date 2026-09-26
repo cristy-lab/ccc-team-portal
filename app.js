@@ -615,7 +615,7 @@
   /* ---- 3. State, router, shared UI ---- */
 
   var CFG = root.CCC_CONFIG || {};
-  var APP_VERSION = CFG.APP_VERSION || "0.3.6";
+  var APP_VERSION = CFG.APP_VERSION || "0.3.7";
 
   var state = {
     lang: "en",
@@ -649,6 +649,7 @@
   var ROUTES = ["login", "choose", "home", "calendar", "request", "requests", "done", "training", "welcome", "messages", "chat"];
   var AUTH_ROUTES = { home: 1, calendar: 1, request: 1, requests: 1, done: 1, training: 1, welcome: 1, messages: 1, chat: 1 };
   var DATA_ROUTES = { home: 1, calendar: 1, requests: 1 };
+  var OPEN_RE = /^(d:[A-Za-z0-9_.]{1,64}|g:[a-z0-9]+(-[a-z0-9]+)*)$/;
   var currentRoute = null;
   var lockTimer = null;
 
@@ -714,7 +715,8 @@
     var popped = partyPop;
     // Android back while the celebration is open leaves its history entry: close it and stay put.
     if (party && !popped && !(root.history.state && root.history.state.party)) closeParty();
-    if (routeFromHash() !== currentRoute) render();
+    // 0.3.7: ?open= on the screen it is already on still opens that conversation.
+    if (routeFromHash() !== currentRoute || root.location.hash.indexOf("?open=") > 0) render();
     else welcomeNow();
     if (popped) finishPartyPop();
   }
@@ -722,6 +724,10 @@
   function render() {
     var route = routeFromHash();
     var signedIn = !!state.token;
+    // A tapped notice (0.3.7) opens #/messages?open=<thread id>, which Messages uses once.
+    var om = /^#\/messages\?open=(.+)$/.exec(root.location.hash);
+    try { om = om && decodeURIComponent(om[1]); } catch (e) { om = ""; }
+    if (signedIn && om && OPEN_RE.test(om) && om.length < 67) state.openThread = om;
     if (!route) route = signedIn ? "home" : "login";
     if (!signedIn && AUTH_ROUTES[route]) route = "login";
     if (signedIn && (route === "login" || route === "choose")) route = "home";
@@ -825,6 +831,7 @@
     if (lang === state.lang) return;
     state.lang = lang;
     render();
+    if (pushOn()) withPush(function (X) { X.check(); }); // notices follow the app language
   }
 
   function adoptLang() {
@@ -858,6 +865,9 @@
   }
 
   function clearSession() {
+    // This phone's notices end with the session: the Push bundle asks with the old token (0.3.7).
+    var tok = state.token, id = pushOn() && state.person.id;
+    if (id) withPush(function (X) { X.signOut(tok, id); });
     state.token = null;
     state.person = null;
     state.dash = null;
@@ -911,6 +921,7 @@
         state.loadError = null;
         state.lastRefresh = Date.now();
         refreshEdu();
+        if (pushOn() || pushPending()) withPush(function (X) { X.check(); });
         if (DATA_ROUTES[currentRoute]) render();
         else updateChrome();
         return;
@@ -957,6 +968,7 @@
        letter    web/letter.css, the paper of the message from the CEO
        messages  web/messages_i18n.js, web/messages.js and web/messages.css, Messages (0.3.6)
        party     web/party.css, the birthday celebration (0.3.6), which opens once it is in
+       push      web/push_i18n.js, web/push.js and web/push.css, phone notices and the add to home screen card (0.3.7)
      They are fetched the first time they are needed, and nothing is drawn before every part is in,
      so nothing is ever seen unstyled. Apps Script serves no files of its own, so
      tools/build_gas_html.py inlines every bundle and sets BUNDLED, and none of this runs there.
@@ -966,8 +978,10 @@
     edu: { route: "training", js: ["edu_i18n.js", "edu.js"] },
     letter: { route: "welcome", js: [] },
     messages: { route: "messages chat", js: ["messages_i18n.js", "messages.js"] },
-    party: { js: [], ready: partyArrived }
+    party: { js: [], ready: partyArrived },
+    push: { js: ["push_i18n.js", "push.js"], ready: function () { pushQ.splice(0).forEach(withPush); } }
   };
+  var pushQ = [];
 
   /* Where app.js was served from, so a bundle is found whatever page the app runs on. */
   var HERE = ((doc.currentScript && doc.currentScript.src) || "").replace(/[^/]*$/, "");
@@ -1529,46 +1543,30 @@
     return isIOS() || /Android|Mobi/i.test(root.navigator.userAgent || "");
   }
 
-  function a2hsCard() {
-    if (store.get(K.a2hs) === "1" || isStandalone() || !isPhone()) return null;
-    var ios = isIOS();
-    if (!ios && !state.installPrompt) return null;
+  /* 0.3.7: the Push bundle draws the add to home screen card and the notice card here; fetched only when one may show. */
+  function pushSlot() {
+    var m = state.dash.messages || {};
+    if (!(m.enabled && m.push) && (store.get(K.a2hs) === "1" || isStandalone() || !isPhone() || !(isIOS() || state.installPrompt))) return null;
+    var slot = h("div");
+    withPush(function (X) { append(slot, X.homeCard()); });
+    return slot;
+  }
 
-    function removeCard() {
-      var c = $("a2hs");
-      if (c && c.parentNode) c.parentNode.removeChild(c);
-    }
-    function dismiss() {
-      store.set(K.a2hs, "1");
-      removeCard();
-    }
-    function install() {
-      var p = state.installPrompt;
-      state.installPrompt = null;
-      removeCard();
-      if (!p) return;
-      try {
-        p.prompt();
-        p.userChoice.then(function (choice) {
-          if (choice && choice.outcome === "accepted") store.set(K.a2hs, "1");
-        }, function () { /* ignore */ });
-      } catch (e) { /* ignore */ }
-    }
+  function pushOn() {
+    var k = state.person && store.getJSON("ccc.push:" + state.person.id);
+    return !!(k && k.token && !k.off);
+  }
 
-    var body = ios
-      ? h("p", { class: "a2hs-body" }, [t("a2hs_ios") + " ", icon("share")])
-      : h("p", { class: "a2hs-body", text: t("a2hs_android") });
-    return h("section", { class: "a2hs", id: "a2hs", "aria-labelledby": "a2hs-title" }, [
-      h("button", { type: "button", class: "a2hs-close", "aria-label": t("close"), on: { click: dismiss } }, icon("close")),
-      h("div", { class: "a2hs-head" }, [
-        h("span", { class: "a2hs-icon" }, icon("phone")),
-        h("div", null, [h("h2", { class: "a2hs-title", id: "a2hs-title", text: t("a2hs_title") }), body])
-      ]),
-      h("div", { class: "a2hs-actions" }, [
-        ios ? null : h("button", { type: "button", class: "btn btn-primary", on: { click: install } }, t("a2hs_install")),
-        h("button", { type: "button", class: "btn btn-secondary", on: { click: dismiss } }, t("a2hs_dismiss"))
-      ])
-    ]);
+  /* 0.3.7: a phone that turned notices off or signed out with no signal left a token behind. The Push
+     bundle tries push_unregister again on every check until the backend confirms it (docs/API.md 15.3). */
+  function pushPending() {
+    var v = store.getJSON("ccc.push.pending");
+    return Array.isArray(v) && v.length > 0;
+  }
+
+  function withPush(fn) {
+    if (bundleReady("push") && root.CCCPush) fn(root.CCCPush);
+    else pushQ.push(fn);
   }
 
   /* ---- Birthdays: confetti, the celebration and the home cards ---- */
@@ -2133,7 +2131,7 @@
       icon("chevronRight")
     ]));
     parts.push(requestsSection());
-    parts.push(a2hsCard());
+    parts.push(pushSlot());
     parts.push(footer());
     return h("div", { class: "home" }, parts);
   };
@@ -2567,6 +2565,7 @@
     go: go, goBack: goBack, render: render, signOut: signOut, backButton: backButton,
     msgBox: msgBox, loading: dataPlaceholder, setTrainings: setTrainings, fx: makeFx, reduced: reducedMotion,
     icons: ICONS, badge: newBadge, inert: setInert, retry: retryButton,
+    refresh: refreshDashboard, withPush: withPush, openRe: OPEN_RE, ios: isIOS, standalone: isStandalone, phone: isPhone,
     // Leaving Messages hands its last badge to home, in memory, so home is right at once.
     setBadge: function (n) { if (state.dash && state.dash.messages) state.dash.messages.badge = n; }
   };
@@ -2661,6 +2660,10 @@
     var doRegister = function () {
       root.navigator.serviceWorker.register("sw.js").catch(function () { /* offline support is optional */ });
     };
+    // A notice arrived, was tapped, or the push address changed (0.3.7): the Push bundle handles it.
+    root.navigator.serviceWorker.addEventListener("message", function (e) {
+      if (state.token && e.data && /^ccc-/.test(e.data.type)) withPush(function (X) { X.onWorkerMessage(e.data); });
+    });
     if (doc.readyState === "complete") doRegister();
     else root.addEventListener("load", doRegister);
   }

@@ -7,11 +7,20 @@
  *   "gas"  : the page is served by Apps Script HtmlService; calls go through
  *            google.script.run.api(jsonString). API_URL is ignored.
  *
+ * FIREBASE (0.3.7): the public ids of the web app for notices. sdk: the version in web/vendor/firebase/,
+ * "" until the files are added. vapidKey "": the SDK's own key.
+ *
  * When you change this file on a live site, also bump the ?v= query in index.html
  * and CACHE_VERSION in sw.js so phones pick up the change.
  */
 window.CCC_CONFIG = {
   API_MODE: "http",
   API_URL: "https://script.google.com/macros/s/AKfycbzTAotiG1l2zHk16NNn7EdJQt1-04T5h0obp5U-EvJdlj8UpPC3LbhJzRZs9vy0fv9S/exec",
-  APP_VERSION: "0.3.6"
+  APP_VERSION: "0.3.7",
+  FIREBASE: {
+    sdk: "12.19.0",
+    vapidKey: "",
+    config: { apiKey: "AIzaSyBz9BgQ73hkKgSa_0CW3Bp_5Bd9M_uuGuk", projectId: "ccc-team-portal",
+      messagingSenderId: "258369027060", appId: "1:258369027060:web:193e2fe3286c13318697a1" }
+  }
 };

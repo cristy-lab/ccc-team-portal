@@ -16,6 +16,7 @@
  * messages_photo try once more too. A send keeps its client_msg_id, so it is saved once, and a hide of a
  * hidden message only answers already. A send or a hide waits 45 seconds, a send with a photo 90 (two
  * uploads before the lock). messages_poll is never tried again (the next poll comes soon) and waits 20.
+ * 0.3.7: the notice and picture calls try once more too, never push_test (docs/API.md 1).
  */
 (function (root) {
   "use strict";
@@ -25,7 +26,8 @@
      the sheet and posts to Slack, so it gets longer before the app gives up. The three
      Education writes take the same lock and do the same work. */
   var REQUEST_TIMEOUT_MS = 45000;
-  var SLOW_ACTIONS = { request: 1, training_start: 1, training_submit: 1, training_ack: 1, messages_send: 1, messages_hide: 1 };
+  var SLOW_ACTIONS = { request: 1, training_start: 1, training_submit: 1, training_ack: 1, messages_send: 1, messages_hide: 1,
+    push_register: 1, push_unregister: 1, push_test: 1, profile_photo_set: 1, profile_photo_remove: 1 };
   var PHOTO_TIMEOUT_MS = 90000;
   var POLL_TIMEOUT_MS = 20000;
   var RETRY_DELAY_MS = 1500;
@@ -33,7 +35,8 @@
      once. So are the Education calls: trainings only reads, and the three writes carry a
      client_request_id, so the backend answers with what it already saved. */
   var RETRY_ACTIONS = { ping: 1, dashboard: 1, request: 1, wish: 1, trainings: 1, training_start: 1, training_submit: 1, training_ack: 1,
-    messages_list: 1, messages_thread: 1, messages_send: 1, messages_hide: 1, messages_photo: 1 };
+    messages_list: 1, messages_thread: 1, messages_send: 1, messages_hide: 1, messages_photo: 1, messages_members: 1,
+    push_register: 1, push_unregister: 1, profile_photo_set: 1, profile_photo_remove: 1, profile_photos: 1 };
 
   function netError(message) {
     return { ok: false, error: { code: "NETWORK", message: message || "network error" } };
