@@ -8,7 +8,7 @@
  *     The lazily loaded bundles (Education, the CEO letter paper, Messages, the birthday celebration and
  *     Push) are in there too, so a phone that goes offline can still open them. The
  *     page never asks for them at start, which is what start up time depends on, but this worker does
- *     save them during install, so they cost about 180 KB once per release even for somebody who never
+ *     save them during install, so they cost about 216 KB once per release even for somebody who never
  *     opens them. Messages itself only ever travels in POST answers, which this worker never touches.
  *   * PDF files: network first, cached copy only as an offline fallback.
  *   * Training packs (trainings/*.json): network first, the cached copy offline, so a corrected pack is
@@ -17,10 +17,10 @@
  *   * vendor/firebase/ files (0.3.7): kept once seen with their ?v=, never in SHELL.
  *   * A push (0.3.7) shows exactly one notice, from data.title and data.body only. A tap opens its chat.
  */
-var CACHE_VERSION = "0.3.7-2";
+var CACHE_VERSION = "0.3.8-1";
 var SHELL_CACHE = "ccc-shell-" + CACHE_VERSION;
 var RUNTIME_CACHE = "ccc-runtime-" + CACHE_VERSION;
-var ASSET_VERSION = "0.3.7";
+var ASSET_VERSION = "0.3.8";
 var OPEN_RE = /^(d:[A-Za-z0-9_.]{1,64}|g:[a-z0-9]+(-[a-z0-9]+)*)$/;
 
 var SHELL = [

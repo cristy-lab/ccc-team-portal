@@ -436,36 +436,231 @@
     ];
   }
 
-  /* Your picture and notifications (0.3.7). The rule shows before any file is picked, every time. */
+  /* Your picture and notifications (0.3.7). The rule shows before any file is picked, every time.
+     0.3.8: once a photo is picked, the crop tool takes the place of the picture until it is used or
+     cancelled, so the person decides what sits in the circle. */
   function meScreen() {
     var L = V.list, me = L.me || {}, k = liveKey(me.avatar), pic = V.pic, busy = !!(pic && (pic.busy || pic.sending));
-    var file = el("input", { type: "file", accept: "image/*", hidden: true, tabindex: "-1", on: { change: pickedPic } });
+    var cropping = !!(pic && pic.img), file = el("input", { type: "file", accept: "image/*", hidden: true, tabindex: "-1", on: { change: pickedPic } });
     var said = el("p", { class: "msg-pic-note", role: "status" }), out = [
       heading(t("msg_me"), button("back-btn", [P.icon("chevronLeft"), el("span", { text: t("back") })], function () {
-        V.pic = V.picNote = null;
+        dropPic();
         view("list");
-      })), banner(false), el("h2", { class: "msg-h2", text: t("msg_pic_head") })];
+      })), banner(false), el("h2", { class: "msg-h2", text: t(cropping ? "msg_crop_head" : "msg_pic_head") })];
     if (V.picNote) Promise.resolve().then(function () { said.textContent = t(V.picNote); });
     if (!L.avatars) out.push(el("p", { text: t("msg_pic_off") }));
     else {
-      out.push(el("div", { class: "msg-pic-me" }, [pic && pic.url ? el("span", { class: "msg-av s96" }, img(pic.url, t("msg_pic_of", { name: me.name || "" })))
-        : face(k, me.name, 96), el("p", { class: "msg-row-title", text: String(me.name || "") })]));
-      if (me.avatar_removed_by_office && !k) out.push(P.msgBox("info", "info", t("msg_pic_removed")));
+      if (!cropping) out.push(el("div", { class: "msg-pic-me" }, [face(k, me.name, 96), el("p", { class: "msg-row-title", text: String(me.name || "") })]));
+      if (me.avatar_removed_by_office && !k && !cropping) out.push(P.msgBox("info", "info", t("msg_pic_removed")));
       out.push(el("p", { class: "msg-pic-rule", text: t("msg_pic_rule") }));
+      if (cropping) cropTool(pic, said).forEach(function (n) { out.push(n); });
       if (pic && pic.busy) out.push(el("p", { class: "msg-quiet", role: "status" }, [el("span", { class: "spinner", "aria-hidden": "true" }), " ", t("msg_preparing")]));
-      out.push(el("div", { class: "msg-pic-btns" }, pic && pic.url ? [
+      out.push(el("div", { class: "msg-pic-btns" }, cropping ? [
         button("btn btn-primary", pic.sending ? t("msg_sending") : t("msg_pic_use"), usePic, { "data-k": "use", "aria-disabled": busy ? "true" : null }),
+        // On its way it cannot be called back, so Cancel throws the photo away only before that.
         button("btn btn-secondary", t("msg_cancel"), function () {
-          V.pic = V.picNote = null;
+          if (busy) return;
+          dropPic();
           refresh();
           quietFocus(doc.querySelector('#app [data-k="pic"]'));
-        }, { "data-k": "cancel" })
+        }, { "data-k": "cancel", "aria-disabled": busy ? "true" : null })
       ] : [
         button("btn btn-primary", t(k ? "msg_pic_change" : "msg_pic_choose"), function () { if (!busy) file.click(); }, { "data-k": "pic", "aria-disabled": busy ? "true" : null }),
         k ? button("btn btn-secondary", t("msg_pic_remove"), function (e) { confirmRm(t("msg_pic_rm_q"), e.currentTarget, {}); }, { "data-k": "rm" }) : null
       ]), said, file);
     }
-    return out.concat(pushCard(true));
+    return out.concat(cropping ? [] : pushCard(true));
+  }
+
+  /* ---- The crop tool (0.3.8) ----------------------------------------------------------------
+     The crop is held in the photo's own pixels, so it never depends on the size of the screen:
+     side is the square being taken and cx, cy its middle. At zoom 1 that square is the largest
+     one the photo holds, so the circle is always covered and a gap can never show. */
+  var ZMAX = 4, ZSTEP = 0.25, CIRC = 0.78, EDGE = (1 - CIRC) / 2, MOVE = 0.06, HOLD = 2048;
+
+  /* Being cropped: nothing may redraw, because a redraw under the finger ends the drag (0.3.8). */
+  function midCrop() { return !!(V && V.pic && V.pic.img); }
+
+  function cropStart(w, h) { return clampCrop({ w: w, h: h, z: 1, cx: w / 2, cy: h / 2 }); }
+
+  function cropSide(c) { return Math.min(c.w, c.h) / Math.min(ZMAX, Math.max(1, c.z || 1)); }
+
+  function clampCrop(c) {
+    c.z = Math.min(ZMAX, Math.max(1, c.z || 1));
+    var half = cropSide(c) / 2;
+    c.cx = Math.min(c.w - half, Math.max(half, c.cx));
+    c.cy = Math.min(c.h - half, Math.max(half, c.cy));
+    return c;
+  }
+
+  /* Zoom while the photo's own point under u, v (0 to 1 across the circle) stays where it is. */
+  function cropZoom(c, z, u, v) {
+    var s0 = cropSide(c), x = c.cx - s0 / 2 + u * s0, y = c.cy - s0 / 2 + v * s0;
+    c.z = Math.min(ZMAX, Math.max(1, z));
+    var s1 = cropSide(c);
+    c.cx = x + s1 * (0.5 - u);
+    c.cy = y + s1 * (0.5 - v);
+    return clampCrop(c);
+  }
+
+  /* docs/API.md 15.7: what is inside the circle, 256 by 256 on white, a new JPEG of at most 40,000
+     bytes. Drawing through the canvas leaves the location, camera and date data behind, as before. */
+  function cropPic(pic0, c) {
+    var s = cropSide(c), cv = canvas(256, 256);
+    cv.getContext("2d").drawImage(pic0, c.cx - s / 2, c.cy - s / 2, s, s, 0, 0, 256, 256);
+    return jpeg(cv, [0.85, 0.75, 0.65], 40000).then(function (r) {
+      if (!r) throw new Error("big");
+      return base64(r.b);
+    });
+  }
+
+  /* A file straight to a picture, with the middle of the photo in the circle: what the phone did on
+     its own before 0.3.8, and what the crop tool starts from. */
+  function makePic(file) {
+    return decode(file).then(function (pic0) {
+      return cropPic(pic0, cropStart(pic0.naturalWidth, pic0.naturalHeight)).then(function (b64) {
+        pic0.src = "";
+        return b64;
+      });
+    });
+  }
+
+  /* The round frame with the rest of the photo dimmed: drag or the arrow keys move it, pinch, the
+     slider or plus and minus zoom, and Back to the middle puts it back where it started. */
+  function cropTool(pic, said) {
+    var c = pic.crop, im = pic.img, pts = {}, hint = el("p", { class: "msg-crop-hint", id: "msg-crop-hint", text: t("msg_crop_hint") });
+    im.className = "msg-crop-photo";
+    im.alt = "";
+    im.draggable = false;
+    var stage = el("div", { class: "msg-crop", tabindex: "0", role: "application", "data-k": "crop",
+      "aria-label": t("msg_crop_frame"), "aria-describedby": "msg-crop-hint" }, [im, el("span", { class: "msg-crop-ring", "aria-hidden": "true" })]);
+    var zoom = el("input", { type: "range", class: "msg-crop-zoom", min: "1", max: String(ZMAX), step: "0.05",
+      "aria-label": t("msg_crop_zoom"), "data-k": "zoom",
+      on: { input: function () { if (pic.sending) return; cropZoom(c, parseFloat(zoom.value), 0.5, 0.5); draw(); } } });
+
+    function draw() {
+      var s = cropSide(c);
+      im.style.width = (100 * CIRC * c.w / s) + "%";
+      im.style.left = (100 * (EDGE - CIRC * (c.cx - s / 2) / s)) + "%";
+      im.style.top = (100 * (EDGE - CIRC * (c.cy - s / 2) / s)) + "%";
+      zoom.value = String(c.z);
+      zoom.disabled = !!pic.sending;
+      zoom.setAttribute("aria-valuetext", t("msg_crop_zoom_v", { n: Math.round(c.z * 100) }));
+    }
+
+    function at(e) {
+      var r = stage.getBoundingClientRect();
+      return { r: r, k: (r.width * CIRC) / cropSide(c), u: (e.clientX - r.left - r.width * EDGE) / (r.width * CIRC),
+        v: (e.clientY - r.top - r.height * EDGE) / (r.height * CIRC) };
+    }
+
+    /* The frame has the focus, not the bar, so the new zoom is said here as well as on the bar. */
+    function step(by) {
+      if (pic.sending) return;
+      cropZoom(c, c.z + by, 0.5, 0.5);
+      draw();
+      said.textContent = t("msg_crop_zoom_v", { n: Math.round(c.z * 100) });
+    }
+
+    stage.addEventListener("pointerdown", function (e) {
+      if (pic.sending) return;
+      // The focus a click would have given the frame, which preventDefault below takes away.
+      try { stage.focus({ preventScroll: true }); } catch (x) { /* an older engine */ }
+      try { stage.setPointerCapture(e.pointerId); } catch (x) { /* a mouse with no capture */ }
+      pts[e.pointerId] = { x: e.clientX, y: e.clientY };
+      e.preventDefault();
+    });
+    ["pointerup", "pointercancel"].forEach(function (ev) {
+      stage.addEventListener(ev, function (e) { delete pts[e.pointerId]; });
+    });
+    stage.addEventListener("pointermove", function (e) {
+      var p = pts[e.pointerId], ids = Object.keys(pts), pos;
+      if (!p || pic.sending) return;
+      pos = at(e);
+      if (ids.length > 1) {
+        // Two fingers: the photo follows the middle of them, and the space between them is the zoom.
+        var a = pts[ids[0]], b = pts[ids[1]], d0 = Math.hypot(a.x - b.x, a.y - b.y), m0 = (a.x + b.x) / 2, n0 = (a.y + b.y) / 2;
+        p.x = e.clientX;
+        p.y = e.clientY;
+        var d1 = Math.hypot(a.x - b.x, a.y - b.y), m1 = (a.x + b.x) / 2, n1 = (a.y + b.y) / 2;
+        c.cx -= (m1 - m0) / pos.k;
+        c.cy -= (n1 - n0) / pos.k;
+        clampCrop(c);
+        if (d0 > 4 && d1 > 4) cropZoom(c, c.z * d1 / d0, (m1 - pos.r.left - pos.r.width * EDGE) / (pos.r.width * CIRC),
+          (n1 - pos.r.top - pos.r.height * EDGE) / (pos.r.height * CIRC));
+      } else {
+        c.cx -= (e.clientX - p.x) / pos.k;
+        c.cy -= (e.clientY - p.y) / pos.k;
+        clampCrop(c);
+        p.x = e.clientX;
+        p.y = e.clientY;
+      }
+      draw();
+    });
+    /* The keyboard: the arrows move the photo the way a finger would, plus and minus zoom. */
+    stage.addEventListener("keydown", function (e) {
+      var by = cropSide(c) * MOVE, key = e.key, x0 = c.cx, y0 = c.cy;
+      if (pic.sending || e.altKey || e.ctrlKey || e.metaKey) return;
+      if (key === "ArrowLeft") c.cx += by;
+      else if (key === "ArrowRight") c.cx -= by;
+      else if (key === "ArrowUp") c.cy += by;
+      else if (key === "ArrowDown") c.cy -= by;
+      else if (key === "+" || key === "=" || key === "-" || key === "_") {
+        e.preventDefault();
+        return step(key === "-" || key === "_" ? -ZSTEP : ZSTEP);
+      } else return;
+      e.preventDefault();
+      clampCrop(c);
+      draw();
+      // Nothing moved: say that this is as far as the photo goes, rather than leave a silent key.
+      said.textContent = c.cx === x0 && c.cy === y0 ? t("msg_crop_edge") : "";
+    });
+    draw();
+    /* A render Messages did not ask for (the language buttons call render straight) leaves the focus
+       on nothing, and then the arrow keys are dead. Put it back on the frame when that happens. */
+    Promise.resolve().then(function () {
+      if (stage.isConnected && doc.activeElement === doc.body) quietFocus(stage);
+    });
+    var off = pic.sending ? "true" : null;
+    return [stage, hint, el("div", { class: "msg-crop-tools" }, [
+      button("msg-crop-step", "−", function () { step(-ZSTEP); }, { "aria-label": t("msg_crop_out"), "data-k": "zoomout", "aria-disabled": off }),
+      zoom,
+      button("msg-crop-step", "+", function () { step(ZSTEP); }, { "aria-label": t("msg_crop_in"), "data-k": "zoomin", "aria-disabled": off }),
+      button("msg-crop-reset", t("msg_crop_reset"), function () {
+        if (pic.sending) return;
+        c.z = 1;
+        c.cx = c.w / 2;
+        c.cy = c.h / 2;
+        clampCrop(c);
+        draw();
+        said.textContent = t("msg_crop_middle");
+      }, { "data-k": "reset", "aria-disabled": off })
+    ])];
+  }
+
+  /* The photo being cropped goes, and the decoded picture with it. */
+  function dropPic() {
+    var im = V.pic && V.pic.img;
+    V.pic = V.picNote = null;
+    if (im) Promise.resolve().then(function () { im.src = ""; });
+  }
+
+  /* A photo longer than HOLD is held at that size and the original goes at once: the crop works in
+     whatever pixels the held photo has, and 2048 still gives far more than the 256 that goes up, even
+     zoomed all the way in. Otherwise one crop holds a hundred megapixel bitmap for the session. */
+  function hold(pic0) {
+    if (Math.max(pic0.naturalWidth, pic0.naturalHeight) <= HOLD) return Promise.resolve(pic0);
+    return shrink(pic0, HOLD, [0.92], 9e9).then(function (r) {
+      pic0.src = "";
+      return dataUrl(r.b);
+    }).then(function (u) {
+      var small = new root.Image();
+      return new Promise(function (ok, no) {
+        small.onload = ok;
+        small.onerror = no;
+        small.src = u;
+      }).then(function () { return small; });
+    });
   }
 
   function pickedPic(e) {
@@ -475,11 +670,17 @@
     V.pic = { busy: true };
     V.picNote = null;
     refresh();
-    makePic(f).then(function (b64) {
-      if (!V || !V.pic) return;
-      V.pic = { url: JPEG + b64, photo: b64, id: P.randomId() };
+    decode(f).then(hold).then(function (pic0) {
+      if (!V || !V.pic) {
+        pic0.src = "";
+        return;
+      }
+      V.pic = { img: pic0, crop: cropStart(pic0.naturalWidth, pic0.naturalHeight), id: P.randomId() };
       refresh();
-      quietFocus(doc.querySelector('#app [data-k="use"]'));
+      quietFocus(doc.querySelector('#app [data-k="crop"]'));
+      // The circle is no use with its buttons under the fold: bring the whole tool onto the screen.
+      var btns = doc.querySelector("#app .msg-pic-btns");
+      if (btns && btns.scrollIntoView) btns.scrollIntoView({ block: "nearest" });
     }, function () {
       if (!V) return;
       V.pic = null;
@@ -488,48 +689,51 @@
     });
   }
 
-  /* Try again keeps the client_req_id, so a picture is stored once. */
+  /* Exactly what is in the circle is what goes up. The same circle sent again after a lost answer
+     keeps its client_req_id, so that picture is stored once (docs/API.md 15.7). A circle she moved
+     after a failed try is a different picture and takes a new id, or the backend would answer the
+     first picture's key and everybody else would keep seeing the old crop. It costs one change. */
   function usePic() {
     var pic = V.pic, token = P.state.token;
-    if (!pic || pic.sending) return;
+    if (!pic || pic.sending || !pic.img) return;
     pic.sending = true;
     V.picNote = null;
     refresh();
-    P.api("profile_photo_set", { token: token, photo: pic.photo, client_req_id: pic.id }).then(function (res) {
+    cropPic(pic.img, pic.crop).then(function (b64) {
       if (!V || token !== P.state.token) return;
+      if (pic.sent && pic.sent !== b64) pic.id = P.randomId();
+      pic.sent = b64;
+      return P.api("profile_photo_set", { token: token, photo: b64, client_req_id: pic.id }).then(function (res) {
+        if (!V || token !== P.state.token) return;
+        pic.sending = false;
+        if (res.ok && KEY.test(res.avatar || "")) {
+          keep(V.av, V.avKeys, AV, res.avatar, JPEG + b64);
+          var me = V.list.me = V.list.me || {};
+          me.avatar = res.avatar;
+          me.avatar_removed_by_office = false;
+          if (typeof res.avatar_changes_left === "number") me.avatar_changes_left = res.avatar_changes_left;
+          dropPic();
+          V.picNote = "msg_pic_saved";
+        } else if (!fatal(res)) {
+          var why = errKey(res);
+          if (why === "msg_bad_photo" || why === "msg_pic_limit" || why === "msg_pic_off") dropPic();
+          V.picNote = why;
+        }
+        refresh();
+        quietFocus(doc.querySelector('#app [data-k="' + (V.pic ? "use" : "pic") + '"]'));
+      });
+    }, function () {
+      if (!V) return;
       pic.sending = false;
-      if (res.ok && KEY.test(res.avatar || "")) {
-        keep(V.av, V.avKeys, AV, res.avatar, pic.url);
-        var me = V.list.me = V.list.me || {};
-        me.avatar = res.avatar;
-        me.avatar_removed_by_office = false;
-        if (typeof res.avatar_changes_left === "number") me.avatar_changes_left = res.avatar_changes_left;
-        V.pic = null;
-        V.picNote = "msg_pic_saved";
-      } else if (!fatal(res)) {
-        V.picNote = errKey(res);
-        if (V.picNote === "msg_bad_photo" || V.picNote === "msg_pic_limit" || V.picNote === "msg_pic_off") V.pic = null;
-      }
+      V.picNote = "msg_bad_photo";
       refresh();
-      quietFocus(doc.querySelector('#app [data-k="' + (V.pic ? "use" : "pic") + '"]'));
-    });
-  }
-
-  /* docs/API.md 15.7: the centered square, 256 by 256 on white, a new JPEG of at most 40,000 bytes. */
-  function makePic(file) {
-    return decode(file).then(function (pic0) {
-      var w = pic0.naturalWidth, h = pic0.naturalHeight, s = Math.min(w, h), c = canvas(256, 256);
-      c.getContext("2d").drawImage(pic0, (w - s) / 2, (h - s) / 2, s, s, 0, 0, 256, 256);
-      pic0.src = "";
-      return jpeg(c, [0.85, 0.75, 0.65], 40000);
-    }).then(function (r) {
-      if (!r) throw new Error("big");
-      return base64(r.b);
     });
   }
 
   function open(tid, hint) {
     var n = blank();
+    // A tapped notice can open a chat straight from the picture screen (0.3.8): the photo goes with it.
+    dropPic();
     ["th", "msgs", "older", "photo", "note", "orig", "menu", "below", "readTo", "readSent", "want", "view", "busy", "hotAt"].forEach(function (k) { V[k] = n[k]; });
     V.tid = tid;
     V.hint = hint || {};
@@ -586,7 +790,7 @@
         V.head = Number(res.head) || 0;
         V.err = null;
         if (dm) dm.push = res.push === true;
-        if (route === "messages" && V.view !== "pick") refresh();
+        if (route === "messages" && V.view !== "pick" && !midCrop()) refresh();
         return plan();
       }
       if (fatal(res)) return;
@@ -1341,7 +1545,7 @@
       x[0].addEventListener(x[1], function () {
         if (!V || !inside()) return;
         V.poll.active = clock.now();
-        if (x[0] === root) refresh();
+        if (x[0] === root && !midCrop()) refresh();
         plan(0);
       });
     });
@@ -1416,6 +1620,8 @@
         return;
       }
       stop();
+      // The photo goes the moment she leaves, the same promise Cancel makes (0.3.8).
+      dropPic();
       closeDialog(true);
       V.below = false;
       if (V.list && typeof V.list.badge === "number") P.setBadge(V.list.badge);
@@ -1444,10 +1650,12 @@
     errKey: errKey,
     prepare: prepare,
     makePic: makePic,
+    /* 0.3.8, for the tests: the crop in the photo's own pixels, with no screen in the way. */
+    crop: { load: decode, start: cropStart, side: cropSide, clamp: clampCrop, zoom: cropZoom, make: cropPic },
     initials: initials,
     debug: function () {
       return V && { tid: V.tid, poll: V.poll, thumbs: V.thumbKeys.slice(), fulls: V.fullKeys.slice(), dialog: !!dlg, hot: hot(),
-        avatars: V.avKeys.slice(), pend: V.pend };
+        avatars: V.avKeys.slice(), pend: V.pend, crop: (V.pic && V.pic.crop) || null };
     }
   };
 })(window);

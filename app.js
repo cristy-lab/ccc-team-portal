@@ -615,7 +615,7 @@
   /* ---- 3. State, router, shared UI ---- */
 
   var CFG = root.CCC_CONFIG || {};
-  var APP_VERSION = CFG.APP_VERSION || "0.3.7";
+  var APP_VERSION = CFG.APP_VERSION || "0.3.8";
 
   var state = {
     lang: "en",
