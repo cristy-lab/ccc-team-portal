@@ -360,7 +360,7 @@
         "**Repeat the rule.** Don't touch it. Stay away. Ask people to stay out of the room, but never block or grab anyone. Stop working. Wait somewhere safe. In an emergency, wait away from the property, near other people.",
         "**Get the office involved right away.** Call the office yourself, or make sure the worker already called. The office tells the property manager and handles the police.",
         "**The office tells the worker** when to go back to work or leave. If the property manager has not answered within 30 minutes, the worker may leave after telling the office. If police are there, the police instructions come first.",
-        "**The next guest.** CCC has no part in guest check in (Cristy, September 17, 2026). The office makes sure the property manager knows, by phone and then in writing, and tells the manager that the next guest should stay out until the manager has talked with them and the gun is handled. The manager decides, not CCC. Never promise a worker, a client or a guest that CCC will hold or stop anyone. If guests are already at the property, the worker kindly asks the adults to wait outside, never blocks anyone, tells the office right away, and calls 911 if a child can reach the gun or anyone is in danger."
+        "**The next guest.** CCC has no part in guest check in. The office makes sure the property manager knows, by phone and then in writing, and tells the manager that the next guest should stay out until the manager has talked with them and the gun is handled. The manager decides, not CCC. Never promise a worker, a client or a guest that CCC will hold or stop anyone. If guests are already at the property, the worker kindly asks the adults to wait outside, never blocks anyone, tells the office right away, and calls 911 if a child can reach the gun or anyone is in danger."
        ],
        "es": [
         "**Pregunte: \"¿Está a salvo ahora mismo?\"**",
@@ -369,7 +369,7 @@
         "**Repita la regla.** No la toque. Aléjese. Pídales a las personas que no entren al cuarto, pero nunca le cierre el paso a nadie ni agarre a nadie. Deje de trabajar. Espere en un lugar seguro. En una emergencia, espere lejos de la propiedad, cerca de otras personas.",
         "**Avísele a la oficina enseguida.** Llame usted a la oficina, o confirme que la persona ya llamó. La oficina le avisa al administrador de la propiedad y se encarga de la policía.",
         "**La oficina le dice a la persona** cuándo volver a trabajar o irse. Si el administrador de la propiedad no ha contestado en 30 minutos, la persona puede irse después de avisarle a la oficina. Si la policía está ahí, las instrucciones de la policía van primero.",
-        "**El próximo huésped.** CCC no participa en la entrada de los huéspedes (Cristy, 17 de septiembre de 2026). La oficina se asegura de que el administrador de la propiedad esté enterado, por teléfono y después por escrito, y le dice al administrador que el próximo huésped no debe entrar hasta que el administrador haya hablado con él y el arma esté resuelta. El administrador decide, no CCC. Nunca le prometa a nadie, ni al equipo, ni al cliente, ni a un huésped, que CCC va a detener a alguien. Si ya hay huéspedes en la propiedad, la persona del equipo les pide con amabilidad a los adultos que esperen afuera, nunca le cierra el paso a nadie, avisa enseguida a la oficina y llama al 911 si un niño puede alcanzar el arma o si alguien está en peligro."
+        "**El próximo huésped.** CCC no participa en la entrada de los huéspedes. La oficina se asegura de que el administrador de la propiedad esté enterado, por teléfono y después por escrito, y le dice al administrador que el próximo huésped no debe entrar hasta que el administrador haya hablado con él y el arma esté resuelta. El administrador decide, no CCC. Nunca le prometa a nadie, ni al equipo, ni al cliente, ni a un huésped, que CCC va a detener a alguien. Si ya hay huéspedes en la propiedad, la persona del equipo les pide con amabilidad a los adultos que esperen afuera, nunca le cierra el paso a nadie, avisa enseguida a la oficina y llama al 911 si un niño puede alcanzar el arma o si alguien está en peligro."
        ],
        "type": "steps"
       },
@@ -432,8 +432,8 @@
        "type": "scene"
       },
       {
-       "en": "**The same fallback covers 1099 contractors** (Cristy, September 17, 2026). A contractor who cannot reach the office calls the region or division supervisor for that area, the same person a W2 worker calls. The contractor notice says so. Handle a contractor's call the same way.",
-       "es": "**El mismo paso es para los contratistas 1099** (Cristy, 17 de septiembre de 2026). Un contratista que no puede comunicarse con la oficina llama al supervisor de región o de división de esa zona, la misma persona a la que llama alguien del equipo W2. El aviso para contratistas lo dice. Atienda la llamada de un contratista de la misma manera.",
+       "en": "**The same fallback covers 1099 contractors**. A contractor who cannot reach the office calls the region or division supervisor for that area, the same person a W2 worker calls. The contractor notice says so. Handle a contractor's call the same way.",
+       "es": "**El mismo paso es para los contratistas 1099**. Un contratista que no puede comunicarse con la oficina llama al supervisor de región o de división de esa zona, la misma persona a la que llama alguien del equipo W2. El aviso para contratistas lo dice. Atienda la llamada de un contratista de la misma manera.",
        "type": "text"
       }
      ],
@@ -509,13 +509,13 @@
         "Send questions from guests, owners or reporters to the office.",
         "Never ask any worker if they own a gun or keep one in their car. Never search a car or ask to look inside one.",
         "Never act against anyone over a gun kept locked in their personal car. \"Keep it out of sight\" is a request, not a rule you enforce.",
-        "If you see a worker carry a gun on their body, or bring one inside a client property while working, tell the office. Do not handle it yourself. Cristy decides the discipline (Cristy, September 17, 2026)."
+        "If you see a worker carry a gun on their body, or bring one inside a client property while working, tell the office. Do not handle it yourself. Cristy decides the discipline."
        ],
        "es": [
         "Si un huésped, un dueño o un periodista hace preguntas, mándelo a la oficina.",
         "Nunca le pregunte a nadie del equipo si tiene un arma o si guarda una en su carro. Nunca revise un carro y nunca pida ver adentro de un carro.",
         "Nunca castigue ni tome medidas contra nadie por un arma guardada bajo llave en su carro personal. \"Manténgala fuera de la vista\" es un pedido, no una regla que usted hace cumplir.",
-        "Si ve que alguien del equipo lleva un arma de fuego encima, o entra con un arma de fuego a la propiedad de un cliente mientras trabaja, avísele a la oficina. No lo resuelva usted. Cristy decide la medida disciplinaria (Cristy, 17 de septiembre de 2026)."
+        "Si ve que alguien del equipo lleva un arma de fuego encima, o entra con un arma de fuego a la propiedad de un cliente mientras trabaja, avísele a la oficina. No lo resuelva usted. Cristy decide la medida disciplinaria."
        ],
        "type": "text"
       }
@@ -614,11 +614,11 @@
       },
       {
        "en": [
-        "**No one is taken off the schedule automatically.** A hold is a decision a person makes, and only after the 14 day grace period. Only Cristy or Alex may approve a hold, and never for a 1099 contractor (Cristy, September 17, 2026). You cannot approve one.",
+        "**No one is taken off the schedule automatically.** A hold is a decision a person makes, and only after the 14 day grace period. Only Cristy or Alex may approve a hold, and never for a 1099 contractor. You cannot approve one.",
         "**Contractors (1099):** You only see \"completed on\" a date. There is no score. Do not quiz or coach contractors. Talk to the office before any schedule change. Send contractor questions to the office."
        ],
        "es": [
-        "**A nadie se le dejan de asignar trabajos de forma automática.** Dejar de asignarle trabajos a alguien por un tiempo es una decisión que toma una persona, y solo después del periodo de gracia de 14 días. Solo Cristy o Alex lo pueden aprobar, y nunca para un contratista 1099 (Cristy, 17 de septiembre de 2026). Usted no lo puede aprobar.",
+        "**A nadie se le dejan de asignar trabajos de forma automática.** Dejar de asignarle trabajos a alguien por un tiempo es una decisión que toma una persona, y solo después del periodo de gracia de 14 días. Solo Cristy o Alex lo pueden aprobar, y nunca para un contratista 1099. Usted no lo puede aprobar.",
         "**Contratistas (1099):** Usted solo ve \"completado el\" y una fecha. No hay puntaje. No les haga pruebas ni les dé asesoría a los contratistas. Hable con la oficina antes de cambiar los trabajos que se le asignan a un contratista. Mande a la oficina las preguntas de los contratistas."
        ],
        "type": "text"
@@ -687,7 +687,7 @@
         "**Repeat the rule.** Don't touch it. Stay away. Ask people to stay out of the room, but never block or grab anyone. Stop working. Wait somewhere safe. In an emergency, wait away from the property, near other people.",
         "**Get the office involved right away.** Call the office yourself, or make sure the worker already called. The office tells the property manager and handles the police.",
         "**The office tells the worker** when to go back to work or leave. If the property manager has not answered within 30 minutes, the worker may leave after telling the office. If police are there, the police instructions come first.",
-        "**The next guest.** CCC has no part in guest check in (Cristy, September 17, 2026). The office makes sure the property manager knows, by phone and then in writing, and tells the manager that the next guest should stay out until the manager has talked with them and the gun is handled. The manager decides, not CCC. Never promise a worker, a client or a guest that CCC will hold or stop anyone. If guests are already at the property, the worker kindly asks the adults to wait outside, never blocks anyone, tells the office right away, and calls 911 if a child can reach the gun or anyone is in danger."
+        "**The next guest.** CCC has no part in guest check in. The office makes sure the property manager knows, by phone and then in writing, and tells the manager that the next guest should stay out until the manager has talked with them and the gun is handled. The manager decides, not CCC. Never promise a worker, a client or a guest that CCC will hold or stop anyone. If guests are already at the property, the worker kindly asks the adults to wait outside, never blocks anyone, tells the office right away, and calls 911 if a child can reach the gun or anyone is in danger."
        ],
        "es": [
         "**Pregunte: \"¿Está a salvo ahora mismo?\"**",
@@ -696,7 +696,7 @@
         "**Repita la regla.** No la toque. Aléjese. Pídales a las personas que no entren al cuarto, pero nunca le cierre el paso a nadie ni agarre a nadie. Deje de trabajar. Espere en un lugar seguro. En una emergencia, espere lejos de la propiedad, cerca de otras personas.",
         "**Avísele a la oficina enseguida.** Llame usted a la oficina, o confirme que la persona ya llamó. La oficina le avisa al administrador de la propiedad y se encarga de la policía.",
         "**La oficina le dice a la persona** cuándo volver a trabajar o irse. Si el administrador de la propiedad no ha contestado en 30 minutos, la persona puede irse después de avisarle a la oficina. Si la policía está ahí, las instrucciones de la policía van primero.",
-        "**El próximo huésped.** CCC no participa en la entrada de los huéspedes (Cristy, 17 de septiembre de 2026). La oficina se asegura de que el administrador de la propiedad esté enterado, por teléfono y después por escrito, y le dice al administrador que el próximo huésped no debe entrar hasta que el administrador haya hablado con él y el arma esté resuelta. El administrador decide, no CCC. Nunca le prometa a nadie, ni al equipo, ni al cliente, ni a un huésped, que CCC va a detener a alguien. Si ya hay huéspedes en la propiedad, la persona del equipo les pide con amabilidad a los adultos que esperen afuera, nunca le cierra el paso a nadie, avisa enseguida a la oficina y llama al 911 si un niño puede alcanzar el arma o si alguien está en peligro."
+        "**El próximo huésped.** CCC no participa en la entrada de los huéspedes. La oficina se asegura de que el administrador de la propiedad esté enterado, por teléfono y después por escrito, y le dice al administrador que el próximo huésped no debe entrar hasta que el administrador haya hablado con él y el arma esté resuelta. El administrador decide, no CCC. Nunca le prometa a nadie, ni al equipo, ni al cliente, ni a un huésped, que CCC va a detener a alguien. Si ya hay huéspedes en la propiedad, la persona del equipo les pide con amabilidad a los adultos que esperen afuera, nunca le cierra el paso a nadie, avisa enseguida a la oficina y llama al 911 si un niño puede alcanzar el arma o si alguien está en peligro."
        ],
        "type": "steps"
       },
@@ -706,8 +706,8 @@
        "type": "text"
       },
       {
-       "en": "**The same fallback covers 1099 contractors** (Cristy, September 17, 2026). A contractor who cannot reach the office calls the region or division supervisor for that area, the same person a W2 worker calls. The contractor notice says so. Handle a contractor's call the same way.",
-       "es": "**El mismo paso es para los contratistas 1099** (Cristy, 17 de septiembre de 2026). Un contratista que no puede comunicarse con la oficina llama al supervisor de región o de división de esa zona, la misma persona a la que llama alguien del equipo W2. El aviso para contratistas lo dice. Atienda la llamada de un contratista de la misma manera.",
+       "en": "**The same fallback covers 1099 contractors**. A contractor who cannot reach the office calls the region or division supervisor for that area, the same person a W2 worker calls. The contractor notice says so. Handle a contractor's call the same way.",
+       "es": "**El mismo paso es para los contratistas 1099**. Un contratista que no puede comunicarse con la oficina llama al supervisor de región o de división de esa zona, la misma persona a la que llama alguien del equipo W2. El aviso para contratistas lo dice. Atienda la llamada de un contratista de la misma manera.",
        "type": "text"
       }
      ],
@@ -735,7 +735,7 @@
         "Send questions from guests, owners or reporters to the office.",
         "Never ask any worker if they own a gun or keep one in their car. Never search a car or ask to look inside one.",
         "Never act against anyone over a gun kept locked in their personal car. \"Keep it out of sight\" is a request, not a rule you enforce.",
-        "If you see a worker carry a gun on their body, or bring one inside a client property while working, tell the office. Do not handle it yourself. Cristy decides the discipline (Cristy, September 17, 2026)."
+        "If you see a worker carry a gun on their body, or bring one inside a client property while working, tell the office. Do not handle it yourself. Cristy decides the discipline."
        ],
        "es": [
         "Nunca vaya a la propiedad para recoger, mover o revisar el arma.",
@@ -745,7 +745,7 @@
         "Si un huésped, un dueño o un periodista hace preguntas, mándelo a la oficina.",
         "Nunca le pregunte a nadie del equipo si tiene un arma o si guarda una en su carro. Nunca revise un carro y nunca pida ver adentro de un carro.",
         "Nunca castigue ni tome medidas contra nadie por un arma guardada bajo llave en su carro personal. \"Manténgala fuera de la vista\" es un pedido, no una regla que usted hace cumplir.",
-        "Si ve que alguien del equipo lleva un arma de fuego encima, o entra con un arma de fuego a la propiedad de un cliente mientras trabaja, avísele a la oficina. No lo resuelva usted. Cristy decide la medida disciplinaria (Cristy, 17 de septiembre de 2026)."
+        "Si ve que alguien del equipo lleva un arma de fuego encima, o entra con un arma de fuego a la propiedad de un cliente mientras trabaja, avísele a la oficina. No lo resuelva usted. Cristy decide la medida disciplinaria."
        ],
        "type": "text"
       },
@@ -809,14 +809,14 @@
         "**Keep alerts private.** Do not share names or results in group chats.",
         "**W2 employee did not pass:** Offer a short walkthrough in their language, on paid time. Then they take the quiz again. Retakes are unlimited.",
         "**W2 employee is overdue:** Remind them kindly. Help them find paid time to finish, like before their first job of the day.",
-        "**No one is taken off the schedule automatically.** A hold is a decision a person makes, and only after the 14 day grace period. Only Cristy or Alex may approve a hold, and never for a 1099 contractor (Cristy, September 17, 2026). You cannot approve one.",
+        "**No one is taken off the schedule automatically.** A hold is a decision a person makes, and only after the 14 day grace period. Only Cristy or Alex may approve a hold, and never for a 1099 contractor. You cannot approve one.",
         "**Contractors (1099):** You only see \"completed on\" a date. There is no score. Do not quiz or coach contractors. Talk to the office before any schedule change. Send contractor questions to the office."
        ],
        "es": [
         "**Mantenga los avisos en privado.** No comparta nombres ni resultados en chats de grupo.",
         "**Si una persona W2 no pasó la prueba:** Ofrézcale un repaso corto en su idioma, en tiempo pagado. Después, la persona repite la prueba. Puede repetirla sin límite.",
         "**Si una persona W2 no terminó a tiempo:** Recuérdeselo con amabilidad. Ayúdele a encontrar tiempo pagado para terminar, por ejemplo antes de su primer trabajo del día.",
-        "**A nadie se le dejan de asignar trabajos de forma automática.** Dejar de asignarle trabajos a alguien por un tiempo es una decisión que toma una persona, y solo después del periodo de gracia de 14 días. Solo Cristy o Alex lo pueden aprobar, y nunca para un contratista 1099 (Cristy, 17 de septiembre de 2026). Usted no lo puede aprobar.",
+        "**A nadie se le dejan de asignar trabajos de forma automática.** Dejar de asignarle trabajos a alguien por un tiempo es una decisión que toma una persona, y solo después del periodo de gracia de 14 días. Solo Cristy o Alex lo pueden aprobar, y nunca para un contratista 1099. Usted no lo puede aprobar.",
         "**Contratistas (1099):** Usted solo ve \"completado el\" y una fecha. No hay puntaje. No les haga pruebas ni les dé asesoría a los contratistas. Hable con la oficina antes de cambiar los trabajos que se le asignan a un contratista. Mande a la oficina las preguntas de los contratistas."
        ],
        "type": "text"
@@ -833,5 +833,5 @@
    ]
   }
  },
- "version": "2026-09-28"
+ "version": "2026-09-28.1"
 }
