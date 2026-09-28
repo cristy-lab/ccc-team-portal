@@ -1,0 +1,837 @@
+{
+ "character": "duo",
+ "kind": "course",
+ "note": "Portal lesson file for the supervisor add on, Part 2 of the firearms training Cristy approved on September 17 and 18, 2026, built by build_pack.py from the approved text. Both tracks carry every approved word of Part 2, with nothing added, dropped, softened or reordered. Two changes are on the record in GO_LIVE.md. One: Cristy replaced approved step 3 on September 28, 2026 (\"Stick with just 911\"), so the step now says to call 911 yourself and say the property's full address and city first, and it never sends anyone to a list of county dispatch numbers. Two: the office number is written as the office phone token, which the app fills in, because a public pack never carries a typed phone number. The answer key is not in this file.",
+ "schema": "ccc-edu-pack/1",
+ "title": {
+  "en": "If a Worker Calls You About a Gun",
+  "es": "Si alguien del equipo le llama por un arma"
+ },
+ "training_id": "supervisor-firearms",
+ "variants": {
+  "full": {
+   "quiz": {
+    "questions": [
+     {
+      "choices": [
+       {
+        "en": "Ask: Are you safe right now?",
+        "es": "Le pregunta: ¿Está a salvo ahora mismo?",
+        "id": "q1_are_you_safe"
+       },
+       {
+        "en": "Ask her to send you a photo of the gun.",
+        "es": "Le pide que le mande una foto del arma.",
+        "id": "q1_send_photo"
+       },
+       {
+        "en": "Ask her whose gun it is.",
+        "es": "Le pregunta de quién es el arma.",
+        "id": "q1_who_owns"
+       },
+       {
+        "en": "Tell her to close the door and keep cleaning.",
+        "es": "Le dice que cierre la puerta y que siga limpiando.",
+        "id": "q1_keep_cleaning"
+       }
+      ],
+      "id": "q1",
+      "prompt": {
+       "en": "A worker calls you from a client property. She says there is a gun in the bedroom. What do you say first?",
+       "es": "Alguien del equipo le llama desde la propiedad de un cliente. Le dice que hay un arma en el cuarto. ¿Qué le dice usted primero?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Call 911 yourself, and say the property's full address and city first.",
+        "es": "Llama usted al 911, y dice primero la dirección completa y la ciudad de la propiedad.",
+        "id": "q2_call_911_address"
+       },
+       {
+        "en": "Call the office and wait for the office to call 911.",
+        "es": "Llama a la oficina y espera a que la oficina llame al 911.",
+        "id": "q2_office_calls"
+       },
+       {
+        "en": "Send her the steps in a text message and let her try again.",
+        "es": "Le manda los pasos en un mensaje de texto y deja que lo intente otra vez.",
+        "id": "q2_text_steps"
+       },
+       {
+        "en": "Drive to the property and see what is happening.",
+        "es": "Maneja hasta la propiedad para ver qué pasa.",
+        "id": "q2_drive_over"
+       }
+      ],
+      "id": "q2",
+      "prompt": {
+       "en": "A worker tells you a child at the property can reach the gun. Her phone is almost dead and she cannot call 911. What do you do?",
+       "es": "Alguien del equipo le dice que un niño en la propiedad puede alcanzar el arma. Su teléfono casi no tiene batería y no puede llamar al 911. ¿Qué hace usted?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Kindly ask the adults to wait outside, and never block or grab anyone.",
+        "es": "Les pide con amabilidad a los adultos que esperen afuera, y nunca le cierra el paso a nadie ni agarra a nadie.",
+        "id": "q3_ask_wait_outside"
+       },
+       {
+        "en": "Stand in the front doorway and keep them out until the office calls back.",
+        "es": "Se para en la puerta de la casa y no los deja entrar hasta que la oficina le devuelva la llamada.",
+        "id": "q3_block_door"
+       },
+       {
+        "en": "Take the door code from them so they cannot get in.",
+        "es": "Les quita el código de la puerta para que no puedan entrar.",
+        "id": "q3_take_code"
+       },
+       {
+        "en": "Leave right away and say nothing to them.",
+        "es": "Se va enseguida y no les dice nada.",
+        "id": "q3_say_nothing"
+       }
+      ],
+      "id": "q3",
+      "prompt": {
+       "en": "Guests arrive while the worker is waiting outside. She asks you if she should stand in the doorway so they cannot go in. What do you tell her?",
+       "es": "Llegan huéspedes mientras la persona del equipo espera afuera. Le pregunta si debe pararse en la puerta para que no entren. ¿Qué le dice usted?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Say no. Nobody at CCC moves a gun. Get the office involved right away.",
+        "es": "Dice que no. Nadie de CCC mueve un arma. Le avisa a la oficina enseguida.",
+        "id": "q4_say_no_office"
+       },
+       {
+        "en": "Have her do it this one time, since the property manager is the one who asked.",
+        "es": "Deja que lo haga solo esta vez, porque el administrador de la propiedad es quien lo pidió.",
+        "id": "q4_this_once"
+       },
+       {
+        "en": "Drive over and put the gun away yourself.",
+        "es": "Maneja hasta la propiedad y guarda el arma usted.",
+        "id": "q4_do_it_yourself"
+       },
+       {
+        "en": "Let the worker decide if she is comfortable doing it.",
+        "es": "Deja que la persona del equipo decida si se siente cómoda haciéndolo.",
+        "id": "q4_let_her_choose"
+       }
+      ],
+      "id": "q4",
+      "prompt": {
+       "en": "The property manager calls you and asks you to have the worker put the gun in a locked drawer before the next guest arrives. What do you do?",
+       "es": "El administrador de la propiedad le llama y le pide que la persona del equipo guarde el arma bajo llave en un cajón antes de que llegue el próximo huésped. ¿Qué hace usted?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "The property manager decides about the next guest, not CCC, and you promise nothing.",
+        "es": "El administrador de la propiedad decide sobre el próximo huésped, no CCC, y usted no promete nada.",
+        "id": "q5_manager_decides"
+       },
+       {
+        "en": "Promise it, and tell the worker to stay there until the next guest leaves.",
+        "es": "Se lo promete, y le dice a la persona del equipo que se quede hasta que el próximo huésped se vaya.",
+        "id": "q5_promise_it"
+       },
+       {
+        "en": "Tell the owner the worker will decide when it is safe.",
+        "es": "Le dice que la persona del equipo va a decidir cuándo es seguro.",
+        "id": "q5_cleaner_decides"
+       },
+       {
+        "en": "Tell the owner CCC will handle guest check in this time.",
+        "es": "Le dice que esta vez CCC se encarga de la entrada del huésped.",
+        "id": "q5_ccc_checks_in"
+       }
+      ],
+      "id": "q5",
+      "prompt": {
+       "en": "An owner asks you to promise that CCC will keep the next guest out of the property until the gun is handled. What do you say?",
+       "es": "Un dueño le pide que le prometa que CCC va a impedir que el próximo huésped entre a la propiedad hasta que el arma esté resuelta. ¿Qué le dice usted?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Not an emergency. The worker stops working, waits somewhere safe, and calls the office.",
+        "es": "No es una emergencia. La persona deja de trabajar, espera en un lugar seguro y llama a la oficina.",
+        "id": "q6_not_emergency"
+       },
+       {
+        "en": "An emergency, and you tell her to leave the property and call 911 right away.",
+        "es": "Es una emergencia, y usted le dice que salga de la propiedad y llame al 911 enseguida.",
+        "id": "q6_emergency_911"
+       },
+       {
+        "en": "Something to settle with the guest, so you tell her to ask him to put the gun away.",
+        "es": "Algo para resolver con el huésped, y usted le dice que le pida que guarde el arma.",
+        "id": "q6_ask_guest"
+       },
+       {
+        "en": "Nothing to report, so you tell her to finish the clean and call the office later.",
+        "es": "No hay nada que reportar, y usted le dice que termine la limpieza y llame a la oficina después.",
+        "id": "q6_nothing"
+       }
+      ],
+      "id": "q6",
+      "prompt": {
+       "en": "A worker calls you. A guest is still staying at the property, he is calm, he is carrying a gun, and he is not threatening anyone. What is this?",
+       "es": "Alguien del equipo le llama. Un huésped todavía está hospedado en la propiedad, está tranquilo, lleva un arma y no está amenazando a nadie. ¿Qué es esto?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "She keeps calling the office and also calls you. If anyone is in danger, she calls 911.",
+        "es": "Sigue llamando a la oficina y también le llama a usted. Si alguien está en peligro, llama al 911.",
+        "id": "q7_keep_calling"
+       },
+       {
+        "en": "You take the case over yourself, and nobody at CCC calls the office about it any more.",
+        "es": "Usted se encarga del caso, y ya nadie de CCC vuelve a llamar a la oficina por ese caso.",
+        "id": "q7_you_take_over"
+       },
+       {
+        "en": "She waits until the morning and calls the office then.",
+        "es": "Espera hasta la mañana y llama a la oficina entonces.",
+        "id": "q7_wait_morning"
+       },
+       {
+        "en": "She calls the property manager herself.",
+        "es": "Llama ella misma al administrador de la propiedad.",
+        "id": "q7_call_manager"
+       }
+      ],
+      "id": "q7",
+      "prompt": {
+       "en": "A worker calls you because nobody at the office answered for 10 minutes. What happens now?",
+       "es": "Alguien del equipo le llama porque nadie de la oficina contestó en 10 minutos. ¿Qué pasa ahora?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Do not ask for photos. Only the office asks for a photo.",
+        "es": "No pide fotos. Solo la oficina pide fotos.",
+        "id": "q8_office_asks"
+       },
+       {
+        "en": "Ask her for one photo, so that you can see it yourself.",
+        "es": "Le pide una foto, para que usted la pueda ver.",
+        "id": "q8_one_photo"
+       },
+       {
+        "en": "Ask her to post it in the region group chat.",
+        "es": "Le pide que la publique en el chat de grupo de la región.",
+        "id": "q8_group_chat"
+       },
+       {
+        "en": "Ask her to send it to the property manager.",
+        "es": "Le pide que se la mande al administrador de la propiedad.",
+        "id": "q8_send_manager"
+       }
+      ],
+      "id": "q8",
+      "prompt": {
+       "en": "You want to see what the worker found. What do you do about photos?",
+       "es": "Usted quiere ver lo que encontró la persona del equipo. ¿Qué hace con las fotos?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Tell the office, and do not handle it yourself.",
+        "es": "Le avisa a la oficina, y no lo resuelve usted.",
+        "id": "q9_tell_office"
+       },
+       {
+        "en": "Send her home for the rest of the week.",
+        "es": "La manda a su casa por el resto de la semana.",
+        "id": "q9_send_home"
+       },
+       {
+        "en": "Decide the discipline yourself and tell the office about it later.",
+        "es": "Decide usted mismo la medida disciplinaria y le avisa a la oficina más tarde.",
+        "id": "q9_decide_yourself"
+       },
+       {
+        "en": "Put it in the region group chat so other supervisors know.",
+        "es": "Lo pone en el chat de grupo de la región para que otros supervisores se enteren.",
+        "id": "q9_group_chat"
+       }
+      ],
+      "id": "q9",
+      "prompt": {
+       "en": "You see a worker carrying a gun on her body while she works inside a client home. What do you do?",
+       "es": "Usted ve que alguien del equipo lleva un arma encima mientras trabaja dentro de la casa de un cliente. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "She may leave after telling the office. If police are there, the police instructions come first.",
+        "es": "Puede irse después de avisarle a la oficina. Si la policía está ahí, las instrucciones de la policía van primero.",
+        "id": "q10_leave_after_telling"
+       },
+       {
+        "en": "She has to stay right there at the property until the property manager answers the phone.",
+        "es": "Tiene que quedarse ahí mismo en la propiedad hasta que el administrador de la propiedad conteste el teléfono.",
+        "id": "q10_must_stay"
+       },
+       {
+        "en": "You decide, and the office does not need to know.",
+        "es": "Usted decide, y la oficina no necesita saberlo.",
+        "id": "q10_you_decide"
+       },
+       {
+        "en": "She leaves right away and tells you about it tomorrow.",
+        "es": "Se va enseguida y le cuenta a usted mañana.",
+        "id": "q10_leave_silently"
+       }
+      ],
+      "id": "q10",
+      "prompt": {
+       "en": "The property manager has not answered in 30 minutes. The worker asks you whether she can leave. What is the rule?",
+       "es": "El administrador de la propiedad no ha contestado en 30 minutos. La persona del equipo le pregunta si puede irse. ¿Cuál es la regla?"
+      }
+     }
+    ],
+    "seconds": 300
+   },
+   "screens": [
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A CCC supervisor in a grey polo sits with a coffee and reads this add on on her phone.",
+        "es": "Una supervisora de CCC con camisa polo gris está sentada con un café y lee este módulo en su teléfono."
+       },
+       "src": "img/edu/scenes/supervisor-firearms/supervisor-lesson.svg",
+       "type": "scene"
+      },
+      {
+       "en": "For region supervisors. Take the full lesson first.",
+       "es": "Para los supervisores de región. Primero tome la lección completa.",
+       "type": "text"
+      }
+     ],
+     "id": "before-you-start",
+     "layout": "full",
+     "seconds": 15,
+     "title": {
+      "en": "Supervisor add on",
+      "es": "Módulo extra para supervisores"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A CCC supervisor takes a phone call. On the other side of the drawing a worker stands outside a vacation rental with her phone.",
+        "es": "Una supervisora de CCC contesta una llamada. Al otro lado del dibujo, una persona del equipo de CCC está afuera de una casa de alquiler vacacional con su teléfono."
+       },
+       "src": "img/edu/scenes/supervisor-firearms/worker-calls-you.svg",
+       "type": "scene"
+      },
+      {
+       "en": "Workers report a found gun to the office. If a worker calls you instead:",
+       "es": "Las personas del equipo deben reportar a la oficina cualquier arma que encuentren. Si alguien le llama a usted:",
+       "type": "text"
+      },
+      {
+       "character": "cris",
+       "en": "Never block or grab anyone.",
+       "es": "Nunca le cierre el paso a nadie ni agarre a nadie.",
+       "pose": "stop",
+       "type": "say"
+      },
+      {
+       "en": [
+        "**Ask: \"Are you safe right now?\"**",
+        "**Ask the emergency questions.** Can a child reach the gun? Are there signs of a crime or drugs? Is someone at the property threatening people, acting in a dangerous way with a gun, or carrying a gun when they should not be there? If yes, and no one called 911, tell the worker to get safe and call 911 now. A calm guest who carries a gun, and is not threatening anyone, is not an emergency. The worker calls the office.",
+        "**If the worker cannot call 911,** call 911 yourself. Say the property's full address and city first, because your phone reaches the 911 center where you are, not where the property is, and they will pass you on. Stay on the line until someone answers.",
+        "**Repeat the rule.** Don't touch it. Stay away. Ask people to stay out of the room, but never block or grab anyone. Stop working. Wait somewhere safe. In an emergency, wait away from the property, near other people.",
+        "**Get the office involved right away.** Call the office yourself, or make sure the worker already called. The office tells the property manager and handles the police.",
+        "**The office tells the worker** when to go back to work or leave. If the property manager has not answered within 30 minutes, the worker may leave after telling the office. If police are there, the police instructions come first.",
+        "**The next guest.** CCC has no part in guest check in (Cristy, September 17, 2026). The office makes sure the property manager knows, by phone and then in writing, and tells the manager that the next guest should stay out until the manager has talked with them and the gun is handled. The manager decides, not CCC. Never promise a worker, a client or a guest that CCC will hold or stop anyone. If guests are already at the property, the worker kindly asks the adults to wait outside, never blocks anyone, tells the office right away, and calls 911 if a child can reach the gun or anyone is in danger."
+       ],
+       "es": [
+        "**Pregunte: \"¿Está a salvo ahora mismo?\"**",
+        "**Haga las preguntas de emergencia.** ¿Un niño puede alcanzar el arma? ¿Hay señales de un crimen o de drogas? ¿Alguien en la propiedad está amenazando a la gente, actúa de forma peligrosa con un arma, o lleva un arma y no debería estar ahí? Si la respuesta es sí y nadie llamó al 911, dígale a la persona que vaya a un lugar seguro y llame al 911 ahora. Un huésped tranquilo que lleva un arma, y que no está amenazando a nadie, no es una emergencia. La persona llama a la oficina.",
+        "**Si el trabajador no puede llamar al 911,** llame usted al 911. Diga primero la dirección completa y la ciudad de la propiedad, porque su teléfono llega al centro del 911 donde usted está, no donde está la propiedad, y ellos lo van a comunicar. No cuelgue hasta que alguien conteste.",
+        "**Repita la regla.** No la toque. Aléjese. Pídales a las personas que no entren al cuarto, pero nunca le cierre el paso a nadie ni agarre a nadie. Deje de trabajar. Espere en un lugar seguro. En una emergencia, espere lejos de la propiedad, cerca de otras personas.",
+        "**Avísele a la oficina enseguida.** Llame usted a la oficina, o confirme que la persona ya llamó. La oficina le avisa al administrador de la propiedad y se encarga de la policía.",
+        "**La oficina le dice a la persona** cuándo volver a trabajar o irse. Si el administrador de la propiedad no ha contestado en 30 minutos, la persona puede irse después de avisarle a la oficina. Si la policía está ahí, las instrucciones de la policía van primero.",
+        "**El próximo huésped.** CCC no participa en la entrada de los huéspedes (Cristy, 17 de septiembre de 2026). La oficina se asegura de que el administrador de la propiedad esté enterado, por teléfono y después por escrito, y le dice al administrador que el próximo huésped no debe entrar hasta que el administrador haya hablado con él y el arma esté resuelta. El administrador decide, no CCC. Nunca le prometa a nadie, ni al equipo, ni al cliente, ni a un huésped, que CCC va a detener a alguien. Si ya hay huéspedes en la propiedad, la persona del equipo les pide con amabilidad a los adultos que esperen afuera, nunca le cierra el paso a nadie, avisa enseguida a la oficina y llama al 911 si un niño puede alcanzar el arma o si alguien está en peligro."
+       ],
+       "type": "steps"
+      },
+      {
+       "alt": {
+        "en": "A supervisor on a call points at a map, where the call lands near her and is passed on to a pin over the house in the other town.",
+        "es": "Una supervisora en una llamada señala un mapa, donde la llamada llega cerca de ella y la pasan a un marcador sobre la casa en el otro pueblo."
+       },
+       "src": "img/edu/scenes/supervisor-firearms/say-the-address.svg",
+       "type": "scene"
+      }
+     ],
+     "id": "worker-calls",
+     "layout": "hero",
+     "seconds": 230,
+     "title": {
+      "en": "If a worker calls you about a gun",
+      "es": "Si alguien del equipo le llama por un arma"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A phone calling the CCC office, with a sun on one side and a moon on the other.",
+        "es": "Un teléfono llamando a la oficina de CCC, con un sol de un lado y una luna del otro."
+       },
+       "src": "img/edu/scenes/supervisor-firearms/office-any-hour.svg",
+       "type": "scene"
+      },
+      {
+       "character": "clara",
+       "en": "Day or night!",
+       "es": "¡De día o de noche!",
+       "pose": "tip",
+       "type": "say"
+      },
+      {
+       "en": "**The office takes firearm calls at every hour, day or night, at one number: {{OFFICE_PHONE}}.** It is the same number day and night. If the worker called you because the office did not answer, handle the call the same way. Keep calling the office until someone answers. Cristy approved this on September 17, 2026: if no one at the office answers within 10 minutes, the worker keeps calling the office and also calls you. The office still takes the call. If anyone is in danger, they call 911.",
+       "es": "**La oficina atiende las llamadas por armas a cualquier hora, de día o de noche, en un solo número: {{OFFICE_PHONE}}.** Es el mismo número de día y de noche. Si la persona le llamó a usted porque la oficina no contestó, atienda la llamada de la misma manera. Siga llamando a la oficina hasta que alguien conteste. Cristy lo aprobó el 17 de septiembre de 2026: si nadie de la oficina contesta en 10 minutos, la persona sigue llamando a la oficina y también le llama a usted. La oficina sigue atendiendo la llamada. Si alguien está en peligro, llama al 911.",
+       "type": "text"
+      }
+     ],
+     "id": "office-any-hour",
+     "layout": "hero",
+     "seconds": 60,
+     "title": {
+      "en": "If a worker calls you about a gun",
+      "es": "Si alguien del equipo le llama por un arma"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A worker with no CCC uniform makes a call, and the call reaches a supervisor holding her phone.",
+        "es": "Una persona sin uniforme de CCC hace una llamada, y la llamada llega a una supervisora que sostiene su teléfono."
+       },
+       "src": "img/edu/scenes/supervisor-firearms/contractor-same.svg",
+       "type": "scene"
+      },
+      {
+       "en": "**The same fallback covers 1099 contractors** (Cristy, September 17, 2026). A contractor who cannot reach the office calls the region or division supervisor for that area, the same person a W2 worker calls. The contractor notice says so. Handle a contractor's call the same way.",
+       "es": "**El mismo paso es para los contratistas 1099** (Cristy, 17 de septiembre de 2026). Un contratista que no puede comunicarse con la oficina llama al supervisor de región o de división de esa zona, la misma persona a la que llama alguien del equipo W2. El aviso para contratistas lo dice. Atienda la llamada de un contratista de la misma manera.",
+       "type": "text"
+      }
+     ],
+     "id": "contractor-same",
+     "layout": "hero",
+     "seconds": 35,
+     "title": {
+      "en": "If a worker calls you about a gun",
+      "es": "Si alguien del equipo le llama por un arma"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A car driving toward a house, with a big crossed out circle over it.",
+        "es": "Un carro que va hacia una casa, con un círculo grande tachado encima."
+       },
+       "src": "img/edu/scenes/supervisor-firearms/never-go.svg",
+       "type": "scene"
+      },
+      {
+       "en": [
+        "Never go to the property to pick up, move or check the gun.",
+        "Never tell a worker to move it, cover it, unload it or keep cleaning. Workers never move a gun, even if a guest, the owner, the property manager or a supervisor asks. Workers never hand a gun back to anyone, even a guest who says it is theirs.",
+        "Do not ask for photos. Only the office asks for a photo.",
+        "Never post photos of a gun, property addresses or door codes in group chats or on social media. Workers can always talk about safety with coworkers, the police or a government agency."
+       ],
+       "es": [
+        "Nunca vaya a la propiedad para recoger, mover o revisar el arma.",
+        "Nunca le diga a nadie que mueva el arma, que la tape, que la descargue o que siga limpiando. El equipo nunca mueve un arma, aunque se lo pida un huésped, el dueño, el administrador de la propiedad o un supervisor. El equipo nunca le devuelve un arma a nadie, ni siquiera a un huésped que dice que es suya.",
+        "No pida fotos. Solo la oficina pide fotos.",
+        "Nunca publique fotos de un arma, direcciones de propiedades ni códigos de puertas en chats de grupo ni en redes sociales. Las personas del equipo siempre pueden hablar de la seguridad con sus compañeros, con la policía o con una agencia del gobierno."
+       ],
+       "type": "text"
+      },
+      {
+       "alt": {
+        "en": "A gun lies still on the floor while a CCC supervisor stands well back with her palm out, and a hand reaching for the gun is crossed out.",
+        "es": "Un arma está quieta en el piso mientras una supervisora de CCC se queda bien lejos con la palma de la mano al frente, y una mano que quiere agarrar el arma está tachada."
+       },
+       "src": "img/edu/scenes/supervisor-firearms/hands-off.svg",
+       "type": "scene"
+      }
+     ],
+     "id": "never",
+     "layout": "hero",
+     "seconds": 65,
+     "title": {
+      "en": "Never",
+      "es": "Nunca"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A phone about to post a photo, with a big crossed out circle over it.",
+        "es": "Un teléfono a punto de publicar una foto, con un círculo grande tachado encima."
+       },
+       "src": "img/edu/scenes/supervisor-firearms/no-photos.svg",
+       "type": "scene"
+      },
+      {
+       "character": "cris",
+       "en": "Never search a car.",
+       "es": "Nunca revise un carro.",
+       "pose": "stop",
+       "type": "say"
+      },
+      {
+       "en": [
+        "Send questions from guests, owners or reporters to the office.",
+        "Never ask any worker if they own a gun or keep one in their car. Never search a car or ask to look inside one.",
+        "Never act against anyone over a gun kept locked in their personal car. \"Keep it out of sight\" is a request, not a rule you enforce.",
+        "If you see a worker carry a gun on their body, or bring one inside a client property while working, tell the office. Do not handle it yourself. Cristy decides the discipline (Cristy, September 17, 2026)."
+       ],
+       "es": [
+        "Si un huésped, un dueño o un periodista hace preguntas, mándelo a la oficina.",
+        "Nunca le pregunte a nadie del equipo si tiene un arma o si guarda una en su carro. Nunca revise un carro y nunca pida ver adentro de un carro.",
+        "Nunca castigue ni tome medidas contra nadie por un arma guardada bajo llave en su carro personal. \"Manténgala fuera de la vista\" es un pedido, no una regla que usted hace cumplir.",
+        "Si ve que alguien del equipo lleva un arma de fuego encima, o entra con un arma de fuego a la propiedad de un cliente mientras trabaja, avísele a la oficina. No lo resuelva usted. Cristy decide la medida disciplinaria (Cristy, 17 de septiembre de 2026)."
+       ],
+       "type": "text"
+      }
+     ],
+     "id": "never-more",
+     "layout": "hero",
+     "seconds": 65,
+     "title": {
+      "en": "Never",
+      "es": "Nunca"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A CCC supervisor and a worker sit and talk, with two cups between them.",
+        "es": "Una supervisora de CCC y una persona del equipo de CCC están sentadas hablando, con dos tazas entre las dos."
+       },
+       "src": "img/edu/scenes/supervisor-firearms/check-on-worker.svg",
+       "type": "scene"
+      },
+      {
+       "character": "clara",
+       "en": "The same day!",
+       "es": "¡El mismo día!",
+       "pose": "tip",
+       "type": "say"
+      },
+      {
+       "en": [
+        "Check on the worker the same day. Ask how they are doing.",
+        "Tell the office if the worker is upset or needs anything."
+       ],
+       "es": [
+        "Hable con la persona el mismo día. Pregúntele cómo está.",
+        "Avísele a la oficina si la persona está afectada o necesita algo."
+       ],
+       "type": "text"
+      }
+     ],
+     "id": "after",
+     "layout": "hero",
+     "seconds": 20,
+     "title": {
+      "en": "After",
+      "es": "Después"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A phone showing one alert, held close, with a crossed out group chat beside it.",
+        "es": "Un teléfono con un aviso, sostenido cerca, y al lado un chat de grupo tachado."
+       },
+       "src": "img/edu/scenes/supervisor-firearms/alerts-private.svg",
+       "type": "scene"
+      },
+      {
+       "en": "You and Alex get the alerts for failed or overdue training.",
+       "es": "Usted y Alex reciben los avisos cuando alguien no pasa la prueba o no la termina a tiempo.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "**Keep alerts private.** Do not share names or results in group chats.",
+        "**W2 employee did not pass:** Offer a short walkthrough in their language, on paid time. Then they take the quiz again. Retakes are unlimited.",
+        "**W2 employee is overdue:** Remind them kindly. Help them find paid time to finish, like before their first job of the day."
+       ],
+       "es": [
+        "**Mantenga los avisos en privado.** No comparta nombres ni resultados en chats de grupo.",
+        "**Si una persona W2 no pasó la prueba:** Ofrézcale un repaso corto en su idioma, en tiempo pagado. Después, la persona repite la prueba. Puede repetirla sin límite.",
+        "**Si una persona W2 no terminó a tiempo:** Recuérdeselo con amabilidad. Ayúdele a encontrar tiempo pagado para terminar, por ejemplo antes de su primer trabajo del día."
+       ],
+       "type": "text"
+      }
+     ],
+     "id": "training-alerts",
+     "layout": "hero",
+     "seconds": 45,
+     "title": {
+      "en": "Training alerts",
+      "es": "Avisos de capacitación"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A work calendar full of jobs, with a hand reaching for it and a crossed out circle over the hand.",
+        "es": "Un calendario de trabajo lleno de trabajos, con una mano que lo quiere agarrar y un círculo tachado sobre la mano."
+       },
+       "src": "img/edu/scenes/supervisor-firearms/no-hold-alone.svg",
+       "type": "scene"
+      },
+      {
+       "en": [
+        "**No one is taken off the schedule automatically.** A hold is a decision a person makes, and only after the 14 day grace period. Only Cristy or Alex may approve a hold, and never for a 1099 contractor (Cristy, September 17, 2026). You cannot approve one.",
+        "**Contractors (1099):** You only see \"completed on\" a date. There is no score. Do not quiz or coach contractors. Talk to the office before any schedule change. Send contractor questions to the office."
+       ],
+       "es": [
+        "**A nadie se le dejan de asignar trabajos de forma automática.** Dejar de asignarle trabajos a alguien por un tiempo es una decisión que toma una persona, y solo después del periodo de gracia de 14 días. Solo Cristy o Alex lo pueden aprobar, y nunca para un contratista 1099 (Cristy, 17 de septiembre de 2026). Usted no lo puede aprobar.",
+        "**Contratistas (1099):** Usted solo ve \"completado el\" y una fecha. No hay puntaje. No les haga pruebas ni les dé asesoría a los contratistas. Hable con la oficina antes de cambiar los trabajos que se le asignan a un contratista. Mande a la oficina las preguntas de los contratistas."
+       ],
+       "type": "text"
+      }
+     ],
+     "id": "training-alerts-more",
+     "layout": "hero",
+     "seconds": 50,
+     "title": {
+      "en": "Training alerts",
+      "es": "Avisos de capacitación"
+     }
+    }
+   ]
+  },
+  "notice": {
+   "ack": {
+    "text": {
+     "en": "I have read this notice. I understand these are safety rules for what to do if a worker calls me about a gun.",
+     "es": "Leí este aviso. Entiendo que estas son reglas de seguridad para lo que debo hacer si alguien del equipo me llama por un arma."
+    }
+   },
+   "checkpoint": {
+    "on_miss": {
+     "en": "Not quite. Please read the notice again, then try again.",
+     "es": "Todavía no. Por favor, lea el aviso otra vez y vuelva a intentarlo."
+    },
+    "question_ids": [
+     "q1",
+     "q2",
+     "q3",
+     "q4",
+     "q5"
+    ]
+   },
+   "screens": [
+    {
+     "blocks": [
+      {
+       "decorative": true,
+       "src": "img/edu/scenes/supervisor-firearms/office-any-hour.svg",
+       "type": "scene"
+      },
+      {
+       "en": "For region supervisors. Take the full lesson first.",
+       "es": "Para los supervisores de región. Primero tome la lección completa.",
+       "type": "text"
+      },
+      {
+       "en": "Workers report a found gun to the office. If a worker calls you instead:",
+       "es": "Las personas del equipo deben reportar a la oficina cualquier arma que encuentren. Si alguien le llama a usted:",
+       "type": "text"
+      },
+      {
+       "character": "duo",
+       "en": "Never block or grab anyone.",
+       "es": "Nunca le cierre el paso a nadie ni agarre a nadie.",
+       "pose": "stop",
+       "type": "say"
+      },
+      {
+       "en": [
+        "**Ask: \"Are you safe right now?\"**",
+        "**Ask the emergency questions.** Can a child reach the gun? Are there signs of a crime or drugs? Is someone at the property threatening people, acting in a dangerous way with a gun, or carrying a gun when they should not be there? If yes, and no one called 911, tell the worker to get safe and call 911 now. A calm guest who carries a gun, and is not threatening anyone, is not an emergency. The worker calls the office.",
+        "**If the worker cannot call 911,** call 911 yourself. Say the property's full address and city first, because your phone reaches the 911 center where you are, not where the property is, and they will pass you on. Stay on the line until someone answers.",
+        "**Repeat the rule.** Don't touch it. Stay away. Ask people to stay out of the room, but never block or grab anyone. Stop working. Wait somewhere safe. In an emergency, wait away from the property, near other people.",
+        "**Get the office involved right away.** Call the office yourself, or make sure the worker already called. The office tells the property manager and handles the police.",
+        "**The office tells the worker** when to go back to work or leave. If the property manager has not answered within 30 minutes, the worker may leave after telling the office. If police are there, the police instructions come first.",
+        "**The next guest.** CCC has no part in guest check in (Cristy, September 17, 2026). The office makes sure the property manager knows, by phone and then in writing, and tells the manager that the next guest should stay out until the manager has talked with them and the gun is handled. The manager decides, not CCC. Never promise a worker, a client or a guest that CCC will hold or stop anyone. If guests are already at the property, the worker kindly asks the adults to wait outside, never blocks anyone, tells the office right away, and calls 911 if a child can reach the gun or anyone is in danger."
+       ],
+       "es": [
+        "**Pregunte: \"¿Está a salvo ahora mismo?\"**",
+        "**Haga las preguntas de emergencia.** ¿Un niño puede alcanzar el arma? ¿Hay señales de un crimen o de drogas? ¿Alguien en la propiedad está amenazando a la gente, actúa de forma peligrosa con un arma, o lleva un arma y no debería estar ahí? Si la respuesta es sí y nadie llamó al 911, dígale a la persona que vaya a un lugar seguro y llame al 911 ahora. Un huésped tranquilo que lleva un arma, y que no está amenazando a nadie, no es una emergencia. La persona llama a la oficina.",
+        "**Si el trabajador no puede llamar al 911,** llame usted al 911. Diga primero la dirección completa y la ciudad de la propiedad, porque su teléfono llega al centro del 911 donde usted está, no donde está la propiedad, y ellos lo van a comunicar. No cuelgue hasta que alguien conteste.",
+        "**Repita la regla.** No la toque. Aléjese. Pídales a las personas que no entren al cuarto, pero nunca le cierre el paso a nadie ni agarre a nadie. Deje de trabajar. Espere en un lugar seguro. En una emergencia, espere lejos de la propiedad, cerca de otras personas.",
+        "**Avísele a la oficina enseguida.** Llame usted a la oficina, o confirme que la persona ya llamó. La oficina le avisa al administrador de la propiedad y se encarga de la policía.",
+        "**La oficina le dice a la persona** cuándo volver a trabajar o irse. Si el administrador de la propiedad no ha contestado en 30 minutos, la persona puede irse después de avisarle a la oficina. Si la policía está ahí, las instrucciones de la policía van primero.",
+        "**El próximo huésped.** CCC no participa en la entrada de los huéspedes (Cristy, 17 de septiembre de 2026). La oficina se asegura de que el administrador de la propiedad esté enterado, por teléfono y después por escrito, y le dice al administrador que el próximo huésped no debe entrar hasta que el administrador haya hablado con él y el arma esté resuelta. El administrador decide, no CCC. Nunca le prometa a nadie, ni al equipo, ni al cliente, ni a un huésped, que CCC va a detener a alguien. Si ya hay huéspedes en la propiedad, la persona del equipo les pide con amabilidad a los adultos que esperen afuera, nunca le cierra el paso a nadie, avisa enseguida a la oficina y llama al 911 si un niño puede alcanzar el arma o si alguien está en peligro."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "**The office takes firearm calls at every hour, day or night, at one number: {{OFFICE_PHONE}}.** It is the same number day and night. If the worker called you because the office did not answer, handle the call the same way. Keep calling the office until someone answers. Cristy approved this on September 17, 2026: if no one at the office answers within 10 minutes, the worker keeps calling the office and also calls you. The office still takes the call. If anyone is in danger, they call 911.",
+       "es": "**La oficina atiende las llamadas por armas a cualquier hora, de día o de noche, en un solo número: {{OFFICE_PHONE}}.** Es el mismo número de día y de noche. Si la persona le llamó a usted porque la oficina no contestó, atienda la llamada de la misma manera. Siga llamando a la oficina hasta que alguien conteste. Cristy lo aprobó el 17 de septiembre de 2026: si nadie de la oficina contesta en 10 minutos, la persona sigue llamando a la oficina y también le llama a usted. La oficina sigue atendiendo la llamada. Si alguien está en peligro, llama al 911.",
+       "type": "text"
+      },
+      {
+       "en": "**The same fallback covers 1099 contractors** (Cristy, September 17, 2026). A contractor who cannot reach the office calls the region or division supervisor for that area, the same person a W2 worker calls. The contractor notice says so. Handle a contractor's call the same way.",
+       "es": "**El mismo paso es para los contratistas 1099** (Cristy, 17 de septiembre de 2026). Un contratista que no puede comunicarse con la oficina llama al supervisor de región o de división de esa zona, la misma persona a la que llama alguien del equipo W2. El aviso para contratistas lo dice. Atienda la llamada de un contratista de la misma manera.",
+       "type": "text"
+      }
+     ],
+     "id": "notice",
+     "layout": "hero",
+     "seconds": 315,
+     "title": {
+      "en": "If a worker calls you about a gun",
+      "es": "Si alguien del equipo le llama por un arma"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "decorative": true,
+       "src": "img/edu/scenes/supervisor-firearms/never-go.svg",
+       "type": "scene"
+      },
+      {
+       "en": [
+        "Never go to the property to pick up, move or check the gun.",
+        "Never tell a worker to move it, cover it, unload it or keep cleaning. Workers never move a gun, even if a guest, the owner, the property manager or a supervisor asks. Workers never hand a gun back to anyone, even a guest who says it is theirs.",
+        "Do not ask for photos. Only the office asks for a photo.",
+        "Never post photos of a gun, property addresses or door codes in group chats or on social media. Workers can always talk about safety with coworkers, the police or a government agency.",
+        "Send questions from guests, owners or reporters to the office.",
+        "Never ask any worker if they own a gun or keep one in their car. Never search a car or ask to look inside one.",
+        "Never act against anyone over a gun kept locked in their personal car. \"Keep it out of sight\" is a request, not a rule you enforce.",
+        "If you see a worker carry a gun on their body, or bring one inside a client property while working, tell the office. Do not handle it yourself. Cristy decides the discipline (Cristy, September 17, 2026)."
+       ],
+       "es": [
+        "Nunca vaya a la propiedad para recoger, mover o revisar el arma.",
+        "Nunca le diga a nadie que mueva el arma, que la tape, que la descargue o que siga limpiando. El equipo nunca mueve un arma, aunque se lo pida un huésped, el dueño, el administrador de la propiedad o un supervisor. El equipo nunca le devuelve un arma a nadie, ni siquiera a un huésped que dice que es suya.",
+        "No pida fotos. Solo la oficina pide fotos.",
+        "Nunca publique fotos de un arma, direcciones de propiedades ni códigos de puertas en chats de grupo ni en redes sociales. Las personas del equipo siempre pueden hablar de la seguridad con sus compañeros, con la policía o con una agencia del gobierno.",
+        "Si un huésped, un dueño o un periodista hace preguntas, mándelo a la oficina.",
+        "Nunca le pregunte a nadie del equipo si tiene un arma o si guarda una en su carro. Nunca revise un carro y nunca pida ver adentro de un carro.",
+        "Nunca castigue ni tome medidas contra nadie por un arma guardada bajo llave en su carro personal. \"Manténgala fuera de la vista\" es un pedido, no una regla que usted hace cumplir.",
+        "Si ve que alguien del equipo lleva un arma de fuego encima, o entra con un arma de fuego a la propiedad de un cliente mientras trabaja, avísele a la oficina. No lo resuelva usted. Cristy decide la medida disciplinaria (Cristy, 17 de septiembre de 2026)."
+       ],
+       "type": "text"
+      },
+      {
+       "decorative": true,
+       "src": "img/edu/scenes/supervisor-firearms/no-photos.svg",
+       "type": "scene"
+      },
+      {
+       "character": "duo",
+       "en": "Only the office asks for a photo.",
+       "es": "Solo la oficina pide fotos.",
+       "pose": "stop",
+       "type": "say"
+      }
+     ],
+     "id": "notice-never",
+     "layout": "hero",
+     "seconds": 130,
+     "title": {
+      "en": "Never",
+      "es": "Nunca"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": [
+        "Check on the worker the same day. Ask how they are doing.",
+        "Tell the office if the worker is upset or needs anything."
+       ],
+       "es": [
+        "Hable con la persona el mismo día. Pregúntele cómo está.",
+        "Avísele a la oficina si la persona está afectada o necesita algo."
+       ],
+       "type": "text"
+      }
+     ],
+     "id": "notice-after",
+     "layout": "hero",
+     "seconds": 15,
+     "title": {
+      "en": "After",
+      "es": "Después"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "decorative": true,
+       "src": "img/edu/scenes/supervisor-firearms/alerts-private.svg",
+       "type": "scene"
+      },
+      {
+       "en": "You and Alex get the alerts for failed or overdue training.",
+       "es": "Usted y Alex reciben los avisos cuando alguien no pasa la prueba o no la termina a tiempo.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "**Keep alerts private.** Do not share names or results in group chats.",
+        "**W2 employee did not pass:** Offer a short walkthrough in their language, on paid time. Then they take the quiz again. Retakes are unlimited.",
+        "**W2 employee is overdue:** Remind them kindly. Help them find paid time to finish, like before their first job of the day.",
+        "**No one is taken off the schedule automatically.** A hold is a decision a person makes, and only after the 14 day grace period. Only Cristy or Alex may approve a hold, and never for a 1099 contractor (Cristy, September 17, 2026). You cannot approve one.",
+        "**Contractors (1099):** You only see \"completed on\" a date. There is no score. Do not quiz or coach contractors. Talk to the office before any schedule change. Send contractor questions to the office."
+       ],
+       "es": [
+        "**Mantenga los avisos en privado.** No comparta nombres ni resultados en chats de grupo.",
+        "**Si una persona W2 no pasó la prueba:** Ofrézcale un repaso corto en su idioma, en tiempo pagado. Después, la persona repite la prueba. Puede repetirla sin límite.",
+        "**Si una persona W2 no terminó a tiempo:** Recuérdeselo con amabilidad. Ayúdele a encontrar tiempo pagado para terminar, por ejemplo antes de su primer trabajo del día.",
+        "**A nadie se le dejan de asignar trabajos de forma automática.** Dejar de asignarle trabajos a alguien por un tiempo es una decisión que toma una persona, y solo después del periodo de gracia de 14 días. Solo Cristy o Alex lo pueden aprobar, y nunca para un contratista 1099 (Cristy, 17 de septiembre de 2026). Usted no lo puede aprobar.",
+        "**Contratistas (1099):** Usted solo ve \"completado el\" y una fecha. No hay puntaje. No les haga pruebas ni les dé asesoría a los contratistas. Hable con la oficina antes de cambiar los trabajos que se le asignan a un contratista. Mande a la oficina las preguntas de los contratistas."
+       ],
+       "type": "text"
+      }
+     ],
+     "id": "notice-alerts",
+     "layout": "hero",
+     "seconds": 90,
+     "title": {
+      "en": "Training alerts",
+      "es": "Avisos de capacitación"
+     }
+    }
+   ]
+  }
+ },
+ "version": "2026-09-28"
+}
