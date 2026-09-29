@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+<!-- A basin with a running faucet between a powder cleanser and a bleach spray, kept apart by a no sign. Drawn for the CCC Team Portal training on cleaning products and gloves. No text. -->
+<g stroke-linejoin="round" stroke-linecap="round">
+<rect x="0" y="0" width="400" height="300" fill="#FCE9DF"/>
+<path d="M0 56H400M0 112H400M0 168H400M80 0V202M200 0V202M320 0V202" fill="none" stroke="#F3D2C0" stroke-width="2"/>
+<rect x="0" y="214" width="400" height="86" fill="#F3DCCD"/><rect x="-4" y="202" width="408" height="12" fill="#1B175A"/>
+<path d="M100 244V300M300 244V300" fill="none" stroke="#1B175A" stroke-width="2.5" stroke-opacity=".2"/>
+<rect x="152" y="116" width="16" height="42" rx="3" fill="#B9BBC6" stroke="#1B175A" stroke-width="3"/>
+<rect x="134" y="120" width="16" height="16" rx="4" fill="#F6A078" stroke="#1B175A" stroke-width="3"/>
+<path d="M160 118Q160 98 184 98H206" fill="none" stroke="#1B175A" stroke-width="18"/>
+<path d="M160 118Q160 98 184 98H206" fill="none" stroke="#B9BBC6" stroke-width="12"/>
+<rect x="200" y="90" width="12" height="18" rx="2" fill="#B9BBC6" stroke="#1B175A" stroke-width="3"/>
+<path d="M132 154H268Q264 202 218 202H182Q136 202 132 154Z" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/>
+<path d="M140 162H260" fill="none" stroke="#C9CCDA" stroke-width="2.5"/>
+<path d="M206 110V186" fill="none" stroke="#82CAFB" stroke-width="9" stroke-linecap="butt"/>
+<path d="M203.5 112V180" fill="none" stroke="#FFFCFC" stroke-width="2" stroke-opacity=".8"/>
+<ellipse cx="206" cy="186" rx="15" ry="4.5" fill="#82CAFB" fill-opacity=".55"/>
+<circle cx="188" cy="172" r="3" fill="#82CAFB" stroke="#1B175A" stroke-width="1.4"/>
+<circle cx="224" cy="176" r="2.6" fill="#82CAFB" stroke="#1B175A" stroke-width="1.4"/>
+<circle cx="182" cy="190" r="2.4" fill="#82CAFB" stroke="#1B175A" stroke-width="1.4"/>
+<circle cx="230" cy="190" r="3" fill="#82CAFB" stroke="#1B175A" stroke-width="1.4"/>
+<circle cx="196" cy="196" r="2.2" fill="#82CAFB" stroke="#1B175A" stroke-width="1.4"/>
+<path d="M110 92V196M290 92V196" fill="none" stroke="#F6A078" stroke-width="4" stroke-dasharray="8 9" stroke-linecap="butt"/>
+<g transform="translate(58 202) scale(1.35)"><rect x="-14" y="-50" width="28" height="50" rx="3" fill="#FFF3E2" stroke="#1B175A" stroke-width="3"/><rect x="-14" y="-57" width="28" height="9" rx="2.5" fill="#F6A078" stroke="#1B175A" stroke-width="3"/><circle cx="-5" cy="-52.5" r="1.8" fill="#1B175A"/><circle cx="1" cy="-52.5" r="1.8" fill="#1B175A"/><circle cx="7" cy="-52.5" r="1.8" fill="#1B175A"/><rect x="-10" y="-40" width="20" height="22" rx="2" fill="#FFFCFC" stroke="#1B175A" stroke-width="2"/><rect x="-6" y="-34" width="12" height="3.5" rx="1.75" fill="#C9CCDA"/><rect x="-6" y="-27" width="9" height="3.5" rx="1.75" fill="#C9CCDA"/></g>
+<g transform="translate(344 202) scale(1.3)"><rect x="-15" y="-52" width="30" height="52" rx="7" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/><rect x="-6" y="-60" width="12" height="9" rx="1.5" fill="#F6A078" stroke="#1B175A" stroke-width="3"/><path d="M-10 -60V-71Q-10 -76 -5 -76H14L21 -70L14 -65H6V-60Z" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/><rect x="-10" y="-40" width="20" height="24" rx="3" fill="#D9ECFD" stroke="#1B175A" stroke-width="2"/><g transform="translate(0 -28)"><g transform="scale(0.52)"><path d="M0 -14C5 -6 9 -1 9 4A9 9 0 0 1 -9 4C-9 -1 -5 -6 0 -14Z" fill="#82CAFB" stroke="#1B175A" stroke-width="4.81"/><path d="M-4 3Q-4 7 0 8" fill="none" stroke="#FFFCFC" stroke-width="3.85"/></g></g></g>
+<circle cx="200" cy="52" r="30.06" fill="#FFFCFC" stroke="#1B175A" stroke-width="2.5"/><circle cx="200" cy="52" r="26" fill="none" stroke="#F6A078" stroke-width="6.24"/><path d="M181.62 33.62L218.38 70.38" fill="none" stroke="#F6A078" stroke-width="6.24" stroke-linecap="butt"/>
+<path d="M40 55L41.96 60.04L47 62L41.96 63.96L40 69L38.04 63.96L33 62L38.04 60.04Z" fill="#82CAFB"/>
+<path d="M362 40L364.24 45.76L370 48L364.24 50.24L362 56L359.76 50.24L354 48L359.76 45.76Z" fill="#F6A078"/>
+</g>
+</svg>

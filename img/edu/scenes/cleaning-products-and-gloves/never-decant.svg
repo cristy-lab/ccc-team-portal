@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+<!-- A cleaning bottle tipped over a drinking bottle, crossed out, next to a bottle with an empty label. Drawn for the CCC Team Portal training on cleaning products and gloves. No text. -->
+<g stroke-linejoin="round" stroke-linecap="round">
+<rect x="0" y="0" width="400" height="300" fill="#E6F2FD"/>
+<path d="M0 50H400M0 100H400M0 150H400M66 0V220M132 0V220M198 0V220M264 0V220M330 0V220" fill="none" stroke="#D3E7FA" stroke-width="2"/>
+<rect x="0" y="232" width="400" height="68" fill="#D6EAFB"/><rect x="-4" y="220" width="408" height="12" fill="#1B175A"/>
+<g transform="translate(120 220) scale(1.15)"><path d="M-16 0V-36Q-16 -48 -8 -54V-62H8V-54Q16 -48 16 -36V0Z" fill="#D9ECFD" stroke="#1B175A" stroke-width="3"/><path d="M-16 -20Q0 -26 16 -20V-2Q0 -4 -16 -2Z" fill="#FFCB8E"/><path d="M-16 0V-36Q-16 -48 -8 -54V-62H8V-54Q16 -48 16 -36V0Z" fill="none" stroke="#1B175A" stroke-width="3"/><rect x="-13" y="-32" width="26" height="13" rx="3" fill="#FFFCFC" stroke="#1B175A" stroke-width="2"/><path d="M-8 -60H8" fill="none" stroke="#1B175A" stroke-width="2"/><rect x="-9" y="-75" width="18" height="14" rx="3" fill="#F6A078" stroke="#1B175A" stroke-width="3"/></g>
+<g transform="translate(181 84) rotate(-125) scale(1)"><rect x="-15" y="-52" width="30" height="52" rx="7" fill="#FFCB8E" stroke="#1B175A" stroke-width="3"/><rect x="-6" y="-60" width="12" height="9" rx="1.5" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/><path d="M-10 -60V-71Q-10 -76 -5 -76H14L21 -70L14 -65H6V-60Z" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/><rect x="-10" y="-40" width="20" height="24" rx="3" fill="#FFFCFC" stroke="#1B175A" stroke-width="2"/><rect x="-6" y="-34" width="12" height="3.5" rx="1.75" fill="#C9CCDA"/><rect x="-6" y="-27" width="9" height="3.5" rx="1.75" fill="#C9CCDA"/></g>
+<path d="M130 120Q124 128 121 137" fill="none" stroke="#FFCB8E" stroke-width="7"/>
+<circle cx="140" cy="112" r="3" fill="#FFCB8E"/>
+<circle cx="142" cy="152" r="59" fill="none" stroke="#FFFCFC" stroke-width="13.57"/><path d="M100.28 110.28L183.72 193.72" fill="none" stroke="#FFFCFC" stroke-width="13.57"/><circle cx="142" cy="152" r="59" fill="none" stroke="#F6A078" stroke-width="8.85"/><path d="M100.28 110.28L183.72 193.72" fill="none" stroke="#F6A078" stroke-width="8.85"/>
+<path d="M252 94V214" fill="none" stroke="#1B175A" stroke-width="3" stroke-dasharray="7 6"/>
+<ellipse cx="330" cy="220" rx="26" ry="3" fill="#1B175A" fill-opacity=".12"/>
+<g transform="translate(330 220) scale(1.3)"><path d="M-13 0V-52Q-13 -60 -6 -64V-74H6V-64Q13 -60 13 -52V0Z" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/><rect x="-7.5" y="-84" width="15" height="11" rx="2.5" fill="#B9BBC6" stroke="#1B175A" stroke-width="3"/><rect x="-9" y="-46" width="18" height="30" rx="3" fill="none" stroke="#1B175A" stroke-width="2" stroke-dasharray="4 3.5"/></g>
+<path d="M44 44L46.24 49.76L52 52L46.24 54.24L44 60L41.76 54.24L36 52L41.76 49.76Z" fill="#F6A078"/>
+<path d="M372 57L373.96 62.04L379 64L373.96 65.96L372 71L370.04 65.96L365 64L370.04 62.04Z" fill="#82CAFB"/>
+</g>
+</svg>

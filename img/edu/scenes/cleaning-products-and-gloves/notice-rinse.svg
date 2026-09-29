@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+<!-- A sink with the tap running and water in the basin, and a small picture of an eye with drops of water. Nobody is in this drawing. Drawn for the CCC Team Portal training on cleaning products and gloves. No text. -->
+<g stroke-linejoin="round" stroke-linecap="round">
+<rect x="0" y="0" width="400" height="300" fill="#E6F2FD"/>
+<path d="M0 56H400M0 112H400M0 168H400M80 0V214M200 0V214M320 0V214" fill="none" stroke="#D3E7FA" stroke-width="2"/>
+<rect x="0" y="226" width="400" height="74" fill="#D6EAFB"/><rect x="-4" y="214" width="408" height="12" fill="#1B175A"/>
+<rect x="132" y="116" width="16" height="42" rx="3" fill="#B9BBC6" stroke="#1B175A" stroke-width="3"/>
+<rect x="114" y="120" width="16" height="16" rx="4" fill="#F6A078" stroke="#1B175A" stroke-width="3"/>
+<path d="M140 118Q140 98 164 98H186" fill="none" stroke="#1B175A" stroke-width="18"/>
+<path d="M140 118Q140 98 164 98H186" fill="none" stroke="#B9BBC6" stroke-width="12"/>
+<rect x="180" y="90" width="12" height="18" rx="2" fill="#B9BBC6" stroke="#1B175A" stroke-width="3"/>
+<path d="M112 154H248Q244 210 198 210H162Q116 210 112 154Z" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/>
+<path d="M120 162H240" fill="none" stroke="#C9CCDA" stroke-width="2.5"/>
+<path d="M186 110V190" fill="none" stroke="#82CAFB" stroke-width="9" stroke-linecap="butt"/>
+<path d="M183.5 112V184" fill="none" stroke="#FFFCFC" stroke-width="2" stroke-opacity=".8"/>
+<ellipse cx="186" cy="190" rx="16" ry="5" fill="#82CAFB" fill-opacity=".55"/>
+<circle cx="160" cy="176" r="3" fill="#82CAFB" stroke="#1B175A" stroke-width="1.4"/>
+<circle cx="208" cy="180" r="2.6" fill="#82CAFB" stroke="#1B175A" stroke-width="1.4"/>
+<circle cx="152" cy="194" r="2.4" fill="#82CAFB" stroke="#1B175A" stroke-width="1.4"/>
+<circle cx="214" cy="196" r="3" fill="#82CAFB" stroke="#1B175A" stroke-width="1.4"/>
+<circle cx="170" cy="200" r="2.2" fill="#82CAFB" stroke="#1B175A" stroke-width="1.4"/>
+<circle cx="318" cy="128" r="56" fill="#D9ECFD" stroke="#1B175A" stroke-width="3"/>
+<path d="M280 128Q318 94 356 128Q318 162 280 128Z" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/>
+<circle cx="318" cy="128" r="16" fill="#82CAFB" stroke="#1B175A" stroke-width="3"/>
+<circle cx="318" cy="128" r="6" fill="#1B175A"/>
+<path d="M284 112Q318 88 352 112" fill="none" stroke="#1B175A" stroke-width="3"/>
+<g transform="translate(292 176)"><g transform="scale(0.5)"><path d="M0 -14C5 -6 9 -1 9 4A9 9 0 0 1 -9 4C-9 -1 -5 -6 0 -14Z" fill="#82CAFB" stroke="#1B175A" stroke-width="5"/><path d="M-4 3Q-4 7 0 8" fill="none" stroke="#FFFCFC" stroke-width="4"/></g></g>
+<g transform="translate(318 184)"><g transform="scale(0.62)"><path d="M0 -14C5 -6 9 -1 9 4A9 9 0 0 1 -9 4C-9 -1 -5 -6 0 -14Z" fill="#82CAFB" stroke="#1B175A" stroke-width="4.03"/><path d="M-4 3Q-4 7 0 8" fill="none" stroke="#FFFCFC" stroke-width="3.23"/></g></g>
+<g transform="translate(344 176)"><g transform="scale(0.5)"><path d="M0 -14C5 -6 9 -1 9 4A9 9 0 0 1 -9 4C-9 -1 -5 -6 0 -14Z" fill="#82CAFB" stroke="#1B175A" stroke-width="5"/><path d="M-4 3Q-4 7 0 8" fill="none" stroke="#FFFCFC" stroke-width="4"/></g></g>
+<path d="M50 62L52.24 67.76L58 70L52.24 72.24L50 78L47.76 72.24L42 70L47.76 67.76Z" fill="#82CAFB"/>
+<path d="M68 126L69.68 130.32L74 132L69.68 133.68L68 138L66.32 133.68L62 132L66.32 130.32Z" fill="#F6A078"/>
+</g>
+</svg>

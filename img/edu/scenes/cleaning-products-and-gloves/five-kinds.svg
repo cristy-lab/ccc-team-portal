@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+<!-- Five shelf boxes in a row, with one product standing in each one. Drawn for the CCC Team Portal training on cleaning products and gloves. No text. -->
+<g stroke-linejoin="round" stroke-linecap="round">
+<rect x="0" y="0" width="400" height="300" fill="#E6F2FD"/>
+<path d="M0 34H400M0 68H400M66 0V100M132 0V100M198 0V100M264 0V100M330 0V100" fill="none" stroke="#D3E7FA" stroke-width="2"/>
+<rect x="0" y="252" width="400" height="48" fill="#D6EAFB"/><path d="M0 252H400" fill="none" stroke="#1B175A" stroke-width="3"/>
+<rect x="12" y="100" width="376" height="152" rx="12" fill="#FFF3E2" stroke="#1B175A" stroke-width="3"/>
+<rect x="31" y="112" width="62" height="128" rx="6" fill="#DDEFFD" stroke="#1B175A" stroke-width="2.5"/>
+<rect x="100" y="112" width="62" height="128" rx="6" fill="#FDE6D8" stroke="#1B175A" stroke-width="2.5"/>
+<rect x="169" y="112" width="62" height="128" rx="6" fill="#DDEFFD" stroke="#1B175A" stroke-width="2.5"/>
+<rect x="238" y="112" width="62" height="128" rx="6" fill="#FDE6D8" stroke="#1B175A" stroke-width="2.5"/>
+<rect x="307" y="112" width="62" height="128" rx="6" fill="#DDEFFD" stroke="#1B175A" stroke-width="2.5"/>
+<ellipse cx="62" cy="240" rx="21" ry="3" fill="#1B175A" fill-opacity=".12"/>
+<ellipse cx="131" cy="240" rx="16" ry="3" fill="#1B175A" fill-opacity=".12"/>
+<ellipse cx="200" cy="240" rx="14" ry="3" fill="#1B175A" fill-opacity=".12"/>
+<ellipse cx="269" cy="240" rx="13" ry="3" fill="#1B175A" fill-opacity=".12"/>
+<ellipse cx="338" cy="240" rx="18" ry="3" fill="#1B175A" fill-opacity=".12"/>
+<g transform="translate(62 240) scale(1)"><path d="M2 -64Q26 -66 23 -38" fill="none" stroke="#1B175A" stroke-width="12"/><path d="M2 -64Q26 -66 23 -38" fill="none" stroke="#FFFCFC" stroke-width="6"/><path d="M-24 0V-50Q-24 -62 -13 -66L-7 -68V-72H7V-68L-3 -66Q10 -63 12 -58V-50L24 -46V0Z" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/><rect x="-8" y="-82" width="16" height="12" rx="3" fill="#F6A078" stroke="#1B175A" stroke-width="3"/><rect x="-18" y="-42" width="36" height="32" rx="4" fill="#D9ECFD" stroke="#1B175A" stroke-width="2"/><g transform="translate(0 -24)"><g transform="scale(0.7)"><path d="M0 -14C5 -6 9 -1 9 4A9 9 0 0 1 -9 4C-9 -1 -5 -6 0 -14Z" fill="#82CAFB" stroke="#1B175A" stroke-width="3.57"/><path d="M-4 3Q-4 7 0 8" fill="none" stroke="#FFFCFC" stroke-width="2.86"/></g></g></g>
+<g transform="translate(131 240) scale(1)"><rect x="-15" y="-52" width="30" height="52" rx="7" fill="#FFCB8E" stroke="#1B175A" stroke-width="3"/><rect x="-6" y="-60" width="12" height="9" rx="1.5" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/><path d="M-10 -60V-71Q-10 -76 -5 -76H14L21 -70L14 -65H6V-60Z" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/><rect x="-10" y="-40" width="20" height="24" rx="3" fill="#FFFCFC" stroke="#1B175A" stroke-width="2"/><rect x="-6" y="-34" width="12" height="3.5" rx="1.75" fill="#C9CCDA"/><rect x="-6" y="-27" width="9" height="3.5" rx="1.75" fill="#C9CCDA"/></g>
+<g transform="translate(200 240) scale(1.05)"><rect x="-14" y="-50" width="28" height="50" rx="3" fill="#FFF3E2" stroke="#1B175A" stroke-width="3"/><rect x="-14" y="-57" width="28" height="9" rx="2.5" fill="#F6A078" stroke="#1B175A" stroke-width="3"/><circle cx="-5" cy="-52.5" r="1.8" fill="#1B175A"/><circle cx="1" cy="-52.5" r="1.8" fill="#1B175A"/><circle cx="7" cy="-52.5" r="1.8" fill="#1B175A"/><rect x="-10" y="-40" width="20" height="22" rx="2" fill="#FFFCFC" stroke="#1B175A" stroke-width="2"/><rect x="-6" y="-34" width="12" height="3.5" rx="1.75" fill="#C9CCDA"/><rect x="-6" y="-27" width="9" height="3.5" rx="1.75" fill="#C9CCDA"/></g>
+<g transform="translate(269 240) scale(1)"><rect x="-15" y="-52" width="30" height="52" rx="7" fill="#82CAFB" stroke="#1B175A" stroke-width="3"/><rect x="-6" y="-60" width="12" height="9" rx="1.5" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/><path d="M-10 -60V-71Q-10 -76 -5 -76H14L21 -70L14 -65H6V-60Z" fill="#FFFCFC" stroke="#1B175A" stroke-width="3"/><path d="M3 -64L7 -53L3 -52L0 -61Z" fill="#1B175A" stroke="#1B175A" stroke-width="1.5"/><rect x="-10" y="-40" width="20" height="24" rx="3" fill="#FFFCFC" stroke="#1B175A" stroke-width="2"/><rect x="-6" y="-34" width="12" height="3.5" rx="1.75" fill="#C9CCDA"/><rect x="-6" y="-27" width="9" height="3.5" rx="1.75" fill="#C9CCDA"/></g>
+<path d="M286 172L287.68 176.32L292 178L287.68 179.68L286 184L284.32 179.68L280 178L284.32 176.32Z" fill="#FFFCFC"/>
+<g transform="translate(338 240) scale(1.05)"><g transform="translate(7 -30) rotate(-14)"><rect x="-17" y="-9" width="34" height="18" rx="4" fill="#82CAFB" stroke="#1B175A" stroke-width="3"/><path d="M-11 -2H11" fill="none" stroke="#FFFCFC" stroke-width="2.5" stroke-opacity=".7"/></g><path d="M-18 0V-20Q-18 -31 -4 -34Q12 -37 18 -25V0Z" fill="#C9CCDA" stroke="#1B175A" stroke-width="3"/><circle cx="-9" cy="-13" r="1.8" fill="#1B175A" fill-opacity=".3"/><circle cx="0" cy="-22" r="1.6" fill="#1B175A" fill-opacity=".3"/><circle cx="9" cy="-11" r="1.8" fill="#1B175A" fill-opacity=".3"/><circle cx="4" cy="-6" r="1.4" fill="#1B175A" fill-opacity=".3"/><circle cx="-6" cy="-25" r="1.4" fill="#1B175A" fill-opacity=".3"/></g>
+<path d="M34 42L36.24 47.76L42 50L36.24 52.24L34 58L31.76 52.24L26 50L31.76 47.76Z" fill="#F6A078"/>
+<path d="M368 55L369.96 60.04L375 62L369.96 63.96L368 69L366.04 63.96L361 62L366.04 60.04Z" fill="#82CAFB"/>
+</g>
+</svg>
