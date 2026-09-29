@@ -15,12 +15,15 @@
  *     picked up at once (cache first kept the old bytes, and PACK_CHANGED, until the next release).
  *   * Videos and captions: network only, never stored, a Range request untouched (0.3.5).
  *   * vendor/firebase/ files (0.3.7): kept once seen with their ?v=, never in SHELL.
+ *   * The Status bundle (0.3.9), web/status_i18n.js, web/status.js and web/status.css: kept once seen
+ *     with their ?v=, never in SHELL. One person in the company can open that screen, so 76 phones
+ *     should not download it at every release the way they download the bundles above.
  *   * A push (0.3.7) shows exactly one notice, from data.title and data.body only. A tap opens its chat.
  */
-var CACHE_VERSION = "0.3.8-1";
+var CACHE_VERSION = "0.3.9-1";
 var SHELL_CACHE = "ccc-shell-" + CACHE_VERSION;
 var RUNTIME_CACHE = "ccc-runtime-" + CACHE_VERSION;
-var ASSET_VERSION = "0.3.8";
+var ASSET_VERSION = "0.3.9";
 var OPEN_RE = /^(d:[A-Za-z0-9_.]{1,64}|g:[a-z0-9]+(-[a-z0-9]+)*)$/;
 
 var SHELL = [
@@ -146,7 +149,8 @@ self.addEventListener("fetch", function (event) {
       if (hit) return hit;
       return fetch(request).then(function (res) {
         if (res && res.ok && res.type === "basic" && (/\.(png|jpg|jpeg|svg|webp|ico)$/i.test(url.pathname) ||
-          (/\/vendor\/firebase\//.test(url.pathname) && /[?&]v=/.test(url.search)))) {
+          ((/\/vendor\/firebase\//.test(url.pathname) || /\/status(_i18n)?\.(js|css)$/.test(url.pathname)) &&
+            /[?&]v=/.test(url.search)))) {
           var copy = res.clone();
           caches.open(RUNTIME_CACHE).then(function (cache) { cache.put(request, copy); });
         }

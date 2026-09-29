@@ -1,0 +1,158 @@
+/* CCC Team Portal W2 and 1099 screen (0.3.9). Part of the Status bundle, fetched only when the
+ * owner opens the tile. Every colour comes from the tokens in web/app.css, so dark mode needs
+ * nothing extra here and no colour is hard coded. Built for a 320 px phone first. */
+
+.status { padding-bottom: 8px; }
+.status .msg-box { margin-bottom: 14px; }
+/* The warning is long. A flex child will not shrink below its longest word unless it is told it may
+   break one, and at 200 percent text on a 320 px phone one Spanish word is wider than the screen. */
+.status .msg-box > div { min-width: 0; }
+.status .msg-box p, .status .msg-box { overflow-wrap: anywhere; }
+
+/* The three numbers. They wrap on a narrow phone rather than shrinking the digits. */
+.st-counts { display: flex; flex-wrap: wrap; gap: 10px; margin: 4px 0 8px; }
+.st-count {
+  flex: 1 1 88px; min-width: 88px; padding: 10px 12px; border-radius: 16px;
+  border: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow-sm);
+  display: flex; flex-direction: column; gap: 2px;
+}
+.st-count b { font-size: 26px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.st-count span { font-size: 15px; font-weight: 600; color: var(--muted); }
+/* Nobody left without an answer is the goal, so a zero stays quiet and anything else does not. */
+.st-count.is-warn { background: var(--peach-tint); border-color: transparent; }
+.st-count.is-warn span { color: var(--progress-text); }
+.st-people-n { color: var(--muted); font-size: 15px; margin: 0 0 12px; }
+
+/* Search */
+.st-searchbox { margin: 6px 0 4px; }
+.st-label { display: block; font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+.st-search-row { display: flex; align-items: center; gap: 8px; }
+.st-search {
+  flex: 1 1 auto; min-width: 0; min-height: 50px; padding: 10px 14px; border-radius: 14px;
+  border: 2px solid var(--line-strong); background: var(--surface); color: var(--text); font-size: 17px;
+}
+.st-search:focus-visible { outline: 3px solid var(--focus); outline-offset: 1px; border-color: transparent; }
+.st-clear {
+  flex: 0 0 auto; width: 48px; height: 48px; display: inline-flex; align-items: center;
+  justify-content: center; border: 0; border-radius: 12px; background: var(--gray-tint); color: var(--text);
+}
+.st-clear svg { width: 22px; height: 22px; }
+
+/* One region */
+.st-region { margin-top: 22px; }
+.st-region h2 { font-size: 20px; }
+.st-held { color: var(--muted); font-size: 15px; margin-top: 4px; }
+.st-people { list-style: none; padding: 0; margin: 10px 0 0; display: grid; gap: 10px; }
+
+/* One person */
+.st-person {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  padding: 12px 14px; border-radius: 16px; border: 1px solid var(--line);
+  background: var(--surface); box-shadow: var(--shadow-sm);
+}
+.st-who { flex: 1 1 160px; min-width: 0; }
+.st-name { font-size: 18px; font-weight: 700; overflow-wrap: anywhere; }
+.st-flags { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 6px; }
+.st-chip-w2 { background: var(--success-bg); color: var(--success-text); }
+.st-chip-1099 { background: var(--lblue-tint); color: var(--text); }
+.st-chip-blank { background: var(--peach-tint); color: var(--progress-text); }
+.st-flag { display: inline-flex; align-items: center; gap: 4px; font-size: 14px; font-weight: 700; color: var(--progress-text); }
+.st-flag svg { width: 16px; height: 16px; }
+.st-self { margin-top: 6px; font-size: 15px; color: var(--muted); }
+.st-controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+/* The switch. A real button with role switch, never a checkbox dressed up as one. The word W2
+   sits beside it, because a switch next to a person's name reads as on or off and nothing else on
+   the screen said which position is which. */
+.st-switch-wrap { display: inline-flex; align-items: center; gap: 8px; }
+.st-switch-w2 { font-size: 14px; font-weight: 700; color: var(--muted); letter-spacing: 0.02em; }
+.st-switch {
+  flex: 0 0 auto; width: 62px; height: 36px; padding: 0; border-radius: 999px;
+  border: 2px solid var(--line-strong); background: var(--surface);
+  display: inline-flex; align-items: center; transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+.st-knob {
+  width: 24px; height: 24px; margin: 0 3px; border-radius: 50%; background: var(--line-strong);
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+.st-switch[aria-checked="true"] { background: var(--primary-bg); border-color: var(--primary-bg); }
+.st-switch[aria-checked="true"] .st-knob { background: var(--primary-text); transform: translateX(26px); }
+.st-switch:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.st-switch[disabled] { opacity: 0.5; }
+.st-second {
+  min-height: 44px; padding: 0 14px; border: 2px solid var(--line-strong); border-radius: 12px;
+  background: var(--surface); color: var(--text); font-size: 15px; font-weight: 700;
+}
+.st-second:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+/* The last ten records */
+.st-recent { margin-top: 28px; }
+.st-recent h2 { font-size: 20px; margin-bottom: 10px; }
+.st-changes { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.st-change { padding: 12px 14px; border-radius: 16px; border: 1px solid var(--line); background: var(--surface); }
+.st-change-line { font-size: 17px; font-weight: 700; overflow-wrap: anywhere; }
+.st-change-by { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 4px; font-size: 15px; color: var(--muted); }
+.st-tag { padding: 1px 8px; border-radius: 999px; font-size: 13px; font-weight: 700; background: var(--gray-tint); color: var(--muted); }
+.st-change-note { margin-top: 6px; font-size: 15px; overflow-wrap: anywhere; }
+.st-unsealed { display: flex; align-items: flex-start; gap: 6px; margin-top: 6px; font-size: 15px; font-weight: 700; color: var(--danger-text); }
+.st-unsealed svg { width: 18px; height: 18px; margin-top: 2px; }
+.st-note { margin-top: 16px; color: var(--muted); font-size: 15px; }
+
+/* The confirmation */
+/* Flex, not grid: an auto sized grid row grows past the screen, and then the card's max-height
+   of 100 percent is 100 percent of the grown row, so Cancel ends up below the bottom edge. */
+.st-dlg { position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center; padding: 16px; background: rgba(14, 12, 41, 0.72); }
+.st-dlg:focus { outline: none; }
+.st-dlg-card {
+  width: min(100%, 440px); max-height: 100%; padding: 20px;
+  border-radius: 18px; background: var(--surface); box-shadow: var(--shadow-lg);
+  display: flex; flex-direction: column; animation: st-in 0.16s ease-out both;
+}
+.st-dlg-scroll { overflow-y: auto; min-height: 0; padding-bottom: 12px; }
+@keyframes st-in { from { opacity: 0; transform: scale(0.97); } to { opacity: 1; transform: none; } }
+.st-dlg-title { font-size: 22px; margin: 0 0 10px; }
+.st-dlg-body { font-size: 17px; line-height: 1.45; margin: 0 0 14px; }
+.st-datebtn { margin: 0 0 6px -8px; }
+.st-dateclear { margin: 6px 0 0 -8px; }
+.st-datebox { margin-bottom: 14px; }
+.st-date {
+  width: 100%; min-height: 50px; padding: 10px 12px; border-radius: 14px;
+  border: 2px solid var(--line-strong); background: var(--surface); color: var(--text); font-size: 17px;
+}
+.st-help { margin-top: 6px; font-size: 15px; color: var(--muted); }
+.st-field { margin-bottom: 14px; }
+.st-note-input {
+  width: 100%; min-height: 50px; padding: 10px 12px; border-radius: 14px;
+  border: 2px solid var(--line-strong); background: var(--surface); color: var(--text); font-size: 17px;
+}
+.st-date:focus-visible, .st-note-input:focus-visible { outline: 3px solid var(--focus); outline-offset: 1px; border-color: transparent; }
+.st-counter { margin-top: 6px; font-size: 15px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.st-dlg-msg:not(:empty) { margin-bottom: 14px; }
+.st-saving { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+.st-saving .spinner { width: 20px; height: 20px; min-height: 0; }
+/* A line under the words that scroll, so the two buttons read as the foot of the card and not
+   as something sitting on top of a field that was cut in half. */
+.st-dlg-btns { display: grid; gap: 10px; flex: 0 0 auto; padding-top: 14px; border-top: 1px solid var(--line-strong); }
+
+/* A phone at 320 px, and text at 200 percent: the switch drops under the name rather than squeezing it. */
+@media (max-width: 359px) {
+  .st-person { align-items: flex-start; }
+  .st-who { flex: 1 1 100%; }
+  .st-controls { flex: 1 1 100%; }
+}
+
+/* A short phone, like 320 by 640: the question is long, so its words come down a step and more of
+   the card fits before the two buttons at the foot. */
+@media (max-height: 700px) {
+  .st-dlg-card { padding: 16px; }
+  .st-dlg-title { font-size: 20px; }
+  .st-dlg-body { font-size: 16px; margin-bottom: 12px; }
+  .st-dlg-scroll { padding-bottom: 8px; }
+  .st-dlg-btns { padding-top: 10px; }
+  .st-field { margin-bottom: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .st-knob { transition: none; }
+  .st-dlg-card { animation: none; }
+}

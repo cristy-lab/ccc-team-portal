@@ -646,8 +646,8 @@
     wishPending: {} // person id -> {emoji: true} while a wish is on its way
   };
 
-  var ROUTES = ["login", "choose", "home", "calendar", "request", "requests", "done", "training", "welcome", "messages", "chat"];
-  var AUTH_ROUTES = { home: 1, calendar: 1, request: 1, requests: 1, done: 1, training: 1, welcome: 1, messages: 1, chat: 1 };
+  var ROUTES = ["login", "choose", "home", "calendar", "request", "requests", "done", "training", "welcome", "messages", "chat", "status"];
+  var AUTH_ROUTES = { home: 1, calendar: 1, request: 1, requests: 1, done: 1, training: 1, welcome: 1, messages: 1, chat: 1, status: 1 };
   var DATA_ROUTES = { home: 1, calendar: 1, requests: 1 };
   var OPEN_RE = /^(d:[A-Za-z0-9_.]{1,64}|g:[a-z0-9]+(-[a-z0-9]+)*)$/;
   var currentRoute = null;
@@ -732,6 +732,9 @@
     if (!signedIn && AUTH_ROUTES[route]) route = "login";
     if (signedIn && (route === "login" || route === "choose")) route = "home";
     if (route === "choose" && !state.choices) route = "login";
+    // The W2 and 1099 screen (0.3.9) is the owner's alone. It fails closed: a saved dashboard
+    // that has not arrived yet, or one that does not say owner, goes to home.
+    if (route === "status" && !isOwner()) route = "home";
     if (route === "done" && !state.lastRequest) route = "home";
     // A new hire's first visit: the message from the CEO comes before home and before any birthday celebration.
     if (route === "home" && signedIn && welcomeDue()) {
@@ -748,6 +751,8 @@
     doc.documentElement.setAttribute("data-screen", route);
     // Messages polls only while its screens show, and hands its badge to home when the person leaves.
     if (root.CCCMsg) root.CCCMsg.route(route);
+    // Leaving the W2 and 1099 screen drops its list, its counts and its records (0.3.9).
+    if (root.CCCStatus) root.CCCStatus.route(route);
 
     var app = $("app");
     if (!app) return;
@@ -888,6 +893,7 @@
     store.remove(K.edu);
     if (root.CCCEdu) root.CCCEdu.reset();
     if (root.CCCMsg) root.CCCMsg.reset();
+    if (root.CCCStatus) root.CCCStatus.reset();
     closeParty();
     store.remove(K.token);
     store.remove(K.person);
@@ -976,6 +982,7 @@
 
   var BUNDLES = {
     edu: { route: "training", js: ["edu_i18n.js", "edu.js"] },
+    status: { route: "status", js: ["status_i18n.js", "status.js"] },
     letter: { route: "welcome", js: [] },
     messages: { route: "messages chat", js: ["messages_i18n.js", "messages.js"] },
     party: { js: [], ready: partyArrived },
@@ -1459,8 +1466,18 @@
         badge: state.edu && state.edu.new_count > 0 ? t("edu_new") : null }),
       // Messages (0.3.6): only when the backend says this person has it.
       msg && msg.enabled === true ? tile({ route: "messages", icon: "chat", tone: "ti-lblue", title: t("tile_msg_title"),
-        sub: t(msg.role === "cleaner" ? "tile_msg_sub" : "tile_msg_sub_staff"), badge: newBadge(msg.badge) }) : null
+        sub: t(msg.role === "cleaner" ? "tile_msg_sub" : "tile_msg_sub_staff"), badge: newBadge(msg.badge) }) : null,
+      // W2 and 1099 (0.3.9): only the owner, and only because the backend said so.
+      isOwner() ? tile({ route: "status", icon: "briefcase", tone: "ti-navy", title: t("tile_status_title"),
+        sub: t("tile_status_sub") }) : null
     ]);
+  }
+
+  /* dashboard.worker_status.owner (0.3.9). Always present, like dashboard.messages, so an absent
+     key never has to be told apart from false. It says only "you are the owner". */
+  function isOwner() {
+    var w = state.dash && state.dash.worker_status;
+    return !!(w && w.owner === true);
   }
 
   function requestItem(r, compact) {
@@ -2576,6 +2593,15 @@
     return h("div", { class: "msg" }, [
       h("div", { class: "page-head" }, [backButton("home"), h("h1", { text: t("tile_msg_title") })]),
       bundleWait("messages")
+    ]);
+  };
+
+  /* W2 and 1099 (0.3.9): the whole screen comes from the Status bundle, which only the owner fetches. */
+  SCREENS.status = function () {
+    if (bundleReady("status") && root.CCCStatus) return root.CCCStatus.screen();
+    return h("div", { class: "status" }, [
+      h("div", { class: "page-head" }, [backButton("home"), h("h1", { text: t("tile_status_title") })]),
+      bundleWait("status")
     ]);
   };
 
