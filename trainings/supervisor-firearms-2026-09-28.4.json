@@ -1,7 +1,7 @@
 {
  "character": "duo",
  "kind": "course",
- "note": "Portal lesson file for the supervisor add on, Part 2 of the firearms training Cristy approved on September 17 and 18, 2026, built by build_pack.py from the approved text. Both tracks carry every approved word of Part 2, with nothing added, dropped, softened or reordered. Two changes are on the record in GO_LIVE.md. One: Cristy replaced approved step 3 on September 28, 2026 (\"Stick with just 911\"), so the step now says to call 911 yourself and say the property's full address and city first, and it never sends anyone to a list of county dispatch numbers. Two: the office number is written as the office phone token, which the app fills in, because a public pack never carries a typed phone number. The answer key is not in this file.",
+ "note": "Portal lesson file for the supervisor add on, Part 2 of the firearms training Cristy approved on September 17 and 18, 2026, built by build_pack.py from the approved text and rebuilt here by build_1099_notice.py. Version 2026-09-28.4 changes the contractor notice track only, and fixes the findings raised against 2026-09-28.2 and 2026-09-28.3. Nothing outside variants.notice changes: the employee course track, variants.full, is byte for byte what it was in 2026-09-28.1, the shared pack title in both languages is byte for byte what it was, and the quiz, the checkpoint question ids and the answer key questions are unchanged. 2026-09-28.3 had rewritten the Spanish half of the shared title, which an employee course learner also reads, so 2026-09-28.4 puts it back. The notice track follows the contractor standard in Education_private\\CONTRACTOR_STANDARD\\02_the_standard.md. It opens with the standard line about why everyone at a client property gets site safety information. It keeps every instruction that protects a person: are you safe, call 911 and say the property's full address and city first, never touch the gun, never block or grab anyone, stop working and wait somewhere safe, call the office, and the property manager decides about the next guest. It drops the training alerts screen, which carried paid retakes for W2 employees, who may approve a hold, who decides discipline, and telling a supervisor to quiz or coach a contractor. Since 2026-09-28.3 every drawing on the notice carries its words in both languages instead of being marked decorative, the office number and the fallback moved to their own screen, the 911 address rule got a person free version of its drawing, the notice points the reader at the base firearm site safety notice first, and the end of the notice says plainly that five short questions follow and that nothing is recorded. Three records travel with this file. One: Cristy replaced approved step 3 on September 28, 2026 (\"Stick with just 911\"), so the step now says to call 911 yourself and say the property's full address and city first, and it never sends anyone to a list of county dispatch numbers. Two: the office number is written as the office phone token, which the app fills in, because a public pack never carries a typed phone number. Three: this pack does nothing for classification in California and nothing written could. Labor Code 2775(b) prong B is not a control test, a documents test or an intent test, and the portal holds California and Hawaii shut in code. Every change on the notice track, every word that was kept and every item still open is listed in GO_LIVE_1099.md. This is research, not legal advice, and counsel confirms before anyone relies on it. The answer key is not in this file.",
  "schema": "ccc-edu-pack/1",
  "title": {
   "en": "If a Worker Calls You About a Gun",
@@ -637,14 +637,14 @@
   "notice": {
    "ack": {
     "text": {
-     "en": "I have read this notice. I understand these are safety rules for what to do if a worker calls me about a gun.",
-     "es": "Leí este aviso. Entiendo que estas son reglas de seguridad para lo que debo hacer si alguien del equipo me llama por un arma."
+     "en": "I have read this site safety notice. I understand these are safety rules about what to do if a worker calls me about a gun.",
+     "es": "Leí este aviso de seguridad de la propiedad. Entiendo que estas son reglas de seguridad sobre qué hacer si alguien me llama por un arma."
     }
    },
    "checkpoint": {
     "on_miss": {
-     "en": "Not quite. Please read the notice again, then try again.",
-     "es": "Todavía no. Por favor, lea el aviso otra vez y vuelva a intentarlo."
+     "en": "Not quite. Tap Back to return to the notice, read the steps again, then try again.",
+     "es": "Todavía no. Toque Atrás para volver al aviso, lea otra vez los pasos, y vuelva a intentarlo."
     },
     "question_ids": [
      "q1",
@@ -658,18 +658,34 @@
     {
      "blocks": [
       {
-       "decorative": true,
-       "src": "img/edu/scenes/supervisor-firearms/office-any-hour.svg",
-       "type": "scene"
-      },
-      {
-       "en": "For region supervisors. Take the full lesson first.",
-       "es": "Para los supervisores de región. Primero tome la lección completa.",
+       "en": "**Why you are getting this.** Cristal Clear Cleaning sends the same site safety information to every person who works at a client property, whether they are employed by CCC, working under a contract with CCC, or working for another company on the same job. We do this for three reasons. The hazards belong to the property, not to the paperwork. Our clients require that anyone at their property knows that property's safety rules. And safety law expects a company that brings people onto a shared site to pass on what it knows about the chemicals and hazards there.",
+       "es": "**Por qué recibe este aviso.** Cristal Clear Cleaning envía la misma información de seguridad de la propiedad a todas las personas que trabajan en la propiedad de un cliente, ya sea que trabajen como empleadas de CCC, bajo un contrato con CCC, o para otra empresa en el mismo trabajo. Lo hacemos por tres razones. Los peligros están en la propiedad. No dependen del papeleo. Nuestros clientes exigen que toda persona que esté en su propiedad conozca las reglas de seguridad de esa propiedad. Y la ley de seguridad espera que una empresa que lleva personas a un lugar de trabajo compartido les comunique lo que sabe sobre los químicos y los peligros de ese lugar.",
        "type": "text"
       },
       {
-       "en": "Workers report a found gun to the office. If a worker calls you instead:",
-       "es": "Las personas del equipo deben reportar a la oficina cualquier arma que encuentren. Si alguien le llama a usted:",
+       "en": "This notice tells you what the hazard is and what to do about it. It does not tell you how to do your work, it does not set your hours, and it does not change how you are paid or how you are classified.",
+       "es": "Este aviso le dice cuál es el peligro y qué hacer. No le dice cómo hacer su trabajo, no fija su horario, y no cambia cómo se le paga ni cambia su clasificación.",
+       "type": "text"
+      }
+     ],
+     "id": "notice-why",
+     "layout": "hero",
+     "seconds": 45,
+     "title": {
+      "en": "The same notice for everyone",
+      "es": "El mismo aviso para todas las personas"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "You are getting this notice because you are the regional contact for your area. A call about a gun can reach you before it reaches the office. Read the firearm site safety notice for client properties first. This notice adds what to do when the call comes to you. It is here whenever you want it, and there is no due date.",
+       "es": "Usted recibe este aviso porque es el contacto regional de su zona. Una llamada por un arma puede llegarle a usted antes que a la oficina. Lea primero el aviso de seguridad sobre armas para las propiedades de los clientes. Este aviso agrega qué hacer cuando la llamada le llega a usted. Está disponible cuando usted quiera, y no hay fecha límite.",
+       "type": "text"
+      },
+      {
+       "en": "Anyone who finds a gun tells the office. If they call you instead:",
+       "es": "Quien encuentre un arma debe avisar a la oficina. Si alguien le llama a usted:",
        "type": "text"
       },
       {
@@ -701,56 +717,89 @@
        "type": "steps"
       },
       {
-       "en": "**The office takes firearm calls at every hour, day or night, at one number: {{OFFICE_PHONE}}.** It is the same number day and night. If the worker called you because the office did not answer, handle the call the same way. Keep calling the office until someone answers. Cristy approved this on September 17, 2026: if no one at the office answers within 10 minutes, the worker keeps calling the office and also calls you. The office still takes the call. If anyone is in danger, they call 911.",
-       "es": "**La oficina atiende las llamadas por armas a cualquier hora, de día o de noche, en un solo número: {{OFFICE_PHONE}}.** Es el mismo número de día y de noche. Si la persona le llamó a usted porque la oficina no contestó, atienda la llamada de la misma manera. Siga llamando a la oficina hasta que alguien conteste. Cristy lo aprobó el 17 de septiembre de 2026: si nadie de la oficina contesta en 10 minutos, la persona sigue llamando a la oficina y también le llama a usted. La oficina sigue atendiendo la llamada. Si alguien está en peligro, llama al 911.",
-       "type": "text"
-      },
-      {
-       "en": "**The same fallback covers 1099 contractors**. A contractor who cannot reach the office calls the region or division supervisor for that area, the same person a W2 worker calls. The contractor notice says so. Handle a contractor's call the same way.",
-       "es": "**El mismo paso es para los contratistas 1099**. Un contratista que no puede comunicarse con la oficina llama al supervisor de región o de división de esa zona, la misma persona a la que llama alguien del equipo W2. El aviso para contratistas lo dice. Atienda la llamada de un contratista de la misma manera.",
-       "type": "text"
+       "alt": {
+        "en": "A map of two towns, where the call lands near a beacon in one town and is passed on to a pin over a house in the other town.",
+        "es": "Un mapa de dos pueblos, donde la llamada llega cerca de una señal en un pueblo y la pasan a un marcador sobre una casa en el otro pueblo."
+       },
+       "src": "img/edu/scenes/supervisor-firearms/say-the-address-map.svg",
+       "type": "scene"
       }
      ],
      "id": "notice",
      "layout": "hero",
-     "seconds": 315,
+     "seconds": 250,
      "title": {
       "en": "If a worker calls you about a gun",
-      "es": "Si alguien del equipo le llama por un arma"
+      "es": "Si alguien le llama por un arma"
      }
     },
     {
      "blocks": [
       {
-       "decorative": true,
+       "alt": {
+        "en": "A phone calling the CCC office, with a sun on one side and a moon on the other.",
+        "es": "Un teléfono llamando a la oficina de CCC, con un sol de un lado y una luna del otro."
+       },
+       "src": "img/edu/scenes/supervisor-firearms/office-any-hour.svg",
+       "type": "scene"
+      },
+      {
+       "en": "**The office takes firearm calls at every hour, day or night, at one number: {{OFFICE_PHONE}}.** It is the same number day and night. If the worker called you because the office did not answer, handle the call the same way. Keep calling the office until someone answers. If no one at the office answers within 10 minutes, the worker keeps calling the office and also calls you. The office still takes the call. If anyone is in danger, they call 911.",
+       "es": "**La oficina atiende las llamadas por armas a cualquier hora, de día o de noche, en un solo número: {{OFFICE_PHONE}}.** Es el mismo número de día y de noche. Si la persona le llamó a usted porque la oficina no contestó, atienda la llamada de la misma manera. Siga llamando a la oficina hasta que alguien conteste. Si nadie de la oficina contesta en 10 minutos, la persona sigue llamando a la oficina y también le llama a usted. La oficina sigue atendiendo la llamada. Si alguien está en peligro, llama al 911.",
+       "type": "text"
+      },
+      {
+       "en": "**Everyone at a client property has the same fallback.** Anyone who cannot reach the office calls the regional contact for that area, whoever they work for. Handle every one of those calls the same way.",
+       "es": "**Todas las personas en la propiedad de un cliente tienen el mismo respaldo.** Si alguien no puede comunicarse con la oficina, llama al contacto regional de esa zona, sin importar para quién trabaje. Atienda todas esas llamadas de la misma manera.",
+       "type": "text"
+      }
+     ],
+     "id": "notice-office",
+     "layout": "hero",
+     "seconds": 65,
+     "title": {
+      "en": "The office, at any hour",
+      "es": "La oficina, a cualquier hora"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "alt": {
+        "en": "A car driving toward a house, with a big crossed out circle over it.",
+        "es": "Un carro que va hacia una casa, con un círculo grande tachado encima."
+       },
        "src": "img/edu/scenes/supervisor-firearms/never-go.svg",
        "type": "scene"
       },
       {
        "en": [
         "Never go to the property to pick up, move or check the gun.",
-        "Never tell a worker to move it, cover it, unload it or keep cleaning. Workers never move a gun, even if a guest, the owner, the property manager or a supervisor asks. Workers never hand a gun back to anyone, even a guest who says it is theirs.",
+        "Never tell a worker to move it, cover it, unload it or keep cleaning. Workers never move a gun, even if a guest, the owner, the property manager or anyone from CCC asks. Workers never hand a gun back to anyone, even a guest who says it is theirs.",
         "Do not ask for photos. Only the office asks for a photo.",
-        "Never post photos of a gun, property addresses or door codes in group chats or on social media. Workers can always talk about safety with coworkers, the police or a government agency.",
+        "Never post photos of a gun, property addresses or door codes in group chats or on social media. Anyone can always talk about safety with coworkers, the police or a government agency.",
         "Send questions from guests, owners or reporters to the office.",
-        "Never ask any worker if they own a gun or keep one in their car. Never search a car or ask to look inside one.",
-        "Never act against anyone over a gun kept locked in their personal car. \"Keep it out of sight\" is a request, not a rule you enforce.",
-        "If you see a worker carry a gun on their body, or bring one inside a client property while working, tell the office. Do not handle it yourself. Cristy decides the discipline."
+        "Never ask anyone if they own a gun or keep one in their car. Never search a car or ask to look inside one.",
+        "A gun locked in someone's personal car is not something CCC does anything about. Do not raise it with them and do not report it.",
+        "If you see someone carry a gun on their body, or bring one inside a client property while working, tell the office and stop there. The office handles it."
        ],
        "es": [
         "Nunca vaya a la propiedad para recoger, mover o revisar el arma.",
-        "Nunca le diga a nadie que mueva el arma, que la tape, que la descargue o que siga limpiando. El equipo nunca mueve un arma, aunque se lo pida un huésped, el dueño, el administrador de la propiedad o un supervisor. El equipo nunca le devuelve un arma a nadie, ni siquiera a un huésped que dice que es suya.",
+        "Nunca le diga a nadie que mueva el arma, que la tape, que la descargue o que siga limpiando. Nadie mueve un arma, aunque se lo pida un huésped, el dueño, el administrador de la propiedad o cualquier persona de CCC. Nunca se le devuelve un arma a nadie, ni siquiera a un huésped que dice que es suya.",
         "No pida fotos. Solo la oficina pide fotos.",
-        "Nunca publique fotos de un arma, direcciones de propiedades ni códigos de puertas en chats de grupo ni en redes sociales. Las personas del equipo siempre pueden hablar de la seguridad con sus compañeros, con la policía o con una agencia del gobierno.",
-        "Si un huésped, un dueño o un periodista hace preguntas, mándelo a la oficina.",
-        "Nunca le pregunte a nadie del equipo si tiene un arma o si guarda una en su carro. Nunca revise un carro y nunca pida ver adentro de un carro.",
-        "Nunca castigue ni tome medidas contra nadie por un arma guardada bajo llave en su carro personal. \"Manténgala fuera de la vista\" es un pedido, no una regla que usted hace cumplir.",
-        "Si ve que alguien del equipo lleva un arma de fuego encima, o entra con un arma de fuego a la propiedad de un cliente mientras trabaja, avísele a la oficina. No lo resuelva usted. Cristy decide la medida disciplinaria."
+        "Nunca publique fotos de un arma, direcciones de propiedades ni códigos de puertas en chats de grupo ni en redes sociales. Cualquier persona siempre puede hablar de la seguridad con sus compañeros, con la policía o con una agencia del gobierno.",
+        "Si un huésped, un dueño o un periodista hace preguntas, dígale que hable con la oficina.",
+        "Nunca le pregunte a nadie si tiene un arma o si guarda una en su carro. Nunca revise un carro y nunca pida ver adentro de un carro.",
+        "Un arma guardada bajo llave en el carro personal de alguien no es algo de lo que CCC se ocupe. No se lo mencione a esa persona y no lo reporte.",
+        "Si ve que alguien lleva un arma de fuego encima, o entra con un arma de fuego a la propiedad de un cliente mientras trabaja, avísele a la oficina y no haga nada más. La oficina se encarga."
        ],
        "type": "text"
       },
       {
-       "decorative": true,
+       "alt": {
+        "en": "A phone about to post a photo, with a big crossed out circle over it.",
+        "es": "Un teléfono a punto de publicar una foto, con un círculo grande tachado encima."
+       },
        "src": "img/edu/scenes/supervisor-firearms/no-photos.svg",
        "type": "scene"
       },
@@ -773,6 +822,14 @@
     {
      "blocks": [
       {
+       "alt": {
+        "en": "A table with two chairs and two cups, ready for two people to sit down and talk, with a window and a clock on the wall.",
+        "es": "Una mesa con dos sillas y dos tazas, lista para que dos personas se sienten a hablar, con una ventana y un reloj en la pared."
+       },
+       "src": "img/edu/scenes/supervisor-firearms/check-in-table.svg",
+       "type": "scene"
+      },
+      {
        "en": [
         "Check on the worker the same day. Ask how they are doing.",
         "Tell the office if the worker is upset or needs anything."
@@ -786,7 +843,7 @@
      ],
      "id": "notice-after",
      "layout": "hero",
-     "seconds": 15,
+     "seconds": 20,
      "title": {
       "en": "After",
       "es": "Después"
@@ -795,43 +852,26 @@
     {
      "blocks": [
       {
-       "decorative": true,
-       "src": "img/edu/scenes/supervisor-firearms/alerts-private.svg",
-       "type": "scene"
-      },
-      {
-       "en": "You and Alex get the alerts for failed or overdue training.",
-       "es": "Usted y Alex reciben los avisos cuando alguien no pasa la prueba o no la termina a tiempo.",
+       "en": "The version of the notice, the confirmation that you read it, and the date. Nothing else. There is no score kept, no time counted, no file and no due date.",
+       "es": "La versión del aviso, la confirmación de que usted lo leyó, y la fecha. Nada más. No se guarda ningún puntaje, no se cuenta tiempo, no hay expediente y no hay fecha límite.",
        "type": "text"
       },
       {
-       "en": [
-        "**Keep alerts private.** Do not share names or results in group chats.",
-        "**W2 employee did not pass:** Offer a short walkthrough in their language, on paid time. Then they take the quiz again. Retakes are unlimited.",
-        "**W2 employee is overdue:** Remind them kindly. Help them find paid time to finish, like before their first job of the day.",
-        "**No one is taken off the schedule automatically.** A hold is a decision a person makes, and only after the 14 day grace period. Only Cristy or Alex may approve a hold, and never for a 1099 contractor. You cannot approve one.",
-        "**Contractors (1099):** You only see \"completed on\" a date. There is no score. Do not quiz or coach contractors. Talk to the office before any schedule change. Send contractor questions to the office."
-       ],
-       "es": [
-        "**Mantenga los avisos en privado.** No comparta nombres ni resultados en chats de grupo.",
-        "**Si una persona W2 no pasó la prueba:** Ofrézcale un repaso corto en su idioma, en tiempo pagado. Después, la persona repite la prueba. Puede repetirla sin límite.",
-        "**Si una persona W2 no terminó a tiempo:** Recuérdeselo con amabilidad. Ayúdele a encontrar tiempo pagado para terminar, por ejemplo antes de su primer trabajo del día.",
-        "**A nadie se le dejan de asignar trabajos de forma automática.** Dejar de asignarle trabajos a alguien por un tiempo es una decisión que toma una persona, y solo después del periodo de gracia de 14 días. Solo Cristy o Alex lo pueden aprobar, y nunca para un contratista 1099. Usted no lo puede aprobar.",
-        "**Contratistas (1099):** Usted solo ve \"completado el\" y una fecha. No hay puntaje. No les haga pruebas ni les dé asesoría a los contratistas. Hable con la oficina antes de cambiar los trabajos que se le asignan a un contratista. Mande a la oficina las preguntas de los contratistas."
-       ],
+       "en": "At the end there are five short safety questions. They are there so you can check you have the safety steps. Nothing is recorded and nobody is told how you answered. If one of them is not right we ask you to read the notice again.",
+       "es": "Al final hay cinco preguntas cortas de seguridad. Están ahí para que usted mismo revise que tiene los pasos de seguridad. No se guarda nada y a nadie se le dice cómo contestó usted. Si alguna no queda bien, le pedimos que lea el aviso otra vez.",
        "type": "text"
       }
      ],
-     "id": "notice-alerts",
+     "id": "notice-record",
      "layout": "hero",
-     "seconds": 90,
+     "seconds": 30,
      "title": {
-      "en": "Training alerts",
-      "es": "Avisos de capacitación"
+      "en": "What CCC keeps",
+      "es": "Lo que CCC guarda"
      }
     }
    ]
   }
  },
- "version": "2026-09-28.1"
+ "version": "2026-09-28.4"
 }
