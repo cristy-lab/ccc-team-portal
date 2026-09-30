@@ -8,8 +8,11 @@
  *     The lazily loaded bundles (Education, the CEO letter paper, Messages, the birthday celebration and
  *     Push) are in there too, so a phone that goes offline can still open them. The
  *     page never asks for them at start, which is what start up time depends on, but this worker does
- *     save them during install, so they cost about 216 KB once per release even for somebody who never
- *     opens them. Messages itself only ever travels in POST answers, which this worker never touches.
+ *     save them during install, so they cost about 224 KB once per release even for somebody who never
+ *     opens them (measured in 0.4.0; it was written as 216 KB before anybody counted). Moving bytes
+ *     into one of these five files therefore saves no phone anything: it only moves them from the
+ *     start up fetch into the install fetch. Messages itself only ever travels in POST answers,
+ *     which this worker never touches.
  *   * PDF files: network first, cached copy only as an offline fallback.
  *   * Training packs (trainings/*.json): network first, the cached copy offline, so a corrected pack is
  *     picked up at once (cache first kept the old bytes, and PACK_CHANGED, until the next release).
@@ -18,12 +21,15 @@
  *   * The Status bundle (0.3.9), web/status_i18n.js, web/status.js and web/status.css: kept once seen
  *     with their ?v=, never in SHELL. One person in the company can open that screen, so 76 phones
  *     should not download it at every release the way they download the bundles above.
+ *   * The States bundle (0.4.0), web/states_i18n.js, web/states.js and web/states.css: the same rule.
+ *   * web/img/states/ (0.4.0) is never in SHELL: 29 pictures, about 6.7 MB, must not be pushed to every
+ *     phone at every release. They are kept in the runtime cache after a panel has opened once.
  *   * A push (0.3.7) shows exactly one notice, from data.title and data.body only. A tap opens its chat.
  */
-var CACHE_VERSION = "0.3.9-1";
+var CACHE_VERSION = "0.4.0-2";
 var SHELL_CACHE = "ccc-shell-" + CACHE_VERSION;
 var RUNTIME_CACHE = "ccc-runtime-" + CACHE_VERSION;
-var ASSET_VERSION = "0.3.9";
+var ASSET_VERSION = "0.4.0";
 var OPEN_RE = /^(d:[A-Za-z0-9_.]{1,64}|g:[a-z0-9]+(-[a-z0-9]+)*)$/;
 
 var SHELL = [
@@ -149,7 +155,7 @@ self.addEventListener("fetch", function (event) {
       if (hit) return hit;
       return fetch(request).then(function (res) {
         if (res && res.ok && res.type === "basic" && (/\.(png|jpg|jpeg|svg|webp|ico)$/i.test(url.pathname) ||
-          ((/\/vendor\/firebase\//.test(url.pathname) || /\/status(_i18n)?\.(js|css)$/.test(url.pathname)) &&
+          ((/\/vendor\/firebase\//.test(url.pathname) || /\/(status|states)(_i18n)?\.(js|css)$/.test(url.pathname)) &&
             /[?&]v=/.test(url.search)))) {
           var copy = res.clone();
           caches.open(RUNTIME_CACHE).then(function (cache) { cache.put(request, copy); });

@@ -17,6 +17,8 @@
  * hidden message only answers already. A send or a hide waits 45 seconds, a send with a photo 90 (two
  * uploads before the lock). messages_poll is never tried again (the next poll comes soon) and waits 20.
  * 0.3.7: the notice and picture calls try once more too, never push_test (docs/API.md 1).
+ * 0.4.0: state_interest is treated exactly like request. It waits the same 45 seconds, and a retry
+ * sends the same client_request_id, which the backend answers from the row it already saved.
  */
 (function (root) {
   "use strict";
@@ -26,7 +28,7 @@
      the sheet and posts to Slack, so it gets longer before the app gives up. The three
      Education writes take the same lock and do the same work. */
   var REQUEST_TIMEOUT_MS = 45000;
-  var SLOW_ACTIONS = { request: 1, training_start: 1, training_submit: 1, training_ack: 1, messages_send: 1, messages_hide: 1,
+  var SLOW_ACTIONS = { request: 1, state_interest: 1, training_start: 1, training_submit: 1, training_ack: 1, messages_send: 1, messages_hide: 1,
     push_register: 1, push_unregister: 1, push_test: 1, profile_photo_set: 1, profile_photo_remove: 1 };
   var PHOTO_TIMEOUT_MS = 90000;
   var POLL_TIMEOUT_MS = 20000;
@@ -34,7 +36,7 @@
   /* A wish is safe to send twice too: the same emoji to the same person on the same day is saved
      once. So are the Education calls: trainings only reads, and the three writes carry a
      client_request_id, so the backend answers with what it already saved. */
-  var RETRY_ACTIONS = { ping: 1, dashboard: 1, request: 1, wish: 1, trainings: 1, training_start: 1, training_submit: 1, training_ack: 1,
+  var RETRY_ACTIONS = { ping: 1, dashboard: 1, request: 1, state_interest: 1, wish: 1, trainings: 1, training_start: 1, training_submit: 1, training_ack: 1,
     messages_list: 1, messages_thread: 1, messages_send: 1, messages_hide: 1, messages_photo: 1, messages_members: 1,
     push_register: 1, push_unregister: 1, profile_photo_set: 1, profile_photo_remove: 1, profile_photos: 1 };
 

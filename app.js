@@ -240,8 +240,10 @@
     return { key: "status_new", cls: "chip-new" };
   }
 
+  /* state_interest (0.4.0) is written by the backend, so it is not in CATEGORIES and the Request a
+     change form never grows a sixth radio button for it. */
   function categoryKey(cat) {
-    return CATEGORIES.indexOf(cat) >= 0 ? "cat_" + cat : "cat_other";
+    return CATEGORIES.indexOf(cat) >= 0 || cat === "state_interest" ? "cat_" + cat : "cat_other";
   }
 
   /* ISO UTC timestamp to a short local date in the chosen language. */
@@ -646,10 +648,13 @@
     wishPending: {} // person id -> {emoji: true} while a wish is on its way
   };
 
-  var ROUTES = ["login", "choose", "home", "calendar", "request", "requests", "done", "training", "welcome", "messages", "chat", "status"];
-  var AUTH_ROUTES = { home: 1, calendar: 1, request: 1, requests: 1, done: 1, training: 1, welcome: 1, messages: 1, chat: 1, status: 1 };
+  var ROUTES = ["login", "choose", "home", "calendar", "request", "requests", "done", "training", "welcome", "messages", "chat", "status", "states"];
+  var AUTH_ROUTES = { home: 1, calendar: 1, request: 1, requests: 1, done: 1, training: 1, welcome: 1, messages: 1, chat: 1, status: 1, states: 1 };
+  // states (0.4.0) is not here on purpose: it needs no dashboard, so a failing one cannot stop it.
   var DATA_ROUTES = { home: 1, calendar: 1, requests: 1 };
   var OPEN_RE = /^(d:[A-Za-z0-9_.]{1,64}|g:[a-z0-9]+(-[a-z0-9]+)*)$/;
+  // The five state codes of Where we work (0.4.0), the five the backend's own table produces.
+  var STATE_RE = /^(CA|FL|GA|HI|TN)$/;
   var currentRoute = null;
   var lockTimer = null;
 
@@ -966,6 +971,39 @@
     return h("a", { class: cls, href: url, target: "_blank", rel: "noopener noreferrer" }, children);
   }
 
+  function isSameOrigin(url) {
+    try {
+      return new URL(url, root.location.href).origin === root.location.origin;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  /* A file that lives on THIS site, such as the pay calendar PDF, is downloaded and never opened as
+     a page. Cristy reported the reason on September 29, 2026: "anytime that I click on the PDF for
+     the payroll calendar, I have to close the app and open it back up because there's not an exit to
+     go back to the portal." A plain link to a same origin file NAVIGATES. In a browser tab that is
+     fine, you close the tab. In the app installed on a phone's home screen there is no tab, no
+     address bar and no back button, so the portal was simply gone until she force quit it and opened
+     it again. The download attribute makes the browser save the file instead, so the app never
+     leaves the screen, which is also what this button has always said it does.
+     The attribute only works same origin. A calendar_pdf_url pointing at another site keeps the old
+     new tab link, and that is not a trap: another site opens the real browser, which has a way back. */
+  function fileLink(url, cls, children) {
+    if (!isSameOrigin(url)) return externalLink(url, cls, children);
+    var name = "";
+    try {
+      name = new URL(url, root.location.href).pathname.split("/").pop() || "";
+    } catch (e) {
+      name = "";
+    }
+    // target stays as the fallback for a browser old enough to ignore download: it then behaves as
+    // it did before, which is no worse than today.
+    return h("a", {
+      class: cls, href: url, download: name, target: "_blank", rel: "noopener noreferrer"
+    }, children);
+  }
+
   /* ---- Lazily loaded bundles ---- */
 
   /* Parts of the app that are their own files, so the core bundle every phone loads at sign in stays
@@ -975,6 +1013,7 @@
        messages  web/messages_i18n.js, web/messages.js and web/messages.css, Messages (0.3.6)
        party     web/party.css, the birthday celebration (0.3.6), which opens once it is in
        push      web/push_i18n.js, web/push.js and web/push.css, phone notices and the add to home screen card (0.3.7)
+       states    web/states_i18n.js, web/states.js and web/states.css, Where we work (0.4.0)
      They are fetched the first time they are needed, and nothing is drawn before every part is in,
      so nothing is ever seen unstyled. Apps Script serves no files of its own, so
      tools/build_gas_html.py inlines every bundle and sets BUNDLED, and none of this runs there.
@@ -983,6 +1022,7 @@
   var BUNDLES = {
     edu: { route: "training", js: ["edu_i18n.js", "edu.js"] },
     status: { route: "status", js: ["status_i18n.js", "status.js"] },
+    states: { route: "states", js: ["states_i18n.js", "states.js"] },
     letter: { route: "welcome", js: [] },
     messages: { route: "messages chat", js: ["messages_i18n.js", "messages.js"] },
     party: { js: [], ready: partyArrived },
@@ -1488,6 +1528,8 @@
     if (date) meta.push(t("sent_on", { date: date }));
     var hid = r.reply_hidden === true;
     var reply = hid ? t("req_reply_hidden") : typeof r.reply === "string" ? r.reply.trim() : "";
+    // 0.4.0: details is empty on a Where we work row, because the office's sentence is English only.
+    var stateLine = STATE_RE.test(r.state) ? t("req_state_line", { state: t("state_" + String(r.state).toLowerCase()) }) : "";
     return h("li", { class: "req" }, [
       h("div", { class: "req-top" }, [
         h("div", null, [
@@ -1496,6 +1538,7 @@
         ]),
         chip(st.cls, t(st.key))
       ]),
+      stateLine ? h("p", { class: "req-details", text: stateLine }) : null,
       r.details_hidden ? h("p", { class: "req-details req-hidden", text: t("req_details_hidden") })
         : r.details ? h("p", { class: "req-details" + (compact ? " clamp" : ""), text: String(r.details) }) : null,
       reply ? h("div", { class: "req-reply" }, [
@@ -2147,6 +2190,12 @@
       h("span", { class: "ceo-link-text", text: t("ceo_link") }),
       icon("chevronRight")
     ]));
+    // Where we work (0.4.0). A link and not a seventh tile: the tiles are a day's tasks, this is not one.
+    parts.push(h("a", { class: "ceo-link ww-home-link", href: "#/states", on: { click: navClick("states") } }, [
+      icon("pin"),
+      h("span", { class: "ceo-link-text", text: t("ww_link") }),
+      icon("chevronRight")
+    ]));
     parts.push(requestsSection());
     parts.push(pushSlot());
     parts.push(footer());
@@ -2257,10 +2306,10 @@
     ];
     var pdf = safeUrl(dash && dash.links && dash.links.calendar_pdf_url);
     if (pdf) {
-      parts.push(h("div", { class: "cal-actions" }, externalLink(pdf, "btn btn-primary", [
+      parts.push(h("div", { class: "cal-actions" }, fileLink(pdf, "btn btn-primary", [
         icon("download"),
         h("span", { text: t("cal_pdf") }),
-        h("span", { class: "sr-only", text: " " + t("opens_new_tab") })
+        h("span", { class: "sr-only", text: " " + t(isSameOrigin(pdf) ? "saves_file" : "opens_new_tab") })
       ])));
     }
     if (!dash) {
@@ -2581,7 +2630,7 @@
     h: h, icon: icon, t: t, state: state, api: api, randomId: randomId, isOnline: isOnline,
     go: go, goBack: goBack, render: render, signOut: signOut, backButton: backButton,
     msgBox: msgBox, loading: dataPlaceholder, setTrainings: setTrainings, fx: makeFx, reduced: reducedMotion,
-    icons: ICONS, badge: newBadge, inert: setInert, retry: retryButton,
+    icons: ICONS, badge: newBadge, inert: setInert, retry: retryButton, img: imgWithFallback,
     refresh: refreshDashboard, withPush: withPush, openRe: OPEN_RE, ios: isIOS, standalone: isStandalone, phone: isPhone,
     // Leaving Messages hands its last badge to home, in memory, so home is right at once.
     setBadge: function (n) { if (state.dash && state.dash.messages) state.dash.messages.badge = n; }
@@ -2593,6 +2642,15 @@
     return h("div", { class: "msg" }, [
       h("div", { class: "page-head" }, [backButton("home"), h("h1", { text: t("tile_msg_title") })]),
       bundleWait("messages")
+    ]);
+  };
+
+  /* Where we work (0.4.0): the whole screen comes from the States bundle, fetched when it opens. */
+  SCREENS.states = function () {
+    if (bundleReady("states") && root.CCCStates) return root.CCCStates.screen();
+    return h("div", { class: "ww" }, [
+      h("div", { class: "page-head" }, [backButton("home"), h("h1", { text: t("ww_link") })]),
+      bundleWait("states")
     ]);
   };
 

@@ -1,0 +1,140 @@
+/* CCC Team Portal: the States bundle, the "Where we work" screen (0.4.0).
+ * web/app.js fetches it the first time somebody opens the link on home (bundleReady("states")),
+ * and tools/build_gas_html.py inlines it for Apps Script. Budget: 40,000 bytes for the three files.
+ *
+ * Every colour here comes from the tokens in web/app.css, so light and dark both follow the app and
+ * this file defines no colour of its own. No text ever sits over a photograph: captions and notes
+ * go below, on the page background, where --text and --muted already meet AA.
+ *
+ * Photographs are NOT dimmed in dark mode. Dimming a photograph to suit a theme makes a sunny coast
+ * look like bad weather, which is the opposite of the point.
+ */
+
+.ww .page-head { margin-bottom: 4px; }
+/* On a 320 px phone with the text at 200 percent a long word is wider than the screen. Breaking one
+   is better than a page that scrolls sideways, and "anywhere" also lets the boxes below shrink. */
+.ww p, .ww h1, .ww h2, .ww h3, .ww .ww-toggle, .ww .ww-send { overflow-wrap: anywhere; }
+
+.ww-intro {
+  margin-top: 8px; padding: 16px; border-radius: var(--radius);
+  background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow-sm);
+}
+.ww-intro-head { font-size: 19px; margin-bottom: 8px; }
+.ww-intro p { margin-top: 10px; color: var(--text); }
+.ww-note { color: var(--muted); font-size: 15px; }
+.ww-intro p.ww-note { margin-top: 12px; }
+
+/* One panel per state. */
+.ww-states { display: grid; gap: 12px; margin-top: 16px; }
+.ww-state {
+  border-radius: var(--radius); background: var(--surface);
+  border: 1px solid var(--line); box-shadow: var(--shadow-sm); overflow: hidden;
+}
+.ww-head { display: flex; align-items: center; gap: 10px; padding: 12px 12px 12px 16px; }
+.ww-head > div { flex: 1 1 auto; min-width: 0; }
+.ww-name { font-size: 21px; }
+.ww-yours { color: var(--muted); font-size: 14px; margin-top: 2px; }
+
+.ww-toggle {
+  flex: none; display: inline-flex; align-items: center; gap: 4px;
+  min-height: 44px; padding: 0 10px 0 14px; border-radius: 999px;
+  border: 1px solid var(--line-strong); background: var(--surface); color: var(--text);
+  font-size: 16px; font-weight: 600; touch-action: manipulation;
+}
+.ww-toggle svg { width: 18px; height: 18px; transition: transform 0.18s ease; }
+.ww-toggle[aria-expanded="true"] svg { transform: rotate(90deg); }
+
+.ww-body { padding: 0 16px 18px; }
+.ww-body[hidden] { display: none; }
+.ww-work { color: var(--text); }
+
+/* The photo strip. It scrolls sideways under a finger or an arrow key, and it never moves by
+   itself: there is no dot row, no arrows, no timer and no carousel anywhere on this screen.
+   The box is sized by aspect ratio, so the layout is the same before, during and after loading. */
+.ww-strip {
+  display: flex; gap: 10px; list-style: none; margin: 12px 0 0; padding: 0 0 6px; max-width: 100%;
+  overflow-x: auto; overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+}
+.ww-shot { flex: 0 0 100%; min-width: 0; scroll-snap-align: start; }
+.ww-shot img, .ww-gone {
+  display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover;
+  border-radius: var(--radius-sm); border: 1px solid var(--line-strong); background: var(--gray-tint);
+}
+/* The plain box a missing picture leaves behind, exactly the size the picture would have been. */
+.ww-gone {
+  display: grid; place-items: center; padding: 8px; text-align: center;
+  color: var(--muted); font-size: 15px; font-weight: 600;
+}
+.ww-strip:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: var(--radius-sm); }
+/* One picture fills the strip on a phone and nothing moves by itself, so this line is how somebody
+   learns the other four are there. */
+.ww-count { margin-top: 6px; }
+
+/* The ladder. The picture is decoration; the list under it is the information. */
+.ww-ladder { margin-top: 18px; }
+.ww-ladder-head { font-size: 18px; }
+.ww-ladder-same { margin-top: 6px; color: var(--text); }
+.ww-art { margin-top: 10px; }
+.ww-art img, .ww-art .ww-gone {
+  display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover;
+  border-radius: var(--radius-sm); border: 1px solid var(--line-strong); background: var(--gray-tint);
+}
+.ww-ladder .ww-note { margin-top: 10px; }
+
+.ww-steps {
+  list-style: none; margin: 12px 0 0; padding: 0;
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px;
+}
+.ww-step {
+  padding: 12px; border-radius: var(--radius-sm); min-width: 0;
+  background: var(--bg); border: 1px solid var(--line);
+}
+.ww-step-name { font-size: 17px; font-weight: 700; color: var(--text); }
+.ww-step-n { display: inline-block; min-width: 22px; color: var(--muted); }
+.ww-step-en { font-size: 14px; color: var(--muted); margin-top: 2px; padding-left: 22px; }
+.ww-step-line { margin-top: 6px; color: var(--text); padding-left: 22px; }
+
+/* The button sits at the bottom of the panel it belongs to, so it is always clear which state it
+   is about. Its answer goes in the live region under it, never over a picture. */
+.ww-sendbox { margin-top: 18px; }
+.ww-send { width: 100%; min-height: 52px; height: auto; padding: 12px 16px; white-space: normal; }
+.ww-live:empty { display: none; }
+.ww-live { margin-top: 10px; }
+.ww-done { font-weight: 700; color: var(--success-text); }
+/* The button that was pressed is gone, so the answer takes the focus. It is a sentence and not a
+   control, so it is not outlined: the same thing web/push.css does with its own live line. */
+.ww-done:focus { outline: none; }
+.ww-live .ww-note { margin-top: 6px; }
+.ww-live .ww-see { margin-top: 2px; }
+/* The state somebody already works in has this line where every other state has the button. */
+.ww-yours-note { margin-top: 18px; }
+
+.ww-credits { margin-top: 18px; text-align: center; color: var(--muted); font-size: 14px; }
+
+/* Two or three pictures at a time once there is room for them. */
+@media (min-width: 520px) {
+  .ww-shot { flex-basis: 48%; }
+}
+@media (min-width: 760px) {
+  .ww-shot { flex-basis: 32%; }
+}
+
+/* 320 px: the heading and the button stack, and nothing scrolls sideways but the strip. */
+@media (max-width: 360px) {
+  .ww-head { flex-wrap: wrap; padding: 12px 12px 12px 14px; }
+  .ww-toggle { margin-left: auto; }
+  .ww-body { padding: 0 14px 16px; }
+  .ww-name { font-size: 20px; }
+}
+
+@media (prefers-color-scheme: dark) {
+  /* A border around every picture, so a photograph with a light sky does not float on a dark page
+     with no edge. The photograph itself is never dimmed. */
+  .ww-shot img, .ww-art img { border-color: rgba(255, 255, 255, 0.28); }
+  .ww-step { background: rgba(255, 255, 255, 0.04); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ww-toggle svg { transition: none; }
+}

@@ -20,6 +20,9 @@
       close: "Close",
       try_again: "Try again",
       opens_new_tab: "(opens in a new tab)",
+      // Said out loud by a screen reader on a file that is saved instead of opened, so nobody is
+      // told to expect a new tab that never comes.
+      saves_file: "(saves the file to this device, the app stays open)",
       version: "Version {v}",
 
       login_title: "Welcome to the CCC Team Portal",
@@ -99,6 +102,18 @@
       office_reply: "Office reply",
       req_details_hidden: "Details hidden for privacy. The office can see them.",
       req_reply_hidden: "The office replied. Ask your supervisor or check WhatsApp for details.",
+
+      // Where we work (0.4.0). These eight are in the core bundle because home and My requests need
+      // them; web/states_i18n.js reuses them rather than writing the state names a second time.
+      // cat_state_interest is a category the backend writes, never one the Request a change form offers.
+      cat_state_interest: "Another state",
+      req_state_line: "You told the office you would consider {state}.",
+      ww_link: "Where we work",
+      state_ca: "California",
+      state_fl: "Florida",
+      state_ga: "Georgia",
+      state_hi: "Hawaii",
+      state_tn: "Tennessee",
 
       status_new: "New",
       status_in_progress: "In progress",
@@ -194,6 +209,7 @@
       close: "Cerrar",
       try_again: "Intentar otra vez",
       opens_new_tab: "(se abre en otra pestaña)",
+      saves_file: "(guarda el archivo en este dispositivo, la aplicación sigue abierta)",
       version: "Versión {v}",
 
       login_title: "Le damos la bienvenida al Portal del Equipo CCC",
@@ -273,6 +289,15 @@
       office_reply: "Respuesta de la oficina",
       req_details_hidden: "Detalles ocultos por privacidad. La oficina sí los puede ver.",
       req_reply_hidden: "La oficina respondió. Pregunte a su supervisor o revise WhatsApp para ver los detalles.",
+
+      cat_state_interest: "Otro estado",
+      req_state_line: "Usted le dijo a la oficina que consideraría {state}.",
+      ww_link: "Dónde trabajamos",
+      state_ca: "California",
+      state_fl: "Florida",
+      state_ga: "Georgia",
+      state_hi: "Hawái",
+      state_tn: "Tennessee",
 
       status_new: "Nueva",
       status_in_progress: "En proceso",
