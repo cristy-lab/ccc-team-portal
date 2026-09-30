@@ -1026,9 +1026,22 @@
     letter: { route: "welcome", js: [] },
     messages: { route: "messages chat", js: ["messages_i18n.js", "messages.js"] },
     party: { js: [], ready: partyArrived },
-    push: { js: ["push_i18n.js", "push.js"], ready: function () { pushQ.splice(0).forEach(withPush); } }
+    push: { js: ["push_i18n.js", "push.js"], ready: function () { pushQ.splice(0).forEach(withPush); } },
+    // 0.4.1, the globe. Asked for after home has drawn, never before.
+    globe: { js: ["globe.js"], ready: function () { globeQ.splice(0).forEach(withGlobe); } }
   };
   var pushQ = [];
+  var globeQ = [];
+
+  /* The globe, when it is here, to everybody who asked. Nobody is called back if the file does not
+     arrive: every screen that uses a globe works without one. */
+  function withGlobe(fn) {
+    if (root.CCCGlobe) fn(root.CCCGlobe);
+    else if (state.bundle.globe !== 2) {
+      globeQ.push(fn);
+      if (!state.bundle.globe) loadBundle("globe");
+    }
+  }
 
   /* Where app.js was served from, so a bundle is found whatever page the app runs on. */
   var HERE = ((doc.currentScript && doc.currentScript.src) || "").replace(/[^/]*$/, "");
@@ -2190,17 +2203,42 @@
       h("span", { class: "ceo-link-text", text: t("ceo_link") }),
       icon("chevronRight")
     ]));
-    // Where we work (0.4.0). A link and not a seventh tile: the tiles are a day's tasks, this is not one.
-    parts.push(h("a", { class: "ceo-link ww-home-link", href: "#/states", on: { click: navClick("states") } }, [
-      icon("pin"),
-      h("span", { class: "ceo-link-text", text: t("ww_link") }),
-      icon("chevronRight")
-    ]));
+    // Where we work: a globe, not a seventh tile. It was a quiet text link in 0.4.0 and the owner
+    // of the company could not find it.
+    parts.push(globeLink());
     parts.push(requestsSection());
     parts.push(pushSlot());
     parts.push(footer());
     return h("div", { class: "home" }, parts);
   };
+
+  /* The whole cost of the globe in the core bundle, and already the whole link: a ball drawn by
+     web/app.css with the greeting, which opens Where we work on a phone that never gets
+     web/globe.js or world.json. The Globe bundle is asked for afterwards, on an idle callback, and
+     it names the five pins once there really are five pins to name. */
+  function globeLink() {
+    var host = h("span", { class: "ww-globe" });
+    idle(function () {
+      withGlobe(function (G) {
+        if (doc.body.contains(host)) {
+          try { G.home(host); } catch (e) { /* the ball and the link are untouched */ }
+        }
+      });
+    });
+    return h("a", {
+      class: "ww-globe-link", href: "#/states", "aria-label": t("ww_globe_name"),
+      on: { click: navClick("states") }
+    }, [host, h("span", { class: "ww-globe-cap" }, [
+      h("span", { class: "ceo-link-text", text: t("ww_link") }),
+      icon("chevronRight")
+    ])]);
+  }
+
+  /* After the browser has nothing better to do, or a beat later on one that has no idea. */
+  function idle(fn) {
+    if (root.requestIdleCallback) root.requestIdleCallback(fn, { timeout: 2500 });
+    else root.setTimeout(fn, 900);
+  }
 
   /* ---- The message from the CEO ---- */
 
@@ -2631,7 +2669,7 @@
     go: go, goBack: goBack, render: render, signOut: signOut, backButton: backButton,
     msgBox: msgBox, loading: dataPlaceholder, setTrainings: setTrainings, fx: makeFx, reduced: reducedMotion,
     icons: ICONS, badge: newBadge, inert: setInert, retry: retryButton, img: imgWithFallback,
-    refresh: refreshDashboard, withPush: withPush, openRe: OPEN_RE, ios: isIOS, standalone: isStandalone, phone: isPhone,
+    refresh: refreshDashboard, withPush: withPush, withGlobe: withGlobe, openRe: OPEN_RE, ios: isIOS, standalone: isStandalone, phone: isPhone,
     // Leaving Messages hands its last badge to home, in memory, so home is right at once.
     setBadge: function (n) { if (state.dash && state.dash.messages) state.dash.messages.badge = n; }
   };

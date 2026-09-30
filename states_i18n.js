@@ -114,12 +114,13 @@
     ["ww_send_state", "Tell the office I would consider {state}",
       "Decirle a la oficina que consideraría {state}"],
     ["ww_sending", "Sending…", "Enviando…"],
-    // The number is called what it is called everywhere else in the app (done_number), so nobody is
-    // left holding a word they have not seen before.
-    ["ww_sent", "Noted. The office has this. Your request number is {id}.",
-      "Anotado. La oficina lo tiene. Su número de solicitud es {id}."],
-    ["ww_already", "The office already has this for {state}. Your request number is {id}.",
-      "La oficina ya tiene esto para {state}. Su número de solicitud es {id}."],
+    // The request number came OUT of these two sentences in 0.4.1, and nothing else about them
+    // changed. It is drawn on its own line above them now, because the owner of the company read
+    // "Noted. The office has this. Your request number is R10004." and reported that the screen
+    // was not giving her a request number.
+    ["ww_sent", "Noted. The office has this.", "Anotado. La oficina lo tiene."],
+    ["ww_already", "The office already has this for {state}.",
+      "La oficina ya tiene esto para {state}."],
     // The state this person already works in gets no button: there is nothing to tell the office.
     ["ww_your_state_note",
       "You already work here, so there is nothing to tell the office about this one.",

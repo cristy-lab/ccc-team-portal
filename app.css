@@ -51,6 +51,8 @@
   --welcome-bg: radial-gradient(130% 70% at 50% 0%, #332C95, #1B175A 52%, #0F0C38);
   --choice-on-bg: #1B175A;
   --choice-on-text: #FFFCFC;
+  /* The globe (0.4.1): the two colours home draws itself. The rest are in web/globe.css. */
+  --gl-sea: #7FB4E8; --gl-rim: rgba(27, 23, 90, 0.45); --gl-hi: #A8D0F0; --gl-lo: #4E7FA8;
   --shadow-sm: 0 1px 2px rgba(27, 23, 90, 0.06), 0 2px 8px rgba(27, 23, 90, 0.05);
   --shadow: 0 1px 2px rgba(27, 23, 90, 0.06), 0 8px 24px rgba(27, 23, 90, 0.08);
   --shadow-lg: 0 2px 4px rgba(27, 23, 90, 0.10), 0 16px 40px rgba(27, 23, 90, 0.18);
@@ -103,6 +105,7 @@
     --welcome-bg: radial-gradient(130% 70% at 50% 0%, #221D6B, #13103A 52%, #07061C);
     --choice-on-bg: #82CAFB;
     --choice-on-text: #1B175A;
+    --gl-sea: #23486A; --gl-rim: rgba(255, 255, 255, 0.45); --gl-hi: #35638F; --gl-lo: #16304A;
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.25);
     --shadow-lg: 0 2px 4px rgba(0, 0, 0, 0.35), 0 16px 40px rgba(0, 0, 0, 0.4);
@@ -711,12 +714,31 @@ html[data-screen="login"] body {
   border-radius: 999px; color: var(--muted); font-size: 16px; font-weight: 600; text-decoration: none;
 }
 .ceo-link-text { text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 4px; }
-.ceo-link svg { width: 18px; height: 18px; }
+.ceo-link svg, .ww-globe-cap svg { width: 18px; height: 18px; }
 .ceo-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.2); transform-origin: 47% 36%; }
 .ceo-thumb {
   flex: none; width: 38px; height: 38px; border-radius: 50%; overflow: hidden; display: grid; place-items: center;
   background: #1B175A; color: #FFFCFC; font-family: var(--serif); font-weight: 700; box-shadow: 0 0 0 2px var(--bg), 0 0 0 3.5px var(--gold);
 }
+
+/* The globe on home (0.4.1), where the link nobody could find used to be. The ball is a CSS circle,
+   on the screen with the greeting and already the link, in the card and the gold every other block
+   on home wears, and a sphere rather than a flat disc because a flat disc is what a phone whose
+   Globe bundle never arrives keeps. web/globe.js says why it is built this way. */
+.ww-globe-link {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  margin: 18px 0 0; padding: 16px 14px 14px; text-decoration: none; color: var(--text);
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+/* 132 px, until the page has less room, which is 200 percent text on a 320 px phone. It never
+   makes the page scroll sideways to fit a picture. */
+.ww-globe {
+  display: block; width: min(132px, 70vw); aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle at 34% 30%, var(--gl-hi), var(--gl-sea) 70%, var(--gl-lo));
+  box-shadow: inset 0 0 0 1.5px var(--gl-rim), 0 0 0 3px var(--surface), 0 0 0 4.5px var(--gold);
+}
+.ww-globe-cap { display: flex; align-items: center; gap: 4px; font-size: 17px; font-weight: 700; }
 
 @media (min-width: 481px) {
   .app { padding-top: 28px; }

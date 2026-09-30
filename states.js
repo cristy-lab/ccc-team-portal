@@ -209,9 +209,11 @@
     ]);
   }
 
+  /* The ladder pictures are WebP at their full 1536 by 1024: the small white words inside them
+     were soft at the size a JPEG cap forced. PHOTO_CREDITS.md has the numbers. */
   function ladder(st) {
     var withImageName = showsImageName();
-    var art = slot(st.scene + "-ladder.jpg", t("ww_" + lc(st) + "_ladder_alt"), t("ww_ladder_head"));
+    var art = slot(st.scene + "-ladder.webp", t("ww_" + lc(st) + "_ladder_alt"), t("ww_ladder_head"));
     watch(art);
     return el("section", { class: "ww-ladder" }, [
       el("h3", { class: "ww-ladder-head", text: t("ww_ladder_head") }),
@@ -247,9 +249,7 @@
   function sendLabel(st) { return t("ww_send_state", { state: stateName(st) }); }
 
   function answerLine(st, s) {
-    return s.already
-      ? t("ww_already", { state: stateName(st), id: s.id })
-      : t("ww_sent", { id: s.id });
+    return s.already ? t("ww_already", { state: stateName(st) }) : t("ww_sent");
   }
 
   /* The answer goes into a live region inside the panel it belongs to, so it is announced where it
@@ -268,7 +268,7 @@
     V.dom[st.code] = { btn: btn, label: label, live: live };
     if (s.id) {
       btn.hidden = true;
-      say(st, answerLine(st, s), true);
+      say(st, answerLine(st, s), s.id);
     } else {
       btn.disabled = !P.isOnline();
       if (!P.isOnline()) say(st, t("ww_offline"), false, "wait");
@@ -276,15 +276,22 @@
     return box;
   }
 
-  /* kind: an answer (with the line that keeps a yes from reading as a yes from the company and the
-     way back to the row it made), or a message box for a refusal. move: the person just pressed the
-     button, which is gone now, so the focus goes to the sentence that answers them. */
-  function say(st, text, done, kind, move) {
+  /* id: an answer, the request number and then the words, or "" for a message box about a refusal.
+     move: the button is gone, so the focus goes to the answer. web/states.css says why the number
+     is drawn on its own rather than written into the sentence. */
+  function say(st, text, id, kind, move) {
     var d = V.dom[st.code];
     if (!d) return;
     clear(d.live);
-    if (done) {
-      var said = el("p", { class: "ww-done", tabindex: "-1", text: text });
+    if (id) {
+      var said = el("div", { class: "ww-done", tabindex: "-1" }, [
+        el("p", { class: "done-number" }, [
+          el("span", { text: t("done_number", { id: "" }).trim() }),
+          el("br"),
+          el("span", { class: "req-id", text: id })
+        ]),
+        el("p", { class: "ww-done-line", text: text })
+      ]);
       d.live.appendChild(said);
       d.live.appendChild(el("p", { class: "ww-note", text: t("ww_sent_note") }));
       d.live.appendChild(el("a", {
@@ -326,7 +333,7 @@
         s.id = String((res.request && res.request.request_id) || "");
         s.already = res.already === true;
         d.btn.hidden = true;
-        say(st, answerLine(st, s), true, null, true);
+        say(st, answerLine(st, s), s.id, null, true);
         return;
       }
       if (res && res.error && (res.error.code === "AUTH_INVALID" || res.error.code === "AUTH_EXPIRED")) {
@@ -363,6 +370,23 @@
     body.appendChild(sendBox(st));
   }
 
+  /* ---- The globe ---- */
+
+  /* An empty box above the list, which the Globe bundle fills if it comes and leaves empty for ever
+     if it does not. The globe is a SECOND way in and never the only way: everything it does is
+     still doable by scrolling past it, which is why the tests of the list below all still pass. */
+  function globeSlot() {
+    var box = el("div", { class: "ww-globe-slot" }), once = false;
+    soon(function () {
+      if (once || !box.parentNode) return;
+      once = true;
+      P.withGlobe(function (G) {
+        if (V && box.parentNode) V.globe = G.states(box);
+      });
+    });
+    return box;
+  }
+
   function panel(st) {
     var open = V.open[st.code] === true;
     var id = "ww-body-" + st.code;
@@ -378,7 +402,7 @@
     return el("section", { class: "ww-state", "data-state": st.code }, [
       el("div", { class: "ww-head" }, [
         el("div", null, [
-          el("h2", { class: "ww-name", text: stateName(st) }),
+          el("h2", { class: "ww-name", tabindex: "-1", text: stateName(st) }),
           V.mine === st ? el("p", { class: "ww-yours", text: t("ww_your_state") }) : null
         ]),
         btn
@@ -406,8 +430,9 @@
   /* ---- The screen ---- */
 
   function screen() {
-    // The old picture watcher belongs to a screen that is about to be thrown away.
+    // The old picture watcher and the old globe belong to a screen about to be thrown away.
     if (V && V.io) { V.io.disconnect(); V.io = null; }
+    if (V && V.globe) { V.globe.destroy(); V.globe = null; }
     // A phone here is shared. What the last person did on this screen is not for the next one.
     if (!V || V.who !== myId()) V = blank();
     V.dom = {};
@@ -420,6 +445,7 @@
         el("p", { text: t("ww_intro_2") }),
         el("p", { class: "ww-note", text: t("ww_intro_3") })
       ]),
+      globeSlot(),
       el("div", { class: "ww-states" }, V.order.map(panel)),
       el("p", { class: "ww-credits", text: t("ww_credits") })
     ]);
@@ -453,6 +479,7 @@
     show: showAll,
     reset: function () {
       if (V && V.io) V.io.disconnect();
+      if (V && V.globe) V.globe.destroy();
       V = null;
     }
   };

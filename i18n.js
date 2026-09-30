@@ -109,6 +109,10 @@
       cat_state_interest: "Another state",
       req_state_line: "You told the office you would consider {state}.",
       ww_link: "Where we work",
+      // 0.4.1: the accessible name of the globe on home, the whole of what somebody listening gets
+      // instead of a drawing. One line, because this file is what every phone downloads at sign in.
+      // web/globe.js adds the five pins to it once there really are five pins to name.
+      ww_globe_name: "Where we work. Open the five states where Cristal Clear Cleaning works.",
       state_ca: "California",
       state_fl: "Florida",
       state_ga: "Georgia",
@@ -293,6 +297,7 @@
       cat_state_interest: "Otro estado",
       req_state_line: "Usted le dijo a la oficina que consideraría {state}.",
       ww_link: "Dónde trabajamos",
+      ww_globe_name: "Dónde trabajamos. Abra los cinco estados donde trabaja Cristal Clear Cleaning.",
       state_ca: "California",
       state_fl: "Florida",
       state_ga: "Georgia",

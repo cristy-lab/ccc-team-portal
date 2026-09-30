@@ -1,0 +1,147 @@
+/* CCC Team Portal: the Globe bundle's look (0.4.1), loaded with web/globe.js.
+ *
+ * The colours of the Earth itself are tokens in web/app.css, because web/app.js draws the plain
+ * circle on home before this file exists and both have to be the same blue. Everything else about a
+ * globe is here, and nothing here is needed until a globe is really on a screen.
+ *
+ * The rule the rest of the app keeps, kept here too: no text ever sits on the picture. The hint and
+ * every button name are real text below or beside it, on the page background.
+ */
+
+:root {
+  /* Measured, not chosen by eye (tests/web/globe.html, section 8): the land reads against the sea,
+     the coastline reads against both, and a pin reads against whatever it sits on, in both themes.
+     The pin is dark with a white ring by day and gold with a dark ring at night, because a marker
+     has to stand out from its surroundings and the surroundings change. */
+  /* Daylight is painted in the app's own two families now. The sea was hue 207 at 52 percent
+     saturation, half of every other blue on the screen, so it read grey beside them, and the land
+     was a yellow green at hue 91 that exists nowhere else in the product: together they read as
+     clipart dropped into the app. The coastline is --success-text, a token the app owns. Night was
+     already inside both families and is left alone. */
+  --gl-land: #CFE7D6; --gl-coast: #14512F;
+  --gl-pin: #1B175A; --gl-pin-line: #FFFFFF; --gl-pin-halo: rgba(27, 23, 90, 0.30);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --gl-land: #3F7A50; --gl-coast: #A9DCB6;
+    /* --gold-hi, the gold the app owns. It was #FFD166, hue 42 at 100 percent saturation: the most
+       saturated thing on a night screen and a yellow this brand never uses. */
+    --gl-pin: #E7CD8C; --gl-pin-line: #13103A; --gl-pin-halo: rgba(231, 205, 140, 0.30);
+  }
+}
+
+/* ---- one globe ---- */
+
+/* Home's ball is a CSS circle until this file arrives. Once a real globe is mounted in it, the
+   circle underneath has to go, or its edge shows through the Earth. */
+.ww-globe.gl-box { background: none; box-shadow: 0 0 0 3px var(--surface), 0 0 0 4.5px var(--gold); }
+
+.gl-box {
+  position: relative;
+  width: var(--gl-size);
+  height: var(--gl-size);
+  flex: none;
+}
+/* pan-y, so a thumb sliding down the page still scrolls the page, a thumb sliding sideways turns
+   the globe, and the browser never takes a pinch on the globe as a pinch on the page. */
+.gl-svg {
+  display: block;
+  width: var(--gl-size);
+  height: var(--gl-size);
+  touch-action: pan-y;
+  -webkit-user-select: none;
+  user-select: none;
+  overflow: visible;
+}
+.gl-sea { fill: var(--gl-sea); }
+/* The coastline and not the two fills carries the boundary. Land against sea is 1.67 to 1, and no
+   pair of colours lifts that past 3 without pushing the pin under 3 against the same sea, so the
+   line has to survive antialiasing: at a 0.7 hairline on a 1x screen it rendered at 1.58 to 1
+   against the ocean and the continents dissolved. */
+.gl-land { fill: var(--gl-land); stroke: var(--gl-coast); stroke-width: 2; stroke-linejoin: round; }
+/* The lakes had no coastline at all, so they were unoutlined sea coloured holes with hard angular
+   edges: the one place on the Earth that read as damage to the artwork rather than as simplified. */
+.gl-lake { fill: var(--gl-sea); stroke: var(--gl-coast); stroke-width: 1; stroke-linejoin: round; }
+.gl-rim { fill: none; stroke: var(--gl-rim); stroke-width: 1.5; }
+.gl-dot { fill: var(--gl-pin); stroke: var(--gl-pin-line); stroke-width: 1.2; }
+
+/* ---- the five pins, as real buttons ---- */
+
+/* A list, so a screen reader says "list, five items" and names each state. They are always here and
+   always in the tab order, including the ones behind the Earth: a keyboard cannot spin the globe
+   first, so every state has to be reachable from wherever it stands. */
+/* NOTHING HERE TAKES A POINTER. This layer sits over the whole sphere and is a SIBLING of the <svg>
+   that carries every pointer listener, so while it took pointers it swallowed every drag, pinch and
+   double tap: an 80 px drag across bare ocean turned the Earth zero degrees, under a hint telling
+   everybody to slide it. And three of these 44 px buttons overlap so badly over the United States
+   that the last one in the DOM answered for all three, so the Florida pin opened Tennessee. Out of
+   the way, a finger reaches the sphere and pinAt() picks the nearest state, which is what it is for.
+   The keyboard is untouched: pointer-events does not affect focus, Tab or Enter. */
+.gl-pins { position: absolute; inset: 0; list-style: none; margin: 0; padding: 0; pointer-events: none; }
+.gl-pins li { position: static; }
+.gl-pin {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 44px; height: 44px;
+  margin: -22px 0 0 -22px;
+  display: grid; place-items: center;
+  padding: 0; border: 0; background: none; border-radius: 50%;
+  pointer-events: none;
+}
+.gl-pin i {
+  display: block; width: 13px; height: 13px; border-radius: 50%;
+  background: var(--gl-pin);
+  border: 2px solid var(--gl-pin-line);
+  box-shadow: 0 0 0 3px var(--gl-pin-halo);
+}
+/* Behind the Earth: parked on the rim in the direction it lies, small and quiet, still a button. */
+.gl-pin.is-back i {
+  width: 9px; height: 9px; opacity: 0.55;
+  box-shadow: none;
+}
+/* Two rings out of tokens that flip with the theme, because what is under this ring keeps changing:
+   the globe turns, so one colour sat on ocean one second and land the next. One ring clears 3 to 1
+   on the ocean, the other on the land. It is the only signal a keyboard user has of which of the
+   five states they are on, and it was a single --focus ring: 1.91 on ocean, 2.02 on land. */
+.gl-pin:focus-visible {
+  outline: 3px solid var(--focus); outline-offset: 6px;
+  box-shadow: 0 0 0 3px var(--gl-pin-line), 0 0 0 6px var(--gl-pin);
+}
+
+/* ---- the frame the Where we work screen puts round it ---- */
+
+.gl-wrap { margin: 16px 0 0; }
+.gl-stage {
+  position: relative;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 12px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+}
+.gl-keys { display: grid; gap: 8px; flex: none; }
+.gl-zoom {
+  width: 44px; height: 44px; display: grid; place-items: center;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface); color: var(--text);
+  touch-action: manipulation; cursor: pointer;
+}
+.gl-zoom svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; }
+.gl-zoom:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.gl-hint { margin-top: 8px; color: var(--muted); font-size: 15px; text-align: center; overflow-wrap: anywhere; }
+
+/* 320 px, and 200 percent text: the two zoom buttons go under the globe rather than beside it, so
+   the Earth keeps its size and nothing scrolls sideways. */
+@media (max-width: 400px) {
+  .gl-stage { flex-direction: column; padding: 10px; }
+  .gl-keys { grid-auto-flow: column; }
+}
+
+@media (prefers-color-scheme: dark) {
+  /* The Earth's own colours go a little deeper at night, in web/app.css with the rest of the tokens.
+     Only the frame round it is here. */
+  .gl-stage { border-color: rgba(255, 255, 255, 0.14); }
+}
+

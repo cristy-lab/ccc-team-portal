@@ -101,7 +101,9 @@
 .ww-send { width: 100%; min-height: 52px; height: auto; padding: 12px 16px; white-space: normal; }
 .ww-live:empty { display: none; }
 .ww-live { margin-top: 10px; }
-.ww-done { font-weight: 700; color: var(--success-text); }
+/* The answer is drawn like the Done screen's: the same label and blue pill, from .done-number and
+   .req-id in the core bundle. In 0.4.0 the number sat deep inside the sentence and was not seen. */
+.ww-done-line { margin-top: 12px; font-weight: 700; color: var(--success-text); }
 /* The button that was pressed is gone, so the answer takes the focus. It is a sentence and not a
    control, so it is not outlined: the same thing web/push.css does with its own live line. */
 .ww-done:focus { outline: none; }
