@@ -899,6 +899,7 @@
     if (root.CCCEdu) root.CCCEdu.reset();
     if (root.CCCMsg) root.CCCMsg.reset();
     if (root.CCCStatus) root.CCCStatus.reset();
+    if (root.CCCPreview) root.CCCPreview.reset();
     closeParty();
     store.remove(K.token);
     store.remove(K.person);
@@ -1014,6 +1015,7 @@
        party     web/party.css, the birthday celebration (0.3.6), which opens once it is in
        push      web/push_i18n.js, web/push.js and web/push.css, phone notices and the add to home screen card (0.3.7)
        states    web/states_i18n.js, web/states.js and web/states.css, Where we work (0.4.0)
+       preview   web/preview.js and web/preview.css, the owner's preview controls (0.4.2)
      They are fetched the first time they are needed, and nothing is drawn before every part is in,
      so nothing is ever seen unstyled. Apps Script serves no files of its own, so
      tools/build_gas_html.py inlines every bundle and sets BUNDLED, and none of this runs there.
@@ -1023,6 +1025,8 @@
     edu: { route: "training", js: ["edu_i18n.js", "edu.js"] },
     status: { route: "status", js: ["status_i18n.js", "status.js"] },
     states: { route: "states", js: ["states_i18n.js", "states.js"] },
+    // 0.4.2: the owner preview controls, her phone only, like the Status bundle (13.14).
+    preview: { route: "training", js: ["preview.js"] },
     letter: { route: "welcome", js: [] },
     messages: { route: "messages chat", js: ["messages_i18n.js", "messages.js"] },
     party: { js: [], ready: partyArrived },
@@ -2736,8 +2740,17 @@
   }
 
   /* The whole screen comes from the bundle: its heading and its Back button change with the step. */
+  /* The owner preview (0.4.2, docs/API.md 13.14): her controls, under her own list on the Trainings
+     screen and on no other screen, from a bundle only her phone fetches. It fails closed like the
+     W2 and 1099 tile: no dashboard, or one that does not say owner, asks for nothing. */
+  function ownerPreview() {
+    var at = root.CCCEdu.debug();
+    if (!isOwner() || !at || at.step !== "list") return null;
+    return bundleReady("preview") && root.CCCPreview ? root.CCCPreview.block() : bundleWait("preview");
+  }
+
   SCREENS.training = function () {
-    if (bundleReady("edu") && root.CCCEdu) return root.CCCEdu.screen();
+    if (bundleReady("edu") && root.CCCEdu) return append(root.CCCEdu.screen(), ownerPreview());
     return h("div", { class: "training" }, [
       h("div", { class: "page-head" }, [backButton("home"), h("h1", { text: t("tile_training_title") })]),
       bundleWait("edu")

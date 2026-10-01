@@ -397,6 +397,34 @@
 
   var seq = 0;
 
+  /* ---- the light ---- */
+
+  /* 0.4.1 shipped a flat blue disc with green shapes lying on it. A circle reads as a ball when
+     four things are true at once, and all four are gradients: a lit side falling away through a
+     soft terminator, a rim darkened all the way round, a small soft highlight, and air outside it.
+     Five radial gradients and four circles: no library, no raster texture, no filter.
+     ONE LIGHT, FIXED TO THE SCREEN, because a light source does not turn with the Earth. So none of
+     it is touched again after mount and the drift costs what it always cost. The direction is the
+     34% 30% of the plain CSS ball home draws first (web/app.css, .ww-globe), so nothing jumps when
+     the real globe lands in it. */
+  var LIGHT_X = 0.34, LIGHT_Y = 0.30;   // of the box, the same 34% 30% as the CSS ball on home
+  var SHADE_R = 1.25;                   // of the radius: the ramp finishes on the disc, not past it
+  var GLOW_R = 0.80;                    // of the radius: a small bright core, then a wide soft wash
+  var AIR_R = 1.045;                    // of the radius: how far the halo stands off the rim
+
+  /* One radial gradient in real pixels, from [offset, class] stops: the class carries the colour
+     and the opacity, so web/globe.css owns both themes and this file owns only the geometry. In
+     user space, because a globe is 92 px on one screen and 272 on another. */
+  function grad(gid, cx, cy, r, stops) {
+    return svg("radialGradient",
+      { id: gid, cx: cx, cy: cy, r: r, gradientUnits: "userSpaceOnUse" },
+      stops.map(function (s) { return svg("stop", { offset: s[0], "class": s[1] }); }));
+  }
+
+  /* Inline style and not a class, because the id belongs to this one globe and a page can hold
+     two. If the defs ever fail, the CSS class is what is left: a plain blue ball, not a black one. */
+  function paintWith(node, gid) { node.style.fill = "url(#" + gid + ")"; }
+
   /* MILLISECONDS AND NOT FRAMES. The first version counted 0.05 degrees of drift and a momentum
      decay of 0.9 per frame, so a 120 Hz phone turned the Earth twice as fast as a 60 Hz one and a
      30 Hz phone half as fast: 3.01 degrees a second with the frame rate held to 60, and 52.72 with
@@ -446,19 +474,72 @@
     host.classList.add("gl-box");
     host.style.setProperty("--gl-size", size + "px");
 
+    /* The light on this globe in its own pixels, and how far the land stands off the water: the
+       lift is the coastline again, offset AWAY from the light, so a continent casts a shadow on the
+       sea instead of reading as a cutout lying on it. 1.6 px here, 0.9 px on the ball on home. */
+    var lx = size * LIGHT_X, ly = size * LIGHT_Y;
+    var liftX = Math.max(0.7, rBase * 0.013), liftY = Math.max(0.8, rBase * 0.016);
+
     var sea = svg("circle", { cx: mid, cy: mid, r: rBase, class: "gl-sea" });
+    /* The land twice, same path, both written in paint(). A second <path> and not a <use>, because
+       a <use> clone keeps the class it came from and would be land coloured, and because the tests,
+       the cost measurement and the QA shots all read the d attribute off .gl-land itself. */
+    var lift = svg("path", { class: "gl-lift", d: "" });
     var land = svg("path", { class: "gl-land", d: "" });
     var lake = svg("path", { class: "gl-lake", d: "" });
     var dots = svg("g", { class: "gl-dots" });
+    /* The coats of light, in the order they go on, all set once and never touched again.
+         glow    the highlight, and UNDER the land on purpose: a sheen is what water does, not what
+                 a continent does, and with it over the land the gold night pin fell to 2.35 to 1
+                 against the ground it stands on (qa/op_globe3d/check_shading.py)
+         shade   one side lit, the other falling away through a soft terminator
+         limb    the rim darkened all the way round, and the blue air just inside it */
+    var glow = svg("circle", { cx: mid, cy: mid, r: rBase, class: "gl-glow" });
+    var shade = svg("circle", { cx: mid, cy: mid, r: rBase, class: "gl-shade" });
+    var limb = svg("circle", { cx: mid, cy: mid, r: rBase, class: "gl-limb" });
+    /* And the air OUTSIDE the rim, drawn first so the sphere covers all but the thin halo. */
+    var air = svg("circle", { cx: mid, cy: mid, r: rBase * AIR_R, class: "gl-air" });
     var clip = svg("clipPath", { id: id }, [svg("circle", { cx: mid, cy: mid, r: rBase })]);
+    var gid = function (suffix) { return id + suffix; };
     var shell = svg("svg", {
       class: "gl-svg", viewBox: "0 0 " + size + " " + size, width: size, height: size,
       "aria-hidden": "true", focusable: "false"
     }, [
-      svg("defs", null, [clip]),
-      svg("g", { "clip-path": "url(#" + id + ")" }, [sea, land, lake, dots]),
+      svg("defs", null, [
+        clip,
+        // The terminator: almost nothing across the lit half, so daylight keeps the colours the
+        // coastline was measured on, then away into night.
+        grad(gid("s"), lx, ly, rBase * SHADE_R,
+          [[0, "gl-d0"], [0.42, "gl-d1"], [0.7, "gl-d5"], [1, "gl-d2"]]),
+        // The light side: a bright core inside the first third, then a wash out to nothing. ONE
+        // gradient and not two, and the water is otherwise the flat --gl-sea it always was. The
+        // first draft also ran a --gl-hi to --gl-lo gradient on the water itself, and both ends of
+        // it were too far: --gl-lo is 2.19 to 1 against --gl-coast before any light at all, so the
+        // shade then took the coastline against open water to 1.63, and --gl-hi is 1.24 to 1
+        // against --gl-land, so near the light the sea and the ground were the same lightness.
+        grad(gid("g"), lx, ly, rBase * GLOW_R,
+          [[0, "gl-w0"], [0.3, "gl-w1"], [1, "gl-w2"]]),
+        // Limb darkening, then the blue air seen edge on: one gradient does both, and does
+        // nothing until 0.7 of the way out, so it never reaches the middle where everything is.
+        grad(gid("b"), mid, mid, rBase,
+          [[0.7, "gl-d0"], [0.9, "gl-d3"], [0.968, "gl-d4"], [0.988, "gl-a1"], [1, "gl-a2"]]),
+        // The halo outside, transparent until the sphere edge, so only the ring beyond the rim
+        // is ever seen.
+        grad(gid("h"), mid, mid, rBase * AIR_R,
+          [[0.9, "gl-a0"], [1 / AIR_R, "gl-a2"], [1, "gl-a0"]])
+      ]),
+      air,
+      svg("g", { "clip-path": "url(#" + id + ")" },
+        [sea, glow, lift, land, lake, shade, limb, dots]),
       svg("circle", { cx: mid, cy: mid, r: rBase, class: "gl-rim" })
     ]);
+    // The sea and the lakes keep the one flat --gl-sea they have always had, so a lake is the
+    // same blue as the ocean round it and the coastline was measured on the colour it really has.
+    paintWith(shade, gid("s"));
+    paintWith(glow, gid("g"));
+    paintWith(limb, gid("b"));
+    paintWith(air, gid("h"));
+    lift.setAttribute("transform", "translate(" + liftX.toFixed(2) + " " + liftY.toFixed(2) + ")");
     host.appendChild(shell);
 
     /* The five buttons, when this globe has them. They are always in the DOM and always in the tab
@@ -600,7 +681,10 @@
 
     function paint() {
       if (world) {
-        land.setAttribute("d", ringsPath(v, world.land));
+        // Written once, used twice: the shadow carries the same outline, moved by the transform.
+        var d = ringsPath(v, world.land);
+        land.setAttribute("d", d);
+        lift.setAttribute("d", d);
         lake.setAttribute("d", ringsPath(v, world.lake));
       }
       place();

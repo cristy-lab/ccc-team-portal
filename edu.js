@@ -167,6 +167,12 @@
     return rich(value, true);
   }
 
+  /* The owner preview (0.4.2, 13.14). The stand in, OFF THE ROW THAT IS OPEN and never from the
+     app, so a row from her own list carries none. web/preview.js stamps it, and says why. */
+  function pvAs() {
+    return (view.item && view.item.op_as) || undefined;
+  }
+
   function isPreview() {
     return !!(view.item && view.item.preview === true);
   }
@@ -205,7 +211,8 @@
     if (err.code === "RATE_LIMITED") return { key: "err_rate", back: false };
     if (err.code !== "VALIDATION") return { key: "edu_err_send", back: false };
     if (err.reason === "NOT_ASSIGNED") return { key: "edu_err_gone", back: true };
-    if (err.reason === "NOT_AVAILABLE") return { key: "edu_err_notready", back: true };
+    // 13.14: in a preview the office is not told, so her own bundle carries that line.
+    if (err.reason === "NOT_AVAILABLE") return { key: pvAs() ? "op_err_notready" : "edu_err_notready", back: true };
     if (err.reason === "ALREADY_DONE") return { key: "edu_err_already", back: true };
     if (err.reason === "VERSION_CHANGED" || err.reason === "PACK_CHANGED") return { key: "edu_err_changed", back: true };
     if (err.reason === "SESSION_EXPIRED") return { key: "edu_err_session", back: true };
@@ -347,6 +354,7 @@
       version: item.version,
       pack_sha256: view.sha,
       lang: lang(),
+      preview_as: pvAs(),
       client_request_id: P.randomId()
     }).then(function (res) {
       view.busy = false;
@@ -387,7 +395,8 @@
   }
 
   function retryOpen() {
-    var fresh = itemFor(view.item.training_id);
+    // 13.14: a preview retries the same row. The pack moved, the row did not.
+    var fresh = pvAs() ? view.item : itemFor(view.item.training_id);
     if (!fresh) {
       fail("edu_err_gone");
       go("list");
@@ -434,6 +443,7 @@
       session: view.session,
       answers: answers,
       lang: lang(),
+      preview_as: pvAs(),
       client_request_id: P.randomId()
     }).then(function (res) {
       view.busy = false;
@@ -482,6 +492,7 @@
       session: view.session,
       acknowledged: true,
       lang: lang(),
+      preview_as: pvAs(),
       client_request_id: P.randomId()
     };
     if (answers) body.answers = answers;
@@ -1283,7 +1294,8 @@
       P.h("div", { class: "page-head" }, [backNode(), P.h("h1", { text: slides && view.item && text(view.item.title) ||
         t("tile_training_title") })]),
       // Every screen of a preview says so, from the first lesson to the result.
-      view.step !== "list" && isPreview() ? previewTag() : null,
+      view.step !== "list" && isPreview() ?
+        ((root.CCCPreview && root.CCCPreview.tag(pvAs())) || previewTag()) : null,
       view.busy && QUIET[view.step] ? spinner() : null,
       message()
     ]);
@@ -1299,7 +1311,8 @@
     return page;
   }
 
-  /* The screen changed inside Trainings, so a screen reader is put on the new heading. */
+  /* The screen changed inside Trainings, so a screen reader is put on the new heading. The FIRST
+     marked node, so a preview's banner, which carries the mark too, is read first (13.14). */
   function focusHead() {
     var node = doc.querySelector(".edu [data-edu-head]");
     if (!node) return;
@@ -1332,6 +1345,8 @@
       stopFx();
       view = null;
     },
+    /* 0.4.2: her catalogue opens a row through this same path (13.14). */
+    open: open,
     /* For tests: the step and whether an answer is held, never the answers themselves. */
     debug: function () {
       return view ? { step: view.step, index: view.index, answered: Object.keys(view.answers).length, offline: view.offline,

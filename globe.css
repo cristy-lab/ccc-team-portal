@@ -20,6 +20,11 @@
      already inside both families and is left alone. */
   --gl-land: #CFE7D6; --gl-coast: #14512F;
   --gl-pin: #1B175A; --gl-pin-line: #FFFFFF; --gl-pin-halo: rgba(27, 23, 90, 0.30);
+  /* The light. The shade is a deep blue and never black, so night stays in the ocean family
+     instead of going grey; the air is the pale blue of a real limb. The lift is the shadow a
+     continent casts on the water: it must read as height and never as a second coastline. */
+  --gl-dark: #0A2742; --gl-glow: #FFFFFF; --gl-air: #BBDCFB;
+  --gl-lift: rgba(10, 39, 66, 0.16);
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -27,7 +32,67 @@
     /* --gold-hi, the gold the app owns. It was #FFD166, hue 42 at 100 percent saturation: the most
        saturated thing on a night screen and a yellow this brand never uses. */
     --gl-pin: #E7CD8C; --gl-pin-line: #13103A; --gl-pin-halo: rgba(231, 205, 140, 0.30);
+    /* The highlight stops being white: a pure white sheen would be the brightest thing on a night
+       screen and would pull the eye off everything else. */
+    --gl-dark: #04101D; --gl-glow: #CBE3FF; --gl-air: #5C93C6;
+    --gl-lift: rgba(4, 16, 29, 0.20);
   }
+}
+
+/* ---- the light on the sphere ---- */
+
+/* The stops of the five gradients web/globe.js builds. Geometry there, colour here.
+
+   EVERY NUMBER BELOW IS THE LARGEST ONE THAT KEEPS THE CONTRAST, and none of them is a taste. Paint
+   anything over the Earth and everything on it moves toward that colour TOGETHER, so a terminator
+   deep enough to look good can rub out the coastline, and in the first draft it did.
+   qa/op_globe3d/check_shading.py recovers what these gradients really put on every pixel of the
+   disc, applies it to the real tokens and reports the worst pair anywhere on the sphere. Daylight
+   can carry about 0.46 of coverage before the navy pin falls under 3 to 1 against the ocean. Night
+   can carry about 0.34, because the dark theme starts with only 3.31 to 1 between the coastline and
+   the land and has almost nothing to spend. That is why every dark number here is smaller. */
+.gl-d0, .gl-d1, .gl-d2, .gl-d3, .gl-d4, .gl-d5 { stop-color: var(--gl-dark); }
+.gl-a0, .gl-a1, .gl-a2 { stop-color: var(--gl-air); }
+.gl-w0, .gl-w1, .gl-w2 { stop-color: var(--gl-glow); }
+/* A stop at nothing still has a colour, because that is the colour it fades from. */
+.gl-d0, .gl-a0, .gl-w2 { stop-opacity: 0; }
+/* The terminator. 0.02 across the lit half, so daylight keeps the exact colours the coastline was
+   measured on (qa/measure_coast_contrast.py), and the darkness is spent on the other half. */
+.gl-d1 { stop-opacity: 0.02; }
+.gl-d5 { stop-opacity: 0.17; }
+.gl-d2 { stop-opacity: 0.31; }
+/* Limb darkening, then the air in the last three percent. The rim is what makes a circle read as a
+   ball, and it is also the most foreshortened part of it, so a heavy hand buys the least here. */
+.gl-d3 { stop-opacity: 0.08; }
+.gl-d4 { stop-opacity: 0.09; }
+.gl-a1 { stop-opacity: 0.11; }
+.gl-a2 { stop-opacity: 0.20; }
+/* The light side, and its bright core. CAPPED BY THE LAND BESIDE IT: this is painted on the water
+   and NOT on the continents, because over the land it took the gold night pin to 2.72 to 1 against
+   the ground it stands on, so wherever it is brightest it pulls the water up toward the land's own
+   lightness on its own. --gl-land is 1.67 to 1 above --gl-sea in daylight and 1.86 at night, and
+   the project's bar for "the land can be told from the sea" is 1.4, so daylight can spend about
+   0.22 of white here and night about 0.11 of --gl-glow. Measured at every pixel, with the land and
+   the sea as the shading really leaves them, in qa/op_globe3d/check_shading.py. */
+.gl-w0 { stop-opacity: 0.16; }
+.gl-w1 { stop-opacity: 0.07; }
+
+@media (prefers-color-scheme: dark) {
+  /* About 0.34 to spend against daylight 0.46, so every one of these is smaller. A terminator as
+     deep as the daylight one turns the far half into a hole and takes the coastline with it. */
+  .gl-d1 { stop-opacity: 0.02; }
+  .gl-d5 { stop-opacity: 0.13; }
+  .gl-d2 { stop-opacity: 0.21; }
+  .gl-d3 { stop-opacity: 0.06; }
+  .gl-d4 { stop-opacity: 0.10; }
+  .gl-a1 { stop-opacity: 0.12; }
+  /* 0.20 took the coastline to 2.46 against the land in the last one percent of the radius, where
+     both are pulled toward --gl-air. */
+  .gl-a2 { stop-opacity: 0.17; }
+  /* And the night sheen is capped by the gold pin as well as by the land: at 0.22 the pin was
+     2.71 to 1 against the water the sheen had brightened. */
+  .gl-w0 { stop-opacity: 0.09; }
+  .gl-w1 { stop-opacity: 0.05; }
 }
 
 /* ---- one globe ---- */
@@ -53,7 +118,13 @@
   user-select: none;
   overflow: visible;
 }
+/* The plain blue underneath: web/globe.js paints the water gradient over it inline, and this is
+   what is left if the defs ever fail, which is the ball home drew anyway rather than a black hole.
+   The coats of light have nothing to fall back to, so they are none until the gradient is there. */
 .gl-sea { fill: var(--gl-sea); }
+.gl-shade, .gl-glow, .gl-limb, .gl-air { fill: none; }
+/* No stroke on the lift: a second outline behind the coastline reads as a mistake, not as height. */
+.gl-lift { fill: var(--gl-lift); stroke: none; }
 /* The coastline and not the two fills carries the boundary. Land against sea is 1.67 to 1, and no
    pair of colours lifts that past 3 without pushing the pin under 3 against the same sea, so the
    line has to survive antialiasing: at a 0.7 hairline on a 1x screen it rendered at 1.58 to 1
@@ -62,7 +133,9 @@
 /* The lakes had no coastline at all, so they were unoutlined sea coloured holes with hard angular
    edges: the one place on the Earth that read as damage to the artwork rather than as simplified. */
 .gl-lake { fill: var(--gl-sea); stroke: var(--gl-coast); stroke-width: 1; stroke-linejoin: round; }
-.gl-rim { fill: none; stroke: var(--gl-rim); stroke-width: 1.5; }
+/* Thinner, because the limb darkening inside it and the halo outside it now say where the Earth
+   ends. At the old 1.5 px it read as an outline drawn round a sticker. */
+.gl-rim { fill: none; stroke: var(--gl-rim); stroke-width: 1; opacity: 0.7; }
 .gl-dot { fill: var(--gl-pin); stroke: var(--gl-pin-line); stroke-width: 1.2; }
 
 /* ---- the five pins, as real buttons ---- */
@@ -88,11 +161,17 @@
   padding: 0; border: 0; background: none; border-radius: 50%;
   pointer-events: none;
 }
+/* A pin STANDS ON the Earth and is not printed on the glass in front of it. The halo ring says
+   which mark is a pin; the second shadow, offset away from the same light the sphere is lit by, is
+   what puts it on the surface. No colour here changes, so no measured contrast changes.
+   1.6 by 2, the same 1 to 1.25 as the shadow a continent casts in web/globe.js: at 1 by 2 the pin
+   threw its shadow at 63 degrees while the land beside it threw one at 51, which is the true angle
+   from the light to the middle, so the two were lit by different lamps. */
 .gl-pin i {
   display: block; width: 13px; height: 13px; border-radius: 50%;
   background: var(--gl-pin);
   border: 2px solid var(--gl-pin-line);
-  box-shadow: 0 0 0 3px var(--gl-pin-halo);
+  box-shadow: 0 0 0 3px var(--gl-pin-halo), 1.6px 2px 3px rgba(10, 39, 66, 0.45);
 }
 /* Behind the Earth: parked on the rim in the direction it lies, small and quiet, still a button. */
 .gl-pin.is-back i {

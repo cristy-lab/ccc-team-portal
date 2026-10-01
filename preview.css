@@ -1,0 +1,106 @@
+/* CCC Team Portal owner preview (0.4.2). Part of the Preview bundle with web/preview.js, fetched
+ * only by the owner's phone when the Trainings list is drawn for her (docs/API.md 13.14).
+ *
+ * Every colour comes from the tokens in web/app.css, so dark mode needs nothing extra here and no
+ * colour is hard coded. Built for a 320 px phone first, and it holds at 200 percent text because
+ * nothing here is sized to fit a line: every row wraps and every long word may break.
+ *
+ * The block is deliberately not styled like a training. It sits in a framed panel with its own
+ * heading, under her own list and clearly apart from it, because a preview is something she chooses
+ * to open and not a training she was given.
+ */
+
+.op {
+  margin: 26px 0 8px; padding: 14px 14px 16px; border-radius: var(--radius);
+  border: 2px solid var(--line-strong); background: var(--gray-tint);
+}
+.op > * { min-width: 0; overflow-wrap: anywhere; }
+.op-top { display: flex; flex-direction: column; gap: 4px; }
+.op-head {
+  display: flex; align-items: center; gap: 8px; font-size: 20px; line-height: 1.25; margin: 0;
+}
+.op-head svg { flex: none; width: 22px; height: 22px; }
+.op-only { margin: 0; font-size: 15px; font-weight: 700; color: var(--muted); }
+.op-intro { margin: 10px 0 0; font-size: 16px; color: var(--text); }
+.op-msg { margin-top: 12px; }
+
+/* Why her own list is empty. It answers the question that started this screen, so it reads as an
+   answer and not as a warning: quiet, on the page's own surface, above the controls. */
+.op-why {
+  margin-top: 14px; padding: 10px 12px; border-radius: var(--radius-sm);
+  background: var(--surface); border: 1px solid var(--line);
+}
+.op-why p { margin: 0; font-size: 15px; color: var(--text); }
+.op-why-head { font-weight: 700; margin-bottom: 4px !important; }
+
+/* A preview is running. The peach of every other preview label in the app, so the two read as the
+   same thing, with a thick bar down its side that no glance can miss. */
+.op-now {
+  margin-top: 14px; padding: 10px 12px; border-radius: var(--radius-sm);
+  background: var(--peach-tint); color: var(--progress-text);
+  border-left: 6px solid var(--peach);
+}
+.op-now-line { display: flex; align-items: center; gap: 8px; margin: 0; font-size: 16px; font-weight: 700; }
+.op-now-line svg { flex: none; width: 18px; height: 18px; }
+.op-now-note { margin: 4px 0 0; font-size: 15px; }
+.op-end { margin-top: 10px; min-height: 48px; }
+
+/* The team's own empty screen for a held region. */
+.op-empty {
+  margin-top: 12px; padding: 12px; border-radius: var(--radius-sm);
+  background: var(--surface); border: 1px solid var(--line);
+}
+.op-empty p { margin: 0 0 4px; font-size: 15px; }
+.op-empty p:last-child { margin-bottom: 0; }
+.op-empty-head { font-size: 17px !important; font-weight: 700; }
+.op-hold { color: var(--progress-text); font-weight: 700; }
+
+/* The picker */
+.op-label { display: block; font-size: 16px; font-weight: 700; margin: 0 0 6px; padding: 0; }
+.op-fs { margin: 16px 0 0; padding: 0; border: 0; }
+.op-choice {
+  display: flex; align-items: center; gap: 10px; min-height: 50px; padding: 8px 12px;
+  margin-bottom: 8px; border-radius: 14px; border: 2px solid var(--line-strong);
+  background: var(--surface); color: var(--text); font-size: 17px; font-weight: 600;
+}
+.op-choice.is-on { background: var(--choice-on-bg); color: var(--choice-on-text); border-color: transparent; }
+.op-choice input { flex: none; width: 22px; height: 22px; margin: 0; accent-color: var(--focus); }
+.op-choice.is-on input { accent-color: var(--choice-on-text); }
+.op-choice:focus-within { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+.op-field { margin-top: 16px; }
+.op-select {
+  width: 100%; min-height: 50px; padding: 10px 12px; border-radius: 14px;
+  border: 2px solid var(--line-strong); background: var(--surface); color: var(--text);
+  font-size: 17px; font-family: inherit;
+}
+.op-select:focus-visible { outline: 3px solid var(--focus); outline-offset: 1px; border-color: transparent; }
+.op-region-note { margin: 6px 0 0; font-size: 15px; color: var(--muted); }
+.op-field .op-hold { margin: 4px 0 0; font-size: 15px; }
+
+/* The catalogue */
+.op-list-head { margin: 22px 0 0; font-size: 18px; }
+.op-list { list-style: none; padding: 0; margin: 10px 0 0; display: grid; gap: 12px; }
+.op-none { margin: 14px 0 0; font-size: 15px; color: var(--muted); }
+.op-row {
+  padding: 12px 14px 14px; border-radius: 16px; border: 1px solid var(--line);
+  background: var(--surface); box-shadow: var(--shadow-sm);
+}
+.op-row-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.op-row-title { font-size: 18px; line-height: 1.25; margin: 0; flex: 1 1 60%; min-width: 0; }
+.op-row-meta { margin: 6px 0 0; font-size: 15px; color: var(--muted); }
+.op-row .btn { margin-top: 12px; min-height: 52px; width: 100%; }
+
+/* The label every screen of a preview wears, on top of .edu-preview in web/edu.css. It says two
+   sentences instead of one, so it is allowed to wrap and it is not held to one line. */
+.op-tag { align-items: flex-start; line-height: 1.35; }
+.op-tag svg { margin-top: 2px; }
+
+@media (max-width: 359px) {
+  .op { padding: 12px 11px 14px; }
+  .op-row { padding: 11px 12px 13px; }
+  .op-head { font-size: 19px; }
+}
+
+/* Reduced motion: nothing here moves in the first place, and the app's own spinner already stops
+   for anybody who asks for less motion (web/app.css). Nothing to turn off. */
