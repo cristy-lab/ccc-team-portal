@@ -652,7 +652,7 @@
   var AUTH_ROUTES = { home: 1, calendar: 1, request: 1, requests: 1, done: 1, training: 1, welcome: 1, messages: 1, chat: 1, status: 1, states: 1 };
   // states (0.4.0) is not here on purpose: it needs no dashboard, so a failing one cannot stop it.
   var DATA_ROUTES = { home: 1, calendar: 1, requests: 1 };
-  var OPEN_RE = /^(d:[A-Za-z0-9_.]{1,64}|g:[a-z0-9]+(-[a-z0-9]+)*)$/;
+  var OPEN_RE = /^([do]:[A-Za-z0-9_.]{1,64}|g:[a-z0-9]+(-[a-z0-9]+)*)$/;
   // The five state codes of Where we work (0.4.0), the five the backend's own table produces.
   var STATE_RE = /^(CA|FL|GA|HI|TN)$/;
   var currentRoute = null;

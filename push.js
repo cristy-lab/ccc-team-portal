@@ -98,7 +98,11 @@
     return api("push_register", body).then(function (res) {
       var was = saved();
       if (!res.ok) throw res;
+      // devices (15.2) is how many of her phones get her notices. Round 1 review of 0.4.4 found the
+      // answer carried it and the app threw it away, so a phone registered under a borrowed session
+      // went on buzzing for her private line with no screen anywhere that could show it.
       save({ token: x.tok, ep: x.ep, checked: Date.now(), lang: body.lang, off: false, dismissed_until: was.dismissed_until,
+        devices: typeof res.devices === "number" && res.devices > 0 ? res.devices : 1,
         inbox: office ? res.inbox_alerts !== false : was.inbox, groups: office ? res.group_alerts !== false : was.groups });
     });
   }
@@ -194,6 +198,19 @@
     redraw("on");
   }
 
+  /* Her other phones, hers alone: push_unregister others keeps this one and ends the rest (15.3). */
+  function endOthers() {
+    var s = saved();
+    if (busy || !s.token) return;
+    run(api("push_unregister", { push_token: s.token, others: true }).then(function (res) {
+      if (!res.ok) return refused(res);
+      var now = saved();
+      now.devices = typeof res.devices === "number" && res.devices > 0 ? res.devices : 1;
+      save(now);
+      return "push_phones_ended";
+    }), "on");
+  }
+
   function test() {
     if (!busy) run(api("push_test", { push_token: saved().token }).then(function (res) {
       if (res.ok && res.sent === true) return "push_sent";
@@ -264,6 +281,17 @@
     return el("label", { class: "push-sw", for: id }, [input, el("span", { text: t("push_" + which) })]);
   }
 
+  /* How many of her phones get her notices, as the last push_register said (15.2). */
+  function phoneCount() {
+    var n = +saved().devices;
+    return n > 0 ? n : 1;
+  }
+
+  function phones() {
+    var n = phoneCount();
+    return el("p", { class: "push-phones", text: n > 1 ? t("push_phones_many", { n: n }) : t("push_phones_one") });
+  }
+
   function fill(b) {
     var st = state(), panel = b.kind === "panel", kids = [], line = el("p", { class: "push-note", role: "status", tabindex: "-1" });
     var shown = note && Date.now() - noteAt < 2e4 && /^(ready|on)$/.test(st) && !(panel && note === "push_on") ? note : "";
@@ -287,8 +315,10 @@
     body = TEXT[st] ? [el("p", { class: "a2hs-body", text: t(TEXT[st]) })]
       : st === "install" ? [el("p", { class: "a2hs-body", text: t("push_ios_body") }), steps(b.kind === "msg")]
       : st === "ready" ? [el("p", { class: "a2hs-body", text: t("push_body") })]
-      : [strong, btn("btn-primary", t("push_test"), test, "test"),
-        btn("btn-secondary", t("push_off"), turnOff, "off")].concat(dash().role === "office" ? [toggle("inbox"), toggle("groups")] : []);
+      : [strong, phones(), btn("btn-primary", t("push_test"), test, "test"),
+        btn("btn-secondary", t("push_off"), turnOff, "off")]
+        .concat(phoneCount() > 1 ? btn("btn-secondary", t("push_phones_end"), endOthers, "others") : [])
+        .concat(dash().role === "office" ? [toggle("inbox"), toggle("groups")] : []);
     if (st === "hidden") kids = [];
     else if (panel) kids = [el("h2", { class: "push-h2", text: t("push_head") })].concat(st === "install" ? el("p", { class: "push-strong", text: t(title) }) : [],
       body, st === "ready" ? btn("btn-primary", t(busy ? "push_working" : failed ? "push_retry" : "push_btn"), turnOn, "on") : [], line);

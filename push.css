@@ -31,5 +31,7 @@
 .push-box.is-panel > * { margin: 0; }
 .push-h2 { font-size: 21px; margin: 12px 0 0; }
 .push-strong { font-weight: 700; }
+/* 0.4.4: how many phones get her notices (docs/API.md 15.2). Quieter than the line above it. */
+.push-phones { font-size: 15px; color: var(--muted); }
 .push-sw { display: flex; align-items: center; gap: 12px; min-height: 48px; font-size: 17px; font-weight: 600; }
 .push-sw input { flex: none; width: 24px; height: 24px; margin: 0; accent-color: var(--primary-bg); }

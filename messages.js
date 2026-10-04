@@ -6,8 +6,8 @@
   "use strict";
 
   var doc = root.document, I = root.CCC_I18N, P = null, H = null;
-  // 2: rule 5 changed. AV: pictures kept in memory, AVB: keys per profile_photos call.
-  var RULES_V = "2", JPEG = "data:image/jpeg;base64,", BATCH = 12, AV = 150, AVB = 24, KEY = /^[a-f0-9]{20}$/;
+  // 2: rule 5 changed. 3: the private line. AV: pictures kept in memory, AVB: keys per profile_photos call.
+  var RULES_V = "3", JPEG = "data:image/jpeg;base64,", BATCH = 12, AV = 150, AVB = 24, KEY = /^[a-f0-9]{20}$/;
   // Idle time, then the wait: 15 s, 30 s after 2 minutes, 60 s after 5, paused after 15.
   var STEPS = [[900000, 0], [300000, 60000], [120000, 30000], [0, 15000]];
   // Tests run this clock by hand.
@@ -44,6 +44,8 @@
   }
   // Only the office reads my thread (API 14.2).
   function priv() { var o = V && V.list && V.list.office_thread; return myRole() === "supervisor" || !!(o && o.office_only); }
+  // The private line (API 14.17): the id is the room.
+  function pvt() { return V.tid.charAt(0) === "o"; }
   function clear(node) { while (node.firstChild) node.removeChild(node.firstChild); return node; }
   function keyOf(s) { return String(s).replace(/\W/g, "_"); }
   function rulesKey() { return "ccc.msgrules:" + ((P.state.person && P.state.person.id) || ""); }
@@ -307,6 +309,18 @@
     ], onClick, { "data-k": k }));
   }
 
+  /* The private room on a phone it does not open on: the room is there, with the reason, and
+     nothing to tap. No time and no count either, because the backend sends neither (14.17). */
+  function shutRow(key) {
+    return el("li", { class: "msg-row-shut" }, el("div", { class: "msg-row" }, [
+      P.icon("lock"),
+      el("span", { class: "msg-row-main" }, [
+        el("span", { class: "msg-row-title" }, t("msg_priv")),
+        el("span", { class: "msg-row-sub", text: t(key) })
+      ])
+    ]));
+  }
+
   /* A person's row, with the Supervisor label. */
   function personRow(k, p, more, at, unread) {
     return row(k + keyOf(p.thread_id), String(p.name || ""), [p.supervisor ? tag(t("msg_sup")) : null].concat(more || []).filter(Boolean), p.region || "",
@@ -335,11 +349,20 @@
       return out;
     }
     out = out.concat(notes(), pushCard(false), meLink());
-    var own = L.office_thread;
+    var own = L.office_thread, pv = L.private_thread, rooms = [];
     if (own && own.thread_id) {
-      out.push(el("ul", { class: "msg-rows" }, row("own", t("msg_office"), [], t(priv() ? "msg_office_sup" : "msg_office_cleaner"),
-        own.last_at, own.unread, function () { open(own.thread_id, { kind: "own" }); })));
+      rooms.push(row("own", t("msg_office"), [], t(priv() ? "msg_office_sup" : "msg_office_cleaner"),
+        own.last_at, own.unread, function () { open(own.thread_id, { kind: "own" }); }));
     }
+    // Its own row, with the lock: never written in by accident. locked (0.4.4) is why this phone
+    // cannot open it, and then the row says what to do instead of opening (docs/API.md 14.17).
+    if (pv && pv.thread_id) {
+      rooms.push(pv.locked
+        ? shutRow(pv.locked === "SIGN_IN_AGAIN" ? "msg_priv_sign_in" : "msg_priv_new_phone")
+        : row("priv", t("msg_priv"), [], t("msg_office_sup"), pv.last_at, pv.unread,
+          function () { open(pv.thread_id, { kind: "priv" }); }, P.icon("lock")));
+    }
+    if (rooms.length) out.push(el("ul", { class: "msg-rows" }, rooms));
     // Groups first: 80 threads would bury them.
     var groups = arr(L.groups);
     out.push(el("h2", { class: "msg-h2", text: t("msg_groups") }), groups.length ? el("ul", { class: "msg-rows" }, groups.map(function (g) {
@@ -387,7 +410,7 @@
       el("div", { class: "msg-chips", role: "group", "aria-label": t("msg_filters") }, toggles),
       chips(box.regions, f.region, function (r) { f.region = r; refresh(); }),
       threads.length ? el("ul", { class: "msg-rows" }, threads.map(function (r) {
-        return personRow("t", r, r.waiting && tag(t("msg_waiting"), "is-wait"), r.last_at, r.unread);
+        return personRow("t", r, [r.private && tag(t("msg_priv")), r.waiting && tag(t("msg_waiting"), "is-wait")], r.last_at, r.unread);
       })) : el("p", { class: "empty", text: t("msg_empty") })
     ];
   }
@@ -426,7 +449,7 @@
         role === "office" ? null : el("p", { text: t(priv() ? "msg_reads_sup" : "msg_reads_cleaner") }),
         el("p", { text: t("msg_reads_group") }), el("p", { text: t("msg_record") }), el("p", { text: t("msg_tr_note") }),
         el("h2", { class: "msg-h2", text: t("msg_rules_head") }),
-        el("ul", null, [1, 2, 3, 4, 5, 6].map(function (n) { return el("li", { text: t("msg_rule" + n + (n === 5 && (role !== "cleaner" || priv()) ? "_sup" : "")) }); })),
+        el("ul", null, (role === "office" ? [1, 2, 3, 4, 5, 6] : [1, 2, 3, 4, 5, 6, 7]).map(function (n) { return el("li", { text: t("msg_rule" + n + (n === 5 && (role !== "cleaner" || priv()) ? "_sup" : "")) }); })),
         el("p", { text: t("msg_screenshot") }),
         button("btn btn-primary", t("msg_ok"), function () {
           H.store.set(rulesKey(), RULES_V);
@@ -759,6 +782,7 @@
     var id = V.pend, L = V.list, hint = {};
     V.pend = "";
     if (L.office_thread && L.office_thread.thread_id === id) hint = { kind: "own" };
+    if (L.private_thread && L.private_thread.thread_id === id) hint = { kind: "priv" };
     arr(L.groups).forEach(function (g) { if (g.thread_id === id) hint = { kind: "group", name: g.name }; });
     arr(L.inbox && L.inbox.threads).forEach(function (p) {
       if (p.thread_id === id) hint = { kind: "direct", name: p.name, region: p.region, supervisor: p.supervisor === true, avatar: p.avatar };
@@ -770,7 +794,7 @@
   function zeroUnread(tid) {
     var L = V.list, cut = 0;
     if (!L) return;
-    [L.office_thread].concat(arr(L.groups), arr(L.inbox && L.inbox.threads)).forEach(function (x) {
+    [L.office_thread, L.private_thread].concat(arr(L.groups), arr(L.inbox && L.inbox.threads)).forEach(function (x) {
       if (x && x.thread_id === tid) {
         if (x.waiting === undefined) cut += x.unread || 0;
         else if (x.waiting && x.unread > 0) cut += 1;
@@ -836,14 +860,14 @@
 
   function lastSeq() { return V.msgs.length ? V.msgs[V.msgs.length - 1].seq : 0; }
 
-  function own() { return V.th ? V.th.kind === "direct" && !V.th.person : V.hint.kind === "own"; }
+  function own() { return V.th ? V.th.kind !== "group" && !V.th.person : V.hint.kind === "own" || V.hint.kind === "priv"; }
   function isGroup() { return V.th ? V.th.kind === "group" : V.hint.kind === "group"; }
 
   function chatScreen() {
     var th = V.th, person = (th && th.person) || V.hint, title, note, sub = null;
     if (own()) {
-      title = t("msg_office");
-      note = priv() ? "msg_office_sup" : "msg_office_cleaner";
+      title = t(pvt() ? "msg_priv" : "msg_office");
+      note = pvt() || priv() ? "msg_office_sup" : "msg_office_cleaner";
     } else if (isGroup()) {
       title = H.pickText((th && th.name) || V.hint.name, lang());
       note = "msg_group_note";
@@ -853,7 +877,7 @@
     } else {
       title = String(person.name || "");
       sub = el("p", { class: "page-sub msg-sub" }, [V.list.avatars ? avatar(person.avatar, title, 36) : null,
-        person.supervisor ? tag(t("msg_sup")) : null, person.region ? el("span", { text: person.region }) : null]);
+        pvt() ? tag(t("msg_priv")) : null, person.supervisor ? tag(t("msg_sup")) : null, person.region ? el("span", { text: person.region }) : null]);
       note = person.supervisor || person.office_only ? "msg_office_sup" : "msg_staff_note";
     }
     var d = V.dom = { top: el("div", { class: "msg-top" }), list: el("ol", { class: "msg-list", "aria-label": t("msg_list"), tabindex: "-1" }), note: el("div"),
@@ -1178,7 +1202,8 @@
       read();
       if (d.list.lastChild) d.list.lastChild.focus();
     });
-    return el("div", { class: "msg-foot" }, [d.below, d.off, d.prev,
+    d.band = pvt() ? el("p", { class: "msg-band" }, [P.icon("lock"), el("span", { text: t("msg_priv_band") })]) : null;
+    return el("div", { class: "msg-foot" }, [d.band, d.below, d.off, d.prev,
       el("form", { class: "msg-comp", novalidate: true, on: { submit: function (e) {
         e.preventDefault();
         send();
@@ -1201,7 +1226,7 @@
     if (busy) {
       d.prev.appendChild(el("p", { class: "msg-quiet", role: "status" }, [el("span", { class: "spinner", "aria-hidden": "true" }), " ", t("msg_preparing")]));
     } else if (ready) {
-      var line = own() ? t(priv() ? "msg_photo_sup" : "msg_photo_cleaner") : "";
+      var line = own() ? t(pvt() || priv() ? "msg_photo_sup" : "msg_photo_cleaner") : "";
       d.prev.appendChild(el("div", { class: "msg-prev" }, [el("span", { class: "msg-frame is-prev" }, img(JPEG + ph.thumb, t("msg_photo"))),
         el("div", null, [line ? el("p", { class: "msg-prev-line", text: line }) : null, button("link-btn", t("msg_remove_photo"), function () {
           V.photo = null;
@@ -1502,7 +1527,7 @@
     var L = V.list, known = {}, fresh = [], bottom = atBottom();
     V.head = Number(res.head) || V.head;
     if (res.inbox && L.inbox) res.inbox.people = L.inbox.people;
-    ["office_thread", "inbox", "groups", "badge"].forEach(function (k) { if (res[k] != null) L[k] = res[k]; });
+    ["office_thread", "private_thread", "inbox", "groups", "badge"].forEach(function (k) { if (res[k] != null) L[k] = res[k]; });
     if (!tid || tid !== V.tid || !V.dom) return route === "messages" && V.view === "list" && refresh();
     V.msgs.forEach(function (m) { known[m.seq] = 1; });
     arr(res.messages).filter(isMsg).forEach(function (m) { if (!known[m.seq]) fresh.push(m); });

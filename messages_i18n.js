@@ -161,7 +161,23 @@
     ["msg_members", "Members ({n})", "Miembros ({n})"],
     ["msg_members_head", "Who is in this group", "Quién está en este grupo"],
     ["msg_av_views", "You opened many pictures in a short time. Please try again later.",
-      "Abrió muchas fotos en poco tiempo. Por favor, intente de nuevo más tarde."]
+      "Abrió muchas fotos en poco tiempo. Por favor, intente de nuevo más tarde."],
+    // 0.4.4: the private line to the office. No supervisor reads it (API 14.17).
+    ["msg_priv", "Only the office", "Solo la oficina"],
+    // Round 1 review asked for this line to say only what the system keeps. It used to end "No
+    // supervisor, ever." Office powers come from a Roster cell that office staff can edit, which is
+    // the one hole this design cannot close on its own (docs/PRIVATE_LINE_DESIGN.md section 11), so
+    // the promise is about the supervisors over her, which is what the room is for and what the code
+    // enforces by the thread id itself.
+    ["msg_priv_band", "Only the office reads this. Your supervisors cannot open it.",
+      "Solo la oficina lee esto. Sus supervisores no lo pueden abrir."],
+    // The private line opens on a phone she has signed in on before, and on no other (API 14.17).
+    ["msg_priv_new_phone", "This phone is new, so the private line is closed on it. Ask the office to allow this phone.",
+      "Este teléfono es nuevo, así que la línea privada está cerrada en él. Pida a la oficina que permita este teléfono."],
+    ["msg_priv_sign_in", "Sign in again on this phone to open the private line.",
+      "Vuelva a iniciar sesión en este teléfono para abrir la línea privada."],
+    ["msg_rule7", "Only the office is for anything a supervisor must not read, even about your supervisor. No supervisor can open it.",
+      "Solo la oficina es para cualquier cosa que un supervisor no deba leer, incluso sobre su supervisor. Ningún supervisor lo puede abrir."]
   ];
 
   var strings = root.CCC_I18N && root.CCC_I18N.strings;
