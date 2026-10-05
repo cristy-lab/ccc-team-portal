@@ -2025,13 +2025,18 @@
     }
   }
 
-  /* Forgets which celebrations were shown: every one (keepDay null), or those of other days than keepDay. */
+  /* Forgets which celebrations were shown: every one (keepDay null), or those of other days than keepDay.
+     Collect first, remove after. Removing while walking by index skips keys, because a browser may
+     move another key into the slot a removal just vacated (0.4.6, README). Never walk and remove. */
   function forgetParties(keepDay) {
     var old = function (k) { return k && k.indexOf(K.party) === 0 && !(keepDay && k.indexOf(K.party + keepDay + ":") === 0); };
     Object.keys(memStore).forEach(function (k) { if (old(k)) delete memStore[k]; });
     try {
-      var ls = root.localStorage;
-      for (var i = ls.length - 1; i >= 0; i--) if (old(ls.key(i))) ls.removeItem(ls.key(i));
+      var ls = root.localStorage, doomed = [], i;
+      for (i = 0; i < ls.length; i++) {
+        if (old(ls.key(i))) doomed.push(ls.key(i));
+      }
+      for (i = 0; i < doomed.length; i++) ls.removeItem(doomed[i]);
     } catch (e) { /* storage blocked */ }
   }
 

@@ -16,7 +16,7 @@
 window.CCC_CONFIG = {
   API_MODE: "http",
   API_URL: "https://script.google.com/macros/s/AKfycbzTAotiG1l2zHk16NNn7EdJQt1-04T5h0obp5U-EvJdlj8UpPC3LbhJzRZs9vy0fv9S/exec",
-  APP_VERSION: "0.4.5",
+  APP_VERSION: "0.4.6",
   FIREBASE: {
     sdk: "12.19.0",
     vapidKey: "",
