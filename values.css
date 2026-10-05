@@ -1,0 +1,74 @@
+/* CCC Team Portal: the Values bundle, the "Core values" screen (0.4.5).
+ * web/app.js fetches it the first time somebody opens the tile on home (bundleReady("values")),
+ * and tools/build_gas_html.py inlines it for Apps Script.
+ *
+ * Every colour here comes from the tokens in web/app.css, so light and dark both follow the app.
+ * The one exception is the five accent colours, which are Cristy's own from her poster and are the
+ * only thing that ties the screen to the printed version. They are used as a bar on the edge of a
+ * card and on the number, never behind text, so no reader ever has to meet them as a background.
+ *
+ * The poster is NOT dimmed in dark mode, for the same reason the state photographs are not: it is
+ * artwork, and dimming it to suit a theme just makes it look faded.
+ */
+
+.cv .page-head { margin-bottom: 4px; }
+/* On a 320 px phone with the text at 200 percent a long word is wider than the screen. Breaking one
+   is better than a page that scrolls sideways. */
+.cv p, .cv h1, .cv h2 { overflow-wrap: anywhere; }
+
+.cv-tagline {
+  margin: 2px 0 18px; color: var(--muted); font-size: 16px; font-style: italic;
+}
+
+.cv-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+
+.cv-card {
+  position: relative; padding: 16px 16px 16px 20px; border-radius: var(--radius);
+  background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+/* The accent is a bar down the leading edge. In right to left it would follow the text direction,
+   which is why it is an inline start border and not a left one. */
+.cv-card::before {
+  content: ""; position: absolute; inset-block: 0; inset-inline-start: 0; width: 5px;
+  background: var(--cv-accent);
+}
+
+.cv-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 8px; }
+.cv-num {
+  font: 700 13px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: var(--cv-accent); letter-spacing: .04em; flex: none;
+}
+.cv-name { font-size: 19px; margin: 0; }
+.cv-body { margin: 0; color: var(--text); }
+
+/* Cristy's five, from the April 2026 poster. Each is darkened a little from the printed colour so
+   the number and the bar still meet AA against the card, which the poster's pastels do not. */
+.cv-blue   { --cv-accent: #2E7FB8; }
+.cv-green  { --cv-accent: #3E8E4F; }
+.cv-gold   { --cv-accent: #9A6E00; }
+.cv-peach  { --cv-accent: #C2562A; }
+.cv-violet { --cv-accent: #6B4FC4; }
+
+.cv-poster-wrap { margin-top: 26px; }
+.cv-poster-head { font-size: 17px; margin: 0 0 6px; }
+.cv-poster-note { color: var(--muted); font-size: 15px; margin: 0 0 12px; }
+
+/* The box keeps the picture's place whether or not the picture arrives, so nothing on the screen
+   moves when it lands. 3 by 4, which is the shape of the poster. */
+.cv-poster {
+  aspect-ratio: 3 / 4; width: 100%; border-radius: var(--radius); overflow: hidden;
+  background: var(--bg); border: 1px solid var(--line);
+}
+.cv-poster-img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.cv-poster-missing { display: block; width: 100%; height: 100%; }
+
+@media (prefers-color-scheme: dark) {
+  /* The accents are lifted, not the poster. On the dark card the printed pastels are too dim to
+     read as a colour at all, and these are the same five hues brought back up. */
+  .cv-blue   { --cv-accent: #82CAFB; }
+  .cv-green  { --cv-accent: #A8D5A2; }
+  .cv-gold   { --cv-accent: #FFC857; }
+  .cv-peach  { --cv-accent: #F6A078; }
+  .cv-violet { --cv-accent: #B7A6FF; }
+}

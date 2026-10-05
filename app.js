@@ -543,7 +543,9 @@
     wallet: [["rect", { x: 2, y: 6, width: 20, height: 12, rx: 2 }], ["circle", { cx: 12, cy: 12, r: 2 }], ["path", { d: "M6 12h.01M18 12h.01" }]],
     arrowRight: [["path", { d: "M5 12h14M13 6l6 6-6 6" }]],
     cap: [["path", { d: "M22 10L12 5 2 10l10 5 10-5z" }], ["path", { d: "M6 12v5c3 2.7 9 2.7 12 0v-5M22 10v6" }]],
-    chat: [["path", { d: "M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 21l2.2-5.4A8.4 8.4 0 1 1 21 11.5z" }]]
+    chat: [["path", { d: "M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 21l2.2-5.4A8.4 8.4 0 1 1 21 11.5z" }]],
+    // 0.4.5: a cut gem for Core values, which is the company mark and the app's own motif.
+    gem: [["path", { d: "M6 3h12l4 6-10 12L2 9z" }], ["path", { d: "M2 9h20M9 9 6 3M15 9l3-6M9 9l3 12M15 9l-3 12" }]]
   };
 
   function svgEl(tag, attrs, children) {
@@ -648,8 +650,8 @@
     wishPending: {} // person id -> {emoji: true} while a wish is on its way
   };
 
-  var ROUTES = ["login", "choose", "home", "calendar", "request", "requests", "done", "training", "welcome", "messages", "chat", "status", "states"];
-  var AUTH_ROUTES = { home: 1, calendar: 1, request: 1, requests: 1, done: 1, training: 1, welcome: 1, messages: 1, chat: 1, status: 1, states: 1 };
+  var ROUTES = ["login", "choose", "home", "calendar", "request", "requests", "done", "training", "welcome", "messages", "chat", "status", "states", "values"];
+  var AUTH_ROUTES = { home: 1, calendar: 1, request: 1, requests: 1, done: 1, training: 1, welcome: 1, messages: 1, chat: 1, status: 1, states: 1, values: 1 };
   // states (0.4.0) is not here on purpose: it needs no dashboard, so a failing one cannot stop it.
   var DATA_ROUTES = { home: 1, calendar: 1, requests: 1 };
   var OPEN_RE = /^([do]:[A-Za-z0-9_.]{1,64}|g:[a-z0-9]+(-[a-z0-9]+)*)$/;
@@ -1015,6 +1017,7 @@
        party     web/party.css, the birthday celebration (0.3.6), which opens once it is in
        push      web/push_i18n.js, web/push.js and web/push.css, phone notices and the add to home screen card (0.3.7)
        states    web/states_i18n.js, web/states.js and web/states.css, Where we work (0.4.0)
+       values    web/values_i18n.js, web/values.js and web/values.css, Core values (0.4.5)
        preview   web/preview.js and web/preview.css, the owner's preview controls (0.4.2)
      They are fetched the first time they are needed, and nothing is drawn before every part is in,
      so nothing is ever seen unstyled. Apps Script serves no files of its own, so
@@ -1025,6 +1028,9 @@
     edu: { route: "training", js: ["edu_i18n.js", "edu.js"] },
     status: { route: "status", js: ["status_i18n.js", "status.js"] },
     states: { route: "states", js: ["states_i18n.js", "states.js"] },
+    // 0.4.5: Core values. The strings file comes first, because loadBundle sets async = false,
+    // so the words are in place before the screen code that reads them runs.
+    values: { route: "values", js: ["values_i18n.js", "values.js"] },
     // 0.4.2: the owner preview controls, her phone only, like the Status bundle (13.14).
     preview: { route: "training", js: ["preview.js"] },
     letter: { route: "welcome", js: [] },
@@ -1521,6 +1527,13 @@
       tile({ route: "request", icon: "message", tone: "ti-blue", title: t("tile_change_title"), sub: t("tile_change_sub") }),
       tile({ route: "training", icon: "cap", tone: "ti-peach", title: t("tile_training_title"), sub: t("tile_training_sub"),
         badge: state.edu && state.edu.new_count > 0 ? t("edu_new") : null }),
+      // Core values (0.4.5). Everybody sees it, it asks the backend nothing, and it is the one
+      // tile that is not a task: Cristy asked for the values to be in the app where the team can
+      // find them, rather than only on the office wall and in the welcome handout.
+      tile({ route: "values", icon: "gem", tone: "ti-navy", title: t("tile_values_title"), sub: t("tile_values_sub") }),
+      // Where we work (0.4.5). Cristy asked for a tile: "I want a tile." The globe by the
+      // greeting stays, because it is part of that picture, not a button competing with this one.
+      tile({ route: "states", icon: "pin", tone: "ti-lblue", title: t("tile_states_title"), sub: t("tile_states_sub") }),
       // Messages (0.3.6): only when the backend says this person has it.
       msg && msg.enabled === true ? tile({ route: "messages", icon: "chat", tone: "ti-lblue", title: t("tile_msg_title"),
         sub: t(msg.role === "cleaner" ? "tile_msg_sub" : "tile_msg_sub_staff"), badge: newBadge(msg.badge) }) : null,
@@ -2684,6 +2697,18 @@
     return h("div", { class: "msg" }, [
       h("div", { class: "page-head" }, [backButton("home"), h("h1", { text: t("tile_msg_title") })]),
       bundleWait("messages")
+    ]);
+  };
+
+  /* Core values (0.4.5): the whole screen comes from the Values bundle, fetched when the tile is
+     opened. Like Where we work it needs no backend and no dashboard, so it is not in DATA_ROUTES
+     and a failing dashboard cannot stop it. It holds nothing about the person, so clearSession
+     has nothing to clear here and CCCValues has no reset(). */
+  SCREENS.values = function () {
+    if (bundleReady("values") && root.CCCValues) return root.CCCValues.screen();
+    return h("div", { class: "cv" }, [
+      h("div", { class: "page-head" }, [backButton("home"), h("h1", { text: t("tile_values_title") })]),
+      bundleWait("values")
     ]);
   };
 
