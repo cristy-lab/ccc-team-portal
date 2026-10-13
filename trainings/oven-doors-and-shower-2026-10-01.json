@@ -1,0 +1,829 @@
+{
+ "character": "duo",
+ "kind": "course",
+ "note": "Portal lesson file for the oven, doors and shower training, version 2026-10-01. Built from one Canva poster, deck 00, 3 things that will make you fail an audit. DRAFT. Nothing is live and nothing here has been approved. What was deliberately left out: the poster's own framing, because an audit result is a consequence and Part 2 section 0 question 4 takes consequences off a contractor track; the poster's rule that every shower is treated with a bleach product every time, which is CCC's own standard and goes past the label, so it is on the employee course only and is named there as CCC's own standard; and any client contract wording, by the owner's decision of September 30, 2026. The three sentences that say what state a property is left in are asserted as facts about these properties and have not been checked against a signed client agreement. GO_LIVE.md section 5 lists that and everything else still open, including that no native Spanish speaker has read this file.",
+ "schema": "ccc-edu-pack/1",
+ "summary": {
+  "en": "Three things that get left behind at the end of a job, and the hazard inside each one: a cleaning product left in an oven, a door or a window left open, and the never mix rule in the smallest room in the property.",
+  "es": "Tres cosas que se quedan olvidadas al final de un trabajo, y el peligro que hay dentro de cada una: un producto de limpieza olvidado en el horno, una puerta o una ventana abierta, y la regla de nunca mezclar en el cuarto más pequeño de la propiedad."
+ },
+ "title": {
+  "en": "The Oven, the Doors and the Shower",
+  "es": "El horno, las puertas y la ducha"
+ },
+ "training_id": "oven-doors-and-shower",
+ "variants": {
+  "full": {
+   "quiz": {
+    "questions": [
+     {
+      "choices": [
+       {
+        "en": "Turn the oven on low so that what is in there burns off.",
+        "es": "Prende el horno bajito para que lo que está ahí se queme.",
+        "id": "q1_turn_on_low"
+       },
+       {
+        "en": "Take it out of the cold oven, and leave nothing inside.",
+        "es": "La saca del horno frío, y no deja nada adentro.",
+        "id": "q1_take_it_out"
+       },
+       {
+        "en": "Leave it. The guest will see it when they open the oven.",
+        "es": "La deja ahí. El huésped la va a ver cuando abra el horno.",
+        "id": "q1_leave_for_guest"
+       },
+       {
+        "en": "Leave it inside and send the office a photo at the end of the day.",
+        "es": "La deja adentro y le manda una foto a la oficina al final del día.",
+        "id": "q1_photo_later"
+       }
+      ],
+      "id": "q1",
+      "prompt": {
+       "en": "You are finishing a kitchen. There is a can of oven cleaner standing inside the oven. The oven is cold and the can has its label. What do you do?",
+       "es": "Está terminando una cocina. Hay una lata de limpiador de hornos parada dentro del horno. El horno está frío y la lata tiene su etiqueta. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Open the oven door to see what is burning.",
+        "es": "Abre la puerta del horno para ver qué se está quemando.",
+        "id": "q2_open_to_look"
+       },
+       {
+        "en": "Leave the oven door shut, get out of the property, and call 911 from outside.",
+        "es": "Deja la puerta del horno cerrada, sale de la propiedad, y llama al 911 desde afuera.",
+        "id": "q2_out_and_911"
+       },
+       {
+        "en": "Open the door and throw water in.",
+        "es": "Abre la puerta y le echa agua.",
+        "id": "q2_water"
+       },
+       {
+        "en": "Wait in the next room to see whether the smoke stops.",
+        "es": "Espera en el cuarto de al lado a ver si el humo se para.",
+        "id": "q2_wait_outside_kitchen"
+       }
+      ],
+      "id": "q2",
+      "prompt": {
+       "en": "You walk into a kitchen and the oven is on. There is smoke coming out around the oven door. What do you do?",
+       "es": "Entra a una cocina y el horno está prendido. Sale humo por los lados de la puerta del horno. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Open it and smell it so you know what it is.",
+        "es": "Lo abre y lo huele para saber qué es.",
+        "id": "q3_smell_it"
+       },
+       {
+        "en": "Leave it where it is, do not move it, and report it to the office.",
+        "es": "Lo deja donde está, no lo mueve, y lo reporta a la oficina.",
+        "id": "q3_leave_report"
+       },
+       {
+        "en": "Use it on the oven, since that is where somebody left it.",
+        "es": "Lo usa en el horno, ya que ahí lo dejó alguien.",
+        "id": "q3_use_it"
+       },
+       {
+        "en": "Pour it down the drain and put the bottle in the bin.",
+        "es": "Lo tira por el desagüe y echa la botella a la basura.",
+        "id": "q3_bin_it"
+       }
+      ],
+      "id": "q3",
+      "prompt": {
+       "en": "You find a spray bottle inside a cold oven. There is no label on it and you do not know what is in it. What do you do?",
+       "es": "Encuentra un atomizador dentro de un horno frío. No tiene etiqueta y usted no sabe qué tiene adentro. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Go in and walk through the property to check that it is empty.",
+        "es": "Entra y recorre la propiedad para revisar que no haya nadie.",
+        "id": "q4_go_in_and_check"
+       },
+       {
+        "en": "Do not go in. Stay outside in view of the street and call the office.",
+        "es": "No entra. Se queda afuera a la vista de la calle y llama a la oficina.",
+        "id": "q4_stay_out_call"
+       },
+       {
+        "en": "Close the door and start the job.",
+        "es": "Cierra la puerta y empieza el trabajo.",
+        "id": "q4_close_it_and_start"
+       },
+       {
+        "en": "Send the office a message and start the job while you wait.",
+        "es": "Le manda un mensaje a la oficina y empieza el trabajo mientras espera.",
+        "id": "q4_text_and_start"
+       }
+      ],
+      "id": "q4",
+      "prompt": {
+       "en": "You arrive at a property. The sliding door at the back is standing open and you did not leave it that way. What do you do?",
+       "es": "Llega a una propiedad. La puerta corrediza de atrás está abierta y usted no la dejó así. ¿Qué hace?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Because the bleach product is used there every time, and the room is small, so a gas has nowhere to go.",
+        "es": "Porque ahí se usa el producto con cloro cada vez, y el cuarto es pequeño, así que un gas no tiene por dónde salir.",
+        "id": "q5_small_room_bleach"
+       },
+       {
+        "en": "Because tile is harder to clean than any other surface.",
+        "es": "Porque el azulejo es más difícil de limpiar que cualquier otra cosa.",
+        "id": "q5_tile_harder"
+       },
+       {
+        "en": "Because the client looks at the shower first.",
+        "es": "Porque el cliente mira la ducha primero.",
+        "id": "q5_client_looks"
+       },
+       {
+        "en": "Because mildew is not dangerous, so only the products are.",
+        "es": "Porque el moho no es peligroso, así que solo los productos lo son.",
+        "id": "q5_mildew_safe"
+       }
+      ],
+      "id": "q5",
+      "prompt": {
+       "en": "Why is a shower the room where the never mix rule matters most?",
+       "es": "¿Por qué la ducha es el cuarto donde más importa la regla de nunca mezclar?"
+      }
+     },
+     {
+      "choices": [
+       {
+        "en": "Leave it open so that the property keeps airing out.",
+        "es": "La deja abierta para que la propiedad siga ventilándose.",
+        "id": "q6_leave_open_to_air"
+       },
+       {
+        "en": "Close it and lock it before you leave.",
+        "es": "La cierra y le pone llave antes de salir.",
+        "id": "q6_close_and_lock"
+       },
+       {
+        "en": "Close it but leave it unlocked, in case somebody needs to get in.",
+        "es": "La cierra pero la deja sin llave, por si alguien necesita entrar.",
+        "id": "q6_closed_unlocked"
+       },
+       {
+        "en": "Leave it open and tell the office you left it open.",
+        "es": "La deja abierta y le avisa a la oficina que la dejó abierta.",
+        "id": "q6_open_and_tell"
+       }
+      ],
+      "id": "q6",
+      "prompt": {
+       "en": "You opened the back door for air while you were using a product. The job is done and you are leaving. What do you do with the door?",
+       "es": "Abrió la puerta de atrás para que entrara aire mientras usaba un producto. El trabajo ya está hecho y usted se va. ¿Qué hace con la puerta?"
+      }
+     }
+    ],
+    "seconds": 240
+   },
+   "screens": [
+    {
+     "blocks": [
+      {
+       "en": "This course is about three things that get left behind at the end of a job, and about the hazard inside each one.",
+       "es": "Este curso es sobre tres cosas que se quedan olvidadas al final de un trabajo, y sobre el peligro que hay dentro de cada una.",
+       "type": "text"
+      },
+      {
+       "en": "It is about 13 minutes of reading, and then six short questions. It is paid work time. Nobody is paid for reading the contractor notice, and nobody is asked to read either one at home.",
+       "es": "Son unos 13 minutos de lectura, y después seis preguntas cortas. Es tiempo de trabajo pagado. A nadie se le paga por leer el aviso para contratistas, y a nadie se le pide leer ninguno de los dos en su casa.",
+       "type": "text"
+      }
+     ],
+     "id": "before-you-start",
+     "layout": "hero",
+     "seconds": 40,
+     "title": {
+      "en": "Before you start",
+      "es": "Antes de empezar"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "These three come up more often than anything else when a property is marked failed: a cleaning product left inside an oven, a door or a window left open, and mildew in a shower.",
+       "es": "Estas tres son las que más aparecen cuando una propiedad sale reprobada: un producto de limpieza olvidado dentro del horno, una puerta o una ventana abierta, y moho en una ducha.",
+       "type": "text"
+      },
+      {
+       "en": "Each one is also a safety problem, and that is the part the poster on the wall never said. The oven is the next person. The open door is you, on your own in a property. The shower is the smallest room you use bleach in.",
+       "es": "Cada una es además un problema de seguridad, y esa es la parte que el cartel de la pared nunca decía. El horno es la siguiente persona. La puerta abierta es usted, sin nadie más en la propiedad. La ducha es el cuarto más pequeño donde usa cloro.",
+       "type": "text"
+      }
+     ],
+     "id": "the-three",
+     "layout": "hero",
+     "seconds": 55,
+     "title": {
+      "en": "The three things",
+      "es": "Las tres cosas"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "**At these properties nothing is left inside an oven.** No product, no bottle, no can, no cloth, no sponge and no scrubbing pad. An oven is the one place in a property where a thing left behind gets hot, and the person who turns it on next is usually a guest who never looks inside first.",
+       "es": "**En estas propiedades no se deja nada dentro del horno.** Ningún producto, ninguna botella, ninguna lata, ningún paño, ninguna esponja y ninguna fibra. El horno es el único lugar de la propiedad donde una cosa olvidada se calienta, y la persona que lo prende después casi siempre es un huésped que no mira adentro primero.",
+       "type": "text"
+      },
+      {
+       "character": "duo",
+       "en": "Nothing stays in the oven. Look inside before you close the kitchen.",
+       "es": "Nada se queda en el horno. Mire adentro antes de cerrar la cocina.",
+       "pose": "stop",
+       "type": "say"
+      },
+      {
+       "en": [
+        "Heat turns a cleaning product into fumes, and a kitchen with the oven on is a closed room.",
+        "The can of oven cleaner says it on itself. Easy-Off Heavy Duty says Danger, “Extremely flammable aerosol” and “Contains gas under pressure; may explode if heated”. A plastic bottle melts and lets out what is inside it.",
+        "A cloth, a paper towel, a sponge or a scrubbing pad left in an oven can catch fire.",
+        "Nobody gets a warning. From the outside the oven looks empty, and the door stays shut until it is already hot."
+       ],
+       "es": [
+        "El calor convierte un producto de limpieza en vapores, y una cocina con el horno prendido es un cuarto cerrado.",
+        "La lata de limpiador de horno lo dice en ella misma. Easy-Off Heavy Duty dice Peligro, “Aerosol extremadamente inflamable” y “Contiene gas a presión; puede explotar si se calienta”. Una botella de plástico se derrite y suelta lo que tiene adentro.",
+        "Un paño, una toalla de papel, una esponja o una fibra que se queda en el horno puede prenderse en llamas.",
+        "Nadie recibe un aviso. Por fuera el horno parece vacío, y la puerta se queda cerrada hasta que ya está caliente."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "Before you close the kitchen, open the oven and look inside. Count what you put in, and count what you take out. The two numbers have to match.",
+       "es": "Antes de cerrar la cocina, abra el horno y mire adentro. Cuente lo que metió, y cuente lo que saca. Los dos números tienen que ser iguales.",
+       "type": "text"
+      }
+     ],
+     "id": "oven",
+     "layout": "hero",
+     "seconds": 95,
+     "title": {
+      "en": "The oven",
+      "es": "El horno"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "If you find something inside an oven:",
+       "es": "Si encuentra algo dentro de un horno:",
+       "type": "text"
+      },
+      {
+       "en": [
+        "If the oven is **cold** and it is your own product with its label on it, take it out.",
+        "No product is used at these properties out of a container with no label, and no product is ever poured into a water bottle, a cup or any food container. A container with no label is left where it is, is not moved, and is reported to the office.",
+        "Do not turn an oven on to find out what is inside it.",
+        "If the oven is already on, get out of the kitchen first. Turn the oven off on your way out only if the controls are right there and you do not have to open the oven door.",
+        "If there is smoke or a flame, do not open the oven door. Opening it feeds the fire. Get out of the property and call 911 from outside."
+       ],
+       "es": [
+        "Si el horno está **frío** y es su propio producto con su etiqueta puesta, sáquelo.",
+        "En estas propiedades no se usa ningún producto que venga en un envase sin etiqueta, y ningún producto se pasa nunca a una botella de agua, a un vaso ni a ningún envase de comida. Un envase sin etiqueta se deja donde está, no se mueve, y se reporta a la oficina.",
+        "No prenda un horno para averiguar qué tiene adentro.",
+        "Si el horno ya está prendido, primero salga de la cocina. Apague el horno al salir solo si los controles están ahí mismo y no tiene que abrir la puerta del horno.",
+        "Si hay humo o llamas, no abra la puerta del horno. Al abrirla, el fuego recibe aire. Salga de la propiedad y llame al 911 desde afuera."
+       ],
+       "type": "steps"
+      }
+     ],
+     "id": "oven-what-to-do",
+     "layout": "hero",
+     "seconds": 70,
+     "title": {
+      "en": "If you find something in an oven",
+      "es": "Si encuentra algo dentro de un horno"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "If you breathe fumes coming off an oven, the steps are the ones on the chemical safety notice, word for word:",
+       "es": "Si respira vapores que salen de un horno, los pasos son los del aviso de seguridad química, palabra por palabra:",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Stop and walk out of the property into fresh air.",
+        "Take any other person and any pet out with you.",
+        "Do not go back in to open a window.",
+        "Call 911 if anyone is struggling to breathe, has chest pain, is coughing up fluid, collapses, has a seizure, or cannot be woken up.",
+        "Call Poison Help at 1 800 222 1222. It is free, it is open at every hour, and you can ask for Spanish.",
+        "Call Poison Help even if you feel better once you are outside. A chest injury from this kind of gas can show up hours later. If your breathing gets worse at any time, call 911.",
+        "Call the office at {{OFFICE_PHONE}} so the property is not sent to anyone else."
+       ],
+       "es": [
+        "Deténgase y salga de la propiedad al aire libre.",
+        "Saque con usted a cualquier otra persona y a cualquier mascota.",
+        "No vuelva a entrar para abrir una ventana.",
+        "Llame al 911 si a alguien le cuesta respirar, le duele el pecho, tose con flema o líquido, se desmaya, le da una convulsión, o no se puede despertar.",
+        "Llame a Poison Help, la línea de envenenamientos, al 1 800 222 1222. Es gratis, atiende a toda hora, y usted puede pedir español.",
+        "Llame a Poison Help aunque se sienta mejor cuando ya esté afuera. Una lesión del pecho por este tipo de gas puede aparecer horas después. Si le cuesta más respirar en cualquier momento, llame al 911.",
+        "Llame a la oficina al {{OFFICE_PHONE}} para que la propiedad no se le mande a nadie más."
+       ],
+       "type": "steps"
+      }
+     ],
+     "id": "oven-fumes",
+     "layout": "hero",
+     "seconds": 110,
+     "title": {
+      "en": "If you breathe fumes",
+      "es": "Si respira vapores"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "**Properties are left closed and locked.** Every door, including the back door and the sliding door, and every window. The reason on this notice is not the property. It is that you are usually in there with nobody else, and an open door is a way in that you cannot see from the room you are working in.",
+       "es": "**Las propiedades se dejan cerradas y con llave.** Todas las puertas, incluidas la puerta de atrás y la puerta corrediza, y todas las ventanas. La razón en este aviso no es la propiedad. Es que usted casi siempre está ahí sin nadie más, y una puerta abierta es una entrada que no se ve desde el cuarto donde está trabajando.",
+       "type": "text"
+      },
+      {
+       "character": "duo",
+       "en": "A door you did not open is a reason to stay outside.",
+       "es": "Una puerta que usted no abrió es razón para quedarse afuera.",
+       "pose": "stop",
+       "type": "say"
+      },
+      {
+       "en": [
+        "If you arrive and a door or a window is already open, or a lock is broken, or the property does not look the way it should, do not go in.",
+        "Stay outside, in view of the street, and call the office at {{OFFICE_PHONE}}.",
+        "If you think somebody is inside, do not go in to look. Call 911.",
+        "If you are already inside and somebody comes in, leave. You do not have to ask who they are, and you never block anybody. Call from outside. If you do not feel safe, call 911 first.",
+        "If a door or a window will not lock, do not force it. Call the office before you leave and say which one it is."
+       ],
+       "es": [
+        "Si llega y una puerta o una ventana ya está abierta, o una cerradura está rota, o la propiedad no se ve como debería, no entre.",
+        "Quédese afuera, a la vista de la calle, y llame a la oficina al {{OFFICE_PHONE}}.",
+        "Si cree que hay alguien adentro, no entre a ver. Llame al 911.",
+        "Si usted ya está adentro y entra alguien, salga. No tiene que preguntarle quién es, y nunca le cierre el paso a nadie. Llame desde afuera. Si no se siente a salvo, llame primero al 911.",
+        "Si una puerta o una ventana no cierra con llave, no la fuerce. Llame a la oficina antes de salir y diga cuál es."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "The chemical safety training asks for a window and a door open while a product is in use. This notice asks for them closed and locked at the end of the job. Both are right, and they are about different moments in the same job.",
+       "es": "La capacitación de seguridad química pide una ventana y una puerta abiertas mientras se usa un producto. Este aviso las pide cerradas y con llave al final del trabajo. Las dos cosas son correctas, y se trata de momentos distintos del mismo trabajo.",
+       "type": "text"
+      },
+      {
+       "en": "**Where this one comes from.** Leaving a property closed and locked is CCC's own requirement. It is not written here as the client's, and it is not the law. It is on a safety notice for the reason in the first paragraph: you are usually in the property with nobody else.",
+       "es": "**De dónde viene esta parte.** Dejar una propiedad cerrada y con llave es un requisito propio de CCC. Aquí no se presenta como un requisito del cliente, y no es la ley. Está en un aviso de seguridad por la razón del primer párrafo: usted casi siempre está ahí sin nadie más.",
+       "type": "text"
+      },
+      {
+       "en": "At the end of the job, walk the property and check every door and every window, the back door and the sliding door included. They are the two that get missed, because you did not come in through them.",
+       "es": "Al final del trabajo, recorra la propiedad y revise cada puerta y cada ventana, incluidas la puerta de atrás y la puerta corrediza. Esas dos son las que se olvidan, porque usted no entró por ahí.",
+       "type": "text"
+      },
+      {
+       "en": "You will never get in trouble with CCC for calling 911 or the police to report danger, and nobody gets in trouble for reporting a hazard. Calling Poison Help never gets you in trouble either.",
+       "es": "Usted nunca tendrá problemas con CCC por llamar al 911 o a la policía para reportar un peligro, y nadie tiene problemas por reportar un peligro. Llamar a Poison Help tampoco le causa problemas nunca.",
+       "type": "callout"
+      }
+     ],
+     "id": "doors",
+     "layout": "hero",
+     "seconds": 165,
+     "title": {
+      "en": "The doors and the windows",
+      "es": "Las puertas y las ventanas"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "**This next one is CCC's own standard, not the label and not the law.** CCC asks for a product containing bleach on a shower every time a shower is cleaned, so that mildew does not come back between guests.",
+       "es": "**Esta parte es la norma propia de CCC, no es la etiqueta ni es la ley.** CCC pide un producto que contenga cloro en la ducha cada vez que se limpia una ducha, para que el moho no vuelva entre un huésped y el siguiente.",
+       "type": "text"
+      },
+      {
+       "en": "Because CCC asks for it every time, CCC also has to say what comes with it. The lines below are the maker's own, and they are the same lines that are on the chemical safety training you already have.",
+       "es": "Como CCC lo pide cada vez, CCC también tiene que decir qué viene con eso. Las líneas de abajo son del fabricante, y son las mismas que están en la capacitación de seguridad química que usted ya tiene.",
+       "type": "text"
+      },
+      {
+       "en": "A product containing bleach is in use on the showers at these properties, and a shower is the smallest room in the property and the one with the worst air. That is why the never mix rule matters there more than anywhere else.",
+       "es": "En estas propiedades se usa en las duchas un producto que contiene cloro, y la ducha es el cuarto más pequeño de la propiedad y el de peor aire. Por eso la regla de nunca mezclar importa ahí más que en cualquier otro lugar.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Cleaning products are never mixed at these properties. The maker's safety sheet for the bleach says do not mix it with other chemicals, and the sheet for Bar Keeper's Friend says do not mix it with other chemicals including bleach or ammonia.",
+        "Bleach with ammonia makes chloramine gas. Bleach with an acid makes chlorine gas. Both burn the eyes, the nose and the lungs. Ammonia is in many glass cleaners and in urine.",
+        "Bar Keeper's Friend and the bleach spray are both in use at these properties. The maker's sheet for Bar Keeper's Friend says do not mix it with other chemicals including bleach or ammonia. A product left on a surface, on a cloth or in a bucket still counts as mixing.",
+        "The maker's safety sheet for the bleach says it causes serious eye damage, and says to wear protective gloves and eye protection and to provide adequate ventilation.",
+        "No work is done at these properties in a space with fumes in the air."
+       ],
+       "es": [
+        "En estas propiedades nunca se mezclan los productos de limpieza. La hoja de seguridad del fabricante del cloro dice que no se mezcle con otros químicos, y la de Bar Keeper's Friend dice que no se mezcle con otros químicos, incluidos el cloro y el amoníaco.",
+        "El cloro con amoníaco forma gas cloramina. El cloro con un ácido forma gas cloro. Los dos queman los ojos, la nariz y los pulmones. El amoníaco está en muchos limpiavidrios y en la orina.",
+        "Bar Keeper's Friend y el cloro en atomizador se usan los dos en estas propiedades. La hoja del fabricante de Bar Keeper's Friend dice que no se mezcle con otros químicos, incluidos el cloro y el amoníaco. Un producto que quedó en una superficie, en un paño o en una cubeta cuenta igual como mezcla.",
+        "La hoja de seguridad del fabricante del cloro dice que causa daño grave en los ojos, y dice que se usen guantes de protección y protección para los ojos, y que haya ventilación adecuada.",
+        "En estas propiedades no se trabaja en un espacio con vapores en el aire."
+       ],
+       "type": "steps"
+      },
+      {
+       "character": "duo",
+       "en": "Cleaning products are never mixed at these properties.",
+       "es": "En estas propiedades nunca se mezclan los productos de limpieza.",
+       "pose": "stop",
+       "type": "say"
+      }
+     ],
+     "id": "shower",
+     "layout": "hero",
+     "seconds": 130,
+     "title": {
+      "en": "The shower",
+      "es": "La ducha"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "Call the office at {{OFFICE_PHONE}}.",
+       "es": "Llame a la oficina al {{OFFICE_PHONE}}.",
+       "type": "text"
+      },
+      {
+       "en": "**Call. Do not only text.** A call makes sure a real person knows now.",
+       "es": "**Llame. No mande solo un mensaje de texto.** Con una llamada, una persona de verdad se entera enseguida.",
+       "type": "text"
+      },
+      {
+       "en": "No answer? Leave a message and keep calling the office. If anybody is in danger, call 911 first, before the office.",
+       "es": "¿No contestan? Deje un mensaje y siga llamando a la oficina. Si hay alguien en peligro, llame primero al 911, antes que a la oficina.",
+       "type": "text"
+      },
+      {
+       "en": "**If you are the person who takes the call.** Write down the property, what was found and where it is, and the name and number of the person calling. Tell them to stay somewhere safe and not to touch it. Then call the client or the property manager. If anybody is in danger, 911 first, every time, at any hour. You do not have to decide anything else on that call.",
+       "es": "**Si usted es la persona que recibe la llamada.** Anote la propiedad, qué se encontró y dónde está, y el nombre y el número de quien llama. Dígale que se quede en un lugar seguro y que no toque nada. Después llame al cliente o al administrador de la propiedad. Si hay alguien en peligro, primero el 911, siempre, a cualquier hora. No tiene que decidir nada más en esa llamada.",
+       "type": "text"
+      }
+     ],
+     "id": "the-call",
+     "layout": "hero",
+     "seconds": 80,
+     "title": {
+      "en": "Calling the office",
+      "es": "Llamar a la oficina"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": [
+        "The oven: nothing is left inside it, and nobody turns one on to look.",
+        "The doors and the windows: closed and locked when you leave, and you do not go in when one is already open.",
+        "The shower: the bleach product is used there every time, so the never mix rule applies there every time."
+       ],
+       "es": [
+        "El horno: no se deja nada adentro, y nadie lo prende para ver qué tiene.",
+        "Las puertas y las ventanas: cerradas y con llave al salir, y usted no entra cuando una ya está abierta.",
+        "La ducha: ahí se usa el producto con cloro cada vez, así que la regla de nunca mezclar aplica ahí cada vez."
+       ],
+       "type": "steps"
+      },
+      {
+       "character": "duo",
+       "en": "Three things. The oven, the doors, the shower.",
+       "es": "Tres cosas. El horno, las puertas, la ducha.",
+       "pose": "celebrate",
+       "type": "say"
+      }
+     ],
+     "id": "summary",
+     "layout": "hero",
+     "seconds": 50,
+     "title": {
+      "en": "The three things, in one screen",
+      "es": "Las tres cosas, en una pantalla"
+     }
+    }
+   ]
+  },
+  "notice": {
+   "ack": {
+    "text": {
+     "en": "I have read this site safety notice. I understand these are safety rules for working at client properties.",
+     "es": "Leí este aviso de seguridad de la propiedad. Entiendo que estas son reglas de seguridad para trabajar en las propiedades de los clientes."
+    }
+   },
+   "checkpoint": {
+    "on_miss": {
+     "en": "Not quite. Tap Back to return to the notice, read it again, then try again.",
+     "es": "Todavía no. Toque Atrás para volver al aviso, léalo otra vez, y vuelva a intentarlo."
+    },
+    "question_ids": [
+     "q1",
+     "q4",
+     "q5"
+    ]
+   },
+   "screens": [
+    {
+     "blocks": [
+      {
+       "en": "**Why you are getting this.** Cristal Clear Cleaning sends the same site safety information to every person who works at a client property, whether they are employed by CCC, working under a contract with CCC, or working for another company on the same job. We do this for three reasons. The hazards belong to the property, not to the paperwork. Our clients require that anyone at their property knows that property's safety rules. And safety law expects a company that brings people onto a shared site to pass on what it knows about the chemicals and hazards there.",
+       "es": "**Por qué recibe este aviso.** Cristal Clear Cleaning envía la misma información de seguridad de la propiedad a todas las personas que trabajan en la propiedad de un cliente, ya sea que trabajen como empleadas de CCC, bajo un contrato con CCC, o para otra empresa en el mismo trabajo. Lo hacemos por tres razones. Los peligros están en la propiedad. No dependen del papeleo. Nuestros clientes exigen que toda persona que esté en su propiedad conozca las reglas de seguridad de esa propiedad. Y la ley de seguridad espera que una empresa que lleva personas a un lugar de trabajo compartido les comunique lo que sabe sobre los químicos y los peligros de ese lugar.",
+       "type": "text"
+      },
+      {
+       "en": "The office gets the same information as the people in the properties, so that whoever answers the phone knows what is being described and gives the right answer.",
+       "es": "La oficina recibe la misma información que las personas que están en las propiedades, para que quien contesta el teléfono sepa de qué se le está hablando y dé la respuesta correcta.",
+       "type": "text"
+      },
+      {
+       "en": "This notice tells you what the hazard is and what to do about it. It does not tell you how to do your work, it does not set your hours, and it does not change how you are paid or how you are classified.",
+       "es": "Este aviso le dice cuál es el peligro y qué hacer. No le dice cómo hacer su trabajo, no fija su horario, y no cambia cómo se le paga ni cambia su clasificación.",
+       "type": "text"
+      }
+     ],
+     "id": "notice-why",
+     "layout": "hero",
+     "seconds": 95,
+     "title": {
+      "en": "The same notice for everyone",
+      "es": "El mismo aviso para todas las personas"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "**At these properties nothing is left inside an oven.** No product, no bottle, no can, no cloth, no sponge and no scrubbing pad. An oven is the one place in a property where a thing left behind gets hot, and the person who turns it on next is usually a guest who never looks inside first.",
+       "es": "**En estas propiedades no se deja nada dentro del horno.** Ningún producto, ninguna botella, ninguna lata, ningún paño, ninguna esponja y ninguna fibra. El horno es el único lugar de la propiedad donde una cosa olvidada se calienta, y la persona que lo prende después casi siempre es un huésped que no mira adentro primero.",
+       "type": "text"
+      },
+      {
+       "character": "duo",
+       "en": "Nothing stays in the oven. Look inside before you close the kitchen.",
+       "es": "Nada se queda en el horno. Mire adentro antes de cerrar la cocina.",
+       "pose": "stop",
+       "type": "say"
+      },
+      {
+       "en": [
+        "Heat turns a cleaning product into fumes, and a kitchen with the oven on is a closed room.",
+        "The can of oven cleaner says it on itself. Easy-Off Heavy Duty says Danger, “Extremely flammable aerosol” and “Contains gas under pressure; may explode if heated”. A plastic bottle melts and lets out what is inside it.",
+        "A cloth, a paper towel, a sponge or a scrubbing pad left in an oven can catch fire.",
+        "Nobody gets a warning. From the outside the oven looks empty, and the door stays shut until it is already hot."
+       ],
+       "es": [
+        "El calor convierte un producto de limpieza en vapores, y una cocina con el horno prendido es un cuarto cerrado.",
+        "La lata de limpiador de horno lo dice en ella misma. Easy-Off Heavy Duty dice Peligro, “Aerosol extremadamente inflamable” y “Contiene gas a presión; puede explotar si se calienta”. Una botella de plástico se derrite y suelta lo que tiene adentro.",
+        "Un paño, una toalla de papel, una esponja o una fibra que se queda en el horno puede prenderse en llamas.",
+        "Nadie recibe un aviso. Por fuera el horno parece vacío, y la puerta se queda cerrada hasta que ya está caliente."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "If you find something inside an oven:",
+       "es": "Si encuentra algo dentro de un horno:",
+       "type": "text"
+      },
+      {
+       "en": [
+        "If the oven is **cold** and it is your own product with its label on it, take it out.",
+        "No product is used at these properties out of a container with no label, and no product is ever poured into a water bottle, a cup or any food container. A container with no label is left where it is, is not moved, and is reported to the office.",
+        "Do not turn an oven on to find out what is inside it.",
+        "If the oven is already on, get out of the kitchen first. Turn the oven off on your way out only if the controls are right there and you do not have to open the oven door.",
+        "If there is smoke or a flame, do not open the oven door. Opening it feeds the fire. Get out of the property and call 911 from outside."
+       ],
+       "es": [
+        "Si el horno está **frío** y es su propio producto con su etiqueta puesta, sáquelo.",
+        "En estas propiedades no se usa ningún producto que venga en un envase sin etiqueta, y ningún producto se pasa nunca a una botella de agua, a un vaso ni a ningún envase de comida. Un envase sin etiqueta se deja donde está, no se mueve, y se reporta a la oficina.",
+        "No prenda un horno para averiguar qué tiene adentro.",
+        "Si el horno ya está prendido, primero salga de la cocina. Apague el horno al salir solo si los controles están ahí mismo y no tiene que abrir la puerta del horno.",
+        "Si hay humo o llamas, no abra la puerta del horno. Al abrirla, el fuego recibe aire. Salga de la propiedad y llame al 911 desde afuera."
+       ],
+       "type": "steps"
+      }
+     ],
+     "id": "notice-oven",
+     "layout": "hero",
+     "seconds": 150,
+     "title": {
+      "en": "The oven",
+      "es": "El horno"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "If you breathe fumes coming off an oven, the steps are the ones on the chemical safety notice, word for word:",
+       "es": "Si respira vapores que salen de un horno, los pasos son los del aviso de seguridad química, palabra por palabra:",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Stop and walk out of the property into fresh air.",
+        "Take any other person and any pet out with you.",
+        "Do not go back in to open a window.",
+        "Call 911 if anyone is struggling to breathe, has chest pain, is coughing up fluid, collapses, has a seizure, or cannot be woken up.",
+        "Call Poison Help at 1 800 222 1222. It is free, it is open at every hour, and you can ask for Spanish.",
+        "Call Poison Help even if you feel better once you are outside. A chest injury from this kind of gas can show up hours later. If your breathing gets worse at any time, call 911.",
+        "Call the office at {{OFFICE_PHONE}} so the property is not sent to anyone else."
+       ],
+       "es": [
+        "Deténgase y salga de la propiedad al aire libre.",
+        "Saque con usted a cualquier otra persona y a cualquier mascota.",
+        "No vuelva a entrar para abrir una ventana.",
+        "Llame al 911 si a alguien le cuesta respirar, le duele el pecho, tose con flema o líquido, se desmaya, le da una convulsión, o no se puede despertar.",
+        "Llame a Poison Help, la línea de envenenamientos, al 1 800 222 1222. Es gratis, atiende a toda hora, y usted puede pedir español.",
+        "Llame a Poison Help aunque se sienta mejor cuando ya esté afuera. Una lesión del pecho por este tipo de gas puede aparecer horas después. Si le cuesta más respirar en cualquier momento, llame al 911.",
+        "Llame a la oficina al {{OFFICE_PHONE}} para que la propiedad no se le mande a nadie más."
+       ],
+       "type": "steps"
+      }
+     ],
+     "id": "notice-fumes",
+     "layout": "hero",
+     "seconds": 110,
+     "title": {
+      "en": "If you breathe fumes",
+      "es": "Si respira vapores"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "**Properties are left closed and locked.** Every door, including the back door and the sliding door, and every window. The reason on this notice is not the property. It is that you are usually in there with nobody else, and an open door is a way in that you cannot see from the room you are working in.",
+       "es": "**Las propiedades se dejan cerradas y con llave.** Todas las puertas, incluidas la puerta de atrás y la puerta corrediza, y todas las ventanas. La razón en este aviso no es la propiedad. Es que usted casi siempre está ahí sin nadie más, y una puerta abierta es una entrada que no se ve desde el cuarto donde está trabajando.",
+       "type": "text"
+      },
+      {
+       "character": "duo",
+       "en": "A door you did not open is a reason to stay outside.",
+       "es": "Una puerta que usted no abrió es razón para quedarse afuera.",
+       "pose": "stop",
+       "type": "say"
+      },
+      {
+       "en": [
+        "If you arrive and a door or a window is already open, or a lock is broken, or the property does not look the way it should, do not go in.",
+        "Stay outside, in view of the street, and call the office at {{OFFICE_PHONE}}.",
+        "If you think somebody is inside, do not go in to look. Call 911.",
+        "If you are already inside and somebody comes in, leave. You do not have to ask who they are, and you never block anybody. Call from outside. If you do not feel safe, call 911 first.",
+        "If a door or a window will not lock, do not force it. Call the office before you leave and say which one it is."
+       ],
+       "es": [
+        "Si llega y una puerta o una ventana ya está abierta, o una cerradura está rota, o la propiedad no se ve como debería, no entre.",
+        "Quédese afuera, a la vista de la calle, y llame a la oficina al {{OFFICE_PHONE}}.",
+        "Si cree que hay alguien adentro, no entre a ver. Llame al 911.",
+        "Si usted ya está adentro y entra alguien, salga. No tiene que preguntarle quién es, y nunca le cierre el paso a nadie. Llame desde afuera. Si no se siente a salvo, llame primero al 911.",
+        "Si una puerta o una ventana no cierra con llave, no la fuerce. Llame a la oficina antes de salir y diga cuál es."
+       ],
+       "type": "steps"
+      },
+      {
+       "en": "The chemical safety training asks for a window and a door open while a product is in use. This notice asks for them closed and locked at the end of the job. Both are right, and they are about different moments in the same job.",
+       "es": "La capacitación de seguridad química pide una ventana y una puerta abiertas mientras se usa un producto. Este aviso las pide cerradas y con llave al final del trabajo. Las dos cosas son correctas, y se trata de momentos distintos del mismo trabajo.",
+       "type": "text"
+      },
+      {
+       "en": "**Where this one comes from.** Leaving a property closed and locked is CCC's own requirement. It is not written here as the client's, and it is not the law. It is on a safety notice for the reason in the first paragraph: you are usually in the property with nobody else.",
+       "es": "**De dónde viene esta parte.** Dejar una propiedad cerrada y con llave es un requisito propio de CCC. Aquí no se presenta como un requisito del cliente, y no es la ley. Está en un aviso de seguridad por la razón del primer párrafo: usted casi siempre está ahí sin nadie más.",
+       "type": "text"
+      },
+      {
+       "en": "You will never get in trouble with CCC for calling 911 or the police to report danger, and nobody gets in trouble for reporting a hazard. Calling Poison Help never gets you in trouble either.",
+       "es": "Usted nunca tendrá problemas con CCC por llamar al 911 o a la policía para reportar un peligro, y nadie tiene problemas por reportar un peligro. Llamar a Poison Help tampoco le causa problemas nunca.",
+       "type": "callout"
+      }
+     ],
+     "id": "notice-doors",
+     "layout": "hero",
+     "seconds": 140,
+     "title": {
+      "en": "The doors and the windows",
+      "es": "Las puertas y las ventanas"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "A product containing bleach is in use on the showers at these properties, and a shower is the smallest room in the property and the one with the worst air. That is why the never mix rule matters there more than anywhere else.",
+       "es": "En estas propiedades se usa en las duchas un producto que contiene cloro, y la ducha es el cuarto más pequeño de la propiedad y el de peor aire. Por eso la regla de nunca mezclar importa ahí más que en cualquier otro lugar.",
+       "type": "text"
+      },
+      {
+       "en": [
+        "Cleaning products are never mixed at these properties. The maker's safety sheet for the bleach says do not mix it with other chemicals, and the sheet for Bar Keeper's Friend says do not mix it with other chemicals including bleach or ammonia.",
+        "Bleach with ammonia makes chloramine gas. Bleach with an acid makes chlorine gas. Both burn the eyes, the nose and the lungs. Ammonia is in many glass cleaners and in urine.",
+        "Bar Keeper's Friend and the bleach spray are both in use at these properties. The maker's sheet for Bar Keeper's Friend says do not mix it with other chemicals including bleach or ammonia. A product left on a surface, on a cloth or in a bucket still counts as mixing.",
+        "The maker's safety sheet for the bleach says it causes serious eye damage, and says to wear protective gloves and eye protection and to provide adequate ventilation.",
+        "No work is done at these properties in a space with fumes in the air."
+       ],
+       "es": [
+        "En estas propiedades nunca se mezclan los productos de limpieza. La hoja de seguridad del fabricante del cloro dice que no se mezcle con otros químicos, y la de Bar Keeper's Friend dice que no se mezcle con otros químicos, incluidos el cloro y el amoníaco.",
+        "El cloro con amoníaco forma gas cloramina. El cloro con un ácido forma gas cloro. Los dos queman los ojos, la nariz y los pulmones. El amoníaco está en muchos limpiavidrios y en la orina.",
+        "Bar Keeper's Friend y el cloro en atomizador se usan los dos en estas propiedades. La hoja del fabricante de Bar Keeper's Friend dice que no se mezcle con otros químicos, incluidos el cloro y el amoníaco. Un producto que quedó en una superficie, en un paño o en una cubeta cuenta igual como mezcla.",
+        "La hoja de seguridad del fabricante del cloro dice que causa daño grave en los ojos, y dice que se usen guantes de protección y protección para los ojos, y que haya ventilación adecuada.",
+        "En estas propiedades no se trabaja en un espacio con vapores en el aire."
+       ],
+       "type": "steps"
+      },
+      {
+       "character": "duo",
+       "en": "Cleaning products are never mixed at these properties.",
+       "es": "En estas propiedades nunca se mezclan los productos de limpieza.",
+       "pose": "stop",
+       "type": "say"
+      },
+      {
+       "en": "Nothing on this screen is new. Every line of it is already on the chemical safety notice, word for word. It is repeated here because the shower is where those two products meet on the same job, and because a notice should not send anybody off to find another notice.",
+       "es": "Nada de esta pantalla es nuevo. Cada línea ya está en el aviso de seguridad química, palabra por palabra. Se repite aquí porque la ducha es donde esos dos productos se juntan en el mismo trabajo, y porque un aviso no debería mandar a nadie a buscar otro aviso.",
+       "type": "text"
+      }
+     ],
+     "id": "notice-shower",
+     "layout": "hero",
+     "seconds": 110,
+     "title": {
+      "en": "The shower",
+      "es": "La ducha"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "Call the office at {{OFFICE_PHONE}}.",
+       "es": "Llame a la oficina al {{OFFICE_PHONE}}.",
+       "type": "text"
+      },
+      {
+       "en": "**Call. Do not only text.** A call makes sure a real person knows now.",
+       "es": "**Llame. No mande solo un mensaje de texto.** Con una llamada, una persona de verdad se entera enseguida.",
+       "type": "text"
+      },
+      {
+       "en": "No answer? Leave a message and keep calling the office. If anybody is in danger, call 911 first, before the office.",
+       "es": "¿No contestan? Deje un mensaje y siga llamando a la oficina. Si hay alguien en peligro, llame primero al 911, antes que a la oficina.",
+       "type": "text"
+      },
+      {
+       "en": "**If you are the person who takes the call.** Write down the property, what was found and where it is, and the name and number of the person calling. Tell them to stay somewhere safe and not to touch it. Then call the client or the property manager. If anybody is in danger, 911 first, every time, at any hour. You do not have to decide anything else on that call.",
+       "es": "**Si usted es la persona que recibe la llamada.** Anote la propiedad, qué se encontró y dónde está, y el nombre y el número de quien llama. Dígale que se quede en un lugar seguro y que no toque nada. Después llame al cliente o al administrador de la propiedad. Si hay alguien en peligro, primero el 911, siempre, a cualquier hora. No tiene que decidir nada más en esa llamada.",
+       "type": "text"
+      }
+     ],
+     "id": "notice-call",
+     "layout": "hero",
+     "seconds": 80,
+     "title": {
+      "en": "Calling the office",
+      "es": "Llamar a la oficina"
+     }
+    },
+    {
+     "blocks": [
+      {
+       "en": "The version of the notice, the confirmation that you read it, and the date. Nothing else. There is no score kept, no time counted, no file and no due date.",
+       "es": "La versión del aviso, la confirmación de que usted lo leyó, y la fecha. Nada más. No se guarda ningún puntaje, no se cuenta tiempo, no hay expediente y no hay fecha límite.",
+       "type": "text"
+      },
+      {
+       "en": "At the end there are three short safety questions. They are there so you can check you have the safety steps. Nothing is recorded and nobody is told how you answered. If one of them is not right we ask you to read the notice again.",
+       "es": "Al final hay tres preguntas cortas de seguridad. Están ahí para que usted revise por su cuenta que tiene los pasos de seguridad. No se guarda nada y a nadie se le dice cómo contestó usted. Si alguna no queda bien, le pedimos que lea el aviso otra vez.",
+       "type": "text"
+      },
+      {
+       "en": "**To finish:** check the box below, then answer the 3 safety questions correctly. You can try again right away. There is no due date.",
+       "es": "**Para terminar:** marque la casilla de abajo y después conteste bien las 3 preguntas de seguridad. Si se equivoca, puede intentarlo otra vez enseguida. No hay fecha límite.",
+       "type": "text"
+      }
+     ],
+     "id": "notice-record",
+     "layout": "hero",
+     "seconds": 50,
+     "title": {
+      "en": "What CCC keeps",
+      "es": "Lo que CCC guarda"
+     }
+    }
+   ]
+  }
+ },
+ "version": "2026-10-01"
+}
