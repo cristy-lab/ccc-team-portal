@@ -650,8 +650,8 @@
     wishPending: {} // person id -> {emoji: true} while a wish is on its way
   };
 
-  var ROUTES = ["login", "choose", "home", "calendar", "request", "requests", "done", "training", "welcome", "messages", "chat", "status", "states", "values"];
-  var AUTH_ROUTES = { home: 1, calendar: 1, request: 1, requests: 1, done: 1, training: 1, welcome: 1, messages: 1, chat: 1, status: 1, states: 1, values: 1 };
+  var ROUTES = ["login", "choose", "home", "calendar", "request", "requests", "done", "training", "welcome", "messages", "chat", "status", "states", "values", "wall"];
+  var AUTH_ROUTES = { home: 1, calendar: 1, request: 1, requests: 1, done: 1, training: 1, welcome: 1, messages: 1, chat: 1, status: 1, states: 1, values: 1, wall: 1 };
   // states (0.4.0) is not here on purpose: it needs no dashboard, so a failing one cannot stop it.
   var DATA_ROUTES = { home: 1, calendar: 1, requests: 1 };
   var OPEN_RE = /^([do]:[A-Za-z0-9_.]{1,64}|g:[a-z0-9]+(-[a-z0-9]+)*)$/;
@@ -902,6 +902,7 @@
     if (root.CCCMsg) root.CCCMsg.reset();
     if (root.CCCStatus) root.CCCStatus.reset();
     if (root.CCCPreview) root.CCCPreview.reset();
+    if (root.CCCWall) root.CCCWall.reset();
     closeParty();
     store.remove(K.token);
     store.remove(K.person);
@@ -1018,6 +1019,7 @@
        push      web/push_i18n.js, web/push.js and web/push.css, phone notices and the add to home screen card (0.3.7)
        states    web/states_i18n.js, web/states.js and web/states.css, Where we work (0.4.0)
        values    web/values_i18n.js, web/values.js and web/values.css, Core values (0.4.5)
+       wall      web/wall_i18n.js, web/wall.js and web/wall.css, the team wall (0.5.0)
        preview   web/preview.js and web/preview.css, the owner's preview controls (0.4.2)
      They are fetched the first time they are needed, and nothing is drawn before every part is in,
      so nothing is ever seen unstyled. Apps Script serves no files of its own, so
@@ -1031,10 +1033,14 @@
     // 0.4.5: Core values. The strings file comes first, because loadBundle sets async = false,
     // so the words are in place before the screen code that reads them runs.
     values: { route: "values", js: ["values_i18n.js", "values.js"] },
+    // 0.5.0: the team wall. Strings first, like every other bundle, so the words are in place
+    // before the screen that reads them runs.
+    wall: { route: "wall", js: ["wall_i18n.js", "wall.js"] },
     // 0.4.2: the owner preview controls, her phone only, like the Status bundle (13.14).
     preview: { route: "training", js: ["preview.js"] },
     letter: { route: "welcome", js: [] },
-    messages: { route: "messages chat", js: ["messages_i18n.js", "messages.js"] },
+    messages: { route: "messages chat", js: ["messages_i18n.js", "messages.js"],
+      ready: function () { msgQ.splice(0).forEach(function (fn) { fn(root.CCCMsg || null); }); } },
     party: { js: [], ready: partyArrived },
     push: { js: ["push_i18n.js", "push.js"], ready: function () { pushQ.splice(0).forEach(withPush); } },
     // 0.4.1, the globe. Asked for after home has drawn, never before.
@@ -1042,6 +1048,18 @@
   };
   var pushQ = [];
   var globeQ = [];
+
+  /* The Messages bundle, when it is here, to whoever asked. 0.5.0: the team wall takes photos
+     through CCCMsg.preparePhoto rather than carrying a second copy of that pipeline, and asks for
+     the bundle only when a photo is actually attached. Nobody is called back if it does not
+     arrive, and the wall says the post failed rather than hanging. */
+  function withMessages(fn) {
+    if (root.CCCMsg) return fn(root.CCCMsg);
+    if (state.bundle.messages === 2) return fn(null);
+    msgQ.push(fn);
+    if (!state.bundle.messages) loadBundle("messages");
+  }
+  var msgQ = [];
 
   /* The globe, when it is here, to everybody who asked. Nobody is called back if the file does not
      arrive: every screen that uses a globe works without one. */
@@ -1534,6 +1552,10 @@
       // Where we work (0.4.5). Cristy asked for a tile: "I want a tile." The globe by the
       // greeting stays, because it is part of that picture, not a button competing with this one.
       tile({ route: "states", icon: "pin", tone: "ti-lblue", title: t("tile_states_title"), sub: t("tile_states_sub") }),
+      // The team wall (0.5.0): only when the backend says this person has it, the same rule as
+      // Messages below. The switch starts off, so until it is turned on nobody sees this tile.
+      dash.wall && dash.wall.enabled === true ? tile({ route: "wall", icon: "chat", tone: "ti-peach",
+        title: t("tile_wall_title"), sub: t("tile_wall_sub") }) : null,
       // Messages (0.3.6): only when the backend says this person has it.
       msg && msg.enabled === true ? tile({ route: "messages", icon: "chat", tone: "ti-lblue", title: t("tile_msg_title"),
         sub: t(msg.role === "cleaner" ? "tile_msg_sub" : "tile_msg_sub_staff"), badge: newBadge(msg.badge) }) : null,
@@ -2691,7 +2713,7 @@
     go: go, goBack: goBack, render: render, signOut: signOut, backButton: backButton,
     msgBox: msgBox, loading: dataPlaceholder, setTrainings: setTrainings, fx: makeFx, reduced: reducedMotion,
     icons: ICONS, badge: newBadge, inert: setInert, retry: retryButton, img: imgWithFallback,
-    refresh: refreshDashboard, withPush: withPush, withGlobe: withGlobe, openRe: OPEN_RE, ios: isIOS, standalone: isStandalone, phone: isPhone,
+    refresh: refreshDashboard, withPush: withPush, withGlobe: withGlobe, withMessages: withMessages, openRe: OPEN_RE, ios: isIOS, standalone: isStandalone, phone: isPhone,
     // Leaving Messages hands its last badge to home, in memory, so home is right at once.
     setBadge: function (n) { if (state.dash && state.dash.messages) state.dash.messages.badge = n; }
   };
@@ -2702,6 +2724,16 @@
     return h("div", { class: "msg" }, [
       h("div", { class: "page-head" }, [backButton("home"), h("h1", { text: t("tile_msg_title") })]),
       bundleWait("messages")
+    ]);
+  };
+
+  /* The team wall (0.5.0): the whole screen comes from the Wall bundle, fetched when the tile is
+     opened. Like Core values it is not in DATA_ROUTES, so a failing dashboard cannot stop it. */
+  SCREENS.wall = function () {
+    if (bundleReady("wall") && root.CCCWall) return root.CCCWall.screen();
+    return h("div", { class: "wl" }, [
+      h("div", { class: "page-head" }, [backButton("home"), h("h1", { text: t("tile_wall_title") })]),
+      bundleWait("wall")
     ]);
   };
 

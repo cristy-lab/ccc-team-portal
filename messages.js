@@ -1633,6 +1633,11 @@
 
   root.CCCMsg = {
     screen: screen,
+    /* 0.5.0: the team wall takes photos the same way Messages does, through this one function,
+       rather than carrying a second copy of the shrink and encode pipeline. One pipeline means one
+       set of size caps, one JPEG path and one thing to fix when a phone does something odd. The
+       wall asks for this bundle only when somebody actually attaches a photo. */
+    preparePhoto: prepare,
     /* Outside Messages polling stops and home gets the badge. */
     route: function (r) {
       var was = inside();

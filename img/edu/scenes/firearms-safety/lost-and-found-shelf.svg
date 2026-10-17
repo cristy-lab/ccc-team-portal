@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+<!-- A shelf in a cleaning closet with a sunglasses case, a phone charger and a small toy on it, and a phone making a call beside it. Drawn for the CCC Team Portal firearms safety training. No text. No people. -->
+<defs><linearGradient id="fsLF_bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFBF7"/><stop offset="1" stop-color="#E4F0FD"/></linearGradient><linearGradient id="fsLF_in" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E7E4F1"/><stop offset="1" stop-color="#D6EAFD"/></linearGradient></defs>
+<rect width="400" height="300" fill="url(#fsLF_bg)"/>
+<rect y="246" width="400" height="54" fill="#D6EAFD"/><rect y="240" width="400" height="7" fill="#1B175A"/>
+<path d="M30 272H118M286 286H372" stroke="#FFFCFC" stroke-width="5" stroke-linecap="round" opacity=".75"/>
+<rect x="56" y="40" width="208" height="200" rx="6" fill="#FFFCFC" stroke="#1B175A" stroke-width="3.4"/>
+<rect x="68" y="52" width="184" height="176" rx="3" fill="url(#fsLF_in)" stroke="#1B175A" stroke-width="2.4"/>
+<rect x="68" y="140" width="184" height="9" fill="#FFCB8E" stroke="#1B175A" stroke-width="2.4"/>
+<rect x="68" y="196" width="184" height="9" fill="#FFCB8E" stroke="#1B175A" stroke-width="2.4"/>
+<circle cx="256" cy="140" r="5" fill="#CBCDD6" stroke="#1B175A" stroke-width="2"/>
+<g transform="translate(104 128)"><path d="M-24 0C-24 -9 -14 -9 -14 0C-14 7 -24 7 -24 0Z" fill="#82CAFB" stroke="#1B175A" stroke-width="2.6"/><path d="M-2 0C-2 -9 8 -9 8 0C8 7 -2 7 -2 0Z" fill="#82CAFB" stroke="#1B175A" stroke-width="2.6"/><path d="M-14 -3H-2" stroke="#1B175A" stroke-width="2.6"/><path d="M-24 -4L-34 -8M8 -4L18 -8" stroke="#1B175A" stroke-width="2.6" stroke-linecap="round"/></g>
+<g transform="translate(176 126)"><rect x="-20" y="-8" width="22" height="16" rx="4" fill="#FFFCFC" stroke="#1B175A" stroke-width="2.6"/><path d="M-14 -8V-14M-6 -8V-14" stroke="#1B175A" stroke-width="2.6" stroke-linecap="round"/><path d="M2 2C14 2 14 14 2 14C-8 14 -8 22 2 22" fill="none" stroke="#1B175A" stroke-width="2.6" stroke-linecap="round"/><rect x="0" y="19" width="12" height="6" rx="2" fill="#F6A078" stroke="#1B175A" stroke-width="2.2"/></g>
+<g transform="translate(120 182)"><circle cx="0" cy="-6" r="13" fill="#FFCB8E" stroke="#1B175A" stroke-width="2.8"/><circle cx="-10" cy="-17" r="6" fill="#FFCB8E" stroke="#1B175A" stroke-width="2.6"/><circle cx="10" cy="-17" r="6" fill="#FFCB8E" stroke="#1B175A" stroke-width="2.6"/><circle cx="-4.5" cy="-8" r="1.8" fill="#1B175A"/><circle cx="4.5" cy="-8" r="1.8" fill="#1B175A"/><ellipse cx="0" cy="-1" rx="5" ry="4" fill="#FFE2B5" stroke="#1B175A" stroke-width="2"/><path d="M-13 6H13V10H-13Z" fill="#F6A078" stroke="#1B175A" stroke-width="2.4"/></g>
+<g transform="translate(192 184)"><rect x="-16" y="-14" width="16" height="16" rx="2" fill="#82CAFB" stroke="#1B175A" stroke-width="2.6"/><rect x="0" y="-14" width="16" height="16" rx="2" fill="#FFCB8E" stroke="#1B175A" stroke-width="2.6"/><rect x="-8" y="-30" width="16" height="16" rx="2" fill="#F6A078" stroke="#1B175A" stroke-width="2.6"/></g>
+<g transform="translate(330 170) rotate(6) scale(2.3)"><rect x="-12" y="-21" width="24" height="42" rx="5" fill="#1B175A" stroke="#1B175A" stroke-width="2"/><rect x="-9" y="-16" width="18" height="30" rx="2" fill="#D6EAFD"/><circle cx="0" cy="17.5" r="1.6" fill="#FFFCFC"/></g>
+<circle cx="330" cy="162" r="22" fill="#F6A078" stroke="#1B175A" stroke-width="3"/>
+<g transform="translate(328 164) scale(1.35)"><path d="M-9 -10C-11 -8 -12 -5 -11 -2C-8 6 -2 11 5 12C8 12.6 10 11 11 9L12 7C12.4 6 12 5 11 4.4L7 2.2C6 1.8 5 2 4.4 2.8L3 4.6C-1 3 -3 0 -4.6 -3.6L-2.8 -5C-2 -5.6 -1.8 -6.6 -2.2 -7.6L-4.4 -11.6C-5 -12.6 -6 -13 -7 -12.6Z" fill="#FFFCFC"/></g>
+<path d="M296 134Q288 146 296 158" fill="none" stroke="#82CAFB" stroke-width="3.6" stroke-linecap="round"/>
+<path d="M286 124Q273 146 286 168" fill="none" stroke="#82CAFB" stroke-width="3.6" stroke-linecap="round"/>
+<path d="M364 134Q372 146 364 158" fill="none" stroke="#E88A62" stroke-width="3.6" stroke-linecap="round"/>
+<path d="M374 124Q387 146 374 168" fill="none" stroke="#E88A62" stroke-width="3.6" stroke-linecap="round"/>
+<path d="M32 36L34.24 41.76L40 44L34.24 46.24L32 52L29.76 46.24L24 44L29.76 41.76Z" fill="#F6A078"/>
+<path d="M310 56L311.68 60.32L316 62L311.68 63.68L310 68L308.32 63.68L304 62L308.32 60.32Z" fill="#82CAFB"/>
+<path d="M366 86L367.12 88.88L370 90L367.12 91.12L366 94L364.88 91.12L362 90L364.88 88.88Z" fill="#EFAE62"/>
+</svg>

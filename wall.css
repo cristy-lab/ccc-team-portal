@@ -1,0 +1,112 @@
+/* CCC Team Portal: the Wall bundle, the team wall (0.5.0).
+ * web/app.js fetches it the first time somebody opens the tile on home, and
+ * tools/build_gas_html.py inlines it for Apps Script.
+ *
+ * Every colour comes from the tokens in web/app.css, so light and dark both follow the app.
+ * Photographs are never dimmed in dark mode: a barbecue at dusk should not look like bad weather.
+ */
+
+.wl .page-head { margin-bottom: 4px; }
+/* On a 320 px phone at 200 percent text, one long word is wider than the screen. Breaking it beats
+   a page that scrolls sideways, and a hashtag is exactly the kind of word that does this. */
+.wl p, .wl h1, .wl h2, .wl h3, .wl .wl-tag { overflow-wrap: anywhere; }
+
+.wl-intro { color: var(--muted); margin: 2px 0 14px; }
+
+/* ---- the region filter ---- */
+.wl-chips {
+  display: flex; gap: 8px; overflow-x: auto; padding: 2px 0 10px;
+  scrollbar-width: none; -webkit-overflow-scrolling: touch;
+}
+.wl-chips::-webkit-scrollbar { display: none; }
+.wl-chip {
+  flex: 0 0 auto; border: 1px solid var(--line); background: var(--surface); color: var(--text);
+  border-radius: 999px; padding: 7px 14px; font: inherit; font-size: 15px; cursor: pointer;
+  min-height: 40px;                      /* a thumb, not a mouse */
+}
+.wl-chip.on { background: var(--navy, #1B175A); color: #fff; border-color: transparent; }
+
+.wl-tagbar {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 8px 12px; margin: 0 0 12px; font-size: 15px;
+}
+
+/* ---- a post ---- */
+.wl-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.wl-card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  box-shadow: var(--shadow-sm); padding: 14px 15px;
+}
+.wl-who { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 6px; }
+.wl-name { font-weight: 700; }
+.wl-region { color: var(--muted); font-size: 14px; }
+.wl-text { margin: 0; }
+/* The other language, quieter than the original but still readable: it is the only version some
+   people can read, so it never drops below AA. */
+.wl-tr { margin: 6px 0 0; color: var(--muted); font-size: 15px; }
+
+.wl-tag {
+  background: none; border: 0; padding: 0; font: inherit; cursor: pointer;
+  color: var(--link, #2E7FB8); text-decoration: underline;
+}
+
+.wl-shot { margin-top: 10px; border-radius: var(--radius); overflow: hidden; background: var(--bg); }
+.wl-img { display: block; width: 100%; height: auto; }
+.wl-gone {
+  display: block; width: 100%; aspect-ratio: 4 / 3; background: var(--bg);
+  border: 1px solid var(--line); border-radius: var(--radius);
+}
+.wl-wait { opacity: .6; }
+
+/* ---- reactions ---- */
+.wl-reacts { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+.wl-react {
+  display: inline-flex; align-items: center; gap: 5px; min-height: 40px; padding: 4px 10px;
+  border: 1px solid var(--line); background: var(--bg); border-radius: 999px;
+  font: inherit; cursor: pointer; color: var(--text);
+}
+.wl-react.on { border-color: var(--navy, #1B175A); background: var(--surface); }
+.wl-emoji { font-size: 17px; line-height: 1; }
+.wl-n { font-size: 14px; color: var(--muted); }
+.wl-react.on .wl-n { color: var(--text); font-weight: 700; }
+
+.wl-admin { margin-top: 10px; }
+.wl-linkbtn {
+  background: none; border: 0; padding: 6px 0; font: inherit; cursor: pointer;
+  color: var(--link, #2E7FB8); text-decoration: underline; min-height: 40px;
+}
+.wl-danger { color: var(--danger, #9A2617); }
+
+/* ---- the rules, and writing ---- */
+.wl-rules-head { font-size: 19px; margin: 6px 0 4px; }
+.wl-rule {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 12px 14px; margin: 0 0 10px;
+}
+/* The first rule is the one that can cost a contract, so it is the one that looks different. */
+.wl-rule.first { border-left: 5px solid var(--danger, #9A2617); }
+.wl-rule h3 { font-size: 16px; margin: 0 0 5px; }
+.wl-rule p { margin: 0; color: var(--text); }
+.wl-kept { color: var(--muted); font-size: 15px; margin: 12px 0 0; }
+
+.wl-write {
+  width: 100%; box-sizing: border-box; font: inherit; padding: 12px;
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--surface); color: var(--text); margin-top: 8px;
+}
+.wl-left { color: var(--muted); font-size: 14px; margin: 6px 0 0; text-align: right; }
+.wl-photorow { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 10px; }
+/* The real file input is hidden and its label is the button, because a bare file input cannot be
+   styled and reads badly on a phone. The label keeps the input reachable from the keyboard. */
+.wl-file { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.wl-filelabel { display: inline-flex; align-items: center; min-height: 44px; cursor: pointer; }
+.wl-file:focus-visible + .wl-filelabel { outline: 2px solid var(--navy, #1B175A); outline-offset: 2px; }
+
+.wl-none-title { font-weight: 700; margin: 0 0 4px; }
+
+@media (prefers-color-scheme: dark) {
+  .wl-chip.on { background: #82CAFB; color: #10123A; }
+  .wl-react.on { border-color: #82CAFB; }
+  /* The photographs are left alone on purpose. */
+}
