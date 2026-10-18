@@ -23,16 +23,20 @@
  *     should not download it at every release the way they download the bundles above.
  *   * The States bundle (0.4.0), web/states_i18n.js, web/states.js and web/states.css: the same rule.
  *   * The Preview bundle (0.4.2), web/preview.js and web/preview.css: the same rule again.
+ *   * The Wall bundle (0.5.0), web/wall_i18n.js, web/wall.js and web/wall.css: the same rule
+ *     again. Everybody can open the team wall, but nobody has to, so it is fetched the first
+ *     time the tile is tapped and kept after that rather than pushed to 86 phones at every
+ *     release.
  *   * The Globe bundle (0.4.1), web/globe.js, web/globe.css and web/img/globe/world.json: the same
  *     rule again, and never in SHELL. Home asks for them after it has already drawn.
  *   * web/img/states/ (0.4.0) is never in SHELL: 30 pictures, about 7.2 MB, must not be pushed to every
  *     phone at every release. They are kept in the runtime cache after a panel has opened once.
  *   * A push (0.3.7) shows exactly one notice, from data.title and data.body only. A tap opens its chat.
  */
-var CACHE_VERSION = "0.4.6";
+var CACHE_VERSION = "0.5.0";
 var SHELL_CACHE = "ccc-shell-" + CACHE_VERSION;
 var RUNTIME_CACHE = "ccc-runtime-" + CACHE_VERSION;
-var ASSET_VERSION = "0.4.6";
+var ASSET_VERSION = "0.5.0";
 var OPEN_RE = /^([do]:[A-Za-z0-9_.]{1,64}|g:[a-z0-9]+(-[a-z0-9]+)*)$/;
 
 var SHELL = [

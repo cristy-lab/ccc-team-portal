@@ -1082,7 +1082,11 @@
       if (--left > 0) return;
       state.bundle[name] = 3;
       if (b.ready) b.ready();
-      else if (currentRoute && b.route.indexOf(currentRoute) >= 0) {
+      /* And then the screen, if the person is standing on it. These two are NOT alternatives:
+         writing them as an else if meant that giving Messages a ready() in 0.5.0, so the wall
+         could borrow its photo pipeline, silently stopped the Messages screen being drawn at all.
+         b.route is guarded because the party, push and globe bundles have no route. */
+      if (currentRoute && b.route && b.route.indexOf(currentRoute) >= 0) {
         currentRoute = null; // draw it as a screen change, so the new heading takes the focus
         render();
       }

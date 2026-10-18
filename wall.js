@@ -150,7 +150,7 @@
   function words(text) {
     var h = P.h;
     var out = h("p", { class: "wl-text" });
-    var re = /#([0-9A-Za-zÀ-ɏ_]{1,30})/g;
+    var re = /#([0-9A-Za-z\u00C0-\u024F_]{1,30})/g;
     var at = 0, m;
     while ((m = re.exec(text)) !== null) {
       if (m.index > at) out.appendChild(doc.createTextNode(text.slice(at, m.index)));
@@ -453,7 +453,14 @@
 
     var page = h("div", { class: "wl wl-" + V.step }, [
       h("div", { class: "page-head" }, [back, h("h1", { text: t("wall_title") })]),
-      V.msg ? P.msgBox(V.msg) : null
+      /* The message, announced. P.msgBox takes (kind, icon, words), not an object: passing it the
+         object drew an empty grey box with nothing in it, which told the person nothing at all
+         (found by the browser harness before the wall ever went live, 0.5.0). role=alert so a
+         screen reader says it without being asked, the same as Messages does. */
+      V.msg ? h("div", { role: "alert" }, P.msgBox(
+                V.msg.kind === "error" ? "error" : "info",
+                V.msg.kind !== "error" ? "info" : P.isOnline() ? "alert" : "wifiOff",
+                t(V.msg.key))) : null
     ]);
     body.forEach(function (n) { if (n) page.appendChild(n); });
     return page;
