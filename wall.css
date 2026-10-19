@@ -32,15 +32,62 @@
   padding: 8px 12px; margin: 0 0 12px; font-size: 15px;
 }
 
-/* ---- a post ---- */
-.wl-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
-.wl-card {
+/* ---- a post ----
+   She asked for Instagram, so the photograph is the post. The box is gone, the picture runs to both
+   edges of the screen, and the words are a caption under it. A post with no picture keeps a box,
+   because a bare line of text with nothing around it reads as a mistake. */
+.wl-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 26px; }
+
+.wl-card { background: none; border: 0; border-radius: 0; box-shadow: none; padding: 0; }
+/* A post that is only words still needs something to sit in. */
+.wl-note {
   background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
-  box-shadow: var(--shadow-sm); padding: 14px 15px;
+  box-shadow: var(--shadow-sm); padding: 13px 15px;
 }
-.wl-who { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 6px; }
+
+/* Who posted it: initials, name, region. One line, and it stays out of the way. */
+.wl-head { display: flex; align-items: center; gap: 10px; margin-bottom: 9px; }
+.wl-ava {
+  flex: 0 0 auto; width: 34px; height: 34px; border-radius: 999px;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 13px; font-weight: 700; letter-spacing: .3px;
+}
+.wl-who { display: flex; align-items: baseline; gap: 9px; flex-wrap: wrap; min-width: 0; }
 .wl-name { font-weight: 700; }
 .wl-region { color: var(--muted); font-size: 14px; }
+
+/* THE PICTURE. Edge to edge: the app's own side padding is given back, exactly, including the
+   safe area on a notched phone, so the photo touches both edges and nothing else moves. It is a
+   button because it opens, so every bit of button chrome has to be taken off it. */
+.wl-shot {
+  /* The width is written out rather than left to auto. A button sizes itself to its contents even
+     at display block, so a photo narrower than the screen left the post with a small picture
+     floating in it instead of one that reaches both edges. Caught by the test that measures the
+     picture against the caption beside it. */
+  display: block; box-sizing: border-box; padding: 0; border: 0;
+  width: calc(100% + max(16px, env(safe-area-inset-left)) + max(16px, env(safe-area-inset-right)));
+  margin-left: calc(-1 * max(16px, env(safe-area-inset-left)));
+  margin-right: calc(-1 * max(16px, env(safe-area-inset-right)));
+  background: var(--bg); cursor: zoom-in; overflow: hidden;
+}
+.wl-shot:focus-visible { outline: 3px solid var(--navy, #1B175A); outline-offset: -3px; }
+/* The picture keeps its own shape. Nothing is cropped and nothing is stretched: a tall photo of a
+   person stays tall, which is the whole point of a photo of a person. */
+.wl-img { display: block; width: 100%; height: auto; }
+.wl-gone {
+  display: block; width: 100%; aspect-ratio: 4 / 5; background: var(--bg);
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+}
+.wl-wait { opacity: .6; }
+.wl-shot-wait {
+  display: block; box-sizing: border-box;
+  width: calc(100% + max(16px, env(safe-area-inset-left)) + max(16px, env(safe-area-inset-right)));
+  margin-left: calc(-1 * max(16px, env(safe-area-inset-left)));
+  margin-right: calc(-1 * max(16px, env(safe-area-inset-right)));
+}
+
+/* The caption, under the picture. */
+.wl-cap { margin-top: 8px; }
 .wl-text { margin: 0; }
 /* The other language, quieter than the original but still readable: it is the only version some
    people can read, so it never drops below AA. */
@@ -51,27 +98,43 @@
   color: var(--link, #2E7FB8); text-decoration: underline;
 }
 
-.wl-shot { margin-top: 10px; border-radius: var(--radius); overflow: hidden; background: var(--bg); }
-.wl-img { display: block; width: 100%; height: auto; }
-.wl-gone {
-  display: block; width: 100%; aspect-ratio: 4 / 3; background: var(--bg);
-  border: 1px solid var(--line); border-radius: var(--radius);
-}
-.wl-wait { opacity: .6; }
-
-/* ---- reactions ---- */
-.wl-reacts { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+/* ---- reactions ----
+   Straight under the picture, the way the little row of icons is on Instagram. No pills: a border
+   round each one turned six reactions into a fence. They are still 40 px tall for a thumb. */
+.wl-reacts { display: flex; gap: 2px; flex-wrap: wrap; margin-top: 6px; }
 .wl-react {
-  display: inline-flex; align-items: center; gap: 5px; min-height: 40px; padding: 4px 10px;
-  border: 1px solid var(--line); background: var(--bg); border-radius: 999px;
+  display: inline-flex; align-items: center; gap: 5px; min-height: 40px; padding: 4px 8px;
+  border: 0; background: none; border-radius: 10px;
   font: inherit; cursor: pointer; color: var(--text);
 }
-.wl-react.on { border-color: var(--navy, #1B175A); background: var(--surface); }
-.wl-emoji { font-size: 17px; line-height: 1; }
+.wl-react:focus-visible { outline: 2px solid var(--navy, #1B175A); outline-offset: -2px; }
+/* A reaction somebody has pressed is darker and bolder, not just a different colour, so it does
+   not depend on seeing colour. aria-pressed carries it for a screen reader either way. */
+.wl-react.on { background: var(--bg); }
+.wl-emoji { font-size: 20px; line-height: 1; }
+.wl-react.on .wl-emoji { transform: scale(1.08); }
 .wl-n { font-size: 14px; color: var(--muted); }
 .wl-react.on .wl-n { color: var(--text); font-weight: 700; }
 
-.wl-admin { margin-top: 10px; }
+/* ---- the picture, opened ---- */
+.wl-viewer {
+  /* Black, not a dimmed page. At 93 percent the wall showed through and the picture was competing
+     with the heading behind it. */
+  position: fixed; inset: 0; z-index: 50; background: #000;
+  display: grid; place-items: center; padding: 16px;
+}
+.wl-viewer:focus { outline: none; }
+.wl-big { max-width: 100%; max-height: 88vh; width: auto; height: auto; display: block; }
+.wl-big-wait { color: #fff; display: grid; place-items: center; min-height: 40vh; }
+.wl-x {
+  position: absolute; top: max(10px, env(safe-area-inset-top)); right: 12px;
+  width: 44px; height: 44px; border-radius: 999px; border: 0;
+  background: rgba(255, 255, 255, .15); color: #fff; font-size: 26px; line-height: 1;
+  cursor: pointer; display: grid; place-items: center;
+}
+.wl-x:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+.wl-admin { margin-top: 6px; }
 .wl-linkbtn {
   background: none; border: 0; padding: 6px 0; font: inherit; cursor: pointer;
   color: var(--link, #2E7FB8); text-decoration: underline; min-height: 40px;
@@ -107,6 +170,14 @@
 
 @media (prefers-color-scheme: dark) {
   .wl-chip.on { background: #82CAFB; color: #10123A; }
-  .wl-react.on { border-color: #82CAFB; }
-  /* The photographs are left alone on purpose. */
+  .wl-react.on { background: #1A1D44; }
+  .wl-shot:focus-visible { outline-color: #82CAFB; }
+  /* The photographs are left alone on purpose: a barbecue at dusk should not look like bad
+     weather, and that is just as true now the picture fills the screen. */
+}
+
+/* Less motion: the opened picture appears rather than growing into place. */
+@media (prefers-reduced-motion: no-preference) {
+  .wl-viewer { animation: wl-fade .16s ease-out both; }
+  @keyframes wl-fade { from { opacity: 0; } to { opacity: 1; } }
 }

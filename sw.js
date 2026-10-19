@@ -33,10 +33,10 @@
  *     phone at every release. They are kept in the runtime cache after a panel has opened once.
  *   * A push (0.3.7) shows exactly one notice, from data.title and data.body only. A tap opens its chat.
  */
-var CACHE_VERSION = "0.5.1";
+var CACHE_VERSION = "0.5.2";
 var SHELL_CACHE = "ccc-shell-" + CACHE_VERSION;
 var RUNTIME_CACHE = "ccc-runtime-" + CACHE_VERSION;
-var ASSET_VERSION = "0.5.1";
+var ASSET_VERSION = "0.5.2";
 var OPEN_RE = /^([do]:[A-Za-z0-9_.]{1,64}|g:[a-z0-9]+(-[a-z0-9]+)*)$/;
 
 var SHELL = [

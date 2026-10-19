@@ -44,7 +44,8 @@
       canHide: false,
       photosOn: false,
       draft: { text: "", photo: null, id: "" },
-      photoBusy: false
+      photoBusy: false,
+      viewing: null                   // the one photo opened on its own, or null
     };
   }
 
@@ -217,28 +218,75 @@
     P.api("feed_react", { token: P.state.token, seq: item.seq, emoji: emoji });
   }
 
+  /* The round initials beside a name. A feed row carries no profile picture and adding one would be
+     a backend change, so two letters in a circle stand in. The colour comes from the person's id,
+     so somebody is always the same colour and nobody has to be told which one is theirs. Six tones,
+     every one of which holds white text in light and in dark. */
+  var AVATAR_TONES = ["#1B175A", "#2E6F4E", "#8A3B12", "#6A2E6E", "#14506E", "#7A1F3D"];
+
+  function initials(name) {
+    var parts = String(name || "").trim().split(/\s+/);
+    var out = "";
+    for (var i = 0; i < parts.length && out.length < 2; i++) {
+      var c = parts[i].charAt(0);
+      if (c && c !== ".") out += c.toUpperCase();
+    }
+    return out || "?";
+  }
+
+  function avatarTone(id) {
+    var n = 0, str = String(id || "");
+    for (var i = 0; i < str.length; i++) n = (n * 31 + str.charCodeAt(i)) >>> 0;
+    return AVATAR_TONES[n % AVATAR_TONES.length];
+  }
+
   function card(item) {
     var h = P.h, t = P.t;
     var lang = P.state.lang === "es" ? "es" : "en";
     var other = item.tr_text && item.tr_lang && item.tr_lang === lang
       ? withoutTags(item.tr_text, item.tags) : null;
+
+    // Who posted it, one thin line above the picture.
     var body = [
-      h("div", { class: "wl-who" }, [
-        h("span", { class: "wl-name", text: item.display_name }),
-        item.region ? h("span", { class: "wl-region", text: item.region }) : null
-      ]),
-      item.text ? words(item.text) : null,
-      other ? h("p", { class: "wl-tr", text: other }) : null
+      h("div", { class: "wl-head" }, [
+        h("span", { class: "wl-ava", "aria-hidden": "true", text: initials(item.display_name),
+                    style: "background:" + avatarTone(item.person_id) }),
+        h("span", { class: "wl-who" }, [
+          h("span", { class: "wl-name", text: item.display_name }),
+          item.region ? h("span", { class: "wl-region", text: item.region }) : null
+        ])
+      ])
     ];
+
+    /* THE PHOTOGRAPH IS THE POST: edge to edge, its own shape, and it opens when it is tapped. It
+       used to sit under the words at whatever size the box had left over. */
     if (item.photo) {
-      body.push(h("div", { class: "wl-shot" },
-        item.photo.data_url
-          ? P.img(item.photo.data_url, t("wall_photo_alt", { name: item.display_name }), "wl-img",
-              h("span", { class: "wl-gone", text: t("wall_photo_gone") }))
-          : h("span", { class: "wl-gone wl-wait", role: "img",
-                        "aria-label": t("wall_photo_alt", { name: item.display_name }) })));
+      if (item.photo.data_url) {
+        body.push(h("button", {
+          type: "button", class: "wl-shot", "aria-label": t("wall_photo_open"),
+          "data-seq": String(item.seq),
+          on: { click: function () { openPhoto(item); } }
+        }, [
+          P.img(item.photo.data_url, t("wall_photo_alt", { name: item.display_name }), "wl-img",
+            h("span", { class: "wl-gone", text: t("wall_photo_gone") }))
+        ]));
+      } else {
+        // Still on its way. It holds its place so the words do not jump when it lands.
+        body.push(h("div", { class: "wl-shot wl-shot-wait" }, [
+          h("span", { class: "wl-gone wl-wait", role: "img",
+                      "aria-label": t("wall_photo_alt", { name: item.display_name }) })
+        ]));
+      }
     }
+
     body.push(reactions(item));
+
+    // The words, under the picture, the way a caption goes.
+    var caption = [];
+    if (item.text) caption.push(words(item.text));
+    if (other) caption.push(h("p", { class: "wl-tr", text: other }));
+    if (caption.length) body.push(h("div", { class: "wl-cap" }, caption));
+
     if (V.canHide) {
       body.push(h("div", { class: "wl-admin" }, [
         h("button", {
@@ -247,7 +295,80 @@
         })
       ]));
     }
-    return h("li", { class: "wl-card" }, body);
+    /* A post with no picture is still a note, so it keeps a box to sit in. One with a picture does
+       not: the picture is its own edge. */
+    return h("li", { class: "wl-card" + (item.photo ? " wl-haspic" : " wl-note") }, body);
+  }
+
+  /* ---- the photograph, opened ---- */
+
+  /* The feed carries thumbnails, 320 px, which look soft blown up to the width of a phone. Tapping
+     asks for the full one, up to 1600 px, and shows it on its own. One at a time, so scrolling the
+     wall never costs the full size of every picture on it. Each post is asked for once. */
+  /* Escape closes the opened photo. The listener lives only while one is open, so nothing of the
+     wall's is left listening on a screen the person has walked away from. */
+  var onEscape = null;
+
+  function openPhoto(item) {
+    if (!item || !item.photo) return;
+    V.viewing = { seq: item.seq, name: item.display_name,
+                  url: item.photo.full_url || null, busy: !item.photo.full_url };
+    if (!onEscape) {
+      onEscape = function (e) {
+        if (e.key === "Escape" || e.key === "Esc") {
+          e.preventDefault();
+          closePhoto();
+        }
+      };
+      doc.addEventListener("keydown", onEscape);
+    }
+    P.render();
+    if (item.photo.full_url) return;
+    P.api("feed_photo", { token: P.state.token, size: "full", seqs: [item.seq] }).then(function (res) {
+      if (!V.viewing || V.viewing.seq !== item.seq) return;      // closed before it arrived
+      var got = res.ok === true && res.photos && res.photos[0];
+      if (got) {
+        item.photo.full_url = got.data_url;
+        V.viewing.url = got.data_url;
+      }
+      V.viewing.busy = false;
+      P.render();
+    });
+  }
+
+  function closePhoto() {
+    var seq = V.viewing && V.viewing.seq;
+    V.viewing = null;
+    if (onEscape) {
+      doc.removeEventListener("keydown", onEscape);
+      onEscape = null;
+    }
+    P.render();
+    // Put the keyboard back on the photo that was opened, not at the top of the page.
+    var back = seq && doc.querySelector('.wl-card [data-seq="' + seq + '"]');
+    if (back && back.focus) back.focus();
+  }
+
+  function photoViewer() {
+    var h = P.h, t = P.t;
+    var v = V.viewing;
+    var inner = v.url
+      ? P.img(v.url, t("wall_photo_alt", { name: v.name }), "wl-big",
+          h("span", { class: "wl-gone", text: t("wall_photo_gone") }))
+      : h("div", { class: "wl-big-wait" },
+          [v.busy ? P.loading(false) : h("span", { text: t("wall_photo_gone") })]);
+    var x = h("button", {
+      type: "button", class: "wl-x", "aria-label": t("wall_photo_close"),
+      on: { click: closePhoto }
+    }, [h("span", { "aria-hidden": "true", text: "\u00d7" })]);
+    // The keyboard goes into the viewer rather than being left on the page behind it.
+    root.setTimeout(function () { if (V && V.viewing && x.isConnected) x.focus(); }, 0);
+    return h("div", {
+      class: "wl-viewer", role: "dialog", "aria-modal": "true", "aria-label": t("wall_photo_big"),
+      tabindex: "-1",
+      // Tapping the black around the picture closes it, the way it does everywhere else.
+      on: { click: function (e) { if (e.target === e.currentTarget) closePhoto(); } }
+    }, [x, inner]);
   }
 
   function hide(item) {
@@ -465,6 +586,7 @@
         }, [P.icon("chevronLeft"), h("span", { text: t("back") })]);
 
     var page = h("div", { class: "wl wl-" + V.step }, [
+      V.viewing ? photoViewer() : null,
       h("div", { class: "page-head" }, [back, h("h1", { text: t("wall_title") })]),
       /* The message, announced. P.msgBox takes (kind, icon, words), not an object: passing it the
          object drew an empty grey box with nothing in it, which told the person nothing at all
@@ -489,10 +611,18 @@
       if (!V) return null;
       return {
         step: V.step, items: V.items.length, region: V.region, tag: V.tag,
-        canHide: V.canHide, photosOn: V.photosOn, more: V.more
+        canHide: V.canHide, photosOn: V.photosOn, more: V.more,
+        viewing: V.viewing ? V.viewing.seq : null
       };
     },
-    /* Sign out, or a new person on this shared phone: nothing about the wall stays behind. */
-    reset: function () { V = null; }
+    /* Sign out, or a new person on this shared phone: nothing about the wall stays behind, and
+       that includes the Escape listener the photo viewer puts on the document. */
+    reset: function () {
+      if (onEscape) {
+        doc.removeEventListener("keydown", onEscape);
+        onEscape = null;
+      }
+      V = null;
+    }
   };
 })(window);

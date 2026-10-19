@@ -116,7 +116,10 @@
 
     /* Descriptions for a screen reader. */
     ["wall_photo_alt", "A photo posted by {name}", "Una foto publicada por {name}"],
-    ["wall_photo_gone", "The photo could not be loaded.", "No se pudo cargar la foto."]
+    ["wall_photo_gone", "The photo could not be loaded.", "No se pudo cargar la foto."],
+    ["wall_photo_open", "Open the photo", "Abrir la foto"],
+    ["wall_photo_close", "Close the photo", "Cerrar la foto"],
+    ["wall_photo_big", "The photo, full size", "La foto, en tamaño completo"]
   ];
 
   var strings = root.CCC_I18N && root.CCC_I18N.strings;
