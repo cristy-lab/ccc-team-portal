@@ -29,7 +29,10 @@
      Education writes take the same lock and do the same work. */
   var REQUEST_TIMEOUT_MS = 45000;
   var SLOW_ACTIONS = { request: 1, state_interest: 1, training_start: 1, training_submit: 1, training_ack: 1, messages_send: 1, messages_hide: 1,
-    push_register: 1, push_unregister: 1, push_test: 1, profile_photo_set: 1, profile_photo_remove: 1 };
+    push_register: 1, push_unregister: 1, push_test: 1, profile_photo_set: 1, profile_photo_remove: 1,
+    // 0.5.1, the team wall. feed_post does the same work as messages_send: a Drive upload, a
+    // translation, a sheet write and a Slack line, all inside one script lock.
+    feed_post: 1, feed_hide: 1 };
   var PHOTO_TIMEOUT_MS = 90000;
   var POLL_TIMEOUT_MS = 20000;
   var RETRY_DELAY_MS = 1500;
@@ -38,7 +41,11 @@
      client_request_id, so the backend answers with what it already saved. */
   var RETRY_ACTIONS = { ping: 1, dashboard: 1, request: 1, state_interest: 1, wish: 1, trainings: 1, training_start: 1, training_submit: 1, training_ack: 1,
     messages_list: 1, messages_thread: 1, messages_send: 1, messages_hide: 1, messages_photo: 1, messages_members: 1,
-    push_register: 1, push_unregister: 1, profile_photo_set: 1, profile_photo_remove: 1, profile_photos: 1 };
+    push_register: 1, push_unregister: 1, profile_photo_set: 1, profile_photo_remove: 1, profile_photos: 1,
+    /* 0.5.1, the team wall. feed_post is safe to send twice because it carries client_post_id and
+       Feed.gs answers a repeat with the post it already saved. feed_react toggles, so a retry of a
+       call that did land would turn it back off: it is deliberately NOT here. */
+    feed_list: 1, feed_post: 1, feed_photo: 1, feed_hide: 1 };
 
   function netError(message) {
     return { ok: false, error: { code: "NETWORK", message: message || "network error" } };
@@ -131,7 +138,9 @@
 
   function timeoutFor(action, payload) {
     if (action === "messages_poll") return POLL_TIMEOUT_MS;
-    if (action === "messages_send" && payload && payload.photo) return PHOTO_TIMEOUT_MS;
+    // Any action carrying a photo gets the long clock, not messages_send alone. The wall sends the
+    // same pair of images through the same pipeline (0.5.1).
+    if ((action === "messages_send" || action === "feed_post") && payload && payload.photo) return PHOTO_TIMEOUT_MS;
     return SLOW_ACTIONS[action] === 1 ? REQUEST_TIMEOUT_MS : TIMEOUT_MS;
   }
 

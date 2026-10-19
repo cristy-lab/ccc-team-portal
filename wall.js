@@ -328,10 +328,19 @@
   function composeScreen() {
     var h = P.h, t = P.t;
     var left = 1000 - V.draft.text.length;
+    /* The counter is kept and written to directly. It used to call P.render() on every input,
+       which rebuilds the whole screen (app.js render empties #app and redraws), so the textarea
+       was replaced after every letter and the caret went with it. Typing a word was impossible.
+       Messages has the same counter and never re-renders while somebody writes, and nothing else
+       on this screen depends on the text, so nothing else needs the render either. */
+    var count = h("p", { class: "wl-left", text: t("wall_post_left", { n: left }) });
     var box = h("textarea", {
       class: "wl-write", rows: "5", maxlength: "1000",
       placeholder: t("wall_post_hint"), "aria-label": t("wall_post_hint"),
-      on: { input: function (e) { V.draft.text = e.target.value; P.render(); } }
+      on: { input: function (e) {
+        V.draft.text = e.target.value;
+        count.textContent = t("wall_post_left", { n: 1000 - V.draft.text.length });
+      } }
     });
     box.value = V.draft.text;
 
@@ -358,7 +367,7 @@
     return [
       h("h2", { class: "wl-rules-head", text: t("wall_post_head") }),
       box,
-      h("p", { class: "wl-left", text: t("wall_post_left", { n: left }) }),
+      count,
       photoRow.length ? h("div", { class: "wl-photorow" }, photoRow) : null,
       V.photoBusy ? P.loading(false) : null,
       h("div", { class: "btn-row" }, [
@@ -378,6 +387,10 @@
   /* The Messages bundle owns the one photo pipeline. Asked for only when a photo is attached. */
   function pickPhoto(file) {
     if (!file) return;
+    // Keep whatever is in the box before the screen is redrawn for the spinner. The textarea is a
+    // new node after a render, so anything typed and not yet stored would be lost here.
+    var box = doc.querySelector(".wl-write");
+    if (box) V.draft.text = box.value;
     V.photoBusy = true;
     P.render();
     var done = function (ok) { V.photoBusy = false; if (!ok) V.msg = { key: "wall_err_send", kind: "error" }; P.render(); };
